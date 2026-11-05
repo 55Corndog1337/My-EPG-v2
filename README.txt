@@ -1,0 +1,1 @@
+Replace build_epg.py in My-EPG-v2. Existing channels.csv and matches.csv included unchanged for convenience. The build creates reports/matching-report.csv and reports/missing-id-suggestions.csv. Missing provider IDs cannot be repaired by XMLTV alone; use the suggestions to plan safe playlist mappings. No full live build was performed here.
