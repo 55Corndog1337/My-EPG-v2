@@ -1,0 +1,80 @@
+name: Build full Xtream and M3U EPGs
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC candidates for midnight, 6 AM, noon, 6 PM America/New_York (EST/EDT).
+    - cron: '0 4,5,10,11,16,17,22,23 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: epg-build
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Eastern schedule
+        id: clock
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          HOUR=$(TZ=America/New_York date +%H)
+          if [ "$EVENT_NAME" = workflow_dispatch ] || [[ "$HOUR" =~ ^(00|06|12|18)$ ]]; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+          else
+            echo "Skipping UTC candidate; Eastern hour is $HOUR"
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.clock.outputs.run == 'true'
+      - uses: actions/setup-python@v5
+        if: steps.clock.outputs.run == 'true'
+        with:
+          python-version: '3.11'
+      - name: Build existing working full EPG
+        if: steps.clock.outputs.run == 'true'
+        env:
+          PLAYLIST_URL: ${{ secrets.PLAYLIST_URL }}
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+          XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
+        run: python build_epg.py
+      - name: Download EPG37 for NCAAF network schedules
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          python - <<'PY'
+          import urllib.request
+          urllib.request.urlretrieve('https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg37.xml.gz','epg37.xml.gz')
+          PY
+      - name: Overlay sports onto both full guides
+        if: steps.clock.outputs.run == 'true'
+        env:
+          PLAYLIST_URL: ${{ secrets.PLAYLIST_URL }}
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+          XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
+        run: python sports_overlay.py --base site/epg.xml.gz --output-dir site --epg37-file epg37.xml.gz
+      - name: Publish guides and public diagnostics only
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/epg.xml.gz site/epg-xtream.xml.gz site/epg-m3u.xml.gz
+          git add reports/sports-m3u-mapping.csv reports/epg37-regular-matches.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update full Xtream and edited M3U EPGs'
+            git push
+          fi
+      - name: Upload guides and mapping report
+        if: steps.clock.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: epg-guides-and-private-playlist
+          path: |
+            site/epg.xml.gz
+            site/epg-xtream.xml.gz
+            site/epg-m3u.xml.gz
+            reports/sports-m3u-mapping.csv
+            reports/epg37-regular-matches.csv
+          if-no-files-found: error
+          retention-days: 7
