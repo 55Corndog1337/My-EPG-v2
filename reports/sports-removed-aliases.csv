@@ -1,5 +1,4 @@
 XMLTV_ID,Reason
-117.NFL,Exceeded two entries for the same sports channel
 118.NFL,Exceeded two entries for the same sports channel
 119.NFL,Exceeded two entries for the same sports channel
 120.NFL,Exceeded two entries for the same sports channel
@@ -34,8 +33,21 @@ XMLTV_ID,Reason
 186.NHL,Exceeded two entries for the same sports channel
 187.NHL,Exceeded two entries for the same sports channel
 288.NBA,Exceeded two entries for the same sports channel
+292.NBA,Exceeded two entries for the same sports channel
+294.NBA,Exceeded two entries for the same sports channel
+297.NBA,Exceeded two entries for the same sports channel
+299.NBA,Exceeded two entries for the same sports channel
+301.NBA,Exceeded two entries for the same sports channel
+303.NBA,Exceeded two entries for the same sports channel
+304.NBA,Exceeded two entries for the same sports channel
 328.NBA,Exceeded two entries for the same sports channel
-8715.1ONEAED,Exceeded two entries for the same sports channel
+330.NBA,Exceeded two entries for the same sports channel
+331.NBA,Exceeded two entries for the same sports channel
+332.NBA,Exceeded two entries for the same sports channel
+333.NBA,Exceeded two entries for the same sports channel
+334.NBA,Exceeded two entries for the same sports channel
+335.NBA,Exceeded two entries for the same sports channel
+336.NBA,Exceeded two entries for the same sports channel
 8716.1ONEAED,Exceeded two entries for the same sports channel
 8717.1ONEAED,Exceeded two entries for the same sports channel
 8718.1ONEAED,Exceeded two entries for the same sports channel
@@ -62,6 +74,13 @@ matched.epg2.dummy-25686,Exceeded two entries for the same sports channel
 matched.epg2.dummy-26399,Exceeded two entries for the same sports channel
 matched.epg2.dummy-26423,Exceeded two entries for the same sports channel
 matched.epg2.dummy-4476728,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476730,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476731,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476732,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476733,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476734,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476735,Exceeded two entries for the same sports channel
+matched.epg2.dummy-4476736,Exceeded two entries for the same sports channel
 matched.epg37.291.NBA,Exceeded two entries for the same sports channel
 matched.epg37.307.NBA,Exceeded two entries for the same sports channel
 matched.epg37.309.NBA,Exceeded two entries for the same sports channel

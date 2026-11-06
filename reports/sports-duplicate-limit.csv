@@ -1,6 +1,4 @@
 RemovedXMLTV_ID,ChannelName,KeptXMLTV_IDs,WasProviderID
-8715.1ONEAED,NFL  | 01 - TNF 8:15pm Jaguars at Ravens,NFL.GAME.01 | dummy-25609,NO
-117.NFL,NFL  | 01 - TNF 8:15pm Jaguars at Ravens,NFL.GAME.01 | dummy-25609,NO
 8716.1ONEAED,NFL  | 02 - 9:30am Bengals at Falcons,NFL.GAME.02 | dummy-25610,NO
 118.NFL,NFL  | 02 - 9:30am Bengals at Falcons,NFL.GAME.02 | dummy-25610,NO
 8717.1ONEAED,NFL  | 03 - 1pm Cowboys at Colts,NFL.GAME.03 | dummy-25611,NO
@@ -58,11 +56,32 @@ matched.epg2.dummy-25685,NHL 10: 8pm Ducks @ Oilers,NHL.GAME.10 | dummy-25685,NO
 171.NHL,NHL 11: 9:30pm Predators @ Avalanche,NHL.GAME.11 | dummy-25686,NO
 matched.epg2.dummy-25686,NHL 11: 9:30pm Predators @ Avalanche,NHL.GAME.11 | dummy-25686,NO
 matched.epg2.dummy-26399,NCAAF 34: UAlbany at lowa 6pm,dummy-26399 | 272.NCAAF,NO
-328.NBA,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,dummy-4476728 | 8730.1ONEAED,NO
-288.NBA,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,dummy-4476728 | 8730.1ONEAED,NO
-matched.epg2.dummy-4476728,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,dummy-4476728 | 8730.1ONEAED,NO
+328.NBA,Atlanta Hawks vs Washington Wizards @ Nov 6 7:00 PM :NBA  01,dummy-4476728 | 8730.1ONEAED,NO
+288.NBA,Atlanta Hawks vs Washington Wizards @ Nov 6 7:00 PM :NBA  01,dummy-4476728 | 8730.1ONEAED,NO
+matched.epg2.dummy-4476728,Atlanta Hawks vs Washington Wizards @ Nov 6 7:00 PM :NBA  01,dummy-4476728 | 8730.1ONEAED,NO
 matched.epg37.291.NBA,US - NBA GAME 02 : GOLDEN STATE WARRIORS @ MIAMI HEAT NOV 5 – 10:00 PM ET / NOV 6 – 3:00 AM UK,329.NBA | 291.NBA,NO
+330.NBA,Cleveland Cavaliers vs Philadelphia 76ers @ Nov 6 7:30 PM :NBA  03,dummy-4476730 | 8732.1ONEAED,NO
+292.NBA,Cleveland Cavaliers vs Philadelphia 76ers @ Nov 6 7:30 PM :NBA  03,dummy-4476730 | 8732.1ONEAED,NO
+matched.epg2.dummy-4476730,Cleveland Cavaliers vs Philadelphia 76ers @ Nov 6 7:30 PM :NBA  03,dummy-4476730 | 8732.1ONEAED,NO
+331.NBA,Dallas Mavericks vs Utah Jazz @ Nov 6 8:00 PM :NBA  04,dummy-4476731 | 8733.1ONEAED,NO
+294.NBA,Dallas Mavericks vs Utah Jazz @ Nov 6 8:00 PM :NBA  04,dummy-4476731 | 8733.1ONEAED,NO
+matched.epg2.dummy-4476731,Dallas Mavericks vs Utah Jazz @ Nov 6 8:00 PM :NBA  04,dummy-4476731 | 8733.1ONEAED,NO
 matched.epg2.dummy-26423,NCAAF 58: 7PM North Carolina at Charlotte,dummy-26423 | 296.NCAAF,NO
+332.NBA,Memphis Grizzlies vs Oklahoma City Thunder @ Nov 6 8:00 PM :NBA  05,dummy-4476732 | 8734.1ONEAED,NO
+297.NBA,Memphis Grizzlies vs Oklahoma City Thunder @ Nov 6 8:00 PM :NBA  05,dummy-4476732 | 8734.1ONEAED,NO
+matched.epg2.dummy-4476732,Memphis Grizzlies vs Oklahoma City Thunder @ Nov 6 8:00 PM :NBA  05,dummy-4476732 | 8734.1ONEAED,NO
+333.NBA,Milwaukee Bucks vs Toronto Raptors @ Nov 6 8:00 PM :NBA  06,dummy-4476733 | 8735.1ONEAED,NO
+299.NBA,Milwaukee Bucks vs Toronto Raptors @ Nov 6 8:00 PM :NBA  06,dummy-4476733 | 8735.1ONEAED,NO
+matched.epg2.dummy-4476733,Milwaukee Bucks vs Toronto Raptors @ Nov 6 8:00 PM :NBA  06,dummy-4476733 | 8735.1ONEAED,NO
+334.NBA,New Orleans Pelicans vs Minnesota Timberwolves @ Nov 6 8:00 PM :NBA  07,dummy-4476734 | 8736.1ONEAED,NO
+301.NBA,New Orleans Pelicans vs Minnesota Timberwolves @ Nov 6 8:00 PM :NBA  07,dummy-4476734 | 8736.1ONEAED,NO
+matched.epg2.dummy-4476734,New Orleans Pelicans vs Minnesota Timberwolves @ Nov 6 8:00 PM :NBA  07,dummy-4476734 | 8736.1ONEAED,NO
+335.NBA,Los Angeles Lakers vs Portland Trail Blazers @ Nov 6 10:00 PM :NBA  08,dummy-4476735 | 8737.1ONEAED,NO
+303.NBA,Los Angeles Lakers vs Portland Trail Blazers @ Nov 6 10:00 PM :NBA  08,dummy-4476735 | 8737.1ONEAED,NO
+matched.epg2.dummy-4476735,Los Angeles Lakers vs Portland Trail Blazers @ Nov 6 10:00 PM :NBA  08,dummy-4476735 | 8737.1ONEAED,NO
+336.NBA,Sacramento Kings vs San Antonio Spurs @ Nov 6 10:00 PM :NBA  09,dummy-4476736 | 8738.1ONEAED,NO
+304.NBA,Sacramento Kings vs San Antonio Spurs @ Nov 6 10:00 PM :NBA  09,dummy-4476736 | 8738.1ONEAED,NO
+matched.epg2.dummy-4476736,Sacramento Kings vs San Antonio Spurs @ Nov 6 10:00 PM :NBA  09,dummy-4476736 | 8738.1ONEAED,NO
 matched.epg37.307.NBA,US - NBA GAME 10 : ,337.NBA | 307.NBA,NO
 matched.epg37.309.NBA,US - NBA GAME 11 : ,338.NBA | 309.NBA,NO
 matched.epg37.311.NBA,US - NBA GAME 12 : ,339.NBA | 311.NBA,NO
