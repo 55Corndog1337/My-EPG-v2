@@ -1,0 +1,91 @@
+RemovedXMLTV_ID,ChannelName,KeptXMLTV_IDs,WasProviderID
+8715.1ONEAED,NFL  | 01 - TNF 8:15pm Jaguars at Ravens,NFL.GAME.01 | dummy-25609,NO
+117.NFL,NFL  | 01 - TNF 8:15pm Jaguars at Ravens,NFL.GAME.01 | dummy-25609,NO
+8716.1ONEAED,NFL  | 02 - 9:30am Bengals at Falcons,NFL.GAME.02 | dummy-25610,NO
+118.NFL,NFL  | 02 - 9:30am Bengals at Falcons,NFL.GAME.02 | dummy-25610,NO
+8717.1ONEAED,NFL  | 03 - 1pm Cowboys at Colts,NFL.GAME.03 | dummy-25611,NO
+119.NFL,NFL  | 03 - 1pm Cowboys at Colts,NFL.GAME.03 | dummy-25611,NO
+8718.1ONEAED,NFL  | 04 - 1pm Jets at Chiefs,NFL.GAME.04 | dummy-25612,NO
+120.NFL,NFL  | 04 - 1pm Jets at Chiefs,NFL.GAME.04 | dummy-25612,NO
+121.NFL,NFL  | 05 - 1pm Lions at Dolphins,dummy-25613 | 8719.1ONEAED,NO
+8720.1ONEAED,NFL  | 06 - 1pm Browns at Saints,NFL.GAME.06 | dummy-25614,NO
+122.NFL,NFL  | 06 - 1pm Browns at Saints,NFL.GAME.06 | dummy-25614,NO
+8721.1ONEAED,NFL  | 07 - 1pm Giants at Eagles,NFL.GAME.07 | dummy-25615,NO
+123.NFL,NFL  | 07 - 1pm Giants at Eagles,NFL.GAME.07 | dummy-25615,NO
+8722.1ONEAED,NFL  | 08 - 1pm Rams at Commanders,NFL.GAME.08 | dummy-25616,NO
+124.NFL,NFL  | 08 - 1pm Rams at Commanders,NFL.GAME.08 | dummy-25616,NO
+8723.1ONEAED,NFL  | 09 - 1pm Broncos at Panthers,NFL.GAME.09 | dummy-25617,NO
+125.NFL,NFL  | 09 - 1pm Broncos at Panthers,NFL.GAME.09 | dummy-25617,NO
+8724.1ONEAED,NFL  | 10 - 4:05pm Texans at Chargers,NFL.GAME.10 | dummy-25618,NO
+126.NFL,NFL  | 10 - 4:05pm Texans at Chargers,NFL.GAME.10 | dummy-25618,NO
+8725.1ONEAED,NFL  | 11 - 4:25pm Packers at Patriots,NFL.GAME.11 | dummy-25619,NO
+127.NFL,NFL  | 11 - 4:25pm Packers at Patriots,NFL.GAME.11 | dummy-25619,NO
+8726.1ONEAED,NFL  | 12 - 4:25pm Raiders at 49ers,NFL.GAME.12 | dummy-25620,NO
+128.NFL,NFL  | 12 - 4:25pm Raiders at 49ers,NFL.GAME.12 | dummy-25620,NO
+8727.1ONEAED,NFL  | 13 - 4:25pm Cardinals at Seahawks,NFL.GAME.13 | dummy-25621,NO
+129.NFL,NFL  | 13 - 4:25pm Cardinals at Seahawks,NFL.GAME.13 | dummy-25621,NO
+8728.1ONEAED,NFL  | 14 - SNF 8:20pm Buccaneers at Bears,NFL.GAME.14 | dummy-25622,NO
+130.NFL,NFL  | 14 - SNF 8:20pm Buccaneers at Bears,NFL.GAME.14 | dummy-25622,NO
+8729.1ONEAED,NFL  | 15 - MNF 8:15pm Bills at Vikings,NFL.GAME.15 | dummy-25623,NO
+131.NFL,NFL  | 15 - MNF 8:15pm Bills at Vikings,NFL.GAME.15 | dummy-25623,NO
+177.NHL,NHL 01: 7pm Mammoth @ Canadiens,NHL.GAME.01 | dummy-25676,NO
+161.NHL,NHL 01: 7pm Mammoth @ Canadiens,NHL.GAME.01 | dummy-25676,NO
+matched.epg2.dummy-25676,NHL 01: 7pm Mammoth @ Canadiens,NHL.GAME.01 | dummy-25676,NO
+178.NHL,NHL 02: 7pm Golden Knights @ Red Wings,NHL.GAME.02 | dummy-25677,NO
+162.NHL,NHL 02: 7pm Golden Knights @ Red Wings,NHL.GAME.02 | dummy-25677,NO
+matched.epg2.dummy-25677,NHL 02: 7pm Golden Knights @ Red Wings,NHL.GAME.02 | dummy-25677,NO
+179.NHL,NHL 03: 7pm Blackhawks @ Lightning,NHL.GAME.03 | dummy-25678,NO
+163.NHL,NHL 03: 7pm Blackhawks @ Lightning,NHL.GAME.03 | dummy-25678,NO
+matched.epg2.dummy-25678,NHL 03: 7pm Blackhawks @ Lightning,NHL.GAME.03 | dummy-25678,NO
+180.NHL,NHL 04: 7pm Blues @ Devils,NHL.GAME.04 | dummy-25679,NO
+164.NHL,NHL 04: 7pm Blues @ Devils,NHL.GAME.04 | dummy-25679,NO
+matched.epg2.dummy-25679,NHL 04: 7pm Blues @ Devils,NHL.GAME.04 | dummy-25679,NO
+165.NHL,NHL 05: 7pm Hurricanes @ Islanders,dummy-25680 | 181.NHL,NO
+matched.epg2.dummy-25680,NHL 05: 7pm Hurricanes @ Islanders,dummy-25680 | 181.NHL,NO
+182.NHL,NHL 06: 7pm Flyers @ Rangers,NHL.GAME.06 | dummy-25681,NO
+166.NHL,NHL 06: 7pm Flyers @ Rangers,NHL.GAME.06 | dummy-25681,NO
+matched.epg2.dummy-25681,NHL 06: 7pm Flyers @ Rangers,NHL.GAME.06 | dummy-25681,NO
+183.NHL,NHL 07: 7pm Bruins @ Penguins,NHL.GAME.07 | dummy-25682,NO
+167.NHL,NHL 07: 7pm Bruins @ Penguins,NHL.GAME.07 | dummy-25682,NO
+matched.epg2.dummy-25682,NHL 07: 7pm Bruins @ Penguins,NHL.GAME.07 | dummy-25682,NO
+185.NHL,NHL 09: 7pm Canucks @ Jets,NHL.GAME.09 | dummy-25684,NO
+169.NHL,NHL 09: 7pm Canucks @ Jets,NHL.GAME.09 | dummy-25684,NO
+matched.epg2.dummy-25684,NHL 09: 7pm Canucks @ Jets,NHL.GAME.09 | dummy-25684,NO
+186.NHL,NHL 10: 8pm Ducks @ Oilers,NHL.GAME.10 | dummy-25685,NO
+170.NHL,NHL 10: 8pm Ducks @ Oilers,NHL.GAME.10 | dummy-25685,NO
+matched.epg2.dummy-25685,NHL 10: 8pm Ducks @ Oilers,NHL.GAME.10 | dummy-25685,NO
+187.NHL,NHL 11: 9:30pm Predators @ Avalanche,NHL.GAME.11 | dummy-25686,NO
+171.NHL,NHL 11: 9:30pm Predators @ Avalanche,NHL.GAME.11 | dummy-25686,NO
+matched.epg2.dummy-25686,NHL 11: 9:30pm Predators @ Avalanche,NHL.GAME.11 | dummy-25686,NO
+matched.epg2.dummy-26399,NCAAF 34: UAlbany at lowa 6pm,dummy-26399 | 272.NCAAF,NO
+8730.1ONEAED,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,NBA.GAME.01 | dummy-4476728,NO
+328.NBA,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,NBA.GAME.01 | dummy-4476728,NO
+288.NBA,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,NBA.GAME.01 | dummy-4476728,NO
+matched.epg2.dummy-4476728,Phoenix Suns vs Orlando Magic @ Nov 5 9:00 PM :NBA  01,NBA.GAME.01 | dummy-4476728,NO
+291.NBA,US - NBA GAME 02 : GOLDEN STATE WARRIORS @ MIAMI HEAT NOV 5 – 10:00 PM ET / NOV 6 – 3:00 AM UK,NBA.GAME.02 | 329.NBA,NO
+matched.epg37.291.NBA,US - NBA GAME 02 : GOLDEN STATE WARRIORS @ MIAMI HEAT NOV 5 – 10:00 PM ET / NOV 6 – 3:00 AM UK,NBA.GAME.02 | 329.NBA,NO
+292.NBA,US - NBA GAME 03 : ,NBA.GAME.03 | 330.NBA,NO
+294.NBA,US - NBA GAME 04 : ,NBA.GAME.04 | 331.NBA,NO
+matched.epg2.dummy-26423,NCAAF 58: 7PM North Carolina at Charlotte,dummy-26423 | 296.NCAAF,NO
+297.NBA,US - NBA GAME 05 : ,NBA.GAME.05 | 332.NBA,NO
+matched.epg37.297.NBA,US - NBA GAME 05 : ,NBA.GAME.05 | 332.NBA,NO
+299.NBA,US - NBA GAME 06 : ,NBA.GAME.06 | 333.NBA,NO
+matched.epg37.299.NBA,US - NBA GAME 06 : ,NBA.GAME.06 | 333.NBA,NO
+301.NBA,US - NBA GAME 07 : ,NBA.GAME.07 | 334.NBA,NO
+matched.epg37.301.NBA,US - NBA GAME 07 : ,NBA.GAME.07 | 334.NBA,NO
+303.NBA,US - NBA GAME 08 : ,NBA.GAME.08 | 335.NBA,NO
+matched.epg37.303.NBA,US - NBA GAME 08 : ,NBA.GAME.08 | 335.NBA,NO
+304.NBA,US - NBA GAME 09 : ,NBA.GAME.09 | 336.NBA,NO
+matched.epg37.304.NBA,US - NBA GAME 09 : ,NBA.GAME.09 | 336.NBA,NO
+307.NBA,US - NBA GAME 10 : ,NBA.GAME.10 | 337.NBA,NO
+matched.epg37.307.NBA,US - NBA GAME 10 : ,NBA.GAME.10 | 337.NBA,NO
+309.NBA,US - NBA GAME 11 : ,NBA.GAME.11 | 338.NBA,NO
+matched.epg37.309.NBA,US - NBA GAME 11 : ,NBA.GAME.11 | 338.NBA,NO
+311.NBA,US - NBA GAME 12 : ,NBA.GAME.12 | 339.NBA,NO
+matched.epg37.311.NBA,US - NBA GAME 12 : ,NBA.GAME.12 | 339.NBA,NO
+312.NBA,US - NBA GAME 13 : ,NBA.GAME.14 | 340.NBA,NO
+matched.epg37.312.NBA,US - NBA GAME 13 : ,NBA.GAME.14 | 340.NBA,NO
+314.NBA,US - NBA GAME 14 : ,NBA.GAME.15 | 341.NBA,NO
+matched.epg37.314.NBA,US - NBA GAME 14 : ,NBA.GAME.15 | 341.NBA,NO
+317.NBA,US - NBA GAME 15 : ,NBA.GAME.13 | 342.NBA,NO
+matched.epg37.317.NBA,US - NBA GAME 15 : ,NBA.GAME.13 | 342.NBA,NO
