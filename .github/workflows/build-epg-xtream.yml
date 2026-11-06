@@ -1,0 +1,60 @@
+name: Build EPG (Xtream playlist first)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 */4 * * *'  # Every four hours, UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: epg-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Refresh Xtream playlist, then build EPG
+        env:
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+          XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
+        run: python build_epg.py
+      - name: Publish generated EPG and reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/epg.xml.gz site/index.html site/.nojekyll reports/
+          if ! git diff --cached --quiet; then
+            git commit -m "Update EPG from refreshed Xtream playlist"
+            git push
+          fi
+
+      - name: Upload EPG download to this workflow run
+        uses: actions/upload-artifact@v4
+        with:
+          name: epg-guide
+          path: site/epg.xml.gz
+          if-no-files-found: error
+          retention-days: 30
+      - name: Show EPG download links in build summary
+        if: success()
+        env:
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          SHA: ${{ github.sha }}
+        run: |
+          echo "## EPG build complete" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- [Download epg-guide artifact (ZIP) from this run](https://github.com/$REPO/actions/runs/$RUN_ID#artifacts)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- [Download published epg.xml.gz](https://raw.githubusercontent.com/$REPO/HEAD/site/epg.xml.gz)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Artifact is available for 30 days. The published link points to the latest default-branch version." >> "$GITHUB_STEP_SUMMARY"
