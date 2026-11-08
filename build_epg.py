@@ -599,9 +599,9 @@ def main():
             writer.writerows(inventory_rows)
     for status_path in (reports_early / 'xtream-inventory-status.txt',
                         site_early / 'xtream-inventory-status.txt'):
-        status_path.write_text('Source: ' + inventory_source + '\\n'
-                               + 'Channels: ' + str(len(inventory_rows)) + '\\n'
-                               + 'Generated UTC: ' + datetime.now(timezone.utc).isoformat() + '\\n',
+        status_path.write_text('Source: ' + inventory_source + '\n'
+                               + 'Channels: ' + str(len(inventory_rows)) + '\n'
+                               + 'Generated UTC: ' + datetime.now(timezone.utc).isoformat() + '\n',
                                encoding='utf-8')
     print('Saved current build inventory:', len(inventory_rows), 'channels, source:', inventory_source)
     print('Playlist catalog ready:', len(catalog), 'channels; now fetching guide sources')
