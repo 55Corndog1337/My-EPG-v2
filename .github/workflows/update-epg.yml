@@ -36,36 +36,5 @@ jobs:
           path: site
       - id: deployment
         uses: actions/deploy-pages@v4
-      # The inventory is never uploaded as a public Actions artifact.
-      # Configure a PRIVATE repo and a fine-grained token to enable archival.
-      - name: Archive inventory to private repository
-        env:
-          PRIVATE_REPO: ${{ vars.EPG_PRIVATE_REPO }}
-          PRIVATE_TOKEN: ${{ secrets.EPG_PRIVATE_REPO_TOKEN }}
-        shell: bash
-        run: |
-          if [[ -z "$PRIVATE_REPO" || -z "$PRIVATE_TOKEN" ]]; then
-            echo "Private inventory archive not configured; no inventory uploaded."
-            exit 0
-          fi
-          set -euo pipefail
-          case "$PRIVATE_REPO" in
-            *[!a-zA-Z0-9._/-]*|"" ) echo "Invalid private repository identifier"; exit 1 ;;
-          esac
-          export GIT_TERMINAL_PROMPT=0
-          git config --global user.name "EPG Inventory Bot"
-          git config --global user.email "epg-inventory@users.noreply.github.com"
-          mkdir -p "$RUNNER_TEMP/private-archive"
-          cd "$RUNNER_TEMP/private-archive"
-          git init -q
-          git remote add origin "https://github.com/$PRIVATE_REPO.git"
-          auth_header="$(printf 'x-access-token:%s' "$PRIVATE_TOKEN" | base64 -w0)"
-          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth_header" fetch -q origin main
-          git checkout -q -B main FETCH_HEAD
-          cp "$GITHUB_WORKSPACE/reports/xtream-channels-latest.csv" ./xtream-channels-latest.csv
-          cp "$GITHUB_WORKSPACE/reports/xtream-inventory-status.txt" ./xtream-inventory-status.txt
-          git add xtream-channels-latest.csv xtream-inventory-status.txt
-          if ! git diff --cached --quiet; then
-            git commit -qm "Refresh private Xtream inventory"
-            git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth_header" push -q origin main
-          fi
+      # Do not publish the Xtream inventory or matching reports as public artifacts.
+      # They are generated locally for the current run only.
