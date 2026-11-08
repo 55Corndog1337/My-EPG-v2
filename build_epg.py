@@ -735,7 +735,10 @@ def main():
             else:
                 status = 'matched but missing provider EPG ID'
                 # Namespace to avoid collisions between EPG2 and EPG37 IDs.
-                generated_id = 'matched.' + pair[0] + '.' + pair[1]
+                # Stable, per-stream XMLTV ID. A shared source channel ID must not
+                # collapse distinct Xtream channels into one TiviMate guide entry.
+                stream_id = (r.get('StreamID') or '').strip()
+                generated_id = ('xtream.' + stream_id) if stream_id else ('matched.' + pair[0] + '.' + pair[1])
                 requested[generated_id].add(pair)
         else:
             status = 'ambiguous' if candidates else 'unmatched'
@@ -824,7 +827,7 @@ def main():
         for row in audit:
             if league_feed(row['ChannelName']) != feed:
                 continue
-            target = row['EPGID'] or ('matched.' + row['SuggestedSource'] + '.' + row['SuggestedSourceID'])
+            target = row['EPGID'] or (('xtream.' + row['StreamID']) if row['StreamID'] else ('matched.' + row['SuggestedSource'] + '.' + row['SuggestedSourceID']))
             if target in chosen and chosen[target] in eligible and sports_source_quality(best, source_channels) > sports_source_quality(chosen[target], source_channels):
                 chosen[target] = best
     print('Numbered sports XMLTV ID aliases added/upgraded:', sports_alias_count)
@@ -911,7 +914,7 @@ def main():
     # This changes display names, not XMLTV IDs (which TiviMate uses for mapping).
     for row in audit:
         if row['FloNumber'] and row['SuggestedSource'] == 'epg2':
-            target = row['EPGID'] or ('matched.' + row['SuggestedSource'] + '.' + row['SuggestedSourceID'])
+            target = row['EPGID'] or (('xtream.' + row['StreamID']) if row['StreamID'] else ('matched.' + row['SuggestedSource'] + '.' + row['SuggestedSourceID']))
             if target in channels:
                 ch = channels[target]
                 for label in list(ch.findall('display-name')):
