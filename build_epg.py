@@ -834,6 +834,25 @@ def main():
             else:
                 print('WARNING approved source ID absent from XMLTV for StreamID',
                       (r.get('StreamID') or '').strip())
+        # Numbered NBA/NHL game slots must never inherit a generic source
+        # channel such as 162.nhl or 288.nba. Use a uniquely identified
+        # EPG2 numbered slot; preserve the Xtream output EPG ID.
+        numbered_feed = league_feed(name)
+        if numbered_feed and numbered_feed[0] in ('NBA', 'NHL') and not re.search(r'IN\\s*ARENA|LEAGUE\\s*PASS|TEAMS?', r.get('Group', '') + ' ' + name, re.I):
+            league, number, _region = numbered_feed
+            exact_epg2 = set()
+            for (src, source_id), source_ch in source_channels.items():
+                if src != 'epg2':
+                    continue
+                source_names = [source_id] + [x.text or '' for x in source_ch.findall('display-name')]
+                if any((lambda f: f is not None and f[:2] == (league, number))(league_feed(label)) for label in source_names):
+                    exact_epg2.add((src, source_id))
+            if len(exact_epg2) == 1:
+                candidates = exact_epg2
+                method = 'NBA/NHL numbered slot: unique EPG2 source'
+            elif candidates and all(p[0] != 'epg2' for p in candidates):
+                candidates = set()
+                method = 'NBA/NHL numbered slot: EPG2 source not uniquely verified'
         candidates = select_unique(candidates)
         suggested_source = ''
         suggested_id = ''
