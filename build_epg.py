@@ -833,6 +833,38 @@ def main():
             # ESPN+ feeds must use EPG37, never a similarly named EPG2 feed.
             candidates = set(espn_index.get(espn_num, set()))
             method = 'numbered ESPN+ to EPG37' if len(candidates) == 1 else ('ESPN+ ambiguous in EPG37' if candidates else 'ESPN+ absent from EPG37')
+        # Local East Tennessee stations: match actual call letters and
+        # subchannel identity in EPG2/EPG37, not a different city's affiliate.
+        # Keep provider ID when present; use Xtream StreamID for blank IDs.
+        station_names = {
+            '1076570': ('WATE',),       # ABC 6 Knoxville
+            '1076615': ('WJHL-DT2', 'WJHLDT2'),  # ABC Tri-Cities
+            '1076808': ('WJHL',),       # CBS 11 Johnson City
+            '214211': ('WBIR',),        # NBC 10 Knoxville
+            '214140': ('WCYB',),        # NBC 5 Bristol
+            '214381': ('WCYB-DT3', 'WCYBDT3', 'WCYB-D3'), # Fox Greeneville
+            '214512': ('WTNZ',),        # Fox 43 Knoxville
+        }
+        station_stream = (r.get('StreamID') or '').strip()
+        if station_stream in station_names:
+            station_pairs = set()
+            wanted = {re.sub(r'[^A-Z0-9]', '', x.upper()) for x in station_names[station_stream]}
+            for (src, source_id), source_ch in source_channels.items():
+                if src not in ('epg2', 'epg37'):
+                    continue
+                labels = [source_id] + [x.text or '' for x in source_ch.findall('display-name')]
+                for label in labels:
+                    normalized = re.sub(r'[^A-Z0-9]', '', label.upper())
+                    # For the main WJHL/WCYB stations, reject their DT2/DT3 feeds.
+                    if any(re.search(r'(?<![A-Z0-9])' + re.escape(w) + r'(?![A-Z0-9])', label.upper()) for w in station_names[station_stream]) or any(normalized.startswith(w) and (len(normalized) == len(w) or normalized[len(w):].startswith(('US','TV','HD'))) for w in wanted):
+                        station_pairs.add((src, source_id))
+                        break
+            # Prefer EPG2 if both guides contain the same verified station.
+            if station_pairs:
+                preferred = {p for p in station_pairs if p[0] == 'epg2'} or station_pairs
+                if len(preferred) == 1:
+                    candidates = preferred
+                    method = 'verified local station call letters'
         # Approved fixed-channel mappings take priority over name heuristics.
         # Preserve the provider's output EPGID; never replace it with source ID.
         # A source ID must actually exist in the loaded XMLTV file.
