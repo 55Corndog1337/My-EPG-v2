@@ -1,41 +1,54 @@
 #!/usr/bin/env python3
-"""Collect a private Xtream channel inventory and public XMLTV source snapshots."""
-import os, json, gzip, urllib.request, urllib.parse, xml.etree.ElementTree as ET
-from pathlib import Path
-from datetime import datetime, timezone
+"""Prepare fresh private Xtream inventory and XMLTV source files in one Actions job.
 
-SOURCES = {
- "2": "https://github.com/ferteque/Curated-M3U-Repository/raw/refs/heads/main/epg2.xml.gz",
- "6": "https://github.com/ferteque/Curated-M3U-Repository/raw/refs/heads/main/epg6.xml.gz",
- "37": "https://github.com/ferteque/Curated-M3U-Repository/raw/refs/heads/main/epg37.xml.gz",
-}
-def get(url):
- req=urllib.request.Request(url,headers={"User-Agent":"My-EPG-v2/1.0"})
- with urllib.request.urlopen(req,timeout=120) as response: return response.read()
-def collect_channels():
- base=os.environ["XTREAM_URL"].strip().rstrip("/")
- if not base.startswith(("https://","http://")): base="http://"+base
- query=urllib.parse.urlencode({"username":os.environ["XTREAM_USERNAME"],"password":os.environ["XTREAM_PASSWORD"],"action":"get_live_categories"})
- categories=json.loads(get(base+"/player_api.php?"+query))
- selected={str(c["category_id"]):c.get("category_name","") for c in categories if any(k in c.get("category_name","").upper() for k in ("US ","USA","UK ","CA ","CANADA","AM | US","AM | CA","EU | UK","AM - US","AM - CA","EU - UK"))}
- query=urllib.parse.urlencode({"username":os.environ["XTREAM_USERNAME"],"password":os.environ["XTREAM_PASSWORD"],"action":"get_live_streams"})
- streams=json.loads(get(base+"/player_api.php?"+query))
- rows=[{"stream_id":s.get("stream_id"),"name":s.get("name"),"category_id":str(s.get("category_id")),"category":selected[str(s.get("category_id"))],"epg_channel_id":s.get("epg_channel_id")} for s in streams if str(s.get("category_id")) in selected]
- Path("private").mkdir(exist_ok=True)
- Path("private/channels.json").write_text(json.dumps({"generated_at":datetime.now(timezone.utc).isoformat(),"channels":rows},ensure_ascii=False),encoding="utf-8")
- print(f"Private channel inventory prepared: {len(rows)} channels across {len(selected)} categories")
-def collect_epg():
- Path("data").mkdir(exist_ok=True)
- for key,url in SOURCES.items():
-  raw=get(url)
-  xml=gzip.decompress(raw) if raw[:2]==b"\\x1f\\x8b" else raw
-  root=ET.fromstring(xml)
-  if root.tag!="tv": raise ValueError(f"EPG {key}: not XMLTV")
-  channels=[{"id":c.get("id"),"names":[n.text for n in c.findall("display-name") if n.text]} for c in root.findall("channel")]
-  programmes=[{"channel":p.get("channel"),"start":p.get("start"),"stop":p.get("stop"),"title":p.findtext("title") or "","desc":p.findtext("desc") or ""} for p in root.findall("programme")]
-  output={"source":key,"generated_at":datetime.now(timezone.utc).isoformat(),"channels":channels,"programmes":programmes}
-  Path(f"data/epg{key}.json").write_text(json.dumps(output,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
-  print(f"EPG {key}: {len(channels)} channels, {len(programmes)} programmes")
-if __name__=="__main__":
- collect_channels()
- collect_epg()
+Private provider inventory is never uploaded as an artifact or committed.
+Public EPG source snapshots contain only upstream public XMLTV data.
+"""
+import csv
+import gzip
+import json
+import os
+import sys
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import build_epg
+
+def main():
+    # Fail closed: no stale CSV fallback when the authenticated provider is unavailable.
+    for name in ("XTREAM_URL", "XTREAM_USERNAME", "XTREAM_PASSWORD"):
+        if not os.environ.get(name):
+            raise RuntimeError("Missing required GitHub Actions secret: " + name)
+    catalog = build_epg.refresh_playlist_catalog()
+    if not catalog:
+        raise RuntimeError("Xtream returned no allowed US/UK/CA channels")
+    private = Path("private")
+    private.mkdir(exist_ok=True)
+    with (private / "channels.csv").open("w", newline="", encoding="utf-8") as out:
+        writer = csv.DictWriter(out, fieldnames=["Source","Group","ChannelName","StreamID","EPGID","TVGName","ProviderID","Scope"])
+        writer.writeheader()
+        writer.writerows(catalog)
+    print("Xtream catalog collected privately:", len(catalog), "channels")
+
+    source_dir = Path("sources")
+    source_dir.mkdir(exist_ok=True)
+    summary = {"generated_at": datetime.now(timezone.utc).isoformat(), "sources": {}}
+    for name, url in build_epg.SOURCES.items():
+        raw = build_epg.download(url)
+        root = ET.fromstring(raw)
+        if root.tag != "tv":
+            raise RuntimeError(name + " returned invalid XMLTV")
+        channel_count = len(root.findall("channel"))
+        programme_count = len(root.findall("programme"))
+        if not channel_count or not programme_count:
+            raise RuntimeError(name + " has no channels or programmes")
+        with gzip.open(source_dir / (name + ".xml.gz"), "wb", compresslevel=6) as out:
+            out.write(raw)
+        summary["sources"][name] = {"channels": channel_count, "programmes": programme_count}
+        print(name, "validated:", channel_count, "channels;", programme_count, "programmes")
+    Path("sources/summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+
+if __name__ == "__main__":
+    main()
