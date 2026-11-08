@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/update-epg.yml'
+      - 'build_epg.py'
   schedule:
     - cron: '17 */4 * * *'
 permissions:
