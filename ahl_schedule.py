@@ -99,27 +99,25 @@ def run(catalog,channels,programmes,reports):
         except Exception as exc:
             print("AHL schedule season",season,"unavailable:",type(exc).__name__)
     future=sorted(games.values(),key=lambda g:g[2])
-    horizon=now+timedelta(days=7)
     replacements={}
     for pid,team in targets.items():
         matches=[g for g in future if _norm(team) in (_norm(g[0]),_norm(g[1])) or
                  (_norm(team) and (_norm(team) in _norm(g[0]) or _norm(team) in _norm(g[1])))]
         result=[]
-        cursor=now
-        for away,home,start in matches:
-            if start>horizon:break
+        # Only the next verified game is assigned to this team channel.
+        if matches:
+            away,home,start=matches[0]
             end=start+timedelta(hours=4)
             label=f"{away} @ {home}"
             local=start.astimezone(EASTERN)
             date=f"{local.strftime('%B')} {local.day}, {local.strftime('%I:%M %p').lstrip('0')} {local.tzname()}"
-            if start>cursor:
-                result.append(_programme(pid,f"Upcoming: {label} ({local.strftime('%A')}, {date})",cursor,start))
-            if end>cursor:
-                result.append(_programme(pid,f"{label} ({date})",max(cursor,start),min(end,horizon)))
-                cursor=min(end,horizon)
-            if cursor>=horizon:break
-        if cursor<horizon:
-            result.append(_programme(pid,"No Game Scheduled",cursor,horizon))
+            if start>now:
+                result.append(_programme(pid,f"Next Game: {label} ({local.strftime('%A')}, {date})",now,start))
+            if end>now:
+                result.append(_programme(pid,f"{label} ({date})",max(now,start),end))
+            result.append(_programme(pid,"Event has Concluded",max(now,end),max(now,end)+timedelta(days=2)))
+        else:
+            result.append(_programme(pid,"No Game Scheduled",now,now+timedelta(days=2)))
         replacements[pid]=result
     programmes=[p for p in programmes if p.get("channel") not in replacements]
     for entries in replacements.values():programmes.extend(entries)
