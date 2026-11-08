@@ -722,8 +722,9 @@ def main():
         if slot and slot[0] in ('NBA', 'NHL') and not re.search(r'IN\\s*ARENA|LEAGUE\\s*PASS|TEAMS?', r.get('Group', '') + ' ' + name, re.I):
             league, number, _ = slot
             if 1 <= number <= (15 if league == 'NBA' else 16):
-                if not epgid or not re.fullmatch(rf'{league}\\.GAME\\.0*{number}', epgid, re.I):
-                    epgid = f'xtream.{r.get("StreamID", "").strip()}'
+                stream_id = (r.get('StreamID') or '').strip()
+                if stream_id:
+                    epgid = f'xtream.{stream_id}'
         key = clean_name(name)
         tvg_name = clean_name(r.get('TVGName', ''))
         if not key or name.strip().startswith('#####'):
