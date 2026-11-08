@@ -483,47 +483,88 @@ def make_sports_guide(catalog, channels, programmes, reports):
 
 
 def apply_xtream_event_assignments(catalog, channels, programmes, reports):
-    """Use refreshed provider event assignments for NCAAF 17+, FloSports and ESPN+.
-    Never override NCAAB, which must be matched against EPG 2.
-    """
+    """Generate assigned event windows from dated Xtream names, excluding NCAAB."""
     now = datetime.now(timezone.utc)
     eastern = ZoneInfo('America/New_York')
     horizon = now + timedelta(days=2)
-    month_names = {m.upper(): i for i, m in enumerate(
-        ('JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'), 1)}
-    def kind(name):
-        n = (name or '').upper()
-        f = re.search(r'\bNCAAF\s*(?:GAME\s*)?0*(\d{1,2})\b', n)
-        if f and 17 <= int(f.group(1)) <= 85:
-            return 'NCAAF'
-        if re.search(r'\b(?:FLOSPORTS|FLO\s*SPORTS|FLO\s*0*\d+)\b', n):
-            return 'FLO'
-        if re.search(r'\bESPN\s*\+|\bESPN\s*PLUS\b', n):
-            return 'ESPN+'
-        return None
-    def assignment(name):
-        # Require explicit date and US Eastern time; never assume today's date.
-        d = re.search(r'\b(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:T(?:EMBER)?)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\.?\s+(\d{1,2})(?:,?\s+(20\d{2}))?\b', name, re.I)
-        t = re.search(r'\b(1[0-2]|0?[1-9]):([0-5]\d)\s*(AM|PM)\s*(ET|EST|EDT)\b', name, re.I)
-        if not d or not t: return None
-        month = month_names.get(d.group(1)[:3].upper())
-        if not month: return None
-        hour = int(t.group(1)) % 12 + (12 if t.group(3).upper() == 'PM' else 0)
-        years = [int(d.group(3))] if d.group(3) else [now.astimezone(eastern).year - 1, now.astimezone(eastern).year, now.astimezone(eastern).year + 1]
-        candidates = []
-        for year in years:
-            try:
-                local = datetime(year, month, int(d.group(2)), hour, int(t.group(2)), tzinfo=eastern)
-                candidates.append(local.astimezone(timezone.utc))
-            except ValueError:
-                pass
-        if not candidates: return None
-        start = min(candidates, key=lambda dt: abs((dt-now).total_seconds()))
-        # Reject an explicit EST/EDT label if it contradicts the actual local zone.
-        if t.group(4).upper() in ('EST','EDT') and start.astimezone(eastern).tzname() != t.group(4).upper():
-            return None
-        raw = name.split(':', 1)[-1] if ':' in name else name
-        raw = re.sub(r'\s*\b' + re.escape(d.group(0)) + r'\b.*
+    month_lookup = {name: i for i, name in enumerate(
+        ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'), 1)}
+    assignments = defaultdict(list)
+    for row in catalog:
+        name = (row.get('ChannelName') or '').strip()
+        pid = (row.get('EPGID') or '').strip()
+        if not pid or pid not in channels:
+            continue
+        football = re.search(r'\bNCAAF\s*(?:GAME\s*)?0*(\d{1,2})\b', name, re.I)
+        is_football = bool(football and 17 <= int(football.group(1)) <= 85)
+        is_flo = bool(re.search(r'\b(?:FLOSPORTS|FLO\s*SPORTS|FLO\s*0*\d+)\b', name, re.I))
+        is_espn = bool(re.search(r'\bESPN\s*(?:\+|PLUS)\b', name, re.I))
+        if not (is_football or is_flo or is_espn):
+            continue
+        if re.search(r'\bNCAAB\b', name, re.I):
+            continue
+        date_match = re.search(
+            r'\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[A-Z]*\.?\s+(\d{1,2})(?:,?\s+(20\d{2}))?\b',
+            name, re.I)
+        time_match = re.search(r'\b(1[0-2]|0?[1-9]):([0-5]\d)\s*(AM|PM)\s*(ET|EST|EDT)\b', name, re.I)
+        assignment = None
+        if date_match and time_match:
+            month = month_lookup[date_match.group(1).upper()]
+            hour = int(time_match.group(1)) % 12 + (12 if time_match.group(3).upper() == 'PM' else 0)
+            current_year = now.astimezone(eastern).year
+            years = [int(date_match.group(3))] if date_match.group(3) else [current_year-1, current_year, current_year+1]
+            candidates = []
+            for year in years:
+                try:
+                    dt = datetime(year, month, int(date_match.group(2)), hour, int(time_match.group(2)), tzinfo=eastern)
+                    candidates.append(dt.astimezone(timezone.utc))
+                except ValueError:
+                    continue
+            if candidates:
+                start = min(candidates, key=lambda dt: abs((dt-now).total_seconds()))
+                specified_zone = time_match.group(4).upper()
+                if specified_zone == 'ET' or start.astimezone(eastern).tzname() == specified_zone:
+                    title = name.split(':', 1)[-1].split(date_match.group(0), 1)[0].strip(' -:|')
+                    title = re.sub(r'^(?:LIVE|EVENT)\s*[-:|]\s*', '', title, flags=re.I).strip()
+                    if title:
+                        assignment = (title, start)
+        assignments[pid].append((name, assignment))
+    replacements = {}
+    audit = []
+    for pid, entries in assignments.items():
+        parsed = [item[1] for item in entries]
+        if not parsed or any(value is None or value != parsed[0] for value in parsed):
+            audit.append((pid, 'UNVERIFIED', entries[0][0]))
+            continue
+        title, start = parsed[0]
+        stop = start + timedelta(hours=4)
+        local = start.astimezone(eastern)
+        time_label = local.strftime('%I:%M %p').lstrip('0')
+        event_label = f"{title} ({local.strftime('%B')} {local.day}, {time_label} {local.tzname()})"
+        result = []
+        if now < start:
+            result.append(flo_programme(pid, f"Upcoming: {title} ({local.strftime('%A, %B')} {local.day}, {time_label} {local.tzname()})", now, start, 'Xtream event assignment.'))
+        if start < horizon and stop > now:
+            result.append(flo_programme(pid, event_label, max(start, now), min(stop, horizon), 'Xtream event assignment.'))
+        if stop <= now:
+            result.append(flo_programme(pid, 'Event has Concluded', now, horizon, 'Assigned event concluded.'))
+        elif stop < horizon:
+            result.append(flo_programme(pid, 'Event has Concluded', stop, horizon, 'Assigned event concluded.'))
+        replacements[pid] = result
+        audit.append((pid, 'ASSIGNED', entries[0][0]))
+    if replacements:
+        programmes = [p for p in programmes if p.get('channel') not in replacements]
+        for result in replacements.values():
+            programmes.extend(result)
+    with (reports / 'xtream-event-assignments.csv').open('w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(['XMLTV_ID', 'Status', 'ProviderChannelName'])
+        writer.writerows(audit)
+    print('Xtream event assignments:', len(replacements), 'channels; NCAAB excluded')
+    return programmes
+
+
+def main():
     try:
         fresh_catalog = refresh_playlist_catalog()
     except Exception as exc:
