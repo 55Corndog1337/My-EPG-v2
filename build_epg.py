@@ -5,6 +5,7 @@ Never publishes stream URLs, credentials, or private playlists.
 import csv
 import gzip
 import io
+import json
 import os
 import re
 import urllib.request
@@ -1316,6 +1317,26 @@ def main():
         w.writerow(['RemovedXMLTV_ID', 'ChannelName', 'KeptXMLTV_IDs', 'WasProviderID'])
         w.writerows(sports_duplicate_removed)
     print('Sports duplicate limit: removed', len(sports_duplicate_removed), 'extra IDs')
+    # Public diagnostics are aggregate-only: no channel names, StreamIDs,
+    # EPG IDs, category names, credentials, or provider URLs.
+    # This permits remote health checks without leaking the Xtream inventory.
+    diagnostic = {
+        'generated_utc': datetime.now(timezone.utc).isoformat(),
+        'inventory_source': inventory_source,
+        'inventory_channel_count': len(catalog),
+        'xmltv_channel_count': len(channels),
+        'xmltv_programme_count': len(programmes),
+        'inventory_channels_with_epg_id': sum(bool((r.get('EPGID') or '').strip()) for r in catalog),
+        'inventory_channels_without_epg_id': sum(not bool((r.get('EPGID') or '').strip()) for r in catalog),
+    }
+    (site / 'build-health.json').write_text(
+        json.dumps(diagnostic, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    # Pages is public: whitelist outputs, including removal of stale files.
+    for public_file in site.rglob('*'):
+        if public_file.is_file() and public_file.relative_to(site).as_posix() not in (
+            'epg.xml.gz', 'build-health.json', 'index.html', '.nojekyll'
+        ):
+            public_file.unlink()
     out = site / 'epg.xml.gz' 
     with gzip.open(out, 'wb', compresslevel=6) as f:
         f.write(b'<?xml version="1.0" encoding="utf-8"?>\n<tv generator-info-name="My-EPG-v2-Expanded">\n')
