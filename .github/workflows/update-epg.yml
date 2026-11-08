@@ -43,7 +43,6 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
   encrypted-inventory-export:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-24.04
     env:
       XTREAM_URL: ${{ secrets.XTREAM_URL }}
