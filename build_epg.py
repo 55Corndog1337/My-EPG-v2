@@ -715,6 +715,15 @@ def main():
     for r in catalog:
         name = r.get('ChannelName', '')
         epgid = (r.get('EPGID') or '').strip()
+        # Inventory StreamID is the stable identity for numbered NBA/NHL feeds.
+        # A blank NBA provider ID or an NHL ID belonging to another league
+        # must not cause the feed to inherit another channel's schedule.
+        slot = league_feed(name)
+        if slot and slot[0] in ('NBA', 'NHL') and not re.search(r'IN\\s*ARENA|LEAGUE\\s*PASS|TEAMS?', r.get('Group', '') + ' ' + name, re.I):
+            league, number, _ = slot
+            if 1 <= number <= (15 if league == 'NBA' else 16):
+                if not epgid or not re.fullmatch(rf'{league}\\.GAME\\.0*{number}', epgid, re.I):
+                    epgid = f'xtream.{r.get("StreamID", "").strip()}'
         key = clean_name(name)
         tvg_name = clean_name(r.get('TVGName', ''))
         if not key or name.strip().startswith('#####'):
