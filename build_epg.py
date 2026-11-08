@@ -582,6 +582,28 @@ def main():
     catalog = fresh_catalog if fresh_catalog is not None else [r for r in rows(ROOT / 'channels.csv') if allowed_category(r.get('Group', ''))]
     if not catalog:
         raise RuntimeError('No channels in allowed categories; cannot build guide')
+    # Save the exact inventory used by this run, including live Xtream names.
+    # Exclude credentials and streaming URLs. Keep fallback clearly identified.
+    inventory_source = 'live_xtream' if fresh_catalog is not None else 'saved_channels_fallback'
+    inventory_fields = ['Source', 'Group', 'ChannelName', 'StreamID', 'EPGID', 'TVGName', 'ProviderID', 'Scope']
+    inventory_rows = [{field: row.get(field, '') for field in inventory_fields} for row in catalog]
+    reports_early = ROOT / 'reports'
+    reports_early.mkdir(exist_ok=True)
+    site_early = ROOT / 'site'
+    site_early.mkdir(exist_ok=True)
+    for inventory_path in (reports_early / 'xtream-channels-latest.csv',
+                           site_early / 'xtream-channels-latest.csv'):
+        with inventory_path.open('w', newline='', encoding='utf-8') as inventory_file:
+            writer = csv.DictWriter(inventory_file, fieldnames=inventory_fields)
+            writer.writeheader()
+            writer.writerows(inventory_rows)
+    for status_path in (reports_early / 'xtream-inventory-status.txt',
+                        site_early / 'xtream-inventory-status.txt'):
+        status_path.write_text('Source: ' + inventory_source + '\\n'
+                               + 'Channels: ' + str(len(inventory_rows)) + '\\n'
+                               + 'Generated UTC: ' + datetime.now(timezone.utc).isoformat() + '\\n',
+                               encoding='utf-8')
+    print('Saved current build inventory:', len(inventory_rows), 'channels, source:', inventory_source)
     print('Playlist catalog ready:', len(catalog), 'channels; now fetching guide sources')
     legacy = rows(ROOT / 'matches.csv')
     # MY_EPG_V2_APPROVED_OVERRIDE_2026: explicit StreamID-based mappings.
