@@ -493,18 +493,18 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
         ('JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'), 1)}
     def kind(name):
         n = (name or '').upper()
-        f = re.search(r'\\bNCAAF\\s*(?:GAME\\s*)?0*(\\d{1,2})\\b', n)
+        f = re.search(r'\bNCAAF\s*(?:GAME\s*)?0*(\d{1,2})\b', n)
         if f and 17 <= int(f.group(1)) <= 85:
             return 'NCAAF'
-        if re.search(r'\\b(?:FLOSPORTS|FLO\\s*SPORTS|FLO\\s*0*\\d+)\\b', n):
+        if re.search(r'\b(?:FLOSPORTS|FLO\s*SPORTS|FLO\s*0*\d+)\b', n):
             return 'FLO'
-        if re.search(r'\\bESPN\\s*\\+|\\bESPN\\s*PLUS\\b', n):
+        if re.search(r'\bESPN\s*\+|\bESPN\s*PLUS\b', n):
             return 'ESPN+'
         return None
     def assignment(name):
         # Require explicit date and US Eastern time; never assume today's date.
-        d = re.search(r'\\b(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:T(?:EMBER)?)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\\.?\\s+(\\d{1,2})(?:,?\\s+(20\\d{2}))?\\b', name, re.I)
-        t = re.search(r'\\b(1[0-2]|0?[1-9]):([0-5]\\d)\\s*(AM|PM)\\s*(ET|EST|EDT)\\b', name, re.I)
+        d = re.search(r'\b(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:T(?:EMBER)?)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\.?\s+(\d{1,2})(?:,?\s+(20\d{2}))?\b', name, re.I)
+        t = re.search(r'\b(1[0-2]|0?[1-9]):([0-5]\d)\s*(AM|PM)\s*(ET|EST|EDT)\b', name, re.I)
         if not d or not t: return None
         month = month_names.get(d.group(1)[:3].upper())
         if not month: return None
@@ -523,7 +523,7 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
         if t.group(4).upper() in ('EST','EDT') and start.astimezone(eastern).tzname() != t.group(4).upper():
             return None
         raw = name.split(':', 1)[-1] if ':' in name else name
-        raw = re.sub(r'\\s*\\b' + re.escape(d.group(0)) + r'\\b.*
+        raw = re.sub(r'\s*\b' + re.escape(d.group(0)) + r'\b.*
     try:
         fresh_catalog = refresh_playlist_catalog()
     except Exception as exc:
@@ -1258,9 +1258,9 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
 if __name__ == '__main__':
     main()
 , '', raw, flags=re.I)
-        raw = re.sub(r'\\s+', ' ', raw).strip(' -:|')
-        raw = re.sub(r'^(?:LIVE|EVENT)\\s*[-:|]\\s*', '', raw, flags=re.I)
-        if not raw or re.match(r'^(?:NCAAF|FLO|ESPN)\\s*\\d*
+        raw = re.sub(r'\s+', ' ', raw).strip(' -:|')
+        raw = re.sub(r'^(?:LIVE|EVENT)\s*[-:|]\s*', '', raw, flags=re.I)
+        if not raw or re.match(r'^(?:NCAAF|FLO|ESPN)\s*\d*
     try:
         fresh_catalog = refresh_playlist_catalog()
     except Exception as exc:
@@ -1995,7 +1995,7 @@ if __name__ == '__main__':
     main()
 , raw, re.I):
             return None
-        raw = re.sub(r'\\s+(?:HD|FHD|UHD|4K)
+        raw = re.sub(r'\s+(?:HD|FHD|UHD|4K)
     try:
         fresh_catalog = refresh_playlist_catalog()
     except Exception as exc:
