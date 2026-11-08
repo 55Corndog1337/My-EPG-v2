@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/update-epg.yml'
       - 'build_epg.py'
+      - 'sports_channel_names.py'
       - 'ahl_schedule.py'
       - 'encrypt_inventory.py'
   schedule:
