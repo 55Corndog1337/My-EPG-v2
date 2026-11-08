@@ -499,7 +499,15 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
         is_football = bool(football and 17 <= int(football.group(1)) <= 85)
         is_flo = bool(re.search(r'\b(?:FLOSPORTS|FLO\s*SPORTS|FLO\s*0*\d+)\b', name, re.I))
         is_espn = bool(re.search(r'\bESPN\s*(?:\+|PLUS)\b', name, re.I))
-        if not (is_football or is_flo or is_espn):
+        # Numbered game feeds take their event assignment from the current
+        # Xtream name, never from a generic league schedule or EPG donor.
+        numbered = re.search(r'\b(NBA|NFL|MLS|MILB|MLB)\s*(?:GAME\s*)?0*(\d{1,2})\b', name, re.I)
+        is_numbered = bool(numbered and (
+            (numbered.group(1).upper() == 'NBA' and 1 <= int(numbered.group(2)) <= 15) or
+            (numbered.group(1).upper() == 'NFL' and 1 <= int(numbered.group(2)) <= 16) or
+            (numbered.group(1).upper() == 'MLS' and 1 <= int(numbered.group(2)) <= 34) or
+            (numbered.group(1).upper() in ('MILB', 'MLB') and 1 <= int(numbered.group(2)) <= 70)))
+        if not (is_football or is_flo or is_espn or is_numbered):
             continue
         if re.search(r'\bNCAAB\b', name, re.I):
             continue
