@@ -629,3 +629,114 @@ def run(catalog,channels,programmes,source_channels,source_data,chosen,reports):
         w=csv.writer(f);w.writerow(['MatchStatus','Count']);w.writerows(stats.items())
     print('Provider-first sports names: %d channel rows; %d unique XMLTV channel display updates; %s'%(len(output),changed,dict(stats)))
     return output
+
+
+def apply_provider_first_programmes(catalog, channels, programmes, reports):
+    """Event slots use the fresh Xtream assignment, never unrelated XMLTV donors.
+
+    NCAAB remains on EPG2. Other TV and team-specific channels are untouched.
+    Provider assignments are not independently verified sports schedules.
+    """
+    now = datetime.now(EAST)
+    horizon = now + timedelta(days=2)
+    assigned = defaultdict(list)
+    flo_day = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    last_flo_time = None
+    for row in catalog:
+        pid = (row.get('EPGID') or '').strip()
+        if not pid or pid not in channels:
+            continue
+        kind, num, league = feed(row)
+        name = original_name(row)
+        if kind == 'league':
+            if league == 'NCAAB' or (league == 'NCAAF' and num <= 16):
+                continue
+            if league not in ('NCAAF', 'NFL', 'NBA', 'MLS', 'MLB', 'MILB', 'WNBA'):
+                continue
+        elif kind not in ('flo', 'espn'):
+            # WNBA slot labels can be absent from the generic league parser.
+            if not re.search(r'\bWNBA\s*(?:GAME\s*)?0*\d+\b', name, re.I):
+                continue
+        detail = provider_detail(name)
+        if detail is None:
+            # Numbered slot without an event description.
+            detail = ''
+        inferred = None
+        if kind == 'flo' and detail:
+            clock = source_time(detail)
+            if clock:
+                minutes = clock[0] * 60 + clock[1]
+                if last_flo_time is not None and last_flo_time - minutes > 600:
+                    flo_day += timedelta(days=1)
+                last_flo_time = minutes
+            inferred = flo_day
+        event = title_matchup(detail) if detail and not EMPTY_DETAIL.fullmatch(detail) else None
+        date = source_date(detail, now) if event else None
+        clock = source_time(detail) if event else None
+        if date is None and kind == 'flo':
+            date = inferred
+        entry = None
+        if event and date and clock:
+            start = date.replace(hour=clock[0], minute=clock[1])
+            if now - timedelta(days=2) <= start <= horizon:
+                entry = (event, start, 'NFL' if league == 'NFL' else kind)
+        assigned[pid].append(entry)
+
+    replace = {}
+    audit = []
+    for pid, entries in assigned.items():
+        # Conflicting names for the same provider EPGID cannot be assigned safely.
+        if len(set(entries)) != 1:
+            value = None
+            status = 'CONFLICTING_PROVIDER_NAMES'
+        else:
+            value = entries[0]
+            status = 'PROVIDER_EVENT' if value else 'NO_EVENT_IN_PROVIDER_NAME'
+        new = []
+        cursor = now
+        if value:
+            title, start, category = value
+            end = start + timedelta(hours=3 if category == 'NFL' else 4)
+            start_utc = start.astimezone(timezone.utc)
+            end_utc = end.astimezone(timezone.utc)
+            if end_utc > now:
+                if start_utc > now:
+                    local = start.astimezone(EAST)
+                    clock_label = local.strftime('%I:%M %p').lstrip('0')
+                    upcoming = f"Upcoming: {title} ({local.strftime('%A, %B')} {local.day}, {clock_label} {local.tzname()})"
+                    new.append((cursor, min(start_utc, horizon), upcoming))
+                if start_utc < horizon:
+                    local = start.astimezone(EAST)
+                    clock_label = local.strftime('%I:%M %p').lstrip('0')
+                    live = f"{title} ({local.strftime('%B')} {local.day}, {clock_label} {local.tzname()})"
+                    new.append((max(now, start_utc), min(end_utc, horizon), live))
+                cursor = max(now, end_utc)
+            else:
+                status = 'EVENT_CONCLUDED'
+        if value:
+            if cursor < horizon:
+                new.append((cursor, horizon, 'Event has Concluded'))
+        else:
+            new = [(now, horizon, EMPTY)]
+        for start, end, title in new:
+            if end <= start:
+                continue
+            p = ET.Element('programme', {
+                'channel': pid,
+                'start': start.astimezone(timezone.utc).strftime('%Y%m%d%H%M%S +0000'),
+                'stop': end.astimezone(timezone.utc).strftime('%Y%m%d%H%M%S +0000')
+            })
+            ET.SubElement(p, 'title', {'lang':'en'}).text = readable(title)
+            ET.SubElement(p, 'desc', {'lang':'en'}).text = 'Live Xtream channel assignment; not independently verified.'
+            replace.setdefault(pid, []).append(p)
+        audit.append((pid, status))
+    if replace:
+        programmes = [p for p in programmes if p.get('channel') not in replace]
+        for items in replace.values():
+            programmes.extend(items)
+    with (reports / 'provider-first-event-status.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['EPGID', 'Status'])
+        w.writerows(audit)
+    print('Provider-first sports programme overrides:', len(replace), flush=True)
+    return programmes
