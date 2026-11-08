@@ -1,6 +1,16 @@
 name: Build and Publish EPG v2
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/collect-sources.yml'
+      - 'scripts/collect_sources.py'
+      - 'build_epg.py'
+      - 'sports_channel_names.py'
+      - 'sports_guide.py'
+      - 'matches.csv'
+      - 'approved_mappings.csv'
   schedule:
     - cron: '23 */4 * * *'
 permissions:
