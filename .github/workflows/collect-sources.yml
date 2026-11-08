@@ -12,7 +12,7 @@ on:
       - 'matches.csv'
       - 'approved_mappings.csv'
   schedule:
-    - cron: '23 */4 * * *'
+    - cron: '13 2,6,10,14,18,22 * * *'
 permissions:
   contents: read
   pages: write
