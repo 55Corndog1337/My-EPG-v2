@@ -40,15 +40,15 @@ jobs:
       # Do not publish the Xtream inventory or matching reports as public artifacts.
       # They are generated locally for the current run only.
       - name: Install inventory encryption dependency
-        if: ${{ github.event_name == 'workflow_dispatch' }}
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' }}
         run: python -m pip install 'cryptography>=43,<47'
       - name: Encrypt latest live Xtream inventory
-        if: ${{ github.event_name == 'workflow_dispatch' }}
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' }}
         env:
           XTREAM_EXPORT_PASSWORD: ${{ secrets.XTREAM_EXPORT_PASSWORD }}
         run: python encrypt_inventory.py
       - name: Upload encrypted inventory only
-        if: ${{ github.event_name == 'workflow_dispatch' }}
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' }}
         uses: actions/upload-artifact@v4
         with:
           name: xtream-inventory-encrypted
