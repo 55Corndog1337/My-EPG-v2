@@ -16,6 +16,10 @@ permissions:
 jobs:
   build:
     if: ${{ github.event_name != 'workflow_dispatch' }}
+    env:
+      XTREAM_URL: ${{ secrets.XTREAM_URL }}
+      XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+      XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
     concurrency:
       group: pages
       cancel-in-progress: false
@@ -41,6 +45,10 @@ jobs:
   encrypted-inventory-export:
     if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-24.04
+    env:
+      XTREAM_URL: ${{ secrets.XTREAM_URL }}
+      XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+      XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
     permissions:
       contents: read
     steps:
