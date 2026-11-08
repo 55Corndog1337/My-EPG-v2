@@ -591,18 +591,20 @@ def main():
     reports_early.mkdir(exist_ok=True)
     site_early = ROOT / 'site'
     site_early.mkdir(exist_ok=True)
-    for inventory_path in (reports_early / 'xtream-channels-latest.csv',
-                           site_early / 'xtream-channels-latest.csv'):
-        with inventory_path.open('w', newline='', encoding='utf-8') as inventory_file:
-            writer = csv.DictWriter(inventory_file, fieldnames=inventory_fields)
-            writer.writeheader()
-            writer.writerows(inventory_rows)
-    for status_path in (reports_early / 'xtream-inventory-status.txt',
-                        site_early / 'xtream-inventory-status.txt'):
-        status_path.write_text('Source: ' + inventory_source + '\n'
-                               + 'Channels: ' + str(len(inventory_rows)) + '\n'
-                               + 'Generated UTC: ' + datetime.now(timezone.utc).isoformat() + '\n',
-                               encoding='utf-8')
+    # Keep provider inventory in Actions reports, never in the public Pages site.
+    inventory_path = reports_early / 'xtream-channels-latest.csv'
+    with inventory_path.open('w', newline='', encoding='utf-8') as inventory_file:
+        writer = csv.DictWriter(inventory_file, fieldnames=inventory_fields)
+        writer.writeheader()
+        writer.writerows(inventory_rows)
+    (reports_early / 'xtream-inventory-status.txt').write_text(
+        'Source: ' + inventory_source + '\n'
+        + 'Channels: ' + str(len(inventory_rows)) + '\n'
+        + 'Generated UTC: ' + datetime.now(timezone.utc).isoformat() + '\n',
+        encoding='utf-8')
+    # Remove copies from any previous local site build before deployment.
+    for public_name in ('xtream-channels-latest.csv', 'xtream-inventory-status.txt'):
+        (site_early / public_name).unlink(missing_ok=True)
     print('Saved current build inventory:', len(inventory_rows), 'channels, source:', inventory_source)
     print('Playlist catalog ready:', len(catalog), 'channels; now fetching guide sources')
     legacy = rows(ROOT / 'matches.csv')
