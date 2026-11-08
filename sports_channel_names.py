@@ -602,8 +602,8 @@ def run(catalog,channels,programmes,source_channels,source_data,chosen,reports):
                 inferred=flo_day
             item['NewChannelName'],item['MatchStatus']=source_slot_name(row,now,inferred)
         elif ANY_TEAM_CHANNEL.search(name):
-            # Other leagues' team channels are not in the EPG-only exception.
-            item['NewChannelName']=EMPTY
+            # AHL team labels remain intact; their programmes come from verified AHL schedules.
+            item['NewChannelName']=name if re.search(r'\bAHL\b', name, re.I) else EMPTY
             item['MatchStatus']='OTHER_TEAM_NO_PROVIDER_GAME'
         output.append(item);stats[item['MatchStatus']]+=1
         pid=item.get('EPGID','').strip()
