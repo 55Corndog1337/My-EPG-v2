@@ -1143,6 +1143,37 @@ def main():
         for row in audit:
             if row['Status'] == 'matched but missing provider EPG ID':
                 writer.writerow({field: row.get(field, '') for field in fields})
+    # TiviMate assigns XMLTV by Xtream epg_channel_id, not by stream_id or
+    # channel display name. Report missing and conflicting provider IDs clearly.
+    provider_id_to_streams = defaultdict(set)
+    for item in catalog:
+        pid = (item.get('EPGID') or '').strip()
+        sid = (item.get('StreamID') or '').strip()
+        if pid and sid:
+            provider_id_to_streams[pid].add(sid)
+    with (reports / 'tivimate-id-audit.csv').open('w', newline='', encoding='utf-8') as f:
+        fields = ['Group', 'ChannelName', 'StreamID', 'XtreamEPGID', 'OutputXMLTV_ID', 'Status', 'Source', 'SourceChannelID']
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        for item in audit:
+            pid = (item.get('EPGID') or '').strip()
+            sid = (item.get('StreamID') or '').strip()
+            output_id = pid or (('xtream.' + sid) if sid else '')
+            if not pid:
+                status = 'MISSING_XTREAM_EPG_ID_REQUIRES_PLAYLIST_ASSIGNMENT'
+            elif len(provider_id_to_streams[pid]) > 1:
+                status = 'SHARED_XTREAM_EPG_ID_CHECK_CHANNELS'
+            elif output_id not in channels:
+                status = 'ID_NOT_PUBLISHED'
+            elif not any(p.get('channel') == output_id for p in programmes):
+                status = 'ID_PRESENT_NO_PROGRAMMES'
+            else:
+                status = 'ID_MATCHES_GUIDE'
+            w.writerow({'Group': item.get('Group', ''), 'ChannelName': item.get('ChannelName', ''),
+                        'StreamID': sid, 'XtreamEPGID': pid, 'OutputXMLTV_ID': output_id,
+                        'Status': status, 'Source': item.get('SuggestedSource', ''),
+                        'SourceChannelID': item.get('SuggestedSourceID', '')})
+    print('TiviMate ID audit created; missing Xtream EPG IDs cannot be fixed by XMLTV alone')
     with (reports / 'matching-report.csv').open('w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=['FloNumber','ESPNNumber','Group','ChannelName','StreamID','EPGID','Status','Method','SuggestedSource','SuggestedSourceID','NeedsPlaylistID','EventStatus'])
         writer.writeheader(); writer.writerows(audit)
