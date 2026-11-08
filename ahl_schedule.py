@@ -73,11 +73,15 @@ def run(catalog,channels,programmes,reports):
             continue
         if re.search(r"\b(?:GAME|REPLAY)\s*\d+\b",name,re.I):
             continue
-        pid=(row.get("EPGID") or "").strip()
-        if not pid:
-            stream=(row.get("StreamID") or "").strip()
-            pid="xtream."+stream if stream else ""
-        if pid and pid in channels:
+        # Bind AHL team guide entries to their Xtream inventory StreamIDs,
+        # regardless of stale or missing provider EPGIDs.
+        stream=(row.get("StreamID") or "").strip()
+        pid="xtream."+stream if stream else ""
+        if pid:
+            if pid not in channels:
+                ch=ET.Element("channel",{"id":pid})
+                ET.SubElement(ch,"display-name").text=name
+                channels[pid]=ch
             team=re.sub(r"^(?:(?:US|USA|CA|VIP|AHL)\s*[-:|]\s*)+","",name,flags=re.I)
             team=re.sub(r"\b(?:AHL|HD|FHD|UHD|4K)\b"," ",team,flags=re.I).strip(" -:|")
             if team:
