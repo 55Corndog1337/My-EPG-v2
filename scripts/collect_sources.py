@@ -49,6 +49,7 @@ def main():
         summary["sources"][name] = {"channels": channel_count, "programmes": programme_count}
         print(name, "validated:", channel_count, "channels;", programme_count, "programmes")
     Path("sources/summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    print("Validated EPG source snapshots ready for the initial combined guide build")
 
 if __name__ == "__main__":
     main()
