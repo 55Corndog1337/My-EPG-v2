@@ -1,0 +1,154 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NHL Game Channels",
+  "snapshot_date": "2026-11-09",
+  "source": "epg2",
+  "status": "user_selected_pending_programme_validation",
+  "note": "User-approved EPG2 source IDs for NHL Game 01–16. Preserve original Xtream StreamIDs exactly and preserve original Xtream EPGIDs from inventory at build time; do not overwrite them with source IDs. Game 05 has anomalous original EPGID NFL.GAME.05 and must be preserved as metadata, not used as NHL programme source. V4 mapping only. V2 live guide and other mapping files unchanged.",
+  "mappings": [
+    {
+      "xtream_channel": "NHL Game 01",
+      "xtream_stream_id": "232815",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25676",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 02",
+      "xtream_stream_id": "232816",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25677",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 03",
+      "xtream_stream_id": "232817",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25678",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 04",
+      "xtream_stream_id": "232818",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25679",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 05",
+      "xtream_stream_id": "430814",
+      "original_xtream_epgid": "NFL.GAME.05",
+      "original_epgid_resolution": "preserve_inventory_value",
+      "source": "epg2",
+      "source_channel_id": "dummy-25680",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 06",
+      "xtream_stream_id": "232820",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25681",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 07",
+      "xtream_stream_id": "232821",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25682",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 08",
+      "xtream_stream_id": "232822",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25683",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 09",
+      "xtream_stream_id": "232823",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25684",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 10",
+      "xtream_stream_id": "232824",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25685",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 11",
+      "xtream_stream_id": "233314",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25686",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 12",
+      "xtream_stream_id": "235532",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25687",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 13",
+      "xtream_stream_id": "235533",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25688",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 14",
+      "xtream_stream_id": "235535",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25689",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 15",
+      "xtream_stream_id": "235537",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25690",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "NHL Game 16",
+      "xtream_stream_id": "597059",
+      "original_xtream_epgid": null,
+      "original_epgid_resolution": "lookup_existing_inventory",
+      "source": "epg2",
+      "source_channel_id": "dummy-25691",
+      "status": "user_selected"
+    }
+  ]
+}
