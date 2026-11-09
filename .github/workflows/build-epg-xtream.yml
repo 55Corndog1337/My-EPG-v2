@@ -54,6 +54,9 @@ jobs:
           XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
           XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
         run: python sports_overlay.py --base site/epg.xml.gz --output-dir site --epg37-file epg37.xml.gz
+      - name: Clean sports channel names and add matchup descriptions
+        if: steps.clock.outputs.run == 'true'
+        run: python sports_xmltv_presentation.py site/epg.xml.gz site/epg-xtream.xml.gz site/epg-m3u.xml.gz
       - name: Verify AHL Xtream mappings in published XMLTV
         if: steps.clock.outputs.run == 'true'
         run: |
