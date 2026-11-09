@@ -6,6 +6,7 @@ on:
       - 'ai_sports.py'
       - 'schedule_sources.py'
       - 'ncaab_calendar_match.py'
+      - 'ncaab_epg2_raw.py'
       - '.github/workflows/ai-sports-daily.yml'
   schedule:
     - cron: '40 10 * * *'
@@ -34,9 +35,20 @@ jobs:
         with:
           python-version: '3.12'
       - name: Check scripts
-        run: python -m py_compile ai_sports.py build_epg.py schedule_sources.py ncaab_calendar_match.py
+        run: python -m py_compile ai_sports.py build_epg.py schedule_sources.py ncaab_calendar_match.py ncaab_epg2_raw.py
       - name: Refresh Xtream inventory and build safe baseline
         run: python build_epg.py
+      - name: Extract raw NCAAB listings from EPG2
+        run: python ncaab_epg2_raw.py
+      - name: Commit raw NCAAB data independently
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f reports/ncaab-epg2-raw.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh raw NCAAB EPG2 programme data"
+            git push
+          fi
       - name: Refresh live season calendar feeds and check platform schedules
         run: python schedule_sources.py
       - name: Match numbered NCAAB EPG2 events against basketball calendar
