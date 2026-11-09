@@ -61,6 +61,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add site/epg.xml.gz site/epg-xtream.xml.gz site/epg-m3u.xml.gz
           git add reports/sports-m3u-mapping.csv reports/epg37-regular-matches.csv
+          if [ -f reports/ahl-season-2026-27.csv ]; then git add reports/ahl-season-2026-27.csv; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Update full Xtream and edited M3U EPGs'
             git push
@@ -76,5 +77,6 @@ jobs:
             site/epg-m3u.xml.gz
             reports/sports-m3u-mapping.csv
             reports/epg37-regular-matches.csv
+            reports/ahl-season-2026-27.csv
           if-no-files-found: error
           retention-days: 7
