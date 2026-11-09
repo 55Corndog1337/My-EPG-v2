@@ -8,11 +8,11 @@ ROOT=Path(__file__).resolve().parent
 EAST=ZoneInfo("America/New_York")
 EPG2="https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg2.xml.gz"
 def norm(s):
- return re.sub(r"[^a-z0-9]+"," ",re.sub(r"\\b(?:ranked|no|number)\\b","",s.lower())).strip()
+ return re.sub(r"[^a-z0-9]+"," ",re.sub(r"\b(?:ranked|no|number)\b","",s.lower())).strip()
 def teams(title):
- title=re.sub(r"^.*?\\bNCAAB\\s*0*\\d+\\s*[:|\\-]\\s*","",title,flags=re.I)
- title=re.sub(r"\\s*\\([^)]*\\)\\s*$","",title)
- m=re.search(r"(.+?)\\s+(?:@|vs\\.?|versus)\\s+(.+)",title,re.I)
+ title=re.sub(r"^.*?\bNCAAB\s*0*\d+\s*[:|\-]\s*","",title,flags=re.I)
+ title=re.sub(r"\s*\([^)]*\)\s*$","",title)
+ m=re.search(r"(.+?)\s+(?:@|vs\.?|versus)\s+(.+)",title,re.I)
  if not m:return None
  a,b=norm(m.group(1)),norm(m.group(2))
  return (a,b) if a and b else None
@@ -20,7 +20,7 @@ def load():
  req=urllib.request.Request(EPG2,headers={"User-Agent":"MyEPG/2.0"})
  with urllib.request.urlopen(req,timeout=45) as f:data=f.read(40000001)
  if len(data)>40000000:raise ValueError("EPG2 too large")
- if data[:2]==b"\\x1f\\x8b":data=gzip.decompress(data)
+ if data[:2]==b"\x1f\x8b":data=gzip.decompress(data)
  return ET.fromstring(data)
 def run():
  from schedule_sources import refresh,CACHE
@@ -32,7 +32,7 @@ def run():
   cid=c.get("id","")
   names=[cid]+[x.text or "" for x in c.findall("display-name")]
   for n in names:
-   m=re.search(r"\\bNCAAB\\s*0*(\\d{1,2})\\b",n,re.I)
+   m=re.search(r"\bNCAAB\s*0*(\d{1,2})\b",n,re.I)
    if m:
     k=int(m.group(1))
     if k in list(range(1,26))+[36,37,38]:ids.setdefault(k,set()).add(cid)
@@ -59,6 +59,6 @@ def run():
   rows.append({"xtream_channel":"NCAAB %02d"%num,"epg2_ids":sorted(cidset),"status":"matched" if len(unique)==1 else ("ambiguous" if unique else "unmatched"),"matches":list(unique.values())})
  out=ROOT/"reports"/("ncaab-calendar-match-"+now.strftime("%Y-%m-%d")+".json")
  out.parent.mkdir(exist_ok=True)
- out.write_text(json.dumps({"date":str(now.date()),"method":"same-number EPG2 channel then exact team-pair ICS match","channels":rows},indent=2)+"\\n")
+ out.write_text(json.dumps({"date":str(now.date()),"method":"same-number EPG2 channel then exact team-pair ICS match","channels":rows},indent=2)+"\n")
  print("NCAAB match report:",out,"matched:",sum(x["status"]=="matched" for x in rows))
 if __name__=="__main__":run()
