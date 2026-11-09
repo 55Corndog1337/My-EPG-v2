@@ -1,16 +1,31 @@
 name: Capture NFL Replay information board
 on:
   workflow_dispatch:
+  schedule:
+    # Monday 8 AM Eastern (DST/standard time candidates).
+    - cron: '0 12,13 * * 1'
 permissions:
-  contents: read
+  contents: write
 jobs:
   snapshot:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - name: Install FFmpeg
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Check Monday Eastern time
+        id: clock
+        run: |
+          if [ "${{ github.event_name }}" = workflow_dispatch ] || [ "$(TZ=America/New_York date +%H)" = 08 ]; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.clock.outputs.run == 'true'
+      - name: Install FFmpeg and OCR
+        if: steps.clock.outputs.run == 'true'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg tesseract-ocr
       - name: Capture replay information stream
+        if: steps.clock.outputs.run == 'true'
         env:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
@@ -40,6 +55,19 @@ jobs:
           if not list(pathlib.Path('snapshots').glob('*.png')):
               raise SystemExit('No frames captured; stream may be unreachable from GitHub')
           PY
+      - name: OCR and validate board date range and replay assignments
+        if: steps.clock.outputs.run == 'true'
+        run: python nfl_replay_board.py snapshots
+      - name: Commit confirmed weekly assignments
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/nfl-replay-board.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update verified NFL Replay OCR assignments'
+            git push
+          fi
       - name: Upload private screenshots
         if: always()
         uses: actions/upload-artifact@v4
