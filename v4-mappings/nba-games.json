@@ -1,0 +1,58 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NBA Games",
+  "snapshot_date": "2026-11-09",
+  "status": "user_selected_pending_validation",
+  "note": "Mapping draft only. Do not change V2 guide. Preserve original Xtream StreamIDs and EPGIDs. Unlisted games remain unmapped.",
+  "mappings": [
+    {
+      "xtream_channel": "NBA Game 01",
+      "xtream_stream_id": "1404642",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476728",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 02",
+      "xtream_stream_id": "1404643",
+      "source": "epg2",
+      "source_channel_id": "NBA-CharlotteHornets.us",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 04",
+      "xtream_stream_id": "1404645",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476731",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 05",
+      "xtream_stream_id": "1404646",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476732",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 06",
+      "xtream_stream_id": "1404647",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476733",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 07",
+      "xtream_stream_id": "1404648",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476734",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 08",
+      "xtream_stream_id": "1404649",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476735",
+      "approved_by_user": true
+    }
+  ]
+}
