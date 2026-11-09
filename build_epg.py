@@ -1484,16 +1484,16 @@ def main():
     for item in catalog:
         group = item.get('Group') or ''
         name = (item.get('ChannelName') or '').strip()
-        if not allowed_category(group) or not re.search(r'24\\s*/\\s*7', group + ' ' + name, re.I):
+        if not allowed_category(group) or not re.search(r'24\s*/\s*7', group + ' ' + name, re.I):
             continue
         stream = (item.get('StreamID') or '').strip()
         if not stream:
             continue
-        title = re.sub(r'24\\s*/\\s*7', '', name, flags=re.I)
-        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\\s*[-|:]\\s*)+', '', title, flags=re.I)
-        title = re.sub(r'\\b(?:FHD|UHD|HD|SD|4K|HEVC)\\b', '', title, flags=re.I)
-        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\\s*[-|:]\\s*)+', '', title, flags=re.I)
-        title = re.sub(r'\\s+', ' ', title).strip(' -:|')
+        title = re.sub(r'24\s*/\s*7', '', name, flags=re.I)
+        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\s*[-|:]\s*)+', '', title, flags=re.I)
+        title = re.sub(r'\b(?:FHD|UHD|HD|SD|4K|HEVC)\b', '', title, flags=re.I)
+        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\s*[-|:]\s*)+', '', title, flags=re.I)
+        title = re.sub(r'\s+', ' ', title).strip(' -:|')
         if not title:
             continue
         target = 'xtream.' + stream
