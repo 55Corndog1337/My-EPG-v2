@@ -180,7 +180,8 @@ def apply(catalog,channels,programmes):
                     ch=channels.get(target)
                     if ch is not None:
                         for display in ch.findall("display-name"):ch.remove(display)
-                        ET.SubElement(ch,"display-name").text="Game "+str(next((int(re.search(r"NCAAF\s*0*(\d+)",(row.get("ChannelName") or ""),re.I).group(1)) for row in catalog if str(row.get("StreamID") or "").strip()==sid and re.search(r"NCAAF\s*0*(\d+)",(row.get("ChannelName") or ""),re.I)),0)).zfill(2)
+                        number_match=next((re.search(r"NCAAF\s*0*(\d+)",row.get("ChannelName") or "",re.I) for row in catalog if str(row.get("StreamID") or "").strip()==sid),None)
+                        ET.SubElement(ch,"display-name").text=("Game %02d" % int(number_match.group(1))) if number_match else "Game"
         except (KeyError,TypeError,ValueError):continue
     if changed:
         programmes[:]=[p for p in programmes if p.get("channel") not in changed]
