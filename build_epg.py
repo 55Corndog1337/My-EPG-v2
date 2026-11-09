@@ -580,7 +580,23 @@ def main():
         # Do not print exception: urllib errors can contain server URL.
         print('Xtream refresh failed (' + type(exc).__name__ + '); using filtered M3U fallback')
         fresh_catalog = None
-    catalog = fresh_catalog if fresh_catalog is not None else [r for r in rows(ROOT / 'channels.csv') if allowed_category(r.get('Group', ''))]
+    # Preserve the full saved Xtream channel inventory when the live endpoint
+    # returns only a partial category set (e.g. 19 instead of thousands).
+    saved_catalog = [r for r in rows(ROOT / 'channels.csv')
+                     if allowed_category(r.get('Group', ''))
+                     and (r.get('StreamID') or '').strip()
+                     and not (r.get('ChannelName') or '').strip().startswith('#####')]
+    if fresh_catalog is None:
+        catalog = saved_catalog
+    else:
+        by_stream = {(r.get('StreamID') or '').strip(): r for r in saved_catalog}
+        for live in fresh_catalog:
+            sid = (live.get('StreamID') or '').strip()
+            if sid:
+                by_stream[sid] = live
+        catalog = list(by_stream.values())
+        print('Merged live Xtream inventory with saved channels:', len(catalog),
+              'total;', len(fresh_catalog), 'live records')
     if not catalog:
         raise RuntimeError('No channels in allowed categories; cannot build guide')
     # Save the exact inventory used by this run, including live Xtream names.
