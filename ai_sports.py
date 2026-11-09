@@ -15,16 +15,16 @@ def classify(row):
     name=(row.get("ChannelName") or "").upper()
     combined=group+" "+name
     if "ESPN+" in combined or "ESPN PLUS" in combined: return "ESPN+"
-    if "FLOSPORT" in combined or re.search(r"\\bFLO\\s*0*\\d+\\b",name): return "FLO"
-    if re.search(r"\\bNCAA\\s*F(?:OOTBALL)?\\b|\\bNCAAF\\b",combined): return "NCAAF"
+    if "FLOSPORT" in combined or re.search(r"\bFLO\s*0*\d+\b",name): return "FLO"
+    if re.search(r"\bNCAA\s*F(?:OOTBALL)?\b|\bNCAAF\b",combined): return "NCAAF"
     for league in ("WNBA","MILB","MLS","NBA","MLB","NFL"):
-        if re.search(r"\\b"+league+r"\\b",combined): return league
+        if re.search(r"\b"+league+r"\b",combined): return league
     return None
 def eligible(row):
     league=classify(row)
     if not league: return None
     name=row.get("ChannelName") or ""
-    m=re.search(r"\\b(?:GAME|GAMES|FLO|FLSP|ESPN\\+?)\\s*[-#:| ]*0*(\\d{1,3})\\b",name,re.I)
+    m=re.search(r"\b(?:GAME|GAMES|FLO|FLSP|ESPN\+?)\s*[-#:| ]*0*(\d{1,3})\b",name,re.I)
     if not m: return None
     number=int(m.group(1))
     if league=="NCAAF" and not 17<=number<=85: return None
@@ -63,7 +63,7 @@ def query(batch):
     parts=[part.get("text","") for output in result.get("output",[])
            for part in output.get("content",[]) if part.get("type")=="output_text"]
     raw="\n".join(parts).strip()
-    raw=re.sub(r"^\\x60\\x60\\x60(?:json)?|\\x60\\x60\\x60$","",raw).strip()
+    raw=re.sub(r"^\x60\x60\x60(?:json)?|\x60\x60\x60$","",raw).strip()
     parsed=json.loads(raw)
     return parsed if isinstance(parsed,list) else []
 def validate(obj, inventory):
@@ -96,7 +96,9 @@ def research():
     weekday=datetime.now(ET_ZONE).weekday()
     pending=[{"stream_id":sid,"league":v["league"],"channel_name":v["name"]}
              for sid,v in inventory.items() if v["league"]!="NCAAF" or weekday in (2,3,4,5)]
-    if not os.getenv("OPENAI_API_KEY"):print("AI sports: no API key; retaining cached data");return
+    if not os.getenv("OPENAI_API_KEY"):
+        print("AI sports: no API key; retaining cached data")
+        raise RuntimeError("OPENAI_API_KEY missing: AI sports research cannot run")
     success=0
     for start in range(0,len(pending),8):
         batch=pending[start:start+8]
@@ -112,6 +114,8 @@ def research():
          "events":list(found.values())},indent=2)+"\n",encoding="utf-8")
     tmp.replace(CACHE)
     print("AI sports verified:",success,"of",len(pending),"candidates")
+    if not success and not found:
+        raise RuntimeError("AI sports research produced no verified events; inspect source names and API errors")
 def load():
     try:
         obj=json.loads(CACHE.read_text(encoding="utf-8"))
