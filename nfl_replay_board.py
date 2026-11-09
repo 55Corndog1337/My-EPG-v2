@@ -94,63 +94,71 @@ def update_board(directory):
 
 
 def apply(catalog, channels, programmes):
-    if not DATA.exists():
-        return programmes
+    """Always publish seven daily blocks for the 14 existing NFL Replay feeds.
+
+    Verified board assignments are used only inside their valid date range.
+    Missing, unreadable, or expired board data falls back to static labels.
+    """
     today = datetime.now(EAST).date()
-    with DATA.open(newline="", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-    if not rows:
-        return programmes
-    # A board's bottom date range is authoritative; expired boards never
-    # overwrite current EPG data.
-    try:
-        start = date.fromisoformat(rows[0]["StartDate"])
-        end = date.fromisoformat(rows[0]["EndDate"])
-    except (ValueError, KeyError):
-        return programmes
-    if not start <= today <= end:
-        print("NFL replay board expired or not yet active; leaving guide untouched")
-        return programmes
-    live_ids = {str(r.get("StreamID", "")).strip() for r in catalog}
-    valid = {}
-    for row in rows:
+    verified = {}
+    if DATA.exists():
         try:
-            n = int(row["Replay"])
-            sid = str(1329644 + n)
-            assert 1 <= n <= 14 and row["StreamID"] == sid
-            assert row["StartDate"] == start.isoformat() and row["EndDate"] == end.isoformat()
-            assert MATCH.search(row["Matchup"])
-        except (ValueError, KeyError, AssertionError):
-            continue
-        if sid in live_ids:
-            valid["xtream." + sid] = row["Matchup"]
-    if not valid:
+            with DATA.open(newline="", encoding="utf-8") as f:
+                rows = list(csv.DictReader(f))
+            for row in rows:
+                n = int(row["Replay"])
+                start = date.fromisoformat(row["StartDate"])
+                end = date.fromisoformat(row["EndDate"])
+                sid = str(1329644 + n)
+                matchup = row["Matchup"].strip()
+                if (1 <= n <= 14 and row["StreamID"] == sid
+                        and MATCH.fullmatch(matchup)
+                        and start <= end and (end - start).days <= 13):
+                    verified[n] = (matchup, start, end)
+        except (ValueError, KeyError, OSError, csv.Error) as exc:
+            print("NFL Replay board unavailable; using static fallback:", type(exc).__name__)
+            verified = {}
+
+    live_ids = {str(r.get("StreamID", "")).strip() for r in catalog}
+    replay_ids = {
+        n: "xtream." + str(1329644 + n)
+        for n in range(1, 15)
+        if str(1329644 + n) in live_ids
+    }
+    if not replay_ids:
+        print("NFL Replay: no matching Xtream streams; no synthetic channels added")
         return programmes
-    programmes = [p for p in programmes if p.get("channel") not in valid]
-    now = datetime.now(EAST)
-    for pid, matchup in valid.items():
+
+    # Replace old replay programme rows, including incorrect donor listings.
+    programmes = [p for p in programmes if p.get("channel") not in set(replay_ids.values())]
+    for n, pid in replay_ids.items():
         if pid not in channels:
             ch = ET.Element("channel", {"id": pid})
-            ET.SubElement(ch, "display-name").text = f"NFL Replay {int(pid.split('.')[-1])-1329644}"
+            ET.SubElement(ch, "display-name").text = f"NFL Replay {n}"
             channels[pid] = ch
         for offset in range(7):
             day = today + timedelta(days=offset)
-            if day > end:
-                break
             a = datetime(day.year, day.month, day.day, tzinfo=EAST)
             b = a + timedelta(days=1)
             p = ET.Element("programme", {
                 "channel": pid,
                 "start": a.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000"),
                 "stop": b.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000")})
-            ET.SubElement(p, "title", {"lang": "en"}).text = (
-                f"{matchup} ({start.strftime('%b')} {start.day}–{end.strftime('%b')} {end.day})")
-            ET.SubElement(p, "desc", {"lang": "en"}).text = (
-                f"{matchup} | {start.strftime('%b')} {start.day}–"
-                f"{end.strftime('%b')} {end.day}, {end.year} | "
-                "24-hour replay listing; kickoff time not supplied by information board")
+            assignment = verified.get(n)
+            if assignment and assignment[1] <= day <= assignment[2]:
+                matchup, start, end = assignment
+                title = f"{matchup} ({start.strftime('%b')} {start.day}–{end.strftime('%b')} {end.day})"
+                description = (
+                    f"{matchup} | Board range: {start.isoformat()} to {end.isoformat()} | "
+                    "24-hour replay listing; kickoff time not supplied by board")
+            else:
+                title = f"NFL Replay {n}"
+                description = "NFL Replay channel; verified matchup information unavailable"
+            ET.SubElement(p, "title", {"lang": "en"}).text = title
+            ET.SubElement(p, "desc", {"lang": "en"}).text = description
             programmes.append(p)
-    print("NFL Replay OCR applied:", len(valid), "Xtream channels")
+    print(f"NFL Replay: {len(replay_ids)} Xtream channels; seven 24-hour blocks each; "
+          f"{len(verified)} verified board assignments available")
     return programmes
 
 
