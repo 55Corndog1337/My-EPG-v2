@@ -1,0 +1,17 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NHL Network",
+  "snapshot_date": "2026-11-09",
+  "status": "user_selected",
+  "mappings": [
+    {
+      "xtream_channel": "US - NHL NETWORK HD",
+      "xtream_stream_id": "71912",
+      "original_xtream_epgid": "nhlnetwork.us",
+      "source": "epg2",
+      "source_channel_id": "nhlnetwork.us",
+      "match_method": "user_selected_verified_source"
+    }
+  ],
+  "note": "Preserve original Xtream StreamID and EPGID. V4 mapping only; do not modify V2 live guide or other NHL mappings."
+}
