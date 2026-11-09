@@ -44,7 +44,7 @@ def query(batch):
     if not key: return []
     today=datetime.now(ET_ZONE).date().isoformat()
     instruction=("Research each numbered provider channel independently using web search. "
-      "Xtream names are hints, NOT proof of time/date. Find independently published "
+       "Xtream names are hints, NOT proof of time/date. Search One Page Season, official school schedules, conference schedules and bowl/playoff sources. Find independently published "
       "schedule evidence within 5 days before or 8 days after "+today+". "
       "Return ONLY a JSON array of objects with stream_id, sport, event, "
       "start_utc (ISO8601 with timezone), duration_hours (4,12,24), source_url. "
@@ -160,10 +160,10 @@ def apply(catalog,channels,programmes):
             if duration not in (4,12,24) or not -timedelta(days=6)<start-now<timedelta(days=9):continue
             sport=item["sport"]; event=item["event"]
             label=start.astimezone(ET_ZONE).strftime("%b %-d, %-I:%M %p %Z")
-            name=sport+": "+event+" ("+label+")"
-            windows=[(now, start, "Upcoming: "+name),(start,start+timedelta(hours=duration),name),
+            name=event
+            windows=[(now, start, "Next Game: "+event+" ("+label+")"),(start,start+timedelta(hours=duration),name),
                      (start+timedelta(hours=duration),now+timedelta(days=2),
-                      'Event "'+event+'" has Concluded')]
+                      'Event has Concluded')]
             output=[]
             for a,b,title in windows:
                 a=max(a,now)
