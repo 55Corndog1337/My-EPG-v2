@@ -3,20 +3,13 @@
   "category": "NBA Games",
   "snapshot_date": "2026-11-09",
   "status": "user_selected_pending_validation",
-  "note": "Mapping draft only. Do not change V2 guide. Preserve original Xtream StreamIDs and EPGIDs. Unlisted games remain unmapped.",
+  "note": "Game 02 mapping rejected by user; leave unmapped until corrected. Do not change V2 guide. Preserve original Xtream StreamIDs and EPGIDs. Other unlisted games remain unmapped.",
   "mappings": [
     {
       "xtream_channel": "NBA Game 01",
       "xtream_stream_id": "1404642",
       "source": "epg2",
       "source_channel_id": "dummy-4476728",
-      "approved_by_user": true
-    },
-    {
-      "xtream_channel": "NBA Game 02",
-      "xtream_stream_id": "1404643",
-      "source": "epg2",
-      "source_channel_id": "NBA-CharlotteHornets.us",
       "approved_by_user": true
     },
     {
