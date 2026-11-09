@@ -31,6 +31,17 @@ jobs:
         if: steps.clock.outputs.run == 'true'
         with:
           python-version: '3.11'
+      - name: Refresh and commit AHL season CSV
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          python generate_ahl_csv.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/ahl-season-2026-27.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh verified AHL season CSV with Xtream StreamIDs'
+            git push
+          fi
       - name: Build existing working full EPG
         if: steps.clock.outputs.run == 'true'
         env:
