@@ -1,0 +1,2610 @@
+{
+  "updated_utc": "2026-11-09T19:29:38.708865+00:00",
+  "source": "https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg2.xml.gz",
+  "channels": [
+    {
+      "number": 1,
+      "xtream_channel": "NCAAB 01",
+      "epg2_ids": [
+        "dummy-5506285"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        },
+        {
+          "title": "NCAAM: UTSA Weekly Press Conference B @ Nov 9 12:00 PM :NCAAB  01",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506285"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "xtream_channel": "NCAAB 02",
+      "epg2_ids": [
+        "dummy-5506286"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        },
+        {
+          "title": "NCAAM: Hiram vs Canisius @ Nov 9 6:00 PM :NCAAB  02",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506286"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "xtream_channel": "NCAAB 03",
+      "epg2_ids": [
+        "dummy-5506287"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        },
+        {
+          "title": "NCAAM: McDaniel vs UMBC @ Nov 9 6:00 PM :NCAAB  03",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506287"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "xtream_channel": "NCAAB 04",
+      "epg2_ids": [
+        "dummy-5506288"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        },
+        {
+          "title": "NCAAM: Penn State Schuylkill vs Buffalo @ Nov 9 6:30 PM :NCAAB  04",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506288"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "xtream_channel": "NCAAB 05",
+      "epg2_ids": [
+        "dummy-5506289"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        },
+        {
+          "title": "NCAAM: Howard vs Pennsylvania @ Nov 9 6:30 PM :NCAAB  05",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506289"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "xtream_channel": "NCAAB 06",
+      "epg2_ids": [
+        "dummy-5506290"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        },
+        {
+          "title": "NCAAM: Covenant vs Chattanooga @ Nov 9 7:00 PM :NCAAB  06",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506290"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "xtream_channel": "NCAAB 07",
+      "epg2_ids": [
+        "dummy-5506291"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        },
+        {
+          "title": "NCAAM: Cleveland State vs Bowling Green @ Nov 9 7:00 PM :NCAAB  07",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506291"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "xtream_channel": "NCAAB 08",
+      "epg2_ids": [
+        "dummy-5506292"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        },
+        {
+          "title": "NCAAM: Minnesota vs Cincinnati @ Nov 9 7:00 PM :NCAAB  08",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506292"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "xtream_channel": "NCAAB 09",
+      "epg2_ids": [
+        "dummy-5506293"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        },
+        {
+          "title": "NCAAM: Kansas City vs Jacksonville @ Nov 9 7:00 PM :NCAAB  09",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506293"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "xtream_channel": "NCAAB 10",
+      "epg2_ids": [
+        "dummy-5506294"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        },
+        {
+          "title": ":NCAAB  10",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506294"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "xtream_channel": "NCAAB 11",
+      "epg2_ids": [
+        "dummy-5506295"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        },
+        {
+          "title": "NCAAM: Simpson IA vs Western Illinois @ Nov 9 7:00 PM :NCAAB  11",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506295"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "xtream_channel": "NCAAB 12",
+      "epg2_ids": [
+        "dummy-5506296"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        },
+        {
+          "title": "NCAAM: Washington College vs Loyola Maryland @ Nov 9 7:00 PM :NCAAB  12",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506296"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "xtream_channel": "NCAAB 13",
+      "epg2_ids": [
+        "dummy-5506297"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        },
+        {
+          "title": "NCAAM: Baptist University of Florida vs West Florida @ Nov 9 7:00 PM :NCAAB  13",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506297"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "xtream_channel": "NCAAB 14",
+      "epg2_ids": [
+        "dummy-5506298"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        },
+        {
+          "title": "NCAAM: UNC Greensboro vs UIC @ Nov 9 7:00 PM :NCAAB  14",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506298"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "xtream_channel": "NCAAB 15",
+      "epg2_ids": [
+        "dummy-5506299"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        },
+        {
+          "title": "NCAAM: Brescia vs Ball State @ Nov 9 7:00 PM :NCAAB  15",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506299"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "xtream_channel": "NCAAB 16",
+      "epg2_ids": [
+        "dummy-5506300"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        },
+        {
+          "title": "NCAAM: South Carolina Upstate vs Coastal Carolina @ Nov 9 7:00 PM :NCAAB  16",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506300"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "xtream_channel": "NCAAB 17",
+      "epg2_ids": [
+        "dummy-5506301"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        },
+        {
+          "title": "NCAAM: Florida A&M vs UAB @ Nov 9 7:30 PM :NCAAB  17",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506301"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "xtream_channel": "NCAAB 18",
+      "epg2_ids": [
+        "dummy-5506302"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        },
+        {
+          "title": "NCAAM: College of Biblical Studies vs McNeese @ Nov 9 7:30 PM :NCAAB  18",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506302"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "xtream_channel": "NCAAB 19",
+      "epg2_ids": [
+        "dummy-5506303"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        },
+        {
+          "title": "NCAAM: Southern New Orleans vs Louisiana @ Nov 9 8:00 PM :NCAAB  19",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506303"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "xtream_channel": "NCAAB 20",
+      "epg2_ids": [
+        "dummy-5506304"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        },
+        {
+          "title": "NCAAM: Fisk vs Tennessee State @ Nov 9 8:00 PM :NCAAB  20",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506304"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "xtream_channel": "NCAAB 21",
+      "epg2_ids": [
+        "dummy-5506305"
+      ],
+      "programmes": [
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        },
+        {
+          "title": "NCAAM: Seton Hall vs Charlotte @ Nov 9 9:30 PM :NCAAB  21",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506305"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "xtream_channel": "NCAAB 22",
+      "epg2_ids": [
+        "dummy-5506306"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        },
+        {
+          "title": ":NCAAB  22",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506306"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "xtream_channel": "NCAAB 23",
+      "epg2_ids": [
+        "dummy-5506307"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        },
+        {
+          "title": ":NCAAB  23",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506307"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "xtream_channel": "NCAAB 24",
+      "epg2_ids": [
+        "dummy-5506308"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        },
+        {
+          "title": ":NCAAB  24",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506308"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "xtream_channel": "NCAAB 25",
+      "epg2_ids": [
+        "dummy-5506309"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        },
+        {
+          "title": ":NCAAB  25",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506309"
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "xtream_channel": "NCAAB 36",
+      "epg2_ids": [
+        "dummy-5506320"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        },
+        {
+          "title": ":NCAAB  36",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506320"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "xtream_channel": "NCAAB 37",
+      "epg2_ids": [
+        "dummy-5506321"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        },
+        {
+          "title": ":NCAAB  37",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506321"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "xtream_channel": "NCAAB 38",
+      "epg2_ids": [
+        "dummy-5506322"
+      ],
+      "programmes": [
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109000000 +0000",
+          "stop": "20261109020000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109020000 +0000",
+          "stop": "20261109040000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109040000 +0000",
+          "stop": "20261109060000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109060000 +0000",
+          "stop": "20261109080000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109080000 +0000",
+          "stop": "20261109100000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109100000 +0000",
+          "stop": "20261109120000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109120000 +0000",
+          "stop": "20261109140000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109140000 +0000",
+          "stop": "20261109160000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109160000 +0000",
+          "stop": "20261109180000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109180000 +0000",
+          "stop": "20261109200000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109200000 +0000",
+          "stop": "20261109220000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        },
+        {
+          "title": ":NCAAB  38",
+          "start": "20261109220000 +0000",
+          "stop": "20261110000000 +0000",
+          "description": "",
+          "epg2_channel": "dummy-5506322"
+        }
+      ]
+    }
+  ]
+}
