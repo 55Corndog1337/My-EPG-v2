@@ -150,11 +150,11 @@ def match_original_names(catalog, channels, programmes):
     def normteam(v):
         return re.sub(r"[^a-z0-9]","",v.casefold())
     def teams(v):
-        v=re.sub(r"^.*?\\b(?:NBA|NFL|NHL|MLB|MILB|MLS|WNBA|AHL|NCAAF|NCAAB)\\s*(?:GAME|GAMES)?\\s*0*\\d+\\s*[:|\\-]?\\s*","",v,flags=re.I)
-        m=re.search(r"([A-Za-z0-9][A-Za-z0-9 .&'/-]{1,65}?)\\s+(?:@|vs\\.?|versus)\\s+([A-Za-z0-9][A-Za-z0-9 .&'/-]{1,65})",v,re.I)
+        v=re.sub(r"^.*?\b(?:NBA|NFL|NHL|MLB|MILB|MLS|WNBA|AHL|NCAAF|NCAAB)\s*(?:GAME|GAMES)?\s*0*\d+\s*[:|\-]?\s*","",v,flags=re.I)
+        m=re.search(r"([A-Za-z0-9][A-Za-z0-9 .&'/-]{1,65}?)\s+(?:@|vs\.?|versus)\s+([A-Za-z0-9][A-Za-z0-9 .&'/-]{1,65})",v,re.I)
         if not m:return None
         a,b=[x.strip(" -:|.") for x in m.groups()]
-        b=re.sub(r"\\s+(?:LIVE|HD|FHD|UHD|4K)$","",b,flags=re.I).strip()
+        b=re.sub(r"\s+(?:LIVE|HD|FHD|UHD|4K)$","",b,flags=re.I).strip()
         return (normteam(a),normteam(b)) if len(a)>1 and len(b)>1 else None
     def dated(v):
         try:
@@ -163,7 +163,7 @@ def match_original_names(catalog, channels, programmes):
         except (ValueError,TypeError,AttributeError):return None
     def xmltime(v):
         try:
-            m=re.match(r"^(\\d{14})(?:\\s*([+-]\\d{4}))?",v or "")
+            m=re.match(r"^(\d{14})(?:\s*([+-]\d{4}))?",v or "")
             if not m:return None
             d=datetime.strptime(m.group(1),"%Y%m%d%H%M%S")
             z=m.group(2)
@@ -194,7 +194,7 @@ def match_original_names(catalog, channels, programmes):
     for row in catalog:
         name=(row.get("ChannelName") or "").strip()
         target=(row.get("EPGID") or "").strip()
-        if not target or target not in channels or not re.search(r"\\b(?:NBA|NFL|NHL|MLB|MILB|MLS|WNBA|AHL|NCAAF|NCAAB)\\s*(?:GAME\\s*)?0*\\d+\\s*:",name,re.I):continue
+        if not target or target not in channels or not re.search(r"\b(?:NBA|NFL|NHL|MLB|MILB|MLS|WNBA|AHL|NCAAF|NCAAB)\s*(?:GAME\s*)?0*\d+\s*:",name,re.I):continue
         pair=teams(name.split(":",1)[-1])
         if pair:targets[target].append((name,pair))
     updates={}
@@ -216,7 +216,7 @@ def match_original_names(catalog, channels, programmes):
         label=start.astimezone(ET_ZONE).strftime("%B %d, %I:%M %p %Z")
         original=rows[0][1]
         # Retain the provider's team order when the source agrees.
-        title=" @ ".join(x.strip() for x in re.split(r"\\s+@\\s+",rows[0][0].split(":",1)[-1],maxsplit=1)) if "@" in rows[0][0] else matching[0][3]
+        title=" @ ".join(x.strip() for x in re.split(r"\s+@\s+",rows[0][0].split(":",1)[-1],maxsplit=1)) if "@" in rows[0][0] else matching[0][3]
         title=title.strip()
         if not title:continue
         def programme(a,b,heading):
