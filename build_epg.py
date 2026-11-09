@@ -549,10 +549,10 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
         stop = start + timedelta(hours=4)
         local = start.astimezone(eastern)
         time_label = local.strftime('%I:%M %p').lstrip('0')
-        event_label = f"{title} ({local.strftime('%B')} {local.day}, {time_label} {local.tzname()})"
+        event_label = f"{title} ({local.strftime('%B')} {local.day}, {time_label} EST)"
         result = []
         if now < start:
-            result.append(flo_programme(pid, f"Upcoming: {title} ({local.strftime('%A, %B')} {local.day}, {time_label} {local.tzname()})", now, start, 'Xtream event assignment.'))
+            result.append(flo_programme(pid, f"Upcoming: {title} ({local.strftime('%A, %B')} {local.day}, {time_label} EST)", now, start, 'Xtream event assignment.'))
         if start < horizon and stop > now:
             result.append(flo_programme(pid, event_label, max(start, now), min(stop, horizon), 'Xtream event assignment.'))
         if stop <= now:
