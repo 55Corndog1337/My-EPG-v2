@@ -1444,7 +1444,7 @@ def main():
             programmes.append(p)
         print('Static 24/7 channel titles:', len(static_targets))
 
-    # Public diagnostics are aggregate-only: no channel names, StreamIDs,
+    # Publish verified AHL team schedules under their Xtream StreamID guide IDs.\n    import ahl_schedule\n    programmes = ahl_schedule.run(catalog, channels, programmes, reports)\n\n    # Public diagnostics are aggregate-only: no channel names, StreamIDs,
     # EPG IDs, category names, credentials, or provider URLs.
     # This permits remote health checks without leaking the Xtream inventory.
     diagnostic = {
