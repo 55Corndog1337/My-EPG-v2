@@ -11,8 +11,6 @@ on:
       - 'sports_guide.py'
       - 'matches.csv'
       - 'approved_mappings.csv'
-  schedule:
-    - cron: '53 1,5,9,13,17,21 * * *'
 permissions:
   contents: read
   pages: write
