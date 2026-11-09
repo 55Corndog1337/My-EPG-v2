@@ -5,13 +5,18 @@ on:
     - cron: '20 13 * * 1'
 permissions:
   contents: write
+  pages: write
+  id-token: write
 concurrency:
   group: nfl-replay-board
   cancel-in-progress: false
 jobs:
   capture-and-read:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 35
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       XTREAM_URL: ${{ secrets.XTREAM_URL }}
       XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
@@ -37,3 +42,11 @@ jobs:
             git commit -m "Update verified weekly NFL Replay board assignments"
             git push
           fi
+      - name: Build EPG with verified NFL Replay data
+        run: python build_epg.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
