@@ -63,9 +63,9 @@ def capture(stream, directory):
 def read_board(images):
     content = [{"type": "text", "text": (
         "Read these screenshots of the NFL Replay Info HD board. "
-        "Return JSON only: {\\\"start_date\\\":\\\"YYYY-MM-DD\\\","
-        "\\\"end_date\\\":\\\"YYYY-MM-DD\\\","
-        "\\\"replays\\\":[{\\\"number\\\":1,\\\"matchup\\\":\\\"Away vs Home\\\"}]}. "
+        "Return a JSON object with start_date and end_date in YYYY-MM-DD format, "
+        "and a replays array of objects with number (integer 1-14) and matchup "
+        "(string formatted Away vs Home). "
         "Use the printed date range at the bottom of the board, not today's date. "
         "Read replay slot numbers and teams exactly as shown. Do not guess. "
         "If the date range cannot be read, return null dates. "
