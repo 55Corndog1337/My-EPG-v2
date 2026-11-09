@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Optional, fail-closed AI schedule enrichment for numbered Xtream sports feeds."""
-import csv, json, os, re, urllib.request
+import csv, json, os, re, urllib.request, urllib.error
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -59,7 +59,19 @@ def query(batch):
     req=urllib.request.Request("https://api.openai.com/v1/responses",
        data=json.dumps(payload).encode(),headers={"Authorization":"Bearer "+key,
        "Content-Type":"application/json"})
-    with urllib.request.urlopen(req,timeout=150) as response: result=json.load(response)
+    try:
+        with urllib.request.urlopen(req,timeout=150) as response:
+            result=json.load(response)
+    except urllib.error.HTTPError as exc:
+        try:
+            body=json.loads(exc.read(4096).decode("utf-8","replace"))
+            err=body.get("error",{})
+            code=str(err.get("code") or err.get("type") or "unknown")[:100]
+            message=str(err.get("message") or "")[:300]
+        except (ValueError, UnicodeError):
+            code="unknown"
+            message=""
+        raise RuntimeError("OpenAI API HTTP "+str(exc.code)+" code="+code+" detail="+message) from None
     parts=[part.get("text","") for output in result.get("output",[])
            for part in output.get("content",[]) if part.get("type")=="output_text"]
     raw="\n".join(parts).strip()
@@ -100,6 +112,7 @@ def research():
         print("AI sports: no API key; retaining cached data")
         raise RuntimeError("OPENAI_API_KEY missing: AI sports research cannot run")
     success=0
+    errors=0
     for start in range(0,len(pending),8):
         batch=pending[start:start+8]
         try:
@@ -107,7 +120,14 @@ def research():
                 clean=validate(item,{k:inventory[k] for k in (x["stream_id"] for x in batch)})
                 if clean:found[clean["stream_id"]]=clean;success+=1
         except Exception as exc:
-            print("AI sports: batch failed:",type(exc).__name__)
+            errors+=1
+            print("AI sports: batch failed:",type(exc).__name__,str(exc)[:450],flush=True)
+            if "OpenAI API HTTP 401" in str(exc) or "OpenAI API HTTP 402" in str(exc) or "OpenAI API HTTP 403" in str(exc) or "OpenAI API HTTP 429" in str(exc):
+                print("AI sports: stopping further API requests after authentication, billing, or rate-limit error",flush=True)
+                break
+            if errors>=3 and success==0:
+                print("AI sports: stopping after three consecutive failed batches",flush=True)
+                break
     CACHE.parent.mkdir(exist_ok=True)
     tmp=CACHE.with_suffix(".tmp")
     tmp.write_text(json.dumps({"updated_utc":datetime.now(timezone.utc).isoformat(),
