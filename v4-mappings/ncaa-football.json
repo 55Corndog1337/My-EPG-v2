@@ -303,6 +303,106 @@
       "source": "epg37",
       "source_channel_id": "268.NCAAF",
       "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 31",
+      "xtream_original_channel_name": "US - NCAAF 31 : Penn @ Cornell",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011722",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "269.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 32",
+      "xtream_original_channel_name": "US - NCAAF 32 : Richmond @ Villanova",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011721",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "270.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 33",
+      "xtream_original_channel_name": "US - NCAAF 33 : Samford @ East Tennessee State",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011720",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "271.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 34",
+      "xtream_original_channel_name": "US - NCAAF 34 : San Diego @ Drake",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011719",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "272.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 35",
+      "xtream_original_channel_name": "US - NCAAF 35 : Stetson @ Davidson",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011718",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "273.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 36",
+      "xtream_original_channel_name": "US - NCAAF 36 : Wofford @ Western Carolina",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011717",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "274.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 37",
+      "xtream_original_channel_name": "US - NCAAF 37 : Lindenwood @ Gardner-Webb",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011716",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "275.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 38",
+      "xtream_original_channel_name": "US - NCAAF 38 : Albany State @ Fort Valley State",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011715",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "276.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 39",
+      "xtream_original_channel_name": "US - NCAAF 39 : Central State @ Benedict",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011714",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "277.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 40",
+      "xtream_original_channel_name": "US - NCAAF 40 : Furman @ The Citadel",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011713",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "278.NCAAF",
+      "status": "user_selected"
     }
   ]
 }
