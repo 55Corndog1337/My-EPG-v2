@@ -917,16 +917,17 @@ def main():
         # Explicit sports-network television listings from EPG37 only.
         # This does not affect numbered game feeds or team schedules.
         network_patterns = (
-            (r'\\bMLB\\s+NETWORK\\b', r'\\bMLB\\s+NETWORK\\b'),
-            (r'\\bNHL\\s+NETWORK\\b', r'\\bNHL\\s+NETWORK\\b'),
-            (r'\\bNFL\\s+NETWORK\\b', r'\\bNFL\\s+NETWORK\\b'),
-            (r'\\bNBA\\s*TV\\b', r'\\bNBA\\s*TV\\b'),
-            (r'\\bNFL\\s+RED\\s*ZONE\\b', r'\\bNFL\\s+RED\\s*ZONE\\b'),
-            (r'\\bMLB\\s+STRIKE\\s*ZONE\\b', r'\\bMLB\\s+STRIKE\\s*ZONE\\b'),
-            (r'\\bSEC\\s+NETWORK\\b', r'\\bSEC\\s+NETWORK\\b'),
-            (r'\\bACC\\s+NETWORK\\b', r'\\bACC\\s+NETWORK\\b'),
-            (r'\\bESPN\\s*U\\b', r'\\bESPN\\s*U\\b'),
-            (r'\\bESPN\\s*NEWS\\b', r'\\bESPN\\s*NEWS\\b'),
+            (r'\bMLB\s+NETWORK\b', r'\bMLB\s+NETWORK\b'),
+            (r'\bNHL\s+NETWORK\b', r'\bNHL\s+NETWORK\b'),
+            (r'\bNFL\s+NETWORK\b', r'\bNFL\s+NETWORK\b'),
+            (r'\bNBA\s*TV\b', r'\bNBA\s*TV\b'),
+            (r'\bNFL\s+RED\s*ZONE\b', r'\bNFL\s+RED\s*ZONE\b'),
+            (r'\bMLB\s+STRIKE\s*ZONE\b', r'\bMLB\s+STRIKE\s*ZONE\b'),
+            (r'\bSEC\s+NETWORK\b', r'\bSEC\s+NETWORK\b'),
+            (r'\bACC\s+NETWORK\b', r'\bACC\s+NETWORK\b'),
+            (r'\b(?:BIG\s*TEN|B1G)\s+NETWORK\b', r'\b(?:BIG\s*TEN|B1G)\s+NETWORK\b'),
+            (r'\bESPN\s*U\b', r'\bESPN\s*U\b'),
+            (r'\bESPN\s*NEWS\b', r'\bESPN\s*NEWS\b'),
         )
         for channel_pattern, source_pattern in network_patterns:
             if not re.search(channel_pattern, name, re.I):
@@ -1106,7 +1107,11 @@ def main():
             continue
         labels = [cid] + [(e.text or '') for e in channel.findall('display-name')]
         label = ' '.join(labels)
-        if re.search(r'24\s*/\s*7|SPORT|NFL|NBA|NHL|AHL|MLB|MILB|MLS|WNBA|NCAA|UFC|PPV|FLO|ESPN|LEAGUE PASS|REDZONE|GAME\s*\d+|B1G', label, re.I):
+        # Allow explicit 24/7 sports networks as EPG37 passthroughs even
+        # when they are outside provider sports categories.
+        allowed_network = any(re.search(source_pattern, label, re.I)
+                              for _, source_pattern in network_patterns[:9])
+        if not allowed_network and re.search(r'24\s*/\s*7|SPORT|NFL|NBA|NHL|AHL|MLB|MILB|MLS|WNBA|NCAA|UFC|PPV|FLO|ESPN|LEAGUE PASS|REDZONE|GAME\s*\d+|B1G', label, re.I):
             continue
         if any(league_feed(v) for v in labels):
             continue
