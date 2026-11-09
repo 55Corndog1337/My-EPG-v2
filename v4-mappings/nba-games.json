@@ -3,13 +3,27 @@
   "category": "NBA Games",
   "snapshot_date": "2026-11-09",
   "status": "user_selected_pending_validation",
-  "note": "Game 02 mapping rejected by user; leave unmapped until corrected. Do not change V2 guide. Preserve original Xtream StreamIDs and EPGIDs. Other unlisted games remain unmapped.",
+  "note": "User-approved source selections for NBA Game 01–15. V4 mapping draft only; do not modify V2 live EPG. Preserve original Xtream StreamIDs and EPGIDs.",
   "mappings": [
     {
       "xtream_channel": "NBA Game 01",
       "xtream_stream_id": "1404642",
       "source": "epg2",
       "source_channel_id": "dummy-4476728",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 02",
+      "xtream_stream_id": "1404643",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476729",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 03",
+      "xtream_stream_id": "1404644",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476730",
       "approved_by_user": true
     },
     {
@@ -45,6 +59,55 @@
       "xtream_stream_id": "1404649",
       "source": "epg2",
       "source_channel_id": "dummy-4476735",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 09",
+      "xtream_stream_id": "1404650",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476736",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 10",
+      "xtream_stream_id": "1404651",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476737",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 11",
+      "xtream_stream_id": "1404652",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476738",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 12",
+      "xtream_stream_id": "1404653",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476739",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 13",
+      "xtream_stream_id": "1404654",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476740",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 14",
+      "xtream_stream_id": "1404655",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476741",
+      "approved_by_user": true
+    },
+    {
+      "xtream_channel": "NBA Game 15",
+      "xtream_stream_id": "1404656",
+      "source": "epg2",
+      "source_channel_id": "dummy-4476742",
       "approved_by_user": true
     }
   ]
