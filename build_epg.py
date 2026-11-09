@@ -301,7 +301,7 @@ def allowed_category(group):
     group = (group or '').strip()
     if re.match(r'^VIP\s*[-|:]\s*CHRISTMAS(?:\b|\s*[-|:])', group, re.I):
         return True
-    return bool(re.match(r'^(?:US|AM|UK|CA|VIP)(?=$|[\s|:_-])', group, re.I))
+    return bool(re.match(r'^(?:(?:US|UK|CA)(?=$|[\\s|:_-])|AM\\s*[-|:]\\s*(?:USA?|UK|CA)(?=$|[\\s|:_-]))', group, re.I))
 
 
 def christmas_display_name(name):
@@ -1380,6 +1380,42 @@ def main():
         w.writerow(['RemovedXMLTV_ID', 'ChannelName', 'KeptXMLTV_IDs', 'WasProviderID'])
         w.writerows(sports_duplicate_removed)
     print('Sports duplicate limit: removed', len(sports_duplicate_removed), 'extra IDs')
+    # Static 24/7 movie and show channels, using Xtream inventory IDs.
+    now_static = datetime.now(timezone.utc)
+    static_start = now_static.replace(hour=0, minute=0, second=0, microsecond=0)
+    static_stop = static_start + timedelta(days=1)
+    static_targets = {}
+    for item in catalog:
+        group = item.get('Group') or ''
+        name = (item.get('ChannelName') or '').strip()
+        if not allowed_category(group) or not re.search(r'24\\s*/\\s*7', group + ' ' + name, re.I):
+            continue
+        stream = (item.get('StreamID') or '').strip()
+        if not stream:
+            continue
+        title = re.sub(r'24\\s*/\\s*7', '', name, flags=re.I)
+        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\\s*[-|:]\\s*)+', '', title, flags=re.I)
+        title = re.sub(r'\\b(?:FHD|UHD|HD|SD|4K|HEVC)\\b', '', title, flags=re.I)
+        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\\s*[-|:]\\s*)+', '', title, flags=re.I)
+        title = re.sub(r'\\s+', ' ', title).strip(' -:|')
+        if not title:
+            continue
+        target = 'xtream.' + stream
+        static_targets[target] = title
+        if target not in channels:
+            ch = ET.Element('channel', {'id': target})
+            ET.SubElement(ch, 'display-name').text = name
+            channels[target] = ch
+    if static_targets:
+        programmes = [p for p in programmes if p.get('channel') not in static_targets]
+        for target, title in static_targets.items():
+            p = ET.Element('programme', {'channel': target,
+                'start': static_start.strftime('%Y%m%d%H%M%S +0000'),
+                'stop': static_stop.strftime('%Y%m%d%H%M%S +0000')})
+            ET.SubElement(p, 'title', {'lang': 'en'}).text = title
+            programmes.append(p)
+        print('Static 24/7 channel titles:', len(static_targets))
+
     # Public diagnostics are aggregate-only: no channel names, StreamIDs,
     # EPG IDs, category names, credentials, or provider URLs.
     # This permits remote health checks without leaking the Xtream inventory.
