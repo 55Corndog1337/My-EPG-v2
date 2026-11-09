@@ -1,0 +1,14 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NBA TV",
+  "source": "epg37",
+  "status": "source_selected_pending_channel_id_validation",
+  "mapping": {
+    "xtream_channel": "NBA TV",
+    "source": "epg37",
+    "match_method": "exact_channel_identity",
+    "source_channel_id": null,
+    "xtream_stream_id": null
+  },
+  "note": "Use EPG37 actual NBA TV listings. Resolve exact source channel ID and Xtream StreamID from inventories before guide generation. Do not alter V2 live EPG."
+}
