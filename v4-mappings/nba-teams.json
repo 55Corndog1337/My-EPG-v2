@@ -1,0 +1,280 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NBA Team Channels",
+  "snapshot_date": "2026-11-09",
+  "source": "epg37",
+  "status": "auto_matched_by_exact_team_identity",
+  "note": "All 30 actual NBA team channels in November 9 Xtream snapshot. Preserve original StreamIDs and existing EPGIDs (blank in snapshot). V4 only; do not modify V2 live guide. Source channel identities matched exactly against EPG37 channel inventory.",
+  "mappings": [
+    {
+      "xtream_channel": "US - NBA TEAMS - ATLANTA HAWKS FHD",
+      "xtream_stream_id": "79528",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-AtlantaHawks.us",
+      "team": "Atlanta Hawks",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - BOSTON CELTICS FHD",
+      "xtream_stream_id": "79529",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-BostonCeltics.us",
+      "team": "Boston Celtics",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - BROOKLYN NETS FHD",
+      "xtream_stream_id": "79530",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-BrooklynNets.us",
+      "team": "Brooklyn Nets",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - CHARLOTTE HORNETS FHD",
+      "xtream_stream_id": "79531",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-CharlotteHornets.us",
+      "team": "Charlotte Hornets",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - CHICAGO BULLS FHD",
+      "xtream_stream_id": "79532",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-ChicagoBulls.us",
+      "team": "Chicago Bulls",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - CLEVELAND CAVALIERS FHD",
+      "xtream_stream_id": "79533",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-ClevelandCavaliers.us",
+      "team": "Cleveland Cavaliers",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - DALLAS MAVERICKS FHD",
+      "xtream_stream_id": "79534",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-DallasMavericks.us",
+      "team": "Dallas Mavericks",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - DENVER NUGGETS FHD",
+      "xtream_stream_id": "79535",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-DenverNuggets.us",
+      "team": "Denver Nuggets",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - DETROIT PISTONS FHD",
+      "xtream_stream_id": "79536",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-DetroitPistons.us",
+      "team": "Detroit Pistons",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - GOLDEN STATE WARRIORS FHD",
+      "xtream_stream_id": "79537",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-GoldenStateWarriors.us",
+      "team": "Golden State Warriors",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - HOUSTON ROCKETS FHD",
+      "xtream_stream_id": "79538",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-HoustonRockets.us",
+      "team": "Houston Rockets",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - INDIANA PACERS FHD",
+      "xtream_stream_id": "79539",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-IndianaPacers.us",
+      "team": "Indiana Pacers",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - LOS ANGELES CLIPPERS FHD",
+      "xtream_stream_id": "79540",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-LAClippers.us",
+      "team": "Los Angeles Clippers",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - LOS ANGELES LAKERS FHD",
+      "xtream_stream_id": "79541",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-LosAngelesLakers.us",
+      "team": "Los Angeles Lakers",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - MEMPHIS GRIZZLIES FHD",
+      "xtream_stream_id": "79542",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-MemphisGrizzlies.us",
+      "team": "Memphis Grizzlies",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - MIAMI HEAT FHD",
+      "xtream_stream_id": "79543",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-MiamiHeat.us",
+      "team": "Miami Heat",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - MILWAUKEE BUCKS FHD",
+      "xtream_stream_id": "79544",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-MilwaukeeBucks.us",
+      "team": "Milwaukee Bucks",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - MINNESOTA TIMBERWOLVES FHD",
+      "xtream_stream_id": "79545",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-MinnesotaTimberwolves.us",
+      "team": "Minnesota Timberwolves",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - NEW ORLEANS PELICANS FHD",
+      "xtream_stream_id": "79546",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-NewOrleansPelicans.us",
+      "team": "New Orleans Pelicans",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - NEW YORK KNICKS FHD",
+      "xtream_stream_id": "79547",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-NewYorkKnicks.us",
+      "team": "New York Knicks",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - OKLAHOMA CITY THUNDER FHD",
+      "xtream_stream_id": "79548",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-OklahomaCityThunder.us",
+      "team": "Oklahoma City Thunder",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - ORLANDO MAGIC FHD",
+      "xtream_stream_id": "79549",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-OrlandoMagic.us",
+      "team": "Orlando Magic",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - PHILADELPHIA 76ERS FHD",
+      "xtream_stream_id": "79550",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-Philadelphia76ers.us",
+      "team": "Philadelphia 76ers",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - PHOENIX SUNS FHD",
+      "xtream_stream_id": "79551",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-PhoenixSuns.us",
+      "team": "Phoenix Suns",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - PORTLAND TRAIL BLAZERS FHD",
+      "xtream_stream_id": "79552",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-PortlandTrailBlazers.us",
+      "team": "Portland Trail Blazers",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - SACRAMENTO KINGS FHD",
+      "xtream_stream_id": "79553",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-SacramentoKings.us",
+      "team": "Sacramento Kings",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - SAN ANTONIO SPURS FHD",
+      "xtream_stream_id": "79554",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-SanAntonioSpurs.us",
+      "team": "San Antonio Spurs",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - TORONTO RAPTORS FHD",
+      "xtream_stream_id": "79555",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-TorontoRaptors.us",
+      "team": "Toronto Raptors",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - UTAH JAZZ FHD",
+      "xtream_stream_id": "79556",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-UtahJazz.us",
+      "team": "Utah Jazz",
+      "match_method": "exact_team_identity"
+    },
+    {
+      "xtream_channel": "US - NBA TEAMS - WASHINGTON WIZARDS FHD",
+      "xtream_stream_id": "79557",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NBA-WashingtonWizards.us",
+      "team": "Washington Wizards",
+      "match_method": "exact_team_identity"
+    }
+  ]
+}
