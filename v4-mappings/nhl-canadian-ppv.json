@@ -1,0 +1,137 @@
+{
+  "project": "My-EPG-v4",
+  "category": "Canadian NHL PPV",
+  "snapshot_date": "2026-11-09",
+  "status": "user_selected",
+  "note": "Only V4 mappings. Original Xtream EPGIDs are blank and must remain blank; source_channel_id is separate. Do not modify V2 or any other mapping file.",
+  "mappings": [
+    {
+      "xtream_channel": "Canadian NHL Network HD",
+      "xtream_stream_id": "1308981",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NHLNetwork.us",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 01",
+      "xtream_stream_id": "1308982",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25676",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 02",
+      "xtream_stream_id": "1308983",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25677",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 03",
+      "xtream_stream_id": "1308984",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25678",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 04",
+      "xtream_stream_id": "1308985",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25679",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 05",
+      "xtream_stream_id": "1308986",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25680",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 06",
+      "xtream_stream_id": "1308987",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25681",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 07",
+      "xtream_stream_id": "1308988",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25682",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 08",
+      "xtream_stream_id": "1308989",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25683",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 09",
+      "xtream_stream_id": "1308990",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25684",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 10",
+      "xtream_stream_id": "1308991",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25685",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 11",
+      "xtream_stream_id": "1308992",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25686",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 12",
+      "xtream_stream_id": "1308993",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25687",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 13",
+      "xtream_stream_id": "1308994",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25688",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 14",
+      "xtream_stream_id": "1308995",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25689",
+      "status": "user_selected"
+    },
+    {
+      "xtream_channel": "Canadian NHL Game 15",
+      "xtream_stream_id": "1308996",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-25690",
+      "status": "user_selected"
+    }
+  ]
+}
