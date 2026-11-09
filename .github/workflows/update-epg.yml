@@ -1,5 +1,7 @@
 name: Update EPG
 on:
+  schedule:
+    - cron: '0 */4 * * *'
   workflow_dispatch:
   push:
     paths:
@@ -14,7 +16,6 @@ permissions:
   id-token: write
 jobs:
   build:
-    if: ${{ github.event_name != 'workflow_dispatch' }}
     env:
       XTREAM_URL: ${{ secrets.XTREAM_URL }}
       XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
