@@ -141,6 +141,104 @@ def load():
         obj=json.loads(CACHE.read_text(encoding="utf-8"))
         return obj.get("events",[]) if isinstance(obj,dict) else []
     except (OSError,ValueError):return []
+def match_original_names(catalog, channels, programmes):
+    """Match original Xtream matchup to a dated EPG or iCal event, without AI."""
+    from collections import defaultdict
+    import csv
+    now=datetime.now(timezone.utc)
+    horizon=now+timedelta(days=7)
+    def normteam(v):
+        return re.sub(r"[^a-z0-9]","",v.casefold())
+    def teams(v):
+        v=re.sub(r"^.*?\\b(?:NBA|NFL|NHL|MLB|MILB|MLS|WNBA|AHL|NCAAF|NCAAB)\\s*(?:GAME|GAMES)?\\s*0*\\d+\\s*[:|\\-]?\\s*","",v,flags=re.I)
+        m=re.search(r"([A-Za-z0-9][A-Za-z0-9 .&'/-]{1,65}?)\\s+(?:@|vs\\.?|versus)\\s+([A-Za-z0-9][A-Za-z0-9 .&'/-]{1,65})",v,re.I)
+        if not m:return None
+        a,b=[x.strip(" -:|.") for x in m.groups()]
+        b=re.sub(r"\\s+(?:LIVE|HD|FHD|UHD|4K)$","",b,flags=re.I).strip()
+        return (normteam(a),normteam(b)) if len(a)>1 and len(b)>1 else None
+    def dated(v):
+        try:
+            d=datetime.fromisoformat(v.replace("Z","+00:00"))
+            return d.astimezone(timezone.utc) if d.tzinfo else None
+        except (ValueError,TypeError,AttributeError):return None
+    def xmltime(v):
+        try:
+            m=re.match(r"^(\\d{14})(?:\\s*([+-]\\d{4}))?",v or "")
+            if not m:return None
+            d=datetime.strptime(m.group(1),"%Y%m%d%H%M%S")
+            z=m.group(2)
+            if z:
+                mins=(1 if z[0]=="+" else -1)*(int(z[1:3])*60+int(z[3:5]))
+                d=d.replace(tzinfo=timezone(timedelta(minutes=mins)))
+            else:d=d.replace(tzinfo=timezone.utc)
+            return d.astimezone(timezone.utc)
+        except (ValueError,TypeError):return None
+    events=defaultdict(list)
+    for p in programmes:
+        name=" ".join(x.text or "" for x in p.findall("title"))
+        pair=teams(name)
+        start=xmltime(p.get("start"))
+        end=xmltime(p.get("stop"))
+        if pair and start and end and end>now and start<horizon and end>start:
+            events[frozenset(pair)].append((start,end,"EPG",name))
+    try:
+        source=json.loads((ROOT/"reports"/"schedule-source-events.json").read_text(encoding="utf-8"))
+        for items in source.get("sources",{}).values():
+            for ev in items:
+                pair=teams(ev.get("event",""))
+                start=dated(ev.get("start_utc",""))
+                if pair and start and now-timedelta(hours=4)<start<horizon:
+                    events[frozenset(pair)].append((start,start+timedelta(hours=4),"iCal",ev["event"]))
+    except (OSError,ValueError,TypeError,AttributeError):pass
+    targets=defaultdict(list)
+    for row in catalog:
+        name=(row.get("ChannelName") or "").strip()
+        target=(row.get("EPGID") or "").strip()
+        if not target or target not in channels or not re.search(r"\\b(?:NBA|NFL|NHL|MLB|MILB|MLS|WNBA|AHL|NCAAF|NCAAB)\\s*(?:GAME\\s*)?0*\\d+\\s*:",name,re.I):continue
+        pair=teams(name.split(":",1)[-1])
+        if pair:targets[target].append((name,pair))
+    updates={}
+    audit=[]
+    for target,rows in targets.items():
+        keys={frozenset(pair) for _,pair in rows}
+        if len(keys)!=1:
+            audit.append((target,"AMBIGUOUS_PROVIDER",""));continue
+        key=next(iter(keys))
+        options=events.get(key,[])
+        # Only a single distinct scheduled start is sufficient evidence.
+        starts=sorted({e[0] for e in options if e[1]>now})
+        if len(starts)!=1:
+            audit.append((target,"NO_UNIQUE_DATED_MATCH",str(len(starts))));continue
+        start=starts[0]
+        matching=[e for e in options if e[0]==start]
+        end=min(e[1] for e in matching)
+        if end<=start:continue
+        label=start.astimezone(ET_ZONE).strftime("%B %d, %I:%M %p %Z")
+        original=rows[0][1]
+        # Retain the provider's team order when the source agrees.
+        title=" @ ".join(x.strip() for x in re.split(r"\\s+@\\s+",rows[0][0].split(":",1)[-1],maxsplit=1)) if "@" in rows[0][0] else matching[0][3]
+        title=title.strip()
+        if not title:continue
+        def programme(a,b,heading):
+            p=ET.Element("programme",{"channel":target,"start":a.strftime("%Y%m%d%H%M%S +0000"),"stop":b.strftime("%Y%m%d%H%M%S +0000")})
+            ET.SubElement(p,"title",{"lang":"en"}).text=heading
+            ET.SubElement(p,"desc",{"lang":"en"}).text=title+" | "+label
+            return p
+        out=[]
+        if now<start:out.append(programme(now,start,"Upcoming: "+title+" ("+label+")"))
+        if end>now:out.append(programme(max(now,start),end,title+" ("+label+")"))
+        if end<now+timedelta(days=2):out.append(programme(max(now,end),now+timedelta(days=2),"Event has Concluded"))
+        updates[target]=out
+        audit.append((target,"VERIFIED",matching[0][2]))
+    if updates:
+        programmes[:]=[p for p in programmes if p.get("channel") not in updates]
+        for items in updates.values():programmes.extend(items)
+    report=ROOT/"reports"/"original-name-calendar-matches.csv"
+    report.parent.mkdir(exist_ok=True)
+    with report.open("w",newline="",encoding="utf-8") as f:
+        w=csv.writer(f);w.writerow(["EPGID","Status","Source"]);w.writerows(audit)
+    print("Original-name dated EPG/iCal matches:",len(updates),"of",len(targets))
+
 def apply(catalog,channels,programmes):
     by_stream={}
     for row in catalog:
@@ -187,4 +285,5 @@ def apply(catalog,channels,programmes):
         programmes[:]=[p for p in programmes if p.get("channel") not in changed]
         for output in changed.values():programmes.extend(output)
     print("AI sports EPG applied:",len(changed),"channels")
+    match_original_names(catalog,channels,programmes)
 if __name__=="__main__":research()
