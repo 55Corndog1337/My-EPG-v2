@@ -1,0 +1,309 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NBA League Pass",
+  "snapshot_date": "2026-11-09",
+  "status": "user_approved_configuration",
+  "note": "V4 draft only. Preserve original Xtream StreamIDs and EPGIDs by joining against current Xtream inventory; never replace or fabricate IDs. Leave NBA Game and NBA team mapping files untouched. Do not modify V2 live EPG.",
+  "mappings": [
+    {
+      "xtream_channel": "NBA League Pass 01",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass1.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 02",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass2.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 03",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass3.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 04",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass4.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 05",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass5.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 06",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass6.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 07",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass7.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 08",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass8.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 09",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass9.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 10",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "epg37",
+      "source_channel_id": "NBALeaguePass10.us",
+      "programme_title": null,
+      "programme_duration_hours": null,
+      "repeat_daily": false
+    },
+    {
+      "xtream_channel": "NBA League Pass 11",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 11",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 12",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 12",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 13",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 13",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 14",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 14",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 15",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 15",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 16",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 16",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 17",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 17",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 18",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 18",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 19",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 19",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 20",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 20",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 21",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 21",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 22",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 22",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 23",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 23",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 24",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 24",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 25",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 25",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 26",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 26",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 27",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 27",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 28",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 28",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 29",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 29",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA League Pass 30",
+      "xtream_stream_id": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "source_channel_id": null,
+      "programme_title": "NBA League Pass 30",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    }
+  ]
+}
