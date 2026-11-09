@@ -911,6 +911,41 @@ def main():
             elif candidates and all(p[0] != 'epg2' for p in candidates):
                 candidates = set()
                 method = 'NBA/NHL numbered slot: EPG2 source not uniquely verified'
+        # Explicit sports-network television listings from EPG37 only.
+        # This does not affect numbered game feeds or team schedules.
+        network_patterns = (
+            (r'\\bMLB\\s+NETWORK\\b', r'\\bMLB\\s+NETWORK\\b'),
+            (r'\\bNHL\\s+NETWORK\\b', r'\\bNHL\\s+NETWORK\\b'),
+            (r'\\bNFL\\s+NETWORK\\b', r'\\bNFL\\s+NETWORK\\b'),
+            (r'\\bNBA\\s*TV\\b', r'\\bNBA\\s*TV\\b'),
+            (r'\\bNFL\\s+RED\\s*ZONE\\b', r'\\bNFL\\s+RED\\s*ZONE\\b'),
+            (r'\\bMLB\\s+STRIKE\\s*ZONE\\b', r'\\bMLB\\s+STRIKE\\s*ZONE\\b'),
+        )
+        for channel_pattern, source_pattern in network_patterns:
+            if not re.search(channel_pattern, name, re.I):
+                continue
+            matches = set()
+            for pair, source_ch in source_channels.items():
+                if pair[0] != 'epg37':
+                    continue
+                labels = [pair[1]] + [(e.text or '') for e in source_ch.findall('display-name')]
+                if any(re.search(source_pattern, label, re.I) for label in labels):
+                    matches.add(pair)
+            if len(matches) == 1:
+                candidates = matches
+                method = 'verified sports network: EPG37'
+            elif matches:
+                # Prefer an exact source ID or an unambiguous exact label.
+                exact = {p for p in matches if p[1].casefold() == epgid.casefold()} if epgid else set()
+                if not exact:
+                    exact = {p for p in matches if any(
+                        re.sub(r'[^a-z0-9]', '', (e.text or '').lower()) ==
+                        re.sub(r'[^a-z0-9]', '', name.lower())
+                        for e in source_channels[p].findall('display-name'))}
+                if len(exact) == 1:
+                    candidates = exact
+                    method = 'exact sports network: EPG37'
+            break
         # Expand basic US/UK/CA television coverage from EPG37 only.
         # Do not touch sports, numbered events, FloSports, ESPN+ or 24/7.
         # Never substitute a similarly named station from another market.
