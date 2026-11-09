@@ -1,0 +1,50 @@
+name: Capture NFL Replay information board
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Install FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Capture replay information stream
+        env:
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+          XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
+        run: |
+          set +x
+          mkdir -p snapshots
+          python - <<'PY'
+          import os, subprocess, urllib.parse, pathlib
+          base=os.environ['XTREAM_URL'].rstrip('/')
+          user=urllib.parse.quote(os.environ['XTREAM_USERNAME'],safe='')
+          pwd=urllib.parse.quote(os.environ['XTREAM_PASSWORD'],safe='')
+          # Xtream live endpoint for StreamID 1329643.
+          url=f'{base}/live/{user}/{pwd}/1329643.ts'
+          for n,offset in enumerate((8,20,35),1):
+              cmd=['ffmpeg','-nostdin','-hide_banner','-loglevel','error',
+                   '-rw_timeout','12000000','-i',url,'-ss',str(offset),
+                   '-frames:v','1','-y',f'snapshots/nfl-replay-info-{n}.png']
+              try:
+                  result=subprocess.run(cmd,capture_output=True,text=True,timeout=95)
+                  if result.returncode==0 and pathlib.Path(cmd[-1]).exists():
+                      print(f'Frame {n}: captured')
+                  else:
+                      print(f'Frame {n}: unavailable (ffmpeg exit {result.returncode})')
+              except subprocess.TimeoutExpired:
+                  print(f'Frame {n}: timed out')
+          if not list(pathlib.Path('snapshots').glob('*.png')):
+              raise SystemExit('No frames captured; stream may be unreachable from GitHub')
+          PY
+      - name: Upload private screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nfl-replay-info-snapshots
+          path: snapshots/*.png
+          if-no-files-found: warn
+          retention-days: 2
