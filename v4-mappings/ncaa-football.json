@@ -1,0 +1,108 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NCAA Football",
+  "status": "partial",
+  "note": "Only V4 mappings; original Xtream EPGIDs are blank and must stay blank. Do not change V2.",
+  "mappings": [
+    {
+      "channel": "NCAAF Game 01",
+      "xtream_original_channel_name": "US - NCAAF 01 : ESPN",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011638",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26366",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 02",
+      "xtream_original_channel_name": "US - NCAAF 02 : ESPN2",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011639",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26367",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 03",
+      "xtream_original_channel_name": "US - NCAAF 03 : ESPNU",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011640",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26368",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 04",
+      "xtream_original_channel_name": "US - NCAAF 04 : ABC",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011641",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26369",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 05",
+      "xtream_original_channel_name": "US - NCAAF 05 : CBS",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011642",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26370",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 06",
+      "xtream_original_channel_name": "US - NCAAF 06 : FOX",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011643",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26371",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 07",
+      "xtream_original_channel_name": "US - NCAAF 07 : NBC",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011644",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26372",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 08",
+      "xtream_original_channel_name": "US - NCAAF 08 : ACC NETWORK",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011645",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26373",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 09",
+      "xtream_original_channel_name": "US - NCAAF 09 : BIG TEN NETWORK",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011646",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26374",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 10",
+      "xtream_original_channel_name": "US - NCAAF 10 : BIG TEN NETWORK ALT",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011647",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26375",
+      "status": "user_selected"
+    }
+  ]
+}
