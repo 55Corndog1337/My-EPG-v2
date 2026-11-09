@@ -1518,7 +1518,7 @@ def main():
     # Static 24/7 movie and show channels, using Xtream inventory IDs.
     now_static = datetime.now(timezone.utc)
     static_start = now_static.replace(hour=0, minute=0, second=0, microsecond=0)
-    static_stop = static_start + timedelta(days=1)
+    static_stop = static_start + timedelta(days=3)
     static_targets = {}
     for item in catalog:
         group = item.get('Group') or ''
@@ -1537,6 +1537,13 @@ def main():
             continue
         target = 'xtream.' + stream
         static_targets[target] = title
+        provider_epgid = (item.get('EPGID') or '').strip()
+        if provider_epgid and provider_epgid != target:
+            static_targets[provider_epgid] = title
+            if provider_epgid not in channels:
+                alias = ET.Element('channel', {'id': provider_epgid})
+                ET.SubElement(alias, 'display-name').text = name
+                channels[provider_epgid] = alias
         if target not in channels:
             ch = ET.Element('channel', {'id': target})
             ET.SubElement(ch, 'display-name').text = name
