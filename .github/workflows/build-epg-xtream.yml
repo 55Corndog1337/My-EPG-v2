@@ -2,8 +2,8 @@ name: Build full Xtream and M3U EPGs
 on:
   workflow_dispatch:
   schedule:
-    # UTC candidates for midnight, 6 AM, noon, 6 PM America/New_York (EST/EDT).
-    - cron: '0 4,5,10,11,16,17,22,23 * * *'
+    # UTC candidates for 6 AM, noon, 6 PM America/New_York (EST/EDT).
+    - cron: '0 10,11,16,17,22,23 * * *'
 permissions:
   contents: write
 concurrency:
@@ -19,7 +19,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           HOUR=$(TZ=America/New_York date +%H)
-          if [ "$EVENT_NAME" = workflow_dispatch ] || [[ "$HOUR" =~ ^(00|06|12|18)$ ]]; then
+          if [ "$EVENT_NAME" = workflow_dispatch ] || [[ "$HOUR" =~ ^(06|12|18)$ ]]; then
             echo 'run=true' >> "$GITHUB_OUTPUT"
           else
             echo "Skipping UTC candidate; Eastern hour is $HOUR"
