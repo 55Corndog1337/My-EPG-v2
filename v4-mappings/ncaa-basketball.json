@@ -1,0 +1,232 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NCAA Basketball",
+  "status": "user_selected",
+  "note": "V4 mapping configuration only. Preserve original Xtream EPGIDs, especially Game 07 NCAAB.08. EPG2 dummy channels may have display-name matchup information but no programme records in the Nov 9 snapshot. Do not modify V2.",
+  "mappings": [
+    {
+      "channel": "NCAAB Game 01",
+      "xtream_stream_id": "79589",
+      "original_xtream_epgid": "NCAAB.01",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506285",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 02",
+      "xtream_stream_id": "79590",
+      "original_xtream_epgid": "NCAAB.02",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506286",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 03",
+      "xtream_stream_id": "79591",
+      "original_xtream_epgid": "NCAAB.03",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506287",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 04",
+      "xtream_stream_id": "79592",
+      "original_xtream_epgid": "NCAAB.04",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506288",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 05",
+      "xtream_stream_id": "79593",
+      "original_xtream_epgid": "NCAAB.05",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506289",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 06",
+      "xtream_stream_id": "79594",
+      "original_xtream_epgid": "NCAAB.06",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506290",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 07",
+      "xtream_stream_id": "79596",
+      "original_xtream_epgid": "NCAAB.08",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506291",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 08",
+      "xtream_stream_id": "79597",
+      "original_xtream_epgid": "NCAAB.08",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506292",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 09",
+      "xtream_stream_id": "79598",
+      "original_xtream_epgid": "NCAAB.09",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506293",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 10",
+      "xtream_stream_id": "79599",
+      "original_xtream_epgid": "NCAAB.10",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506294",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 11",
+      "xtream_stream_id": "79600",
+      "original_xtream_epgid": "NCAAB.11",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506295",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 12",
+      "xtream_stream_id": "79601",
+      "original_xtream_epgid": "NCAAB.12",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506296",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 13",
+      "xtream_stream_id": "79602",
+      "original_xtream_epgid": "NCAAB.13",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506297",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 14",
+      "xtream_stream_id": "79603",
+      "original_xtream_epgid": "NCAAB.14",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506298",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 15",
+      "xtream_stream_id": "79604",
+      "original_xtream_epgid": "NCAAB.15",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506299",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 16",
+      "xtream_stream_id": "79605",
+      "original_xtream_epgid": "NCAAB.16",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506300",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 17",
+      "xtream_stream_id": "79606",
+      "original_xtream_epgid": "NCAAB.17",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506301",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 18",
+      "xtream_stream_id": "79607",
+      "original_xtream_epgid": "NCAAB.18",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506302",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 19",
+      "xtream_stream_id": "79608",
+      "original_xtream_epgid": "NCAAB.19",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506303",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 20",
+      "xtream_stream_id": "79609",
+      "original_xtream_epgid": "NCAAB.20",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506304",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 21",
+      "xtream_stream_id": "79610",
+      "original_xtream_epgid": "NCAAB.21",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506305",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 22",
+      "xtream_stream_id": "79611",
+      "original_xtream_epgid": "NCAAB.22",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506306",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 23",
+      "xtream_stream_id": "79612",
+      "original_xtream_epgid": "NCAAB.23",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506307",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 24",
+      "xtream_stream_id": "79613",
+      "original_xtream_epgid": "NCAAB.24",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506308",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 25",
+      "xtream_stream_id": "79614",
+      "original_xtream_epgid": "NCAAB.25",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506309",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 36",
+      "xtream_stream_id": "79626",
+      "original_xtream_epgid": "NCAAB.36",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506320",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 37",
+      "xtream_stream_id": "79627",
+      "original_xtream_epgid": "NCAAB.37",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506321",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAB Game 38",
+      "xtream_stream_id": "79628",
+      "original_xtream_epgid": "NCAAB.38",
+      "source": "epg2",
+      "source_channel_id": "dummy-5506322",
+      "status": "user_selected"
+    }
+  ]
+}
