@@ -297,11 +297,14 @@ def choose_companion(candidates, epgid, source_channels=None, sports=False):
     return set()
 
 def allowed_category(group):
-    """Accept US/UK/CA regional categories and VIP Christmas."""
+    """Keep the US, UK and CA Xtream groups, including AM and EU prefixes."""
     group = (group or '').strip()
     if re.match(r'^VIP\s*[-|:]\s*CHRISTMAS', group, re.I):
         return True
-    return bool(re.match(r'^(?:US|USA|UK|CA)(?=$|[\s|:_-])|^AM\s*[-|:]\s*(?:US|USA|UK|CA)(?=$|[\s|:_-])', group, re.I))
+    return bool(re.match(
+        r'^(?:(?:US|USA|UK|CA)(?=$|[\s|:_-])|'
+        r'(?:AM|EU)\s*[-|:]\s*(?:US|USA|UK|CA)(?=$|[\s|:_-]))',
+        group, re.I))
 
 
 def christmas_display_name(name):
