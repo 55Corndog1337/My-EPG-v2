@@ -3,8 +3,8 @@
   "category": "NHL Team Channels",
   "snapshot_date": "2026-11-09",
   "source": "epg37",
-  "status": "verified_with_exceptions",
-  "note": "53 of 56 exact source identities verified in EPG37. Preserve original Xtream StreamIDs and EPGIDs. Keep duplicate channels distinct. Arizona Coyotes has no exact source. St Louis Blues EPG37 display name incorrectly attached to UFL-St.LouisBattlehawks.us; do not map. V4 only; V2 live guide unchanged.",
+  "status": "all_56_team_entries_mapped",
+  "note": "53 previous EPG37 matches retained unchanged; St. Louis Blues StreamIDs 576311/1044052 mapped to EPG2 NHL-St.LouisBlues.us (EPG6 StLouisBlues.nhl alternative); legacy Arizona Coyotes StreamID 1044028 mapped to EPG2 NHL-UtahMammoth.us. Verified programme listings in Nov 9 EPG snapshots. Preserve original Xtream StreamIDs and EPGIDs; V4 only; V2 unchanged.",
   "mappings": [
     {
       "xtream_group": "AM | USA | NHL",
@@ -162,9 +162,12 @@
       "xtream_stream_id": "576311",
       "original_xtream_epgid": "",
       "team": "ST. LOUIS BLUES",
-      "source": null,
-      "source_channel_id": null,
-      "status": "needs_review"
+      "source": "epg2",
+      "source_channel_id": "NHL-St.LouisBlues.us",
+      "status": "matched_verified_programmes",
+      "match_method": "verified_team_identity_and_programme",
+      "alternative_source": "epg6",
+      "alternative_source_channel_id": "StLouisBlues.nhl"
     },
     {
       "xtream_group": "AM | USA | NHL",
@@ -262,9 +265,11 @@
       "xtream_stream_id": "1044028",
       "original_xtream_epgid": "",
       "team": "ARIZONA COYOTES",
-      "source": null,
-      "source_channel_id": null,
-      "status": "needs_review"
+      "source": "epg2",
+      "source_channel_id": "NHL-UtahMammoth.us",
+      "status": "matched_verified_programmes_legacy_name",
+      "match_method": "legacy_arizona_to_utah_nhl_team_continuity",
+      "current_team": "Utah Mammoth"
     },
     {
       "xtream_group": "AM | USA | NHL",
@@ -502,9 +507,12 @@
       "xtream_stream_id": "1044052",
       "original_xtream_epgid": "",
       "team": "ST. LOUIS BLUES",
-      "source": null,
-      "source_channel_id": null,
-      "status": "needs_review"
+      "source": "epg2",
+      "source_channel_id": "NHL-St.LouisBlues.us",
+      "status": "matched_verified_programmes",
+      "match_method": "verified_team_identity_and_programme",
+      "alternative_source": "epg6",
+      "alternative_source_channel_id": "StLouisBlues.nhl"
     },
     {
       "xtream_group": "AM | USA | NHL",
