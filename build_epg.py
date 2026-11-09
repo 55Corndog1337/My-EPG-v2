@@ -738,6 +738,10 @@ def main():
         # A blank NBA provider ID or an NHL ID belonging to another league
         # must not cause the feed to inherit another channel's schedule.
         slot = league_feed(name)
+        # Numbered NCAAB feeds map by Xtream stream identity, not a duplicate provider EPGID.
+        # This prevents NCAAB 07 inheriting NCAAB 08's provider ID.
+        if slot and slot[0] == 'NCAAB' and slot[1] in (*range(1,26),36,37,38):
+            epgid = 'NCAAB.%02d' % slot[1]
         if slot and slot[0] in ('NBA', 'NHL') and not re.search(r'IN\\s*ARENA|LEAGUE\\s*PASS|TEAMS?', r.get('Group', '') + ' ' + name, re.I):
             league, number, _ = slot
             if 1 <= number <= (15 if league == 'NBA' else 16):
