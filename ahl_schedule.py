@@ -71,7 +71,7 @@ def run(catalog,channels,programmes,reports):
         group=(row.get("Group") or "").upper()
         if "AHL" not in name.upper() and "AHL" not in group:
             continue
-        if re.search(r"\b(?:GAME|REPLAY)\s*\d+\b",name,re.I):
+        if re.search(r"\b(?:GAME|REPLAY)\s*\d+\b",name,re.I) or not (row.get("StreamID") or "").strip() or "####" in name:
             continue
         # Bind AHL team guide entries to their Xtream inventory StreamIDs,
         # regardless of stale or missing provider EPGIDs.
@@ -82,8 +82,8 @@ def run(catalog,channels,programmes,reports):
                 ch=ET.Element("channel",{"id":pid})
                 ET.SubElement(ch,"display-name").text=name
                 channels[pid]=ch
-            team=re.sub(r"^(?:(?:US|USA|CA|VIP|AHL)\s*[-:|]\s*)+","",name,flags=re.I)
-            team=re.sub(r"\b(?:AHL|HD|FHD|UHD|4K)\b"," ",team,flags=re.I).strip(" -:|")
+            team=re.sub(r"^(?:(?:US|USA|CA|VIP|AHL|TEAMS?)\s*[-:|]\s*)+","",name,flags=re.I)
+            team=re.sub(r"\b(?:AHL|TEAMS?|HD|FHD|UHD|4K)\b"," ",team,flags=re.I).strip(" -:|")\n            team=re.sub(r"\s+"," ",team).strip()\n            team=team.replace("LE HIGH VALLEY","LEHIGH VALLEY").replace("W-B/SCRANTON","WILKES-BARRE/SCRANTON")
             if team:
                 targets[pid]=team
     if not targets:
