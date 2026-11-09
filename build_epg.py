@@ -1445,6 +1445,8 @@ def main():
     programmes = apply_xtream_event_assignments(catalog, channels, programmes, reports)
     from ahl_schedule import run as generate_ahl_schedule
     programmes = generate_ahl_schedule(catalog, channels, programmes, reports)
+    from team_season_epg import apply as apply_weekly_team_seasons
+    programmes = apply_weekly_team_seasons(catalog, channels, programmes, reports)
     # Live sports channel-name refresh, using EPG2/EPG37 already downloaded by
     # this same GitHub Actions build. Never changes XMLTV IDs or stream IDs.
     from sports_channel_names import run as refresh_sports_names
