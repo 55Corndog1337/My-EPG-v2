@@ -895,6 +895,34 @@ def main():
             elif candidates and all(p[0] != 'epg2' for p in candidates):
                 candidates = set()
                 method = 'NBA/NHL numbered slot: EPG2 source not uniquely verified'
+        # Expand basic US/UK/CA television coverage from EPG37 only.
+        # Do not touch sports, numbered events, FloSports, ESPN+ or 24/7.
+        # Never substitute a similarly named station from another market.
+        group_upper = (r.get('Group') or '').upper()
+        name_upper = name.upper()
+        protected = bool(
+            re.search(r'24\\s*/\\s*7|FLO\\s*SPORTS|ESPN\\s*\\+|ESPN\\s*PLUS|ESPNPLUS', group_upper + ' ' + name_upper)
+            or league_feed(name)
+            or re.search(r'\\b(?:SPORTS?|NFL|NBA|NHL|AHL|MLB|MILB|MLS|WNBA|NCAA|NCAAF|NCAAB|UFC|PPV|GAME\\s*\\d+|LEAGUE\\s*PASS|IN\\s*THE\\s*ARENA|B1G\\s*\\+)\\b', group_upper + ' ' + name_upper)
+        )
+        if not protected and approved_pair is None:
+            # First try exact provider/source IDs; then exact normalized names.
+            # Use conservative aliases only when a single EPG37 ID resolves.
+            e37 = {p for p in by_source_id.get(epgid.casefold(), set()) if p[0] == 'epg37'} if epgid else set()
+            if not e37 and tvg_name:
+                e37 = {p for p in by_name.get(tvg_name, set()) if p[0] == 'epg37'}
+            if not e37:
+                e37 = {p for p in by_name.get(key, set()) if p[0] == 'epg37'}
+            if not e37:
+                aliases = canonical_names(name) | canonical_names(r.get('TVGName', ''))
+                e37 = {p for alias in aliases for p in by_alias.get(alias, set()) if p[0] == 'epg37'}
+            if len(e37) == 1:
+                candidates = e37
+                method = 'basic TV: unique EPG37 source'
+        # Never map 24/7 channels to donor television schedules.
+        if re.search(r'24\\s*/\\s*7', group_upper + ' ' + name_upper):
+            candidates = set()
+            method = '24/7 static title only'
         candidates = select_unique(candidates)
         suggested_source = ''
         suggested_id = ''
