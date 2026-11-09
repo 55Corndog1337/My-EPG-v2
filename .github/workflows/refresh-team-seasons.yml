@@ -1,0 +1,46 @@
+name: Refresh full-season team EPG every Monday
+on:
+  workflow_dispatch:
+  schedule:
+    # 4 AM Eastern, DST-aware UTC candidates.
+    - cron: '0 8,9 * * 1'
+permissions:
+  contents: write
+concurrency:
+  group: team-season-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Eastern Monday gate
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          HOUR=$(TZ=America/New_York date +%H)
+          if [ "$EVENT_NAME" = workflow_dispatch ] || [ "$HOUR" = "04" ]; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: '3.11'
+      - name: Refresh full-season league fixtures
+        if: steps.gate.outputs.run == 'true'
+        run: python team_season_epg.py
+      - name: Commit season schedules for all daily builds
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/team-seasons.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh full-season team EPG snapshots'
+            git pull --rebase
+            git push
+          fi
