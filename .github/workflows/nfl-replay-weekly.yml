@@ -32,8 +32,11 @@ jobs:
       - name: Check replay scripts
         run: python -m py_compile nfl_replay_vision.py nfl_replay_board.py
       - name: Read NFL Replay Info HD and delete validated screenshots
+        id: ocr
+        continue-on-error: true
         run: python nfl_replay_vision.py
       - name: Commit verified weekly replay assignments
+        if: steps.ocr.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
