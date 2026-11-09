@@ -38,15 +38,19 @@ jobs:
         run: python -m py_compile ai_sports.py build_epg.py schedule_sources.py ncaab_calendar_match.py ncaab_epg2_raw.py
       - name: Refresh Xtream inventory and build safe baseline
         run: python build_epg.py
-      - name: Upload timestamped Xtream inventory audit
-        if: always()
+      - name: Install inventory encryption dependency
+        run: python -m pip install 'cryptography>=43,<47'
+      - name: Encrypt current Xtream inventory
+        env:
+          XTREAM_EXPORT_PASSWORD: ${{ secrets.XTREAM_EXPORT_PASSWORD }}
+        run: python encrypt_inventory.py
+      - name: Upload encrypted Xtream inventory
         uses: actions/upload-artifact@v4
         with:
-          name: xtream-inventory-current
-          path: |
-            reports/xtream-channels-latest.csv
-            reports/xtream-inventory-status.txt
-          if-no-files-found: warn
+          name: xtream-inventory-encrypted
+          path: encrypted-export/xtream-channels-latest.enc.json
+          if-no-files-found: error
+          retention-days: 1
       - name: Extract raw NCAAB listings from EPG2
         run: python ncaab_epg2_raw.py
       - name: Commit raw NCAAB data independently
