@@ -80,10 +80,10 @@ def apply(catalog,channels,programmes,reports):
   group=(row.get("Group") or "").upper()
   sid=(row.get("StreamID") or "").strip()
   if not sid or "####" in name: continue
-  league=next((k for k in LEAGUES if re.search(r"\\b"+k+r"\\b",group+" "+name,re.I)),None)
+  league=next((k for k in LEAGUES if re.search(r"\b"+k+r"\b",group+" "+name,re.I)),None)
   if not league or not re.search(r"TEAM",group+" "+name,re.I): continue
-  team=re.sub(r"^.*?\\bTEAMS?\\b\\s*[-:|]\\s*","",name,flags=re.I)
-  team=re.sub(r"\\b(?:HD|FHD|UHD|4K|SD|USA|US|CA|VIP)\\b","",team,flags=re.I).strip(" -:|")
+  team=re.sub(r"^.*?\bTEAMS?\b\s*[-:|]\s*","",name,flags=re.I)
+  team=re.sub(r"\b(?:HD|FHD|UHD|4K|SD|USA|US|CA|VIP)\b","",team,flags=re.I).strip(" -:|")
   team_key=norm(team)
   if not team_key: continue
   games=[]
