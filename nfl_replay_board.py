@@ -145,8 +145,11 @@ def apply(catalog, channels, programmes):
                 "stop": b.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000")})
             ET.SubElement(p, "title", {"lang": "en"}).text = (
                 f"{matchup} ({start.strftime('%b')} {start.day}–{end.strftime('%b')} {end.day})")
-            ET.SubElement(p, "desc", {"lang": "en"}).text = (\n                f"{matchup} | {start.strftime('%b')} {start.day}–"\n                f"{end.strftime('%b')} {end.day}, {end.year} | "
-                "24-hour replay listing; kickoff time not supplied by information board")\n            programmes.append(p)
+            ET.SubElement(p, "desc", {"lang": "en"}).text = (
+                f"{matchup} | {start.strftime('%b')} {start.day}–"
+                f"{end.strftime('%b')} {end.day}, {end.year} | "
+                "24-hour replay listing; kickoff time not supplied by information board")
+            programmes.append(p)
     print("NFL Replay OCR applied:", len(valid), "Xtream channels")
     return programmes
 
