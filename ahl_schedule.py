@@ -116,7 +116,7 @@ def run(catalog,channels,programmes,reports):
             end=start+timedelta(hours=4)
             label=f"{away} @ {home}"
             local=start.astimezone(EASTERN)
-            date=f"{local.strftime('%B')} {local.day}, {local.strftime('%I:%M %p').lstrip('0')} {local.tzname()}"
+            date=f"{local.strftime('%B')} {local.day}, {local.strftime('%I:%M %p').lstrip('0')} {'EST'}"
             if start>now:
                 result.append(_programme(pid,f"Next Game: {label} ({local.strftime('%A')}, {date})",now,start))
             if end>now:
