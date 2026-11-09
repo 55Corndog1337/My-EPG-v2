@@ -631,6 +631,83 @@ def run(catalog,channels,programmes,source_channels,source_data,chosen,reports):
     return output
 
 
+def apply_nhl_xtream_slots(catalog, channels, programmes, reports):
+    """Override numbered NHL game slots using fresh Xtream names only.
+
+    Do not read EPG2, EPG6 or EPG37 for these slots. Preserve the stream ID,
+    prefer the per-stream XMLTV ID, and never reuse a mislabelled NFL EPG ID.
+    """
+    now = datetime.now(EAST)
+    end = now + timedelta(hours=48)
+    assignments = {}
+    for row in catalog:
+        kind, number, league = feed(row)
+        if kind != 'league' or league != 'NHL':
+            continue
+        group = category(row)
+        if 'NHL' not in group or 'TEAM' in original_name(row).upper():
+            continue
+        sid = (row.get('StreamID') or '').strip()
+        if not sid.isdigit():
+            continue
+        pid = 'xtream.' + sid
+        epgid = (row.get('EPGID') or '').strip()
+        targets = [pid]
+        if epgid.upper().startswith('NHL.') and epgid in channels:
+            targets.append(epgid)
+        detail = provider_detail(original_name(row))
+        event = title_matchup(detail) if detail and not EMPTY_DETAIL.fullmatch(detail) else None
+        day = source_date(detail, now) if event else None
+        clock = source_time(detail) if event else None
+        start = day.replace(hour=clock[0], minute=clock[1]) if day and clock else None
+        if start and start < now - timedelta(hours=24):
+            start = None  # Stale Xtream name: never show an old game as upcoming.
+        for target in targets:
+            if target in assignments and assignments[target][0] != original_name(row):
+                continue
+            assignments[target] = (original_name(row), event, start)
+            if target not in channels:
+                channel = ET.Element('channel', {'id': target})
+                ET.SubElement(channel, 'display-name').text = original_name(row)
+                channels[target] = channel
+
+    if not assignments:
+        print('NHL XTREAM: no numbered slots in current live inventory')
+        return programmes
+    programmes = [p for p in programmes if p.get('channel') not in assignments]
+    report = []
+    for pid, (name, event, start) in assignments.items():
+        segments = []
+        if event and start:
+            stop = start + timedelta(hours=4)
+            if start > now:
+                segments.append((now, min(start, end), 'Upcoming: ' + event + ' (' + display_time(start) + ')'))
+            if stop > now and start < end:
+                segments.append((max(now, start), min(stop, end), event + ' (' + display_time(start) + ')'))
+            if stop < end:
+                segments.append((max(now, stop), end, 'Event has Concluded'))
+            status = 'XTREAM_NHL_EVENT'
+        else:
+            segments.append((now, end, EMPTY))
+            status = 'XTREAM_NHL_NO_CURRENT_EVENT'
+        for begin, finish, title in segments:
+            if finish <= begin:
+                continue
+            p = ET.Element('programme', {
+                'channel': pid,
+                'start': begin.astimezone(timezone.utc).strftime('%Y%m%d%H%M%S +0000'),
+                'stop': finish.astimezone(timezone.utc).strftime('%Y%m%d%H%M%S +0000')})
+            ET.SubElement(p, 'title', {'lang': 'en'}).text = title
+            programmes.append(p)
+        report.append((pid, name, status, event or ''))
+    with (reports / 'nhl-xtream-slot-status.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['XMLTV_ID', 'XtreamName', 'Status', 'Matchup'])
+        w.writerows(report)
+    print('NHL XTREAM ONLY:', len(assignments), 'mapped slots; no donor EPG')
+    return programmes
+
+
 def apply_provider_first_programmes(catalog, channels, programmes, reports):
     """Event slots use the fresh Xtream assignment, never unrelated XMLTV donors.
 
