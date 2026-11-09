@@ -41,6 +41,13 @@ jobs:
         run: python schedule_sources.py
       - name: Match numbered NCAAB EPG2 events against basketball calendar
         run: python ncaab_calendar_match.py
+      - name: Upload raw NCAAB matchup audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ncaab-epg2-calendar-audit
+          path: reports/ncaab-calendar-match-*.json
+          if-no-files-found: warn
       - name: Research numbered sports feeds with web verification
         run: python ai_sports.py
       - name: Commit verified schedule cache
