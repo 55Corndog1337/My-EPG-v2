@@ -38,6 +38,15 @@ jobs:
         run: python -m py_compile ai_sports.py build_epg.py schedule_sources.py ncaab_calendar_match.py ncaab_epg2_raw.py
       - name: Refresh Xtream inventory and build safe baseline
         run: python build_epg.py
+      - name: Upload timestamped Xtream inventory audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xtream-inventory-current
+          path: |
+            reports/xtream-channels-latest.csv
+            reports/xtream-inventory-status.txt
+          if-no-files-found: warn
       - name: Extract raw NCAAB listings from EPG2
         run: python ncaab_epg2_raw.py
       - name: Commit raw NCAAB data independently
