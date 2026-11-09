@@ -2,8 +2,8 @@ name: Capture NFL Replay information board
 on:
   workflow_dispatch:
   schedule:
-    # Monday 8 AM Eastern (DST/standard time candidates).
-    - cron: '0 12,13 * * 1'
+    # Tuesday 8 AM Eastern (DST/standard time candidates).
+    - cron: '0 12,13 * * 2'
 permissions:
   contents: write
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - name: Check Monday Eastern time
+      - name: Check Tuesday Eastern time
         id: clock
         run: |
           if [ "${{ github.event_name }}" = workflow_dispatch ] || [ "$(TZ=America/New_York date +%H)" = 08 ]; then
@@ -68,11 +68,6 @@ jobs:
             git commit -m 'Update verified NFL Replay OCR assignments'
             git push
           fi
-      - name: Upload private screenshots
+      - name: Delete temporary screenshots
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: nfl-replay-info-snapshots
-          path: snapshots/*.png
-          if-no-files-found: warn
-          retention-days: 2
+        run: rm -rf snapshots
