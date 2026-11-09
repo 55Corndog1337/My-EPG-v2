@@ -920,6 +920,10 @@ def main():
             (r'\\bNBA\\s*TV\\b', r'\\bNBA\\s*TV\\b'),
             (r'\\bNFL\\s+RED\\s*ZONE\\b', r'\\bNFL\\s+RED\\s*ZONE\\b'),
             (r'\\bMLB\\s+STRIKE\\s*ZONE\\b', r'\\bMLB\\s+STRIKE\\s*ZONE\\b'),
+            (r'\\bSEC\\s+NETWORK\\b', r'\\bSEC\\s+NETWORK\\b'),
+            (r'\\bACC\\s+NETWORK\\b', r'\\bACC\\s+NETWORK\\b'),
+            (r'\\bESPN\\s*U\\b', r'\\bESPN\\s*U\\b'),
+            (r'\\bESPN\\s*NEWS\\b', r'\\bESPN\\s*NEWS\\b'),
         )
         for channel_pattern, source_pattern in network_patterns:
             if not re.search(channel_pattern, name, re.I):
