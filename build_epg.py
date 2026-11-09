@@ -1037,6 +1037,478 @@ def main():
                 chosen[target] = best
     print('Numbered sports XMLTV ID aliases added/upgraded:', sports_alias_count)
 
+    # Standalone EPG37 regular-TV additions. These do not replace any
+    # Xtream mapping or any of the sports / 24/7 guide assignments.
+    # Publish only regional US, UK and CA station IDs.
+    def regular_epg37(pair, channel):
+        source, cid = pair
+        if source != 'epg37':
+            return False
+        if not re.search(r'\\.(?:us|uk|ca)(?:\\d+)?
+        reverse[pair].append(target)
+    print('Unambiguous output IDs:', len(chosen))
+
+    channels = {}
+    programmes = []
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=12)
+    counts = Counter()
+    flo_starts = defaultdict(list)
+    # Collect current listings only, keeping memory bounded by selected channels.
+    for source, raw in source_data.items():
+        with io.BytesIO(raw) as buf:
+            for _, elem in ET.iterparse(buf, events=('end',)):
+                tag = elem.tag.rsplit('}', 1)[-1]
+                if tag == 'programme':
+                    cid = elem.get('channel', '')
+                    targets = reverse.get((source, cid), ())
+                    if targets and valid_time(elem.get('stop', ''), cutoff):
+                        if source == "epg2":
+                            start_dt = parse_xmltv_start(elem.get("start"))
+                            if start_dt:
+                                for target in targets:
+                                    if target in flo_provider_names:
+                                        flo_starts[target].append(start_dt)
+                        for target in targets:
+                            p = clone(elem)
+                            p.set('channel', target)
+                            programmes.append(p)
+                            counts[target] += 1
+                    elem.clear()
+                elif tag == 'channel':
+                    elem.clear()
+                # IMPORTANT: do not clear title/desc children before cloning
+                # their parent programme. Earlier builds lost every title.
+    # WATE 6 fallback, when its old EPG37 mapping is stale.
+    wate_ids = {r.get('original_tvg_id') for r in legacy
+                if 'WATE' in (r.get('playlist_channel') or '').upper() and r.get('original_tvg_id')}
+    if wate_ids and ('epg2', 'wate.us') in source_channels:
+        for target in wate_ids:
+            if not counts[target]:
+                chosen[target] = ('epg2', 'wate.us')
+                reverse[('epg2', 'wate.us')].append(target)
+        # Fetch fallback programmes if needed.
+        missing = [t for t in wate_ids if not counts[t]]
+        if missing:
+            raw = source_data['epg2']
+            with io.BytesIO(raw) as buf:
+                for _, elem in ET.iterparse(buf, events=('end',)):
+                    if elem.tag.rsplit('}', 1)[-1] == 'programme' and elem.get('channel') == 'wate.us' and valid_time(elem.get('stop',''), cutoff):
+                        for target in missing:
+                            p = clone(elem); p.set('channel', target)
+                            programmes.append(p); counts[target] += 1
+                    elem.clear()
+
+    # Never discard a verified match merely because its current source schedule
+    # is empty. XMLTV permits channels without programme records.
+    for target, pair in chosen.items():
+        if pair in source_channels:
+            ch = clone(source_channels[pair]); ch.set('id', target)
+            channels[target] = ch
+    # For WATE fallback, use the fallback source channel metadata.
+    for target in wate_ids:
+        if counts[target] and target not in channels and ('epg2','wate.us') in source_channels:
+            ch = clone(source_channels[('epg2','wate.us')]); ch.set('id',target); channels[target] = ch
+    # Retain existing provider IDs even when a current programme or source
+    # mapping is unavailable. Do not invent programme titles for these.
+    for r in catalog:
+        epgid = (r.get('EPGID') or '').strip()
+        if not epgid or epgid in channels:
+            continue
+        name = (r.get('ChannelName') or '').strip()
+        if not name or name.startswith('#####'):
+            continue
+        ch = ET.Element('channel', {'id': epgid})
+        ET.SubElement(ch, 'display-name').text = name
+        channels[epgid] = ch
+
+    # Rename every resolved FloSports guide channel to its provider FLO number.
+    # This changes display names, not XMLTV IDs (which TiviMate uses for mapping).
+    for row in audit:
+        if row['FloNumber'] and row['SuggestedSource'] == 'epg2':
+            target = row['EPGID'] or (('xtream.' + row['StreamID']) if row['StreamID'] else ('matched.' + row['SuggestedSource'] + '.' + row['SuggestedSourceID']))
+            if target in channels:
+                ch = channels[target]
+                for label in list(ch.findall('display-name')):
+                    ch.remove(label)
+                ET.SubElement(ch, 'display-name', {'lang': 'en'}).text = 'FLO ' + row['FloNumber']
+
+    # Replace FloSports schedules only. ESPN+ is intentionally unchanged.
+    flo_custom = {}
+    now_utc = datetime.now(timezone.utc)
+    for target, provider_name in flo_provider_names.items():
+        if target in channels:
+            schedule = flo_custom_schedule(target, provider_name, flo_starts[target], now_utc)
+            if schedule is None:
+                # No advertised event with an ET start: never copy unrelated
+                # EPG2 events into this provider feed.
+                schedule = [flo_programme(target, 'No Event at This Time',
+                                          now_utc, now_utc + timedelta(days=2),
+                                          'No event is currently advertised for this FloSports channel.')]
+            flo_custom[target] = schedule
+    if flo_custom:
+        programmes = [p for p in programmes if p.get("channel") not in flo_custom]
+        for target, schedule in flo_custom.items():
+            programmes.extend(schedule)
+            counts[target] = len(schedule)
+    print("FloSports provider event schedules:", len(flo_custom))
+    programmes = [p for p in programmes if p.get('channel') in channels]
+
+    # Sports-only repair: don't publish orphan/empty synthetic sports aliases.
+    # Provider IDs remain available for channel assignment; genuine source IDs
+    # are retained when they contain current, non-placeholder programmes.
+    # No programme times or event titles are invented.
+    sports_ids = set()
+    provider_ids = {(r.get('EPGID') or '').strip() for r in catalog if (r.get('EPGID') or '').strip()}
+    for cid, channel in channels.items():
+        names = [el.text or '' for el in channel.findall('display-name')]
+        if any(league_feed(name) for name in names) or league_feed(cid):
+            sports_ids.add(cid)
+    now_utc = datetime.now(timezone.utc)
+    horizon = now_utc + timedelta(hours=48)
+    by_programme = defaultdict(list)
+    for p in programmes:
+        by_programme[p.get('channel', '')].append(p)
+    def genuine_future(p):
+        start = parse_xmltv_start(p.get('start', ''))
+        stop = parse_xmltv_start(p.get('stop', ''))
+        if not start or not stop or stop <= now_utc or start >= horizon or stop <= start:
+            return False
+        title = ' '.join((el.text or '') for el in p.findall('title')).strip()
+        return bool(title and not re.search(r'^(?:signing off|no event(?: at this time)?|no information|to be announced|tba|off air)$', title, re.I))
+    # Sports provider-ID schedule rescue. Source XMLTV IDs sometimes carry a
+    # usable schedule while the provider's original tvg-id remains empty.
+    # Copy actual XMLTV programme elements only; never synthesize game times.
+    # Require identical league/number and compatible regional identity.
+    provider_sports_names = defaultdict(set)
+    for r in catalog:
+        pid = (r.get('EPGID') or '').strip()
+        feed = league_feed(r.get('ChannelName', ''))
+        if pid and feed:
+            provider_sports_names[pid].add(feed)
+    for cid, ch in channels.items():
+        if cid in provider_sports_names:
+            continue
+        feeds = {league_feed(x.text or '') for x in ch.findall('display-name')}
+        feeds.discard(None)
+        if feeds and cid in provider_ids:
+            provider_sports_names[cid].update(feeds)
+
+    sports_schedule_rescue = []
+    donor_feeds = defaultdict(set)
+    for cid in sports_ids:
+        if cid not in channels or not any(genuine_future(p) for p in by_programme[cid]):
+            continue
+        feeds = {league_feed(cid)}
+        feeds.update(league_feed(x.text or '') for x in channels[cid].findall('display-name'))
+        feeds.discard(None)
+        if len({(f[0], f[1]) for f in feeds}) != 1:
+            continue
+        for feed in feeds:
+            donor_feeds[feed].add(cid)
+
+    for target, target_feeds in sorted(provider_sports_names.items()):
+        if target not in channels or len(target_feeds) != 1:
+            continue
+        if any(genuine_future(p) for p in by_programme[target]):
+            continue
+        league, number, region = next(iter(target_feeds))
+        candidate_ids = set(donor_feeds.get((league, number, region), set()))
+        if region:
+            candidate_ids.update(donor_feeds.get((league, number, ''), set()))
+        else:
+            candidate_ids.update(donor_feeds.get((league, number, 'US'), set()))
+            candidate_ids.update(donor_feeds.get((league, number, 'CA'), set()))
+        safe_donors = []
+        for donor in candidate_ids - {target}:
+            # Refuse ambiguous cross-region mappings (US versus CA).
+            labels = {league_feed(donor)}
+            labels.update(league_feed(x.text or '') for x in channels[donor].findall('display-name'))
+            labels.discard(None)
+            if len({(f[0], f[1]) for f in labels}) != 1:
+                continue
+            regions = {f[2] for f in labels if f[2]}
+            if region and any(r != region for r in regions):
+                continue
+            if not region and len(regions) > 1:
+                continue
+            upcoming = [p for p in by_programme[donor] if genuine_future(p)]
+            if upcoming:
+                safe_donors.append((donor, upcoming, regions))
+        if not safe_donors:
+            sports_schedule_rescue.append((target, league, number, region, '', 0, 'NO_VERIFIED_DONOR'))
+            continue
+        # If unregionalized provider ID has competing regional sources, do
+        # not arbitrarily choose one regional schedule.
+        if not region and len({r for _, _, rs in safe_donors for r in rs}) > 1:
+            sports_schedule_rescue.append((target, league, number, region, '', 0, 'AMBIGUOUS_REGION'))
+            continue
+        # Choose donor with most genuine upcoming records, preferring a
+        # previously selected source mapping when counts tie.
+        safe_donors.sort(key=lambda item: (len(item[1]),
+                          chosen.get(target) == chosen.get(item[0]) and chosen.get(target) is not None,
+                          item[0] == (chosen.get(target) or ('', ''))[1], item[0]), reverse=True)
+        donor, usable, _ = safe_donors[0]
+        # Replace stale/placeholder entries only for the original provider ID.
+        programmes = [p for p in programmes if p.get('channel') != target]
+        copies = []
+        for p in by_programme[donor]:
+            if genuine_future(p):
+                copy = clone(p)
+                copy.set('channel', target)
+                copies.append(copy)
+        programmes.extend(copies)
+        by_programme[target] = copies
+        counts[target] = len(copies)
+        sports_schedule_rescue.append((target, league, number, region, donor, len(copies), 'COPIED_VERIFIED_LISTINGS'))
+    print('Sports provider ID schedule rescue:',
+          sum(r[-1] == 'COPIED_VERIFIED_LISTINGS' for r in sports_schedule_rescue), 'IDs repaired')
+
+    removed_aliases = set()
+    for cid in sports_ids:
+        # Keep provider IDs even when schedules are empty: deleting them would
+        # break the provider's original tvg-id mapping in TiviMate.
+        if cid not in provider_ids and not any(genuine_future(p) for p in by_programme[cid]):
+            removed_aliases.add(cid)
+    for cid in removed_aliases:
+        channels.pop(cid, None)
+    if removed_aliases:
+        programmes = [p for p in programmes if p.get('channel') not in removed_aliases]
+    # Limit repeated sports guide choices to two XMLTV channel IDs per
+    # exact primary display name. Prioritize provider IDs and usable listings.
+    # Distinct game numbers remain distinct: NFL | 01 != NFL | 02.
+    # Only league_feed()-recognized sports are affected.
+    sports_duplicate_removed = []
+    sports_by_name = defaultdict(list)
+    for cid in sorted(sports_ids - removed_aliases):
+        channel = channels.get(cid)
+        if channel is None:
+            continue
+        labels = [(x.text or '').strip() for x in channel.findall('display-name')]
+        if not labels:
+            continue
+        # Use the primary label only. Other source aliases must not merge
+        # unrelated channels into the same group.
+        key = re.sub(r'\s+', ' ', labels[0]).casefold().strip()
+        if key:
+            sports_by_name[key].append(cid)
+    for key, ids in sports_by_name.items():
+        if len(ids) <= 2:
+            continue
+        def sports_rank(cid):
+            upcoming = sum(genuine_future(p) for p in by_programme[cid])
+            return (cid in provider_ids, upcoming > 0, upcoming,
+                    len(by_programme[cid]), not cid.startswith('matched.'), cid)
+        ranked = sorted(ids, key=sports_rank, reverse=True)
+        kept = ranked[:2]
+        for cid in ranked[2:]:
+            sports_duplicate_removed.append((cid, channels[cid].findtext('display-name', ''),
+                                              ' | '.join(kept),
+                                              'YES' if cid in provider_ids else 'NO'))
+            removed_aliases.add(cid)
+            channels.pop(cid, None)
+    if sports_duplicate_removed:
+        programmes = [p for p in programmes if p.get('channel') not in removed_aliases]
+    # Existing coverage report includes both removals and kept entries.
+    sports_coverage = []
+    for cid in sorted(sports_ids):
+        if cid in removed_aliases:
+            status = 'REMOVED_DUPLICATE' if any(x[0] == cid for x in sports_duplicate_removed) else 'REMOVED_EMPTY_ALIAS'
+        elif any(genuine_future(p) for p in by_programme[cid]):
+            status = 'HAS_UPCOMING_EVENT'
+        elif by_programme[cid]:
+            status = 'NO_UPCOMING_EVENT_OR_PLACEHOLDER_ONLY'
+        else:
+            status = 'NO_PROGRAMMES'
+        names = [el.text or '' for el in channels[cid].findall('display-name')] if cid in channels else []
+        sports_coverage.append((cid, ' | '.join(names), status, len(by_programme[cid]),
+                                sum(genuine_future(p) for p in by_programme[cid]),
+                                'YES' if cid in provider_ids else 'NO'))
+    print('Sports-only validation: ', len(sports_ids), 'sports IDs;', len(removed_aliases), 'empty synthetic aliases removed')
+    # Complete Xtream sports verification before the XMLTV file is created.
+    programmes = make_sports_guide(catalog, channels, programmes, reports)
+    programmes = apply_xtream_event_assignments(catalog, channels, programmes, reports)
+    from ahl_schedule import run as generate_ahl_schedule
+    programmes = generate_ahl_schedule(catalog, channels, programmes, reports)
+    # Live sports channel-name refresh, using EPG2/EPG37 already downloaded by
+    # this same GitHub Actions build. Never changes XMLTV IDs or stream IDs.
+    from sports_channel_names import run as refresh_sports_names
+    refresh_sports_names(catalog, channels, programmes, source_channels,
+                         source_data, chosen, reports)
+    from sports_channel_names import apply_provider_first_programmes
+    programmes = apply_provider_first_programmes(catalog, channels, programmes, reports)
+    if not channels or not programmes:
+        raise RuntimeError('No current programme data found: refusing to publish empty guide')
+
+    for row in audit:
+        if row['FloNumber'] and row['SuggestedSource'] == 'epg2':
+            cid = row['SuggestedSourceID']
+            row['EventStatus'] = ('Scheduled Event' if flo_advertised(row['ChannelName']) else 'No Event at This Time')
+        elif row['FloNumber']:
+            row['EventStatus'] = 'Unmatched'
+        else:
+            row['EventStatus'] = ''
+    with (reports / 'flosports-status.csv').open('w', newline='', encoding='utf-8') as f:
+        fields = ['FloNumber','Group','ChannelName','StreamID','EPGID','SuggestedSourceID','EventStatus','NeedsPlaylistID']
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        w.writerows({k: row.get(k, '') for k in fields} for row in audit if row['FloNumber'])
+    with (reports / 'missing-id-suggestions.csv').open('w', newline='', encoding='utf-8') as f:
+        fields = ['Group', 'ChannelName', 'StreamID', 'SuggestedSource', 'SuggestedSourceID']
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        for row in audit:
+            if row['Status'] == 'matched but missing provider EPG ID':
+                writer.writerow({field: row.get(field, '') for field in fields})
+    # TiviMate assigns XMLTV by Xtream epg_channel_id, not by stream_id or
+    # channel display name. Report missing and conflicting provider IDs clearly.
+    provider_id_to_streams = defaultdict(set)
+    for item in catalog:
+        pid = (item.get('EPGID') or '').strip()
+        sid = (item.get('StreamID') or '').strip()
+        if pid and sid:
+            provider_id_to_streams[pid].add(sid)
+    with (reports / 'tivimate-id-audit.csv').open('w', newline='', encoding='utf-8') as f:
+        fields = ['Group', 'ChannelName', 'StreamID', 'XtreamEPGID', 'OutputXMLTV_ID', 'Status', 'Source', 'SourceChannelID']
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        for item in audit:
+            pid = (item.get('EPGID') or '').strip()
+            sid = (item.get('StreamID') or '').strip()
+            output_id = pid or (('xtream.' + sid) if sid else '')
+            if not pid:
+                status = 'MISSING_XTREAM_EPG_ID_REQUIRES_PLAYLIST_ASSIGNMENT'
+            elif len(provider_id_to_streams[pid]) > 1:
+                status = 'SHARED_XTREAM_EPG_ID_CHECK_CHANNELS'
+            elif output_id not in channels:
+                status = 'ID_NOT_PUBLISHED'
+            elif not any(p.get('channel') == output_id for p in programmes):
+                status = 'ID_PRESENT_NO_PROGRAMMES'
+            else:
+                status = 'ID_MATCHES_GUIDE'
+            w.writerow({'Group': item.get('Group', ''), 'ChannelName': item.get('ChannelName', ''),
+                        'StreamID': sid, 'XtreamEPGID': pid, 'OutputXMLTV_ID': output_id,
+                        'Status': status, 'Source': item.get('SuggestedSource', ''),
+                        'SourceChannelID': item.get('SuggestedSourceID', '')})
+    print('TiviMate ID audit created; missing Xtream EPG IDs cannot be fixed by XMLTV alone')
+    with (reports / 'matching-report.csv').open('w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=['FloNumber','ESPNNumber','Group','ChannelName','StreamID','EPGID','Status','Method','SuggestedSource','SuggestedSourceID','NeedsPlaylistID','EventStatus'])
+        writer.writeheader(); writer.writerows(audit)
+    with (reports / 'coverage.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f); w.writerow(['EPGID','Source','SourceChannelID','Programmes'])
+        for target, pair in sorted(chosen.items()):
+            w.writerow([target, *pair, counts[target]])
+    with (reports / 'sports-coverage.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['XMLTV_ID', 'ChannelName', 'Status', 'ProgrammeCount', 'UpcomingEventCount48h', 'ProviderID'])
+        w.writerows(sports_coverage)
+    with (reports / 'sports-removed-aliases.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['XMLTV_ID', 'Reason'])
+        w.writerows((cid, 'Exceeded two entries for the same sports channel' if any(x[0] == cid for x in sports_duplicate_removed) else 'No upcoming non-placeholder programme; synthetic ID') for cid in sorted(removed_aliases))
+    with (reports / 'sports-provider-id-rescue.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['ProviderXMLTV_ID', 'League', 'FeedNumber', 'Region', 'DonorXMLTV_ID', 'CopiedProgrammes', 'Status'])
+        w.writerows(sports_schedule_rescue)
+    with (reports / 'sports-duplicate-limit.csv').open('w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['RemovedXMLTV_ID', 'ChannelName', 'KeptXMLTV_IDs', 'WasProviderID'])
+        w.writerows(sports_duplicate_removed)
+    print('Sports duplicate limit: removed', len(sports_duplicate_removed), 'extra IDs')
+    # Static 24/7 movie and show channels, using Xtream inventory IDs.
+    now_static = datetime.now(timezone.utc)
+    static_start = now_static.replace(hour=0, minute=0, second=0, microsecond=0)
+    static_stop = static_start + timedelta(days=1)
+    static_targets = {}
+    for item in catalog:
+        group = item.get('Group') or ''
+        name = (item.get('ChannelName') or '').strip()
+        if not allowed_category(group) or not re.search(r'24\\s*/\\s*7', group + ' ' + name, re.I):
+            continue
+        stream = (item.get('StreamID') or '').strip()
+        if not stream:
+            continue
+        title = re.sub(r'24\\s*/\\s*7', '', name, flags=re.I)
+        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\\s*[-|:]\\s*)+', '', title, flags=re.I)
+        title = re.sub(r'\\b(?:FHD|UHD|HD|SD|4K|HEVC)\\b', '', title, flags=re.I)
+        title = re.sub(r'^(?:(?:US|USA|UK|CA|GOLD|TV)\\s*[-|:]\\s*)+', '', title, flags=re.I)
+        title = re.sub(r'\\s+', ' ', title).strip(' -:|')
+        if not title:
+            continue
+        target = 'xtream.' + stream
+        static_targets[target] = title
+        if target not in channels:
+            ch = ET.Element('channel', {'id': target})
+            ET.SubElement(ch, 'display-name').text = name
+            channels[target] = ch
+    if static_targets:
+        programmes = [p for p in programmes if p.get('channel') not in static_targets]
+        for target, title in static_targets.items():
+            p = ET.Element('programme', {'channel': target,
+                'start': static_start.strftime('%Y%m%d%H%M%S +0000'),
+                'stop': static_stop.strftime('%Y%m%d%H%M%S +0000')})
+            ET.SubElement(p, 'title', {'lang': 'en'}).text = title
+            programmes.append(p)
+        print('Static 24/7 channel titles:', len(static_targets))
+
+    # EPG IDs, category names, credentials, or provider URLs.
+    # This permits remote health checks without leaking the Xtream inventory.
+    diagnostic = {
+        'generated_utc': datetime.now(timezone.utc).isoformat(),
+        'inventory_source': inventory_source,
+        'inventory_channel_count': len(catalog),
+        'xmltv_channel_count': len(channels),
+        'xmltv_programme_count': len(programmes),
+        'inventory_channels_with_epg_id': sum(bool((r.get('EPGID') or '').strip()) for r in catalog),
+        'inventory_channels_without_epg_id': sum(not bool((r.get('EPGID') or '').strip()) for r in catalog),
+    }
+    (site / 'build-health.json').write_text(
+        json.dumps(diagnostic, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    # Pages is public: whitelist outputs, including removal of stale files.
+    for public_file in site.rglob('*'):
+        if public_file.is_file() and public_file.relative_to(site).as_posix() not in (
+            'epg.xml.gz', 'build-health.json', 'index.html', '.nojekyll'
+        ):
+            public_file.unlink()
+    out = site / 'epg.xml.gz' 
+    with gzip.open(out, 'wb', compresslevel=6) as f:
+        f.write(b'<?xml version="1.0" encoding="utf-8"?>\n<tv generator-info-name="My-EPG-v2-Expanded">\n')
+        for ch in channels.values():
+            f.write(ET.tostring(ch, encoding='utf-8')); f.write(b'\n')
+        for p in programmes:
+            f.write(ET.tostring(p, encoding='utf-8')); f.write(b'\n')
+        f.write(b'</tv>\n')
+    (site / '.nojekyll').touch()
+    (site / 'index.html').write_text('<!doctype html><html><meta charset="utf-8"><title>My EPG</title><h1>My EPG</h1><p><a href="epg.xml.gz">Download guide</a></p></html>', encoding='utf-8')
+    print('Published', len(channels), 'channels;', len(programmes), 'programmes')
+    print('Matching report:', reports / 'matching-report.csv')
+    print('Missing-ID suggestions:', reports / 'missing-id-suggestions.csv')
+
+if __name__ == '__main__':
+    main()
+, cid, re.I):
+            return False
+        labels = [cid] + [(e.text or '') for e in channel.findall('display-name')]
+        combined = ' '.join(labels).upper()
+        if re.search(r'24\\s*/\\s*7|\\b(?:SPORTS?|NFL|NBA|NHL|AHL|MLB|MILB|MLS|WNBA|NCAA|NCAAF|NCAAB|UFC|PPV|FLOSPORTS|FLO SPORTS|ESPN\\+|ESPN PLUS|LEAGUE PASS|REDZONE|GAME\\s*0*\\d+|B1G\\+)\\b', combined):
+            return False
+        if any(league_feed(label) for label in labels):
+            return False
+        return True
+
+    regular_37_added = 0
+    existing_donors = set(chosen.values())
+    for pair, channel in source_channels.items():
+        if not regular_epg37(pair, channel) or pair in existing_donors:
+            continue
+        cid = pair[1]
+        # Do not overwrite any existing provider or sports XMLTV ID.
+        target = cid if cid not in chosen else 'epg37.' + cid
+        if target in chosen:
+            continue
+        chosen[target] = pair
+        regular_37_added += 1
+    print('Standalone EPG37 regular US/UK/CA channels added:', regular_37_added)
+
     reverse = defaultdict(list)
     for target, pair in chosen.items():
         reverse[pair].append(target)
