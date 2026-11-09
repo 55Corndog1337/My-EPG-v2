@@ -88,6 +88,13 @@ def run(catalog,channels,programmes,reports):
             team=team.replace("LE HIGH VALLEY","LEHIGH VALLEY").replace("W-B/SCRANTON","WILKES-BARRE/SCRANTON")
             if team:
                 targets[pid]=team
+                provider_id=(row.get("EPGID") or "").strip()
+                if provider_id and provider_id != pid:
+                    if provider_id not in channels:
+                        alias=ET.Element("channel",{"id":provider_id})
+                        ET.SubElement(alias,"display-name").text=name
+                        channels[provider_id]=alias
+                    targets[provider_id]=team
     if not targets:
         print("AHL generator: no mapped team channels")
         return programmes
