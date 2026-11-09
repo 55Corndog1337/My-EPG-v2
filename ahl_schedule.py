@@ -181,15 +181,27 @@ def run(catalog, channels, programmes, reports):
     from pathlib import Path
     from collections import defaultdict
     now = datetime.now(timezone.utc)
-    try:
-        games = _season_events()
-    except Exception as exc:
-        print("AHL full-season feed unavailable:", type(exc).__name__)
-        games = []
-    if len(games) < 300:
-        print("AHL full-season feed incomplete:", len(games),
-              "verified events; preserving fallback guide and refusing partial season CSV")
+    # CSV is the authoritative schedule. This build never replaces it with a
+    # live network feed; the separate refresh job updates the CSV on GitHub.
+    source_csv = Path(reports).parent / "reports" / "ahl-season-2026-27.csv"
+    if not source_csv.is_file():
+        print("AHL CSV absent: run the AHL schedule refresh workflow first")
         return _legacy_run(catalog, channels, programmes, reports)
+    games_by_key = {}
+    with source_csv.open(newline="", encoding="utf-8") as handle:
+        for item in csv.DictReader(handle):
+            try:
+                away, home = item["Away"].strip(), item["Home"].strip()
+                start = datetime.fromisoformat(item["StartUTC"].replace("Z", "+00:00"))
+                if start.tzinfo is None:
+                    start = start.replace(tzinfo=timezone.utc)
+                start = start.astimezone(timezone.utc)
+                if away and home:
+                    games_by_key[(away, home, start)] = (away, home, start)
+            except (KeyError, ValueError):
+                continue
+    games = sorted(games_by_key.values(), key=lambda x: x[2])
+    print("AHL loaded schedule FROM GITHUB CSV:", len(games), "games")
     # StreamID comes only from the Xtream inventory, never from the schedule feed.
     teams = {}
     for row in catalog:
