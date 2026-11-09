@@ -68,14 +68,28 @@ def write_xml(root,path):
 
 def overlay(base,generated):
     root=read_xml(base);add=read_xml(generated)
-    new_ids={e.get('id') for e in add.findall('channel')}
-    # Only replace schedules for sports IDs that are actually present in the target playlist.
+    # NHL numbered games are generated from live Xtream names in build_epg.py.
+    # Never overwrite their programmes with the separate sports overlay's
+    # 'No Game Today' placeholders or unrelated donor EPG listings.
+    protected=set()
+    try:
+        with open('channels.csv',newline='',encoding='utf-8-sig') as f:
+            for row in csv.DictReader(f):
+                if re.search(r'\\bNHL GAME\\s*0*\\d+\\b',row.get('ChannelName',''),re.I):
+                    sid=(row.get('StreamID') or '').strip()
+                    if sid.isdigit():protected.add('xtream.'+sid)
+                    epg=(row.get('EPGID') or '').strip()
+                    if epg.upper().startswith('NHL.'):protected.add(epg)
+    except FileNotFoundError:
+        pass
+    new_ids={e.get('id') for e in add.findall('channel')} - protected
     for p in list(root.findall('programme')):
         if p.get('channel') in new_ids:root.remove(p)
     existing={c.get('id') for c in root.findall('channel')}
     for c in add.findall('channel'):
-        if c.get('id') not in existing:root.append(c)
-    for p in add.findall('programme'):root.append(p)
+        if c.get('id') not in existing and c.get('id') not in protected:root.append(c)
+    for p in add.findall('programme'):
+        if p.get('channel') not in protected:root.append(p)
     return root
 
 def epg37_regular_matches(epg37_path, m3u_rows, excluded_ids):
