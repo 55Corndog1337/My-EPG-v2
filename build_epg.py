@@ -1442,6 +1442,8 @@ def main():
     programmes = apply_provider_first_programmes(catalog, channels, programmes, reports)
     from sports_channel_names import apply_nhl_xtream_slots
     programmes = apply_nhl_xtream_slots(catalog, channels, programmes, reports)
+    from nfl_replay_board import apply as apply_nfl_replay_board
+    programmes = apply_nfl_replay_board(catalog, channels, programmes)
     if not channels or not programmes:
         raise RuntimeError('No current programme data found: refusing to publish empty guide')
 
