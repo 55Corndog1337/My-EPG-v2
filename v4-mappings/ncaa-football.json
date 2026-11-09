@@ -103,6 +103,106 @@
       "source": "epg2",
       "source_channel_id": "dummy-26375",
       "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 11",
+      "xtream_original_channel_name": "US - NCAAF 11 : SEC NETWORK",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011648",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26376",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 12",
+      "xtream_original_channel_name": "US - NCAAF 12 : CBSSN",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011649",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26377",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 13",
+      "xtream_original_channel_name": "US - NCAAF 13 : FS1",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011650",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26378",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 14",
+      "xtream_original_channel_name": "US - NCAAF 14 : CW",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011651",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26379",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 15",
+      "xtream_original_channel_name": "US - NCAAF 15 : TNT",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011652",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26380",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 16",
+      "xtream_original_channel_name": "US - NCAAF 16 : USA NETWORK",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011653",
+      "original_xtream_epgid": "",
+      "source": "epg2",
+      "source_channel_id": "dummy-26381",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 17",
+      "xtream_original_channel_name": "US - NCAAF 17 : BROWN @ YALE NOV 7 12:00 PM ET",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011654",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "255.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 18",
+      "xtream_original_channel_name": "US - NCAAF 18 : COLGATE @ LEHIGH NOV 7 12:00 PM ET",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011655",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "256.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 19",
+      "xtream_original_channel_name": "US - NCAAF 19 : DARTMOUTH @ PRINCETON NOV 7 12:00 PM ET",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011656",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "257.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 20",
+      "xtream_original_channel_name": "US - NCAAF 20 : MOREHEAD STATE @ MARIST NOV 7 12:00 PM ET",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011657",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "258.NCAAF",
+      "status": "user_selected"
     }
   ]
 }
