@@ -92,9 +92,8 @@ def describe(p):
     if date or time:
         detail = " | ".join(x.group(0) for x in (date, time) if x)
         return f"{title} | {detail}" if detail else title
-    when = date_time_from_programme(p)
-    if when:
-        return f"{title} | {when}"
+    # XMLTV start may be a synthetic 24-hour placeholder, not kickoff.
+    # Never misrepresent it as the actual game time.
     return title
 
 
