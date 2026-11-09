@@ -1,14 +1,28 @@
 {
   "project": "My-EPG-v4",
   "category": "NBA TV",
+  "snapshot_date": "2026-11-09",
   "source": "epg37",
-  "status": "source_selected_pending_channel_id_validation",
-  "mapping": {
-    "xtream_channel": "NBA TV",
-    "source": "epg37",
-    "match_method": "exact_channel_identity",
-    "source_channel_id": null,
-    "xtream_stream_id": null
-  },
-  "note": "Use EPG37 actual NBA TV listings. Resolve exact source channel ID and Xtream StreamID from inventories before guide generation. Do not alter V2 live EPG."
+  "status": "verified_exact_xtream_and_epg37_channel_ids",
+  "note": "Two US NBA TV channels exist in the November 9 Xtream inventory, one in NBA and one in NBA IN ARENA. Preserve each original StreamID and EPGID. EPG37 channel NBAtv.us12 explicitly lists US - NBA TV FHD ◉. V4 only; do not modify V2 live EPG or any other NBA mappings.",
+  "mappings": [
+    {
+      "xtream_group": "AM | USA | NBA",
+      "xtream_channel": "US - NBA TV FHD ◉",
+      "xtream_stream_id": "71986",
+      "original_xtream_epgid": "nbatv.us",
+      "source": "epg37",
+      "source_channel_id": "NBAtv.us12",
+      "match_method": "exact_display_name"
+    },
+    {
+      "xtream_group": "AM | USA | NBA IN ARENA",
+      "xtream_channel": "US - NBA TV FHD ◉",
+      "xtream_stream_id": "1404713",
+      "original_xtream_epgid": "nbatv.us",
+      "source": "epg37",
+      "source_channel_id": "NBAtv.us12",
+      "match_method": "exact_display_name"
+    }
+  ]
 }
