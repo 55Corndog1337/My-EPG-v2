@@ -1,0 +1,168 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NFL Numbered Games",
+  "status": "complete",
+  "note": "V4 mapping configuration only. Preserve Xtream original names, StreamIDs, and EPGIDs; EPG37 display names and programme titles are not authoritative verified live game schedules. Do not change V2.",
+  "mappings": [
+    {
+      "channel": "NFL Game 01",
+      "xtream_original_channel_name": "US - NFL GAME 01 : MNF BILLS @ VIKINGS NOV 9 – 8:15 PM ET / NOV 10 – 1:15 AM UK",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79450",
+      "original_xtream_epgid": "NFL.GAME.01",
+      "source": "epg37",
+      "source_channel_id": "117.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 02",
+      "xtream_original_channel_name": "US - NFL GAME 02 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79451",
+      "original_xtream_epgid": "NFL.GAME.02",
+      "source": "epg37",
+      "source_channel_id": "118.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 03",
+      "xtream_original_channel_name": "US - NFL GAME 03 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79452",
+      "original_xtream_epgid": "NFL.GAME.03",
+      "source": "epg37",
+      "source_channel_id": "119.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 04",
+      "xtream_original_channel_name": "US - NFL GAME 04 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79453",
+      "original_xtream_epgid": "NFL.GAME.04",
+      "source": "epg37",
+      "source_channel_id": "120.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 05",
+      "xtream_original_channel_name": "US - NFL GAME 05 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79454",
+      "original_xtream_epgid": "NFL.GAME.05",
+      "source": "epg37",
+      "source_channel_id": "121.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 06",
+      "xtream_original_channel_name": "US - NFL GAME 06 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79455",
+      "original_xtream_epgid": "NFL.GAME.06",
+      "source": "epg37",
+      "source_channel_id": "122.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 07",
+      "xtream_original_channel_name": "US - NFL GAME 07 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79456",
+      "original_xtream_epgid": "NFL.GAME.07",
+      "source": "epg37",
+      "source_channel_id": "123.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 08",
+      "xtream_original_channel_name": "US - NFL GAME 08 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79457",
+      "original_xtream_epgid": "NFL.GAME.08",
+      "source": "epg37",
+      "source_channel_id": "124.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 09",
+      "xtream_original_channel_name": "US - NFL GAME 09 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79458",
+      "original_xtream_epgid": "NFL.GAME.09",
+      "source": "epg37",
+      "source_channel_id": "125.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 10",
+      "xtream_original_channel_name": "US - NFL GAME 10 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79459",
+      "original_xtream_epgid": "NFL.GAME.10",
+      "source": "epg37",
+      "source_channel_id": "126.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 11",
+      "xtream_original_channel_name": "US - NFL GAME 11 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79460",
+      "original_xtream_epgid": "NFL.GAME.11",
+      "source": "epg37",
+      "source_channel_id": "127.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 12",
+      "xtream_original_channel_name": "US - NFL GAME 12 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79461",
+      "original_xtream_epgid": "NFL.GAME.12",
+      "source": "epg37",
+      "source_channel_id": "128.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 13",
+      "xtream_original_channel_name": "US - NFL GAME 13 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79462",
+      "original_xtream_epgid": "NFL.GAME.13",
+      "source": "epg37",
+      "source_channel_id": "129.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 14",
+      "xtream_original_channel_name": "US - NFL GAME 14 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79463",
+      "original_xtream_epgid": "NFL.GAME.14",
+      "source": "epg37",
+      "source_channel_id": "130.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 15",
+      "xtream_original_channel_name": "US - NFL GAME 15 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79464",
+      "original_xtream_epgid": "NFL.GAME.15",
+      "source": "epg37",
+      "source_channel_id": "131.NFL",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NFL Game 16",
+      "xtream_original_channel_name": "US - NFL GAME 16 :",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79465",
+      "original_xtream_epgid": "NFL.GAME.16",
+      "source": "epg37",
+      "source_channel_id": "132.NFL",
+      "status": "user_selected"
+    }
+  ]
+}
