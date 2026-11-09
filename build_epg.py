@@ -1094,6 +1094,36 @@ def main():
                     elem.clear()
                 # IMPORTANT: do not clear title/desc children before cloning
                 # their parent programme. Earlier builds lost every title.
+    # NFL numbered game events use four-hour windows from verified kickoff.
+    # Preserve all other sports schedules and do not extend placeholder shows.
+    nfl_game_ids = set()
+    for row in catalog:
+        name = (row.get('ChannelName') or '')
+        if re.search(r'\\bNFL\\s*(?:GAME\\s*)?0*(?:[1-9]|1[0-6])\\b', name, re.I):
+            epgid = (row.get('EPGID') or '').strip()
+            stream = (row.get('StreamID') or '').strip()
+            if epgid:
+                nfl_game_ids.add(epgid)
+            if stream:
+                nfl_game_ids.add('xtream.' + stream)
+    for cid, channel in channels.items():
+        if re.search(r'\\bNFL\\s*(?:GAME\\s*)?0*(?:[1-9]|1[0-6])\\b',
+                     ' '.join(e.text or '' for e in channel.findall('display-name')), re.I):
+            nfl_game_ids.add(cid)
+    for p in programmes:
+        if p.get('channel') not in nfl_game_ids:
+            continue
+        title = (p.findtext('title') or '').strip()
+        if not title or re.search(r'upcoming|concluded|no game|signing off|to be announced|tba', title, re.I):
+            continue
+        if not re.search(r'\\b(?:vs\\.?|@|at)\\b|\\s@\\s', title, re.I):
+            continue
+        start_dt = parse_xmltv_start(p.get('start'))
+        if start_dt:
+            end_dt = start_dt + timedelta(hours=4)
+            p.set('stop', end_dt.astimezone(timezone.utc).strftime('%Y%m%d%H%M%S +0000'))
+    print('NFL numbered-game programme windows normalized to four hours')
+
     # WATE 6 fallback, when its old EPG37 mapping is stale.
     wate_ids = {r.get('original_tvg_id') for r in legacy
                 if 'WATE' in (r.get('playlist_channel') or '').upper() and r.get('original_tvg_id')}
