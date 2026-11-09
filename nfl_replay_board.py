@@ -133,7 +133,7 @@ def apply(catalog, channels, programmes):
             ch = ET.Element("channel", {"id": pid})
             ET.SubElement(ch, "display-name").text = f"NFL Replay {int(pid.split('.')[-1])-1329644}"
             channels[pid] = ch
-        for offset in range(3):
+        for offset in range(7):
             day = today + timedelta(days=offset)
             if day > end:
                 break
