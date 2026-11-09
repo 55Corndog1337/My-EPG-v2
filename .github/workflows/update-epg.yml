@@ -8,8 +8,6 @@ on:
       - 'sports_channel_names.py'
       - 'ahl_schedule.py'
       - 'encrypt_inventory.py'
-  schedule:
-    - cron: '17 */4 * * *'
 permissions:
   contents: read
   pages: write
