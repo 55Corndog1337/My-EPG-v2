@@ -54,6 +54,39 @@ jobs:
           XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
           XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
         run: python sports_overlay.py --base site/epg.xml.gz --output-dir site --epg37-file epg37.xml.gz
+      - name: Verify AHL Xtream mappings in published XMLTV
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          python - <<'PY'
+          import csv, gzip, xml.etree.ElementTree as ET
+          from collections import Counter
+          from pathlib import Path
+          inventory = list(csv.DictReader(open('channels.csv', encoding='utf-8-sig')))
+          targets = {}
+          for row in inventory:
+              name = (row.get('ChannelName') or '').upper()
+              group = (row.get('Group') or '').upper()
+              sid = (row.get('StreamID') or '').strip()
+              if 'AHL' in group and 'AHL TEAMS' in name and sid.isdigit():
+                  targets['xtream.' + sid] = row['ChannelName']
+          assert len(targets) == 32, f'Expected 32 AHL teams, got {len(targets)}'
+          season_ids = set()
+          with open('reports/ahl-season-2026-27.csv', newline='', encoding='utf-8-sig') as f:
+              season_ids = {row['XMLTV_ID'] for row in csv.DictReader(f)}
+          assert season_ids <= targets.keys(), 'AHL season contains unmapped Xtream IDs'
+          for path in ('site/epg.xml.gz', 'site/epg-xtream.xml.gz'):
+              with gzip.open(path, 'rb') as f:
+                  root = ET.parse(f).getroot()
+              channels = {ch.get('id') for ch in root.findall('channel')}
+              count = Counter(p.get('channel') for p in root.findall('programme'))
+              missing = sorted(set(targets) - channels)
+              empty = sorted(k for k in targets if not count[k])
+              assert not missing, f'{path}: AHL channel IDs missing: {missing}'
+              assert not empty, f'{path}: AHL programmes missing: {empty}'
+              print(path, 'AHL channels:', len(targets), 'programmes:', sum(count[k] for k in targets))
+          print('AHL mapping verified; schedule IDs:', len(season_ids),
+                'Bridgeport fallback:', 'xtream.1056397' not in season_ids)
+          PY
       - name: Publish guides and public diagnostics only
         if: steps.clock.outputs.run == 'true'
         run: |
