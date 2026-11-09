@@ -24,7 +24,7 @@ def eligible(row):
     league=classify(row)
     if not league: return None
     name=row.get("ChannelName") or ""
-    m=re.search(r"\b(?:GAME|GAMES|FLO|FLSP|ESPN\+?)\s*[-#:| ]*0*(\d{1,3})\b",name,re.I)
+    m=re.search(r"\b(?:NCAAF|NCAA\s*FOOTBALL|GAME|GAMES|FLO|FLSP|ESPN\+?)\s*[-#:| ]*0*(\d{1,3})\b",name,re.I)
     if not m: return None
     number=int(m.group(1))
     if league=="NCAAF" and not 17<=number<=85: return None
@@ -174,7 +174,13 @@ def apply(catalog,channels,programmes):
                 ET.SubElement(p,"title",{"lang":"en"}).text=title
                 ET.SubElement(p,"desc",{"lang":"en"}).text=event+" | "+label
                 output.append(p)
-            if output:changed[target]=output
+            if output:
+                changed[target]=output
+                if item.get("league")=="NCAAF":
+                    ch=channels.get(target)
+                    if ch is not None:
+                        for display in ch.findall("display-name"):ch.remove(display)
+                        ET.SubElement(ch,"display-name").text="Game "+str(next((int(re.search(r"NCAAF\s*0*(\d+)",(row.get("ChannelName") or ""),re.I).group(1)) for row in catalog if str(row.get("StreamID") or "").strip()==sid and re.search(r"NCAAF\s*0*(\d+)",(row.get("ChannelName") or ""),re.I)),0)).zfill(2)
         except (KeyError,TypeError,ValueError):continue
     if changed:
         programmes[:]=[p for p in programmes if p.get("channel") not in changed]
