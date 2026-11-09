@@ -177,6 +177,28 @@ def _season_events():
 
 
 def run(catalog, channels, programmes, reports):
+    """Merge the committed full-season AHL XMLTV as a local EPG source."""
+    from pathlib import Path
+    source = Path(__file__).resolve().parent / "sources" / "ahl-2026-27.xml"
+    if not source.is_file():
+        print("AHL static XMLTV source missing:", source)
+        return programmes
+    root = ET.parse(source).getroot()
+    ids = set()
+    for channel in root.findall("channel"):
+        cid = channel.get("id")
+        if cid:
+            ids.add(cid)
+            channels[cid] = channel
+    programmes = [p for p in programmes if p.get("channel") not in ids]
+    new_programmes = root.findall("programme")
+    programmes.extend(new_programmes)
+    print("AHL STATIC SOURCE:", len(ids), "Xtream channels;",
+          len(new_programmes), "full-season XMLTV programmes")
+    return programmes
+
+
+def _unused_dynamic_run(catalog, channels, programmes, reports):
     import csv
     from pathlib import Path
     from collections import defaultdict
