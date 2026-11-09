@@ -856,6 +856,22 @@ def main():
             # ESPN+ feeds must use EPG37, never a similarly named EPG2 feed.
             candidates = set(espn_index.get(espn_num, set()))
             method = 'numbered ESPN+ to EPG37' if len(candidates) == 1 else ('ESPN+ ambiguous in EPG37' if candidates else 'ESPN+ absent from EPG37')
+        # NCAAB: force same-number EPG2 mapping for every Xtream numbered feed.
+        # Do not let fuzzy matches or source-quality rankings switch leagues/sources.
+        if slot and slot[0] == 'NCAAB' and slot[1] in (*range(1,26),36,37,38):
+            ncaab_number = slot[1]
+            ncaab_id = 'NCAAB.%02d' % ncaab_number
+            epgid = ncaab_id
+            ncaab_pairs = set()
+            for source_pair, source_ch in source_channels.items():
+                if source_pair[0] != 'epg2':
+                    continue
+                labels = [source_pair[1]] + [x.text or '' for x in source_ch.findall('display-name')]
+                if any(re.search(r'\bNCAAB\s*0*%d\b' % ncaab_number, label, re.I) for label in labels):
+                    ncaab_pairs.add(source_pair)
+            candidates = ncaab_pairs
+            method = ('NCAAB same-number EPG2' if len(candidates) == 1
+                      else 'NCAAB EPG2 missing or ambiguous')
         # Local East Tennessee stations: match actual call letters and
         # subchannel identity in EPG2/EPG37, not a different city's affiliate.
         # Keep provider ID when present; use Xtream StreamID for blank IDs.
