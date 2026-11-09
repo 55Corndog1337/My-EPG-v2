@@ -1,0 +1,31 @@
+name: Publish NFL full-season team EPG
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - generate_nfl_season.py
+      - .github/workflows/nfl-season-epg.yml
+  schedule:
+    - cron: '30 8 * * 1'
+permissions:
+  contents: write
+jobs:
+  nfl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build full NFL season guide
+        run: python generate_nfl_season.py
+      - name: Publish NFL guide in repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f site/nfl-2026-season.xml.gz
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish NFL 2026 full-season team EPG'
+            git pull --rebase
+            git push
+          fi
