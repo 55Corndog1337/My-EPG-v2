@@ -83,7 +83,9 @@ def run(catalog,channels,programmes,reports):
                 ET.SubElement(ch,"display-name").text=name
                 channels[pid]=ch
             team=re.sub(r"^(?:(?:US|USA|CA|VIP|AHL|TEAMS?)\s*[-:|]\s*)+","",name,flags=re.I)
-            team=re.sub(r"\b(?:AHL|TEAMS?|HD|FHD|UHD|4K)\b"," ",team,flags=re.I).strip(" -:|")\n            team=re.sub(r"\s+"," ",team).strip()\n            team=team.replace("LE HIGH VALLEY","LEHIGH VALLEY").replace("W-B/SCRANTON","WILKES-BARRE/SCRANTON")
+            team=re.sub(r"\b(?:AHL|TEAMS?|HD|FHD|UHD|4K)\b"," ",team,flags=re.I).strip(" -:|")
+            team=re.sub(r"\s+"," ",team).strip()
+            team=team.replace("LE HIGH VALLEY","LEHIGH VALLEY").replace("W-B/SCRANTON","WILKES-BARRE/SCRANTON")
             if team:
                 targets[pid]=team
     if not targets:
