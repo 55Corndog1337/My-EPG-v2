@@ -391,6 +391,9 @@ def sports_live_feed(name):
 def event_teams(name):
     # Require a genuine two-team event; remove channel-number prefix first.
     name = re.sub(r'^.*?\b(?:NBA|NFL|NHL|MLB|MLS|AHL|MILB|NCAAF|NCAAB)\s*(?:GAME|GAMES|FEED|CHANNEL|CH)?\s*[-_#|: ]*\d+\s*[-:|]?\s*', '', name or '', flags=re.I)
+    # Provider event names can follow either a colon or a dash after GAME NN.
+    # Never use the league/channel prefix itself as part of a team name.
+    name = re.sub(r'^\s*[-:|]+\s*', '', name)
     name = re.split(r'\s*\(?:\s*\d{1,2}:\d{2}', name)[0]
     m = SPORTS_MATCHUP.search(name)
     if not m: return None
@@ -505,9 +508,12 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
         is_espn = bool(re.search(r'\bESPN\s*(?:\+|PLUS)\b', name, re.I))
         # Numbered game feeds take their event assignment from the current
         # Xtream name, never from a generic league schedule or EPG donor.
-        numbered = re.search(r'\b(NBA|NFL|MLS|MILB|MLB)\s*(?:GAME\s*)?0*(\d{1,2})\b', name, re.I)
+        numbered = re.search(r'\b(NBA|NFL|NHL|MLS|MILB|MLB|WNBA|AHL|NCAAF|NCAAB)\s*(?:GAME\s*)?0*(\d{1,2})\b', name, re.I)
         is_numbered = bool(numbered and (
             (numbered.group(1).upper() == 'NBA' and 1 <= int(numbered.group(2)) <= 15) or
+            (numbered.group(1).upper() == 'NHL' and 1 <= int(numbered.group(2)) <= 16) or
+            (numbered.group(1).upper() == 'WNBA' and 1 <= int(numbered.group(2)) <= 10) or
+            (numbered.group(1).upper() == 'AHL' and 1 <= int(numbered.group(2)) <= 70) or
             (numbered.group(1).upper() == 'NFL' and 1 <= int(numbered.group(2)) <= 16) or
             (numbered.group(1).upper() == 'MLS' and 1 <= int(numbered.group(2)) <= 34) or
             (numbered.group(1).upper() in ('MILB', 'MLB') and 1 <= int(numbered.group(2)) <= 70)))
@@ -536,7 +542,7 @@ def apply_xtream_event_assignments(catalog, channels, programmes, reports):
                 start = min(candidates, key=lambda dt: abs((dt-now).total_seconds()))
                 specified_zone = time_match.group(4).upper()
                 if specified_zone == 'ET' or start.astimezone(eastern).tzname() == specified_zone:
-                    title = name.split(':', 1)[-1].split(date_match.group(0), 1)[0].strip(' -:|')
+                    title = re.split(r'\b(?:NBA|NFL|NHL|MLS|MILB|MLB|WNBA|AHL|NCAAF)\s*(?:GAME\s*)?0*\d{1,2}\s*[:\-]\s*', name, maxsplit=1, flags=re.I)[-1].split(date_match.group(0), 1)[0].strip(' -:|')
                     title = re.sub(r'^(?:LIVE|EVENT)\s*[-:|]\s*', '', title, flags=re.I).strip()
                     if title:
                         assignment = (title, start)
