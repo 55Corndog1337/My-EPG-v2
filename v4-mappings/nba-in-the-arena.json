@@ -1,0 +1,310 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NBA In the Arena",
+  "snapshot_date": "2026-11-09",
+  "status": "user_approved_configuration",
+  "source": "static",
+  "note": "V4 configuration only. Resolve and retain original Xtream StreamIDs and EPGIDs from the current inventory; do not fabricate IDs. Leave V2 live EPG and all other NBA mapping files unchanged.",
+  "mappings": [
+    {
+      "xtream_channel": "NBA In the Arena 01",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 01",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 02",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 02",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 03",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 03",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 04",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 04",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 05",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 05",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 06",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 06",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 07",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 07",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 08",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 08",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 09",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 09",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 10",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 10",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 11",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 11",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 12",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 12",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 13",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 13",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 14",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 14",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 15",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 15",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 16",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 16",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 17",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 17",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 18",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 18",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 19",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 19",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 20",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 20",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 21",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 21",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 22",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 22",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 23",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 23",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 24",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 24",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 25",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 25",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 26",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 26",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 27",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 27",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 28",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 28",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 29",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 29",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    },
+    {
+      "xtream_channel": "NBA In the Arena 30",
+      "xtream_stream_id": null,
+      "xtream_epgid": null,
+      "xtream_id_resolution": "lookup_existing_inventory",
+      "source": "static",
+      "programme_title": "NBA In the Arena 30",
+      "programme_duration_hours": 24,
+      "repeat_daily": true
+    }
+  ]
+}
