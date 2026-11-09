@@ -1,0 +1,338 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NFL Team Channels",
+  "status": "complete",
+  "note": "33 Xtream streams for 32 teams (two Patriots). EPG37 team identity mapping; source programme schedules must be checked separately. Original Xtream EPGIDs preserved, including Vikings tf1.fr. V2 unchanged.",
+  "mappings": [
+    {
+      "channel": "NFL Teams - PATRIOTS",
+      "xtream_original_channel_name": "US - NFL TEAMS - PATRIOTS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79449",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NewEnglandPatriots.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - 49ERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - 49ERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79558",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "SanFrancisco49ers.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - BEARS",
+      "xtream_original_channel_name": "US - NFL TEAMS - BEARS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79559",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "ChicagoBears.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - BENGALS",
+      "xtream_original_channel_name": "US - NFL TEAMS - BENGALS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79560",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "CincinnatiBengals.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - BILLS",
+      "xtream_original_channel_name": "US - NFL TEAMS - BILLS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79561",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "BuffaloBills.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - BRONCOS",
+      "xtream_original_channel_name": "US - NFL TEAMS - BRONCOS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79562",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "DenverBroncos.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - BROWNS",
+      "xtream_original_channel_name": "US - NFL TEAMS - BROWNS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79563",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "ClevelandBrowns.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - BUCCANEERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - BUCCANEERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79564",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "TampaBayBuccaneers.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - CARDINALS",
+      "xtream_original_channel_name": "US - NFL TEAMS - CARDINALS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79565",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "ArizonaCardinals.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - CHARGERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - CHARGERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79566",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "LosAngelesChargers.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - GIANTS",
+      "xtream_original_channel_name": "US - NFL TEAMS - GIANTS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79567",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NewYorkGiants.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - COLTS",
+      "xtream_original_channel_name": "US - NFL TEAMS - COLTS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79568",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "IndianapolisColts.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - COWBOYS",
+      "xtream_original_channel_name": "US - NFL TEAMS - COWBOYS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79569",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "DallasCowboys.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - DOLPHINS",
+      "xtream_original_channel_name": "US - NFL TEAMS - DOLPHINS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79570",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "MiamiDolphins.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - EAGLES",
+      "xtream_original_channel_name": "US - NFL TEAMS - EAGLES",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79571",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "PhiladelphiaEagles.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - FALCONS",
+      "xtream_original_channel_name": "US - NFL TEAMS - FALCONS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79572",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "AtlantaFalcons.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - JAGUARS",
+      "xtream_original_channel_name": "US - NFL TEAMS - JAGUARS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79573",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "JacksonvilleJaguars.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - JETS",
+      "xtream_original_channel_name": "US - NFL TEAMS - JETS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79574",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NewYorkJets.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - LIONS",
+      "xtream_original_channel_name": "US - NFL TEAMS - LIONS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79575",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "DetroitLions.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - PACKERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - PACKERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79576",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "GreenBayPackers.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - PANTHERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - PANTHERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79577",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "CarolinaPanthers.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - PATRIOTS",
+      "xtream_original_channel_name": "US - NFL TEAMS - PATRIOTS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79578",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NewEnglandPatriots.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - RAIDERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - RAIDERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79579",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "LasVegasRaiders.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - RAMS",
+      "xtream_original_channel_name": "US - NFL TEAMS - RAMS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79580",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "LosAngelesRams.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - RAVENS",
+      "xtream_original_channel_name": "US - NFL TEAMS - RAVENS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79581",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "BaltimoreRavens.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - SAINTS",
+      "xtream_original_channel_name": "US - NFL TEAMS - SAINTS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79583",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NewOrleansSaints.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - SEAHAWKS",
+      "xtream_original_channel_name": "US - NFL TEAMS - SEAHAWKS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79584",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "SeattleSeahawks.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - STEELERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - STEELERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79585",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "PittsburghSteelers.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - TEXANS",
+      "xtream_original_channel_name": "US - NFL TEAMS - TEXANS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79586",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "HoustonTexans.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - TITANS",
+      "xtream_original_channel_name": "US - NFL TEAMS - TITANS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79587",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "TennesseeTitans.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - VIKINGS",
+      "xtream_original_channel_name": "US - NFL TEAMS - VIKINGS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "79588",
+      "original_xtream_epgid": "tf1.fr",
+      "source": "epg37",
+      "source_channel_id": "MinnesotaVikings.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - COMMANDERS",
+      "xtream_original_channel_name": "US - NFL TEAMS - COMMANDERS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "578369",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "WashingtonCommanders.nfl12",
+      "status": "mapped"
+    },
+    {
+      "channel": "NFL Teams - CHIEFS",
+      "xtream_original_channel_name": "US - NFL TEAMS - CHIEFS",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "578370",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "KansasCityChiefs.nfl12",
+      "status": "mapped"
+    }
+  ]
+}
