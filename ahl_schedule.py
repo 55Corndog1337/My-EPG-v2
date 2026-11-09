@@ -177,24 +177,85 @@ def _season_events():
 
 
 def run(catalog, channels, programmes, reports):
-    """Merge the committed full-season AHL XMLTV as a local EPG source."""
+    """One rolling 24-hour AHL guide, sourced only from committed season CSV.
+
+    No live AHL fetch. The 4-hourly master build refreshes the 24-hour window.
+    """
+    import csv
     from pathlib import Path
-    source = Path(__file__).resolve().parent / "sources" / "ahl-2026-27.xml"
+    now = datetime.now(timezone.utc)
+    day_end = now + timedelta(hours=24)
+    source = Path(__file__).resolve().parent / "reports" / "ahl-season-2026-27.csv"
     if not source.is_file():
-        print("AHL static XMLTV source missing:", source)
+        print("AHL static CSV missing:", source)
         return programmes
-    root = ET.parse(source).getroot()
-    ids = set()
-    for channel in root.findall("channel"):
-        cid = channel.get("id")
-        if cid:
-            ids.add(cid)
-            channels[cid] = channel
-    programmes = [p for p in programmes if p.get("channel") not in ids]
-    new_programmes = root.findall("programme")
-    programmes.extend(new_programmes)
-    print("AHL STATIC SOURCE:", len(ids), "Xtream channels;",
-          len(new_programmes), "full-season XMLTV programmes")
+
+    by_team = {}
+    with source.open(newline="", encoding="utf-8-sig") as handle:
+        for row in csv.DictReader(handle):
+            pid = (row.get("XMLTV_ID") or "").strip()
+            if not pid.startswith("xtream."):
+                continue
+            try:
+                start = datetime.fromisoformat(row["StartUTC"].replace("Z", "+00:00"))
+                end = datetime.fromisoformat(row["EndUTC"].replace("Z", "+00:00"))
+                if start.tzinfo is None or end.tzinfo is None:
+                    continue
+                by_team.setdefault(pid, {})[(start, row["Event"])] = (
+                    start, end, row["Event"])
+            except (ValueError, KeyError):
+                continue
+
+    # Match the Xtream inventory, not schedule team names, to avoid reassigning
+    # Bridgeport's existing ID to the new Hamilton franchise.
+    mapped = {}
+    for row in catalog:
+        group = (row.get("Group") or "").upper()
+        name = (row.get("ChannelName") or "").strip()
+        sid = (row.get("StreamID") or "").strip()
+        if "AHL" not in group or "AHL TEAMS" not in name.upper() or not sid:
+            continue
+        pid = "xtream." + sid
+        mapped[pid] = name
+        if pid not in channels:
+            ch = ET.Element("channel", {"id": pid})
+            ET.SubElement(ch, "display-name").text = name
+            channels[pid] = ch
+
+    programmes = [p for p in programmes if p.get("channel") not in mapped]
+    def fmt(start):
+        local = start.astimezone(EASTERN)
+        return f"{local.strftime('%A, %B')} {local.day}, {local.strftime('%I:%M %p').lstrip('0')} {local.strftime('%Z')}"
+    count = 0
+    for pid in mapped:
+        games = sorted(by_team.get(pid, {}).values())
+        cursor = now
+        while cursor < day_end:
+            active = next((g for g in games if g[0] <= cursor < g[1]), None)
+            if active:
+                start, end, event = active
+                until = min(end, day_end)
+                title = f"{event} ({fmt(start)})"
+            else:
+                future = next((g for g in games if g[0] > cursor), None)
+                previous = next((g for g in reversed(games) if g[1] <= cursor), None)
+                if future:
+                    start, end, event = future
+                    until = min(start, day_end)
+                    title = f"Next Game: {event} ({fmt(start)})"
+                elif previous:
+                    until = day_end
+                    title = "Event has Concluded"
+                else:
+                    until = day_end
+                    title = "No Game Scheduled"
+            if until <= cursor:
+                break
+            programmes.append(_programme(pid, title, cursor, until))
+            count += 1
+            cursor = until
+    print("AHL STATIC CSV ROLLING 24H:", len(mapped),
+          "Xtream IDs;", count, "programmes; source", source)
     return programmes
 
 
