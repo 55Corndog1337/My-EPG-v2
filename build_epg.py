@@ -1255,6 +1255,13 @@ def main():
             programmes.extend(schedule)
             counts[target] = len(schedule)
     print("FloSports provider event schedules:", len(flo_custom))
+    # Optional verified Xtream sports enrichment. Failures never block the guide.
+    try:
+        from ai_sports import apply as apply_ai_sports
+        apply_ai_sports(catalog, channels, programmes)
+    except Exception as exc:
+        print("AI sports enrichment skipped:", type(exc).__name__)
+
     programmes = [p for p in programmes if p.get('channel') in channels]
 
     # Sports-only repair: don't publish orphan/empty synthetic sports aliases.
