@@ -1,7 +1,7 @@
 {
   "project": "My-EPG-v4",
   "category": "NCAA Football",
-  "status": "partial",
+  "status": "complete",
   "note": "Only V4 mappings; original Xtream EPGIDs are blank and must stay blank. Do not change V2.",
   "mappings": [
     {
@@ -166,7 +166,7 @@
     },
     {
       "channel": "NCAAF Game 17",
-      "xtream_original_channel_name": "US - NCAAF 17 : BROWN @ YALE NOV 7 12:00 PM ET",
+      "xtream_original_channel_name": "US - NCAAF 17 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011654",
       "original_xtream_epgid": "",
@@ -176,7 +176,7 @@
     },
     {
       "channel": "NCAAF Game 18",
-      "xtream_original_channel_name": "US - NCAAF 18 : COLGATE @ LEHIGH NOV 7 12:00 PM ET",
+      "xtream_original_channel_name": "US - NCAAF 18 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011655",
       "original_xtream_epgid": "",
@@ -186,7 +186,7 @@
     },
     {
       "channel": "NCAAF Game 19",
-      "xtream_original_channel_name": "US - NCAAF 19 : DARTMOUTH @ PRINCETON NOV 7 12:00 PM ET",
+      "xtream_original_channel_name": "US - NCAAF 19 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011656",
       "original_xtream_epgid": "",
@@ -196,7 +196,7 @@
     },
     {
       "channel": "NCAAF Game 20",
-      "xtream_original_channel_name": "US - NCAAF 20 : MOREHEAD STATE @ MARIST NOV 7 12:00 PM ET",
+      "xtream_original_channel_name": "US - NCAAF 20 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011657",
       "original_xtream_epgid": "",
@@ -206,7 +206,7 @@
     },
     {
       "channel": "NCAAF Game 21",
-      "xtream_original_channel_name": "US - NCAAF 21 : North Carolina Central @ Norfolk State",
+      "xtream_original_channel_name": "US - NCAAF 21 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011658",
       "original_xtream_epgid": "",
@@ -216,7 +216,7 @@
     },
     {
       "channel": "NCAAF Game 22",
-      "xtream_original_channel_name": "US - NCAAF 22 : Robert Morris @ Duquesne",
+      "xtream_original_channel_name": "US - NCAAF 22 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011659",
       "original_xtream_epgid": "",
@@ -226,7 +226,7 @@
     },
     {
       "channel": "NCAAF Game 23",
-      "xtream_original_channel_name": "US - NCAAF 23 : Holy Cross @ Georgetown",
+      "xtream_original_channel_name": "US - NCAAF 23 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011660",
       "original_xtream_epgid": "",
@@ -236,7 +236,7 @@
     },
     {
       "channel": "NCAAF Game 24",
-      "xtream_original_channel_name": "US - NCAAF 24 : Central Connecticut @ Stonehill",
+      "xtream_original_channel_name": "US - NCAAF 24 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011661",
       "original_xtream_epgid": "",
@@ -246,7 +246,7 @@
     },
     {
       "channel": "NCAAF Game 25",
-      "xtream_original_channel_name": "US - NCAAF 25 : Columbia @ Harvard",
+      "xtream_original_channel_name": "US - NCAAF 25 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011662",
       "original_xtream_epgid": "",
@@ -256,7 +256,7 @@
     },
     {
       "channel": "NCAAF Game 26",
-      "xtream_original_channel_name": "US - NCAAF 26 : Fordham @ Bucknell",
+      "xtream_original_channel_name": "US - NCAAF 26 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011663",
       "original_xtream_epgid": "",
@@ -266,7 +266,7 @@
     },
     {
       "channel": "NCAAF Game 27",
-      "xtream_original_channel_name": "US - NCAAF 27 : Lafayette @ William & Mary",
+      "xtream_original_channel_name": "US - NCAAF 27 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011664",
       "original_xtream_epgid": "",
@@ -276,7 +276,7 @@
     },
     {
       "channel": "NCAAF Game 28",
-      "xtream_original_channel_name": "US - NCAAF 28 : Mercer @ Chattanooga",
+      "xtream_original_channel_name": "US - NCAAF 28 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011665",
       "original_xtream_epgid": "",
@@ -286,7 +286,7 @@
     },
     {
       "channel": "NCAAF Game 29",
-      "xtream_original_channel_name": "US - NCAAF 29 : Morgan State @ Delaware State",
+      "xtream_original_channel_name": "US - NCAAF 29 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011666",
       "original_xtream_epgid": "",
@@ -296,7 +296,7 @@
     },
     {
       "channel": "NCAAF Game 30",
-      "xtream_original_channel_name": "US - NCAAF 30 : Old Dominion @ Coastal Carolina",
+      "xtream_original_channel_name": "US - NCAAF 30 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011667",
       "original_xtream_epgid": "",
@@ -306,7 +306,7 @@
     },
     {
       "channel": "NCAAF Game 31",
-      "xtream_original_channel_name": "US - NCAAF 31 : Penn @ Cornell",
+      "xtream_original_channel_name": "US - NCAAF 31 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011722",
       "original_xtream_epgid": "",
@@ -316,7 +316,7 @@
     },
     {
       "channel": "NCAAF Game 32",
-      "xtream_original_channel_name": "US - NCAAF 32 : Richmond @ Villanova",
+      "xtream_original_channel_name": "US - NCAAF 32 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011721",
       "original_xtream_epgid": "",
@@ -326,7 +326,7 @@
     },
     {
       "channel": "NCAAF Game 33",
-      "xtream_original_channel_name": "US - NCAAF 33 : Samford @ East Tennessee State",
+      "xtream_original_channel_name": "US - NCAAF 33 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011720",
       "original_xtream_epgid": "",
@@ -336,7 +336,7 @@
     },
     {
       "channel": "NCAAF Game 34",
-      "xtream_original_channel_name": "US - NCAAF 34 : San Diego @ Drake",
+      "xtream_original_channel_name": "US - NCAAF 34 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011719",
       "original_xtream_epgid": "",
@@ -346,7 +346,7 @@
     },
     {
       "channel": "NCAAF Game 35",
-      "xtream_original_channel_name": "US - NCAAF 35 : Stetson @ Davidson",
+      "xtream_original_channel_name": "US - NCAAF 35 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011718",
       "original_xtream_epgid": "",
@@ -356,7 +356,7 @@
     },
     {
       "channel": "NCAAF Game 36",
-      "xtream_original_channel_name": "US - NCAAF 36 : Wofford @ Western Carolina",
+      "xtream_original_channel_name": "US - NCAAF 36 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011717",
       "original_xtream_epgid": "",
@@ -366,7 +366,7 @@
     },
     {
       "channel": "NCAAF Game 37",
-      "xtream_original_channel_name": "US - NCAAF 37 : Lindenwood @ Gardner-Webb",
+      "xtream_original_channel_name": "US - NCAAF 37 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011716",
       "original_xtream_epgid": "",
@@ -376,7 +376,7 @@
     },
     {
       "channel": "NCAAF Game 38",
-      "xtream_original_channel_name": "US - NCAAF 38 : Albany State @ Fort Valley State",
+      "xtream_original_channel_name": "US - NCAAF 38 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011715",
       "original_xtream_epgid": "",
@@ -386,7 +386,7 @@
     },
     {
       "channel": "NCAAF Game 39",
-      "xtream_original_channel_name": "US - NCAAF 39 : Central State @ Benedict",
+      "xtream_original_channel_name": "US - NCAAF 39 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011714",
       "original_xtream_epgid": "",
@@ -396,7 +396,7 @@
     },
     {
       "channel": "NCAAF Game 40",
-      "xtream_original_channel_name": "US - NCAAF 40 : Furman @ The Citadel",
+      "xtream_original_channel_name": "US - NCAAF 40 :",
       "xtream_group": "AM | USA | NCAA",
       "xtream_stream_id": "1011713",
       "original_xtream_epgid": "",
