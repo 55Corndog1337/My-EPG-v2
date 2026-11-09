@@ -63,7 +63,7 @@ def _programme(pid,title,start,stop):
     ET.SubElement(p,"title",{"lang":"en"}).text=title
     return p
 
-def run(catalog,channels,programmes,reports):
+def _legacy_run(catalog,channels,programmes,reports):
     now=datetime.now(timezone.utc)
     targets={}
     for row in catalog:
@@ -135,4 +135,142 @@ def run(catalog,channels,programmes,reports):
     programmes=[p for p in programmes if p.get("channel") not in replacements]
     for entries in replacements.values():programmes.extend(entries)
     print("AHL generated:",len(replacements),"team channels;",len(future),"verified future games")
+    return programmes
+
+
+# Full 2026-27 AHL season source, with a verified StreamID-to-team inventory.
+# TheSportsDB league 4738; schedule is re-fetched at every build.
+def _season_events():
+    from urllib.parse import urlencode
+    url = ("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?"
+           + urlencode({"id": "4738", "s": "2026-2027"}))
+    req = urllib.request.Request(url, headers={"User-Agent": "My-EPG-v2/2.0"})
+    with urllib.request.urlopen(req, timeout=35) as response:
+        payload = json.load(response)
+    raw_events = payload.get("events") or []
+    result = {}
+    for e in raw_events:
+        away = (e.get("strAwayTeam") or "").strip()
+        home = (e.get("strHomeTeam") or "").strip()
+        if not away or not home or _norm(away) == _norm(home):
+            continue
+        stamp = (e.get("strTimestamp") or "").strip()
+        if not stamp:
+            date = (e.get("dateEvent") or "").strip()
+            clock = (e.get("strTime") or "").strip()
+            if not date or not clock:
+                continue
+            stamp = date + "T" + clock
+        try:
+            start = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+            if start.tzinfo is None:
+                # TheSportsDB dateEvent/strTime fields are UTC.
+                start = start.replace(tzinfo=timezone.utc)
+            start = start.astimezone(timezone.utc)
+        except ValueError:
+            continue
+        if not (datetime(2026, 10, 2, tzinfo=timezone.utc) <= start <=
+                datetime(2027, 4, 13, tzinfo=timezone.utc)):
+            continue
+        result[(away, home, start)] = (away, home, start)
+    return sorted(result.values(), key=lambda x: x[2])
+
+
+def run(catalog, channels, programmes, reports):
+    import csv
+    from pathlib import Path
+    from collections import defaultdict
+    now = datetime.now(timezone.utc)
+    try:
+        games = _season_events()
+    except Exception as exc:
+        print("AHL full-season feed unavailable:", type(exc).__name__)
+        games = []
+    if len(games) < 300:
+        print("AHL full-season feed incomplete:", len(games),
+              "verified events; preserving fallback guide and refusing partial season CSV")
+        return _legacy_run(catalog, channels, programmes, reports)
+    # StreamID comes only from the Xtream inventory, never from the schedule feed.
+    teams = {}
+    for row in catalog:
+        group = (row.get("Group") or "").upper()
+        name = (row.get("ChannelName") or "").strip()
+        sid = (row.get("StreamID") or "").strip()
+        if "AHL" not in group or not sid or "####" in name or "AHL TEAMS" not in name.upper():
+            continue
+        team = re.sub(r"^.*?AHL\s+TEAMS\s*[-:|]\s*", "", name, flags=re.I)
+        team = re.sub(r"\b(?:FHD|UHD|HD|SD|4K)\b", "", team, flags=re.I).strip()
+        team = team.replace("LE HIGH VALLEY", "LEHIGH VALLEY").replace(
+            "W-B/SCRANTON", "WILKES-BARRE/SCRANTON")
+        if team:
+            teams[sid] = (team, (row.get("EPGID") or "").strip(), name)
+    if not teams:
+        print("AHL season: no Xtream AHL team StreamIDs in inventory")
+        return programmes
+    aliases = {"WILKESBARRESCRANTONPENGUINS": "WILKESBARRESCRANTONPENGUINS",
+               "LEHIGHVALLEYPHANTOMS": "LEHIGHVALLEYPHANTOMS"}
+    def same_team(a, b):
+        aa, bb = _norm(a), _norm(b)
+        return aa == bb or (len(aa) > 10 and len(bb) > 10 and
+                            (aa in bb or bb in aa))
+    season_rows = []
+    replacements = defaultdict(list)
+    for sid, (team, provider_id, channel_name) in sorted(teams.items()):
+        ids = ["xtream." + sid] + ([provider_id] if provider_id and provider_id != "xtream." + sid else [])
+        matches = [(away, home, start) for away, home, start in games
+                   if same_team(team, away) or same_team(team, home)]
+        for pid in ids:
+            if pid not in channels:
+                ch = ET.Element("channel", {"id": pid})
+                ET.SubElement(ch, "display-name").text = channel_name
+                channels[pid] = ch
+        for away, home, start in matches:
+            local = start.astimezone(EASTERN)
+            date = f"{local.strftime('%B')} {local.day}, {local.strftime('%I:%M %p').lstrip('0')} EST"
+            matchup = f"{away} @ {home}"
+            for pid in ids:
+                season_rows.append({
+                    "Season": "2026-27", "StreamID": sid, "XMLTV_ID": pid,
+                    "Team": team, "Away": away, "Home": home,
+                    "StartUTC": start.isoformat(),
+                    "StartEastern": local.strftime("%Y-%m-%d %I:%M %p") + " EST",
+                    "EndUTC": (start + timedelta(hours=4)).isoformat(),
+                    "Event": matchup, "Title": f"{matchup} ({date})"})
+        # Only one active/future game at a time, matching the existing state machine.
+        future = [(a, h, t) for a, h, t in matches if t + timedelta(hours=4) > now]
+        for pid in ids:
+            if not future:
+                replacements[pid].append(_programme(pid, "No Game Scheduled", now,
+                                                    now + timedelta(days=2)))
+                continue
+            away, home, start = future[0]
+            end = start + timedelta(hours=4)
+            local = start.astimezone(EASTERN)
+            date = f"{local.strftime('%B')} {local.day}, {local.strftime('%I:%M %p').lstrip('0')} EST"
+            matchup = f"{away} @ {home}"
+            if start > now:
+                replacements[pid].append(_programme(
+                    pid, f"Next Game: {matchup} ({local.strftime('%A')}, {date})", now, start))
+            if end > now:
+                replacements[pid].append(_programme(
+                    pid, f"{matchup} ({date})", max(now, start), end))
+            replacements[pid].append(_programme(
+                pid, "Event has Concluded", max(now, end),
+                max(now, end) + timedelta(days=2)))
+    reports = Path(reports)
+    reports.mkdir(parents=True, exist_ok=True)
+    filename = reports / "ahl-season-2026-27.csv"
+    fields = ["Season", "StreamID", "XMLTV_ID", "Team", "Away", "Home",
+              "StartUTC", "StartEastern", "EndUTC", "Event", "Title"]
+    with filename.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(season_rows)
+    programmes = [p for p in programmes if p.get("channel") not in replacements]
+    for entries in replacements.values():
+        programmes.extend(entries)
+    print("AHL FULL SEASON:", len(games), "verified games;",
+          len(teams), "Xtream team StreamIDs;",
+          len(season_rows), "CSV mappings;",
+          len(replacements), "EPG channels")
     return programmes
