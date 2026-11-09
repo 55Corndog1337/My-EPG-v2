@@ -28,7 +28,6 @@ jobs:
       XTREAM_URL: ${{ secrets.XTREAM_URL }}
       XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
       XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -73,8 +72,6 @@ jobs:
           name: ncaab-epg2-calendar-audit
           path: reports/ncaab-calendar-match-*.json
           if-no-files-found: warn
-      - name: Research numbered sports feeds with web verification
-        run: python ai_sports.py
       - name: Commit verified schedule cache
         run: |
           git config user.name "github-actions[bot]"
