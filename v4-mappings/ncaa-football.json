@@ -203,6 +203,106 @@
       "source": "epg37",
       "source_channel_id": "258.NCAAF",
       "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 21",
+      "xtream_original_channel_name": "US - NCAAF 21 : North Carolina Central @ Norfolk State",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011658",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "259.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 22",
+      "xtream_original_channel_name": "US - NCAAF 22 : Robert Morris @ Duquesne",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011659",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "260.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 23",
+      "xtream_original_channel_name": "US - NCAAF 23 : Holy Cross @ Georgetown",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011660",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "261.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 24",
+      "xtream_original_channel_name": "US - NCAAF 24 : Central Connecticut @ Stonehill",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011661",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "262.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 25",
+      "xtream_original_channel_name": "US - NCAAF 25 : Columbia @ Harvard",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011662",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "263.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 26",
+      "xtream_original_channel_name": "US - NCAAF 26 : Fordham @ Bucknell",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011663",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "264.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 27",
+      "xtream_original_channel_name": "US - NCAAF 27 : Lafayette @ William & Mary",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011664",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "265.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 28",
+      "xtream_original_channel_name": "US - NCAAF 28 : Mercer @ Chattanooga",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011665",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "266.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 29",
+      "xtream_original_channel_name": "US - NCAAF 29 : Morgan State @ Delaware State",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011666",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "267.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 30",
+      "xtream_original_channel_name": "US - NCAAF 30 : Old Dominion @ Coastal Carolina",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011667",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "268.NCAAF",
+      "status": "user_selected"
     }
   ]
 }
