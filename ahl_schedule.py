@@ -177,14 +177,14 @@ def _season_events():
 
 
 def run(catalog, channels, programmes, reports):
-    """One rolling 24-hour AHL guide, sourced only from committed season CSV.
+    """Rolling seven-day AHL guide, sourced from the committed full-season CSV.
 
     No live AHL fetch. The 4-hourly master build refreshes the 24-hour window.
     """
     import csv
     from pathlib import Path
     now = datetime.now(timezone.utc)
-    day_end = now + timedelta(hours=24)
+    day_end = now + timedelta(days=7)
     source = Path(__file__).resolve().parent / "reports" / "ahl-season-2026-27.csv"
     if not source.is_file():
         print("AHL static CSV missing:", source)
@@ -254,7 +254,7 @@ def run(catalog, channels, programmes, reports):
             programmes.append(_programme(pid, title, cursor, until))
             count += 1
             cursor = until
-    print("AHL STATIC CSV ROLLING 24H:", len(mapped),
+    print("AHL STATIC CSV ROLLING 7D:", len(mapped),
           "Xtream IDs;", count, "programmes; source", source)
     return programmes
 
