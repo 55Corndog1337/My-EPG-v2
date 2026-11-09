@@ -1,0 +1,570 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NHL Team Channels",
+  "snapshot_date": "2026-11-09",
+  "source": "epg37",
+  "status": "verified_with_exceptions",
+  "note": "53 of 56 exact source identities verified in EPG37. Preserve original Xtream StreamIDs and EPGIDs. Keep duplicate channels distinct. Arizona Coyotes has no exact source. St Louis Blues EPG37 display name incorrectly attached to UFL-St.LouisBattlehawks.us; do not map. V4 only; V2 live guide unchanged.",
+  "mappings": [
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - PHILADELPHIA FLYERS",
+      "xtream_stream_id": "575746",
+      "original_xtream_epgid": "",
+      "team": "PHILADELPHIA FLYERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-PhiladelphiaFlyers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - CALGARY FLAMES",
+      "xtream_stream_id": "575812",
+      "original_xtream_epgid": "",
+      "team": "CALGARY FLAMES",
+      "source": "epg37",
+      "source_channel_id": "NHL-CalgaryFlames.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - COLORADO AVALANCHE",
+      "xtream_stream_id": "575814",
+      "original_xtream_epgid": "",
+      "team": "COLORADO AVALANCHE",
+      "source": "epg37",
+      "source_channel_id": "NHL-ColoradoAvalanche.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - SAN JOSE SHARKS",
+      "xtream_stream_id": "575820",
+      "original_xtream_epgid": "",
+      "team": "SAN JOSE SHARKS",
+      "source": "epg37",
+      "source_channel_id": "NHL-SanJoseSharks.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - TORONTO MAPLE LEAFS",
+      "xtream_stream_id": "575853",
+      "original_xtream_epgid": "",
+      "team": "TORONTO MAPLE LEAFS",
+      "source": "epg37",
+      "source_channel_id": "NHL-TorontoMapleLeafs.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - COLUMBUS BLUE JACKETS",
+      "xtream_stream_id": "575885",
+      "original_xtream_epgid": "",
+      "team": "COLUMBUS BLUE JACKETS",
+      "source": "epg37",
+      "source_channel_id": "NHL-ColumbusBlueJackets.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - BOSTON BRUINS",
+      "xtream_stream_id": "575951",
+      "original_xtream_epgid": "",
+      "team": "BOSTON BRUINS",
+      "source": "epg37",
+      "source_channel_id": "NHL-BostonBruins.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - TAMPA BAY LIGHTNING",
+      "xtream_stream_id": "575953",
+      "original_xtream_epgid": "",
+      "team": "TAMPA BAY LIGHTNING",
+      "source": "epg37",
+      "source_channel_id": "NHL-TampaBayLightning.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - PITTSBURGH PENGUINS",
+      "xtream_stream_id": "576050",
+      "original_xtream_epgid": "",
+      "team": "PITTSBURGH PENGUINS",
+      "source": "epg37",
+      "source_channel_id": "NHL-PittsburghPenguins.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - VANCOUVER CANUCKS",
+      "xtream_stream_id": "576088",
+      "original_xtream_epgid": "",
+      "team": "VANCOUVER CANUCKS",
+      "source": "epg37",
+      "source_channel_id": "NHL-VancouverCanucks.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NEW JERSEY DEVILS",
+      "xtream_stream_id": "576130",
+      "original_xtream_epgid": "",
+      "team": "NEW JERSEY DEVILS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NewJerseyDevils.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - BUFFALO SABRES",
+      "xtream_stream_id": "576164",
+      "original_xtream_epgid": "",
+      "team": "BUFFALO SABRES",
+      "source": "epg37",
+      "source_channel_id": "NHL-BuffaloSabres.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - MONTREAL CANADIENS",
+      "xtream_stream_id": "576206",
+      "original_xtream_epgid": "",
+      "team": "MONTREAL CANADIENS",
+      "source": "epg37",
+      "source_channel_id": "NHL-MontrealCanadiens.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NEW YORK RANGERS",
+      "xtream_stream_id": "576221",
+      "original_xtream_epgid": "",
+      "team": "NEW YORK RANGERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NewYorkRangers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - CAROLINA HURRICANES",
+      "xtream_stream_id": "576261",
+      "original_xtream_epgid": "",
+      "team": "CAROLINA HURRICANES",
+      "source": "epg37",
+      "source_channel_id": "NHL-CarolinaHurricanes.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - ST. LOUIS BLUES",
+      "xtream_stream_id": "576311",
+      "original_xtream_epgid": "",
+      "team": "ST. LOUIS BLUES",
+      "source": null,
+      "source_channel_id": null,
+      "status": "needs_review"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - DALLAS STARS",
+      "xtream_stream_id": "576374",
+      "original_xtream_epgid": "",
+      "team": "DALLAS STARS",
+      "source": "epg37",
+      "source_channel_id": "NHL-DallasStars.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - VEGAS GOLDEN KNIGHTS",
+      "xtream_stream_id": "576393",
+      "original_xtream_epgid": "",
+      "team": "VEGAS GOLDEN KNIGHTS",
+      "source": "epg37",
+      "source_channel_id": "NHL-VegasGoldenKnights.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - MINNESOTA WILD",
+      "xtream_stream_id": "575933",
+      "original_xtream_epgid": "",
+      "team": "MINNESOTA WILD",
+      "source": "epg37",
+      "source_channel_id": "NHL-MinnesotaWild.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - FLORIDA PANTHERS",
+      "xtream_stream_id": "575816",
+      "original_xtream_epgid": "",
+      "team": "FLORIDA PANTHERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-FloridaPanthers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - DETROIT RED WINGS",
+      "xtream_stream_id": "626190",
+      "original_xtream_epgid": "",
+      "team": "DETROIT RED WINGS",
+      "source": "epg37",
+      "source_channel_id": "NHL-DetroitRedWings.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - OTTAWA SENATORS",
+      "xtream_stream_id": "626192",
+      "original_xtream_epgid": "",
+      "team": "OTTAWA SENATORS",
+      "source": "epg37",
+      "source_channel_id": "NHL-OttawaSenators.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NASHVILLE PREDATORS",
+      "xtream_stream_id": "626234",
+      "original_xtream_epgid": "",
+      "team": "NASHVILLE PREDATORS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NashvillePredators.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NEW YORK ISLANDERS",
+      "xtream_stream_id": "639686",
+      "original_xtream_epgid": "",
+      "team": "NEW YORK ISLANDERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NewYorkIslanders.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - ANAHEIM DUCKS",
+      "xtream_stream_id": "1044027",
+      "original_xtream_epgid": "",
+      "team": "ANAHEIM DUCKS",
+      "source": "epg37",
+      "source_channel_id": "NHL-AnaheimDucks.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - ARIZONA COYOTES",
+      "xtream_stream_id": "1044028",
+      "original_xtream_epgid": "",
+      "team": "ARIZONA COYOTES",
+      "source": null,
+      "source_channel_id": null,
+      "status": "needs_review"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - BOSTON BRUINS",
+      "xtream_stream_id": "1044029",
+      "original_xtream_epgid": "",
+      "team": "BOSTON BRUINS",
+      "source": "epg37",
+      "source_channel_id": "NHL-BostonBruins.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - BUFFALO SABRES",
+      "xtream_stream_id": "1044030",
+      "original_xtream_epgid": "",
+      "team": "BUFFALO SABRES",
+      "source": "epg37",
+      "source_channel_id": "NHL-BuffaloSabres.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - CALGARY FLAMES",
+      "xtream_stream_id": "1044031",
+      "original_xtream_epgid": "",
+      "team": "CALGARY FLAMES",
+      "source": "epg37",
+      "source_channel_id": "NHL-CalgaryFlames.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - CAROLINA HURRICANES",
+      "xtream_stream_id": "1044032",
+      "original_xtream_epgid": "",
+      "team": "CAROLINA HURRICANES",
+      "source": "epg37",
+      "source_channel_id": "NHL-CarolinaHurricanes.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - CHICAGO BLACKHAWKS",
+      "xtream_stream_id": "1044033",
+      "original_xtream_epgid": "",
+      "team": "CHICAGO BLACKHAWKS",
+      "source": "epg37",
+      "source_channel_id": "NHL-ChicagoBlackhawks.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - COLORADO AVALANCHE",
+      "xtream_stream_id": "1044034",
+      "original_xtream_epgid": "",
+      "team": "COLORADO AVALANCHE",
+      "source": "epg37",
+      "source_channel_id": "NHL-ColoradoAvalanche.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - COLUMBUS BLUE JACKETS",
+      "xtream_stream_id": "1044035",
+      "original_xtream_epgid": "",
+      "team": "COLUMBUS BLUE JACKETS",
+      "source": "epg37",
+      "source_channel_id": "NHL-ColumbusBlueJackets.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NL DALLAS STARS",
+      "xtream_stream_id": "1044036",
+      "original_xtream_epgid": "",
+      "team": "DALLAS STARS",
+      "source": "epg37",
+      "source_channel_id": "NHL-DallasStars.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - DETROIT RED WINGS",
+      "xtream_stream_id": "1044037",
+      "original_xtream_epgid": "",
+      "team": "DETROIT RED WINGS",
+      "source": "epg37",
+      "source_channel_id": "NHL-DetroitRedWings.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - EDMONTON OILERS",
+      "xtream_stream_id": "1044038",
+      "original_xtream_epgid": "",
+      "team": "EDMONTON OILERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-EdmontonOilers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - FLORIDA PANTHERS",
+      "xtream_stream_id": "1044039",
+      "original_xtream_epgid": "",
+      "team": "FLORIDA PANTHERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-FloridaPanthers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - LOS ANGELES KINGS",
+      "xtream_stream_id": "1044040",
+      "original_xtream_epgid": "",
+      "team": "LOS ANGELES KINGS",
+      "source": "epg37",
+      "source_channel_id": "NHL-LosAngelesKings.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - MINNESOTA WILD",
+      "xtream_stream_id": "1044041",
+      "original_xtream_epgid": "",
+      "team": "MINNESOTA WILD",
+      "source": "epg37",
+      "source_channel_id": "NHL-MinnesotaWild.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - MONTRÉAL CANADIENS",
+      "xtream_stream_id": "1044042",
+      "original_xtream_epgid": "",
+      "team": "MONTRÉAL CANADIENS",
+      "source": "epg37",
+      "source_channel_id": "NHL-MontrealCanadiens.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NASHVILLE PREDATORS",
+      "xtream_stream_id": "1044043",
+      "original_xtream_epgid": "",
+      "team": "NASHVILLE PREDATORS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NashvillePredators.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NEW JERSEY DEVILS",
+      "xtream_stream_id": "1044044",
+      "original_xtream_epgid": "",
+      "team": "NEW JERSEY DEVILS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NewJerseyDevils.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NEW YORK ISLANDERS",
+      "xtream_stream_id": "1044045",
+      "original_xtream_epgid": "",
+      "team": "NEW YORK ISLANDERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NewYorkIslanders.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - NEW YORK RANGERS",
+      "xtream_stream_id": "1044046",
+      "original_xtream_epgid": "",
+      "team": "NEW YORK RANGERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-NewYorkRangers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - OTTAWA SENATORS",
+      "xtream_stream_id": "1044047",
+      "original_xtream_epgid": "",
+      "team": "OTTAWA SENATORS",
+      "source": "epg37",
+      "source_channel_id": "NHL-OttawaSenators.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - PHILADELPHIA FLYERS",
+      "xtream_stream_id": "1044048",
+      "original_xtream_epgid": "",
+      "team": "PHILADELPHIA FLYERS",
+      "source": "epg37",
+      "source_channel_id": "NHL-PhiladelphiaFlyers.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - PITTSBURGH PENGUINS",
+      "xtream_stream_id": "1044049",
+      "original_xtream_epgid": "",
+      "team": "PITTSBURGH PENGUINS",
+      "source": "epg37",
+      "source_channel_id": "NHL-PittsburghPenguins.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - SAN JOSE SHARKS",
+      "xtream_stream_id": "1044050",
+      "original_xtream_epgid": "",
+      "team": "SAN JOSE SHARKS",
+      "source": "epg37",
+      "source_channel_id": "NHL-SanJoseSharks.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - SEATTLE KRAKEN",
+      "xtream_stream_id": "1044051",
+      "original_xtream_epgid": "",
+      "team": "SEATTLE KRAKEN",
+      "source": "epg37",
+      "source_channel_id": "NHL-SeattleKraken.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - ST. LOUIS BLUES",
+      "xtream_stream_id": "1044052",
+      "original_xtream_epgid": "",
+      "team": "ST. LOUIS BLUES",
+      "source": null,
+      "source_channel_id": null,
+      "status": "needs_review"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - TAMPA BAY LIGHTNING",
+      "xtream_stream_id": "1044053",
+      "original_xtream_epgid": "",
+      "team": "TAMPA BAY LIGHTNING",
+      "source": "epg37",
+      "source_channel_id": "NHL-TampaBayLightning.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - TORONTO MAPLE LEAFS",
+      "xtream_stream_id": "1044054",
+      "original_xtream_epgid": "",
+      "team": "TORONTO MAPLE LEAFS",
+      "source": "epg37",
+      "source_channel_id": "NHL-TorontoMapleLeafs.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - VANCOUVER CANUCKS",
+      "xtream_stream_id": "1044055",
+      "original_xtream_epgid": "",
+      "team": "VANCOUVER CANUCKS",
+      "source": "epg37",
+      "source_channel_id": "NHL-VancouverCanucks.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - VEGAS GOLDEN KNIGHTS",
+      "xtream_stream_id": "1044056",
+      "original_xtream_epgid": "",
+      "team": "VEGAS GOLDEN KNIGHTS",
+      "source": "epg37",
+      "source_channel_id": "NHL-VegasGoldenKnights.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - WASHINGTON CAPITALS",
+      "xtream_stream_id": "1044057",
+      "original_xtream_epgid": "",
+      "team": "WASHINGTON CAPITALS",
+      "source": "epg37",
+      "source_channel_id": "NHL-WashingtonCapitals.us",
+      "status": "matched"
+    },
+    {
+      "xtream_group": "AM | USA | NHL",
+      "xtream_channel": "US - NHL TEAMS - WINNIPEG JETS",
+      "xtream_stream_id": "1044058",
+      "original_xtream_epgid": "",
+      "team": "WINNIPEG JETS",
+      "source": "epg37",
+      "source_channel_id": "NHL-WinnipegJets.us",
+      "status": "matched"
+    }
+  ]
+}
