@@ -703,6 +703,106 @@
       "source": "epg37",
       "source_channel_id": "308.NCAAF",
       "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 71",
+      "xtream_original_channel_name": "US - NCAAF 71 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011682",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "309.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 72",
+      "xtream_original_channel_name": "US - NCAAF 72 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011681",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "310.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 73",
+      "xtream_original_channel_name": "US - NCAAF 73 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011680",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "311.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 74",
+      "xtream_original_channel_name": "US - NCAAF 74 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011679",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "312.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 75",
+      "xtream_original_channel_name": "US - NCAAF 75 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011678",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "313.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 76",
+      "xtream_original_channel_name": "US - NCAAF 76 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011677",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "314.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 77",
+      "xtream_original_channel_name": "US - NCAAF 77 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011676",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "315.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 78",
+      "xtream_original_channel_name": "US - NCAAF 78 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011675",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "316.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 79",
+      "xtream_original_channel_name": "US - NCAAF 79 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011674",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "317.NCAAF",
+      "status": "user_selected"
+    },
+    {
+      "channel": "NCAAF Game 80",
+      "xtream_original_channel_name": "US - NCAAF 80 :",
+      "xtream_group": "AM | USA | NCAA",
+      "xtream_stream_id": "1011673",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "318.NCAAF",
+      "status": "user_selected"
     }
   ]
 }
