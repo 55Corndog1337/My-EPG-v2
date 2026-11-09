@@ -1,0 +1,64 @@
+name: Draw fresh Xtream channel inventory
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC candidates for 5 AM, 11 AM, 5 PM Eastern (EST/EDT).
+    - cron: '0 9,10,15,16,21,22 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: xtream-inventory-draw
+  cancel-in-progress: false
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Eastern draw time
+        id: clock
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          HOUR=$(TZ=America/New_York date +%H)
+          if [ "$EVENT_NAME" = workflow_dispatch ] || [[ "$HOUR" =~ ^(05|11|17)$ ]]; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.clock.outputs.run == 'true'
+      - uses: actions/setup-python@v5
+        if: steps.clock.outputs.run == 'true'
+        with:
+          python-version: '3.11'
+      - name: Pull current Xtream inventory and retain channel metadata only
+        if: steps.clock.outputs.run == 'true'
+        env:
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME }}
+          XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD }}
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          from build_epg import refresh_playlist_catalog
+          rows = refresh_playlist_catalog()
+          if not rows:
+              raise SystemExit('No Xtream channels returned; refusing to replace inventory')
+          fields = ['Source','Group','ChannelName','StreamID','EPGID','TVGName','ProviderID','Scope']
+          with Path('channels.csv').open('w',newline='',encoding='utf-8') as f:
+              writer = csv.DictWriter(f,fieldnames=fields,extrasaction='ignore')
+              writer.writeheader()
+              writer.writerows(rows)
+          print('Fresh channel metadata:',len(rows))
+          PY
+      - name: Commit fresh inventory for daily name processing
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add channels.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh Xtream channel inventory'
+            git pull --rebase
+            git push
+          fi
