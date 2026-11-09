@@ -70,7 +70,7 @@ jobs:
               name = (row.get('ChannelName') or '').upper()
               group = (row.get('Group') or '').upper()
               sid = (row.get('StreamID') or '').strip()
-              if 'AHL' in group and 'AHL TEAMS' in name and sid.isdigit():
+              if 'AHL' in group and 'AHL TEAMS' in name and sid.isdigit() and not name.strip().startswith('#####'):
                   targets['xtream.' + sid] = row['ChannelName']
           assert len(targets) == 32, f'Expected 32 AHL teams, got {len(targets)}'
           season_ids = set()
