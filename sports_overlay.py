@@ -75,7 +75,7 @@ def overlay(base,generated):
     try:
         with open('channels.csv',newline='',encoding='utf-8-sig') as f:
             for row in csv.DictReader(f):
-                if re.search(r'\\bNHL GAME\\s*0*\\d+\\b',row.get('ChannelName',''),re.I):
+                if re.search(r'\bNHL GAME\s*0*\d+\b',row.get('ChannelName',''),re.I):
                     sid=(row.get('StreamID') or '').strip()
                     if sid.isdigit():protected.add('xtream.'+sid)
                     epg=(row.get('EPGID') or '').strip()
