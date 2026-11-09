@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-09",
+  "status": "verified_partial_schedule_unmapped",
+  "timezone": "America/New_York",
+  "notes": "Xtream inventory is stale (Nov 2/3); no stream assignments made. Do not auto-assign by ordinal channel number. Verified source listings are independent of channel mappings. 4-hour blocks after kickoff.",
+  "source_urls": [
+    "https://www.collegebasketballschedule.net/college-basketball-schedule/this-week",
+    "https://www.collegebasketballschedule.net/college-basketball-on-tv/espn",
+    "https://www.southernindianasports.com/story.php?slug=college-basketball-schedules-for-week-of-november-9-15-2026",
+    "https://1230thegambler.iheart.com/content/2026-11-09-florida-am-vs-uab-time-tv-stream-nov-9/"
+  ],
+  "events": [
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "Otterbein",
+      "home": "Ohio",
+      "local_start": "2026-11-09T11:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "Pensacola Christian",
+      "home": "West Florida",
+      "local_start": "2026-11-09T11:30:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "Northwestern State",
+      "home": "Oklahoma State",
+      "local_start": "2026-11-09T12:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "UNC Asheville",
+      "home": "Samford",
+      "local_start": "2026-11-09T12:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "Delaware",
+      "home": "Towson",
+      "local_start": "2026-11-09T16:00:00-05:00",
+      "platform": "FloSports",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "Hiram",
+      "home": "Canisius",
+      "local_start": "2026-11-09T18:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "McDaniel",
+      "home": "UMBC",
+      "local_start": "2026-11-09T18:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "Baptist (FL)",
+      "home": "West Florida",
+      "local_start": "2026-11-09T18:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "Harvard",
+      "home": "Holy Cross",
+      "local_start": "2026-11-09T18:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "women",
+      "away": "Savannah State",
+      "home": "Georgia Southern",
+      "local_start": "2026-11-09T18:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "Penn State Schuylkill",
+      "home": "Buffalo",
+      "local_start": "2026-11-09T18:30:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "Minnesota",
+      "home": "Cincinnati",
+      "local_start": "2026-11-09T19:00:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "Florida A&M",
+      "home": "UAB",
+      "local_start": "2026-11-09T19:30:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    },
+    {
+      "sport": "College Basketball",
+      "gender": "men",
+      "away": "Seton Hall",
+      "home": "Charlotte",
+      "local_start": "2026-11-09T21:30:00-05:00",
+      "platform": "ESPN+",
+      "stream_id": null,
+      "match_status": "unmapped_requires_fresh_xtream_event_identity"
+    }
+  ]
+}
