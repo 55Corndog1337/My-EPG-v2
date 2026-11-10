@@ -388,8 +388,9 @@ def generate():
     p=copy.deepcopy(original);p.set("channel",cid);tv.append(p);counts["programmes"]+=1
   else:
    p=ET.SubElement(tv,"programme",start=start,stop=end,channel=cid)
-   ET.SubElement(p,"title",lang="en").text=title
-   ET.SubElement(p,"desc",lang="en").text="V4: no verified schedule available; channel retained for later correction"
+   is_espn_slot = "ESPN PLUS" in group.upper() and cid.startswith(("ESPNPlus.", "ESPN.PLUS."))
+   ET.SubElement(p,"title",lang="en").text="No Event Scheduled" if is_espn_slot else title
+   ET.SubElement(p,"desc",lang="en").text="No verified ESPN+ event currently scheduled" if is_espn_slot else "V4: no verified schedule available; channel retained for later correction"
    counts["fallback_channels"]+=1
    counts["unmatched_by_category"][group]=counts["unmatched_by_category"].get(group,0)+1
   counts["channels"]+=1
