@@ -90,50 +90,107 @@ def title_for(row):
    detail=raw.split(":",1)[1].strip()
    if detail:return clean(detail)
  return clean(val(row,"NewChannelName","ChannelName","OriginalChannelName"))
+def norm(text):
+ text=clean(text).lower()
+ text=re.sub(r"[◉★™®]", "", text)
+ text=re.sub(r"\\b(?:uhd|fhd|hd|sd|4k|1080p|720p|hevc|h265|h264)\\b", "", text)
+ text=re.sub(r"[^a-z0-9]+", "", text)
+ return text
+def sports_event(row):
+ group=val(row,"Group").upper()
+ return any(x in group for x in ("NFL","NBA","NHL","MLB","MILB","MLS","AHL","WNBA","NCAA","ESPN PLUS","FLO SPORTS","BTN+","PPV","LIVE EVENT","PEACOCK","PARAMOUNT+","SN+","TSN+","VICTORY +"))
 def load_epgs(rows,overrides):
- needed=defaultdict(set)
- for row in rows:
-  sid=val(row,"StreamID")
-  if sid in overrides:
-   src,epgid,_=overrides[sid]
-   if src in SOURCES:needed[src].add(epgid)
-  else:
-   src=val(row,"EPGSource").lower()
-   epgid=val(row,"SourceChannelID")
-   if src in SOURCES and epgid:needed[src].add(epgid)
-   else:
-    provider=val(row,"EPGID","ProviderID")
-    if provider:
-     for s in SOURCES:needed[s].add(provider)
- programmes=defaultdict(list)
+ # Index the actual channel catalogs first, so EPG 37, 2, and 6 can
+ # fill holes even when the provider's EPG ID differs from the source ID.
+ catalogs={}
  for source,url in SOURCES.items():
   try:
    print("Downloading",source,flush=True)
    data=request(url)
-   if data[:2]==b"\x1f\x8b":data=gzip.decompress(data)
-   stream=io.BytesIO(data)
-   count=0
-   for event,item in ET.iterparse(stream,events=("end",)):
-    if item.tag!="programme":continue
-    cid=item.get("channel")
-    if cid in needed[source]:
-     programmes[(source,cid)].append(copy.deepcopy(item));count+=1
-    item.clear()
-   print(source,"programmes matched",count,flush=True)
-  except Exception as e:print("Source failure",source,e,flush=True)
- return programmes
+   if data[:2]==b"\\x1f\\x8b":data=gzip.decompress(data)
+   channels={}
+   for _,item in ET.iterparse(io.BytesIO(data),events=("end",)):
+    if item.tag=="channel":
+     cid=item.get("id")
+     if cid:
+      names=[x.text or "" for x in item.findall("display-name")]
+      channels[cid]=names
+     item.clear()
+    elif item.tag=="programme":item.clear()
+   catalogs[source]=(data,channels)
+   print(source,"catalog channels",len(channels),flush=True)
+  except Exception as e:print("Source failure",source,str(e),flush=True)
+ by_id={}
+ by_name={}
+ for source,(data,channels) in catalogs.items():
+  for cid,names in channels.items():
+   by_id[(source,cid.lower())]=cid
+   for name in names:
+    key=norm(name)
+    if key:by_name.setdefault((source,key),set()).add(cid)
+ wanted=defaultdict(set)
+ decisions={}
+ match_counts=defaultdict(int)
+ for row in rows:
+  sid=val(row,"StreamID")
+  if not sid:continue
+  explicit=overrides.get(sid)
+  if explicit and explicit[0]=="static":
+   decisions[sid]=None;continue
+  preferred=[]
+  if explicit and explicit[0] in SOURCES:preferred.append((explicit[0],explicit[1]))
+  invsrc=val(row,"EPGSource").lower()
+  invid=val(row,"SourceChannelID")
+  if invsrc in SOURCES and invid:preferred.append((invsrc,invid))
+  provider=val(row,"EPGID","ProviderID")
+  if provider:
+   for src in ("epg37","epg2","epg6"):preferred.append((src,provider))
+  chosen=None
+  for src,cid in preferred:
+   canonical=by_id.get((src,cid.lower()))
+   if canonical:
+    chosen=(src,canonical,"id");break
+  # Never infer event-channel schedules from generic channel names:
+  # Game 01, ESPN+ 01, FloSports 01, etc. require event-specific mapping.
+  if not chosen and not sports_event(row):
+   keys=[]
+   for label in (val(row,"OriginalChannelName"),val(row,"ChannelName"),val(row,"NewChannelName")):
+    key=norm(label)
+    if key and key not in keys:keys.append(key)
+   for src in ("epg37","epg2","epg6"):
+    candidates=set()
+    for key in keys:candidates.update(by_name.get((src,key),set()))
+    if len(candidates)==1:
+     chosen=(src,next(iter(candidates)),"name");break
+  decisions[sid]=chosen
+  if chosen:
+   wanted[chosen[0]].add(chosen[1])
+   match_counts[chosen[0]+"_"+chosen[2]]+=1
+ programmes=defaultdict(list)
+ for source,(data,channels) in catalogs.items():
+  if not wanted[source]:continue
+  count=0
+  for _,item in ET.iterparse(io.BytesIO(data),events=("end",)):
+   if item.tag!="programme":continue
+   cid=item.get("channel")
+   if cid in wanted[source]:
+    programmes[(source,cid)].append(copy.deepcopy(item));count+=1
+   item.clear()
+  print(source,"matched programmes",count,flush=True)
+ print("Source decisions",dict(match_counts),flush=True)
+ return programmes,decisions,dict(match_counts)
 def generate():
  rows,inventory_source=find_inventory()
  rows=[r for r in rows if val(r,"StreamID") and in_scope(r)]
  if len(rows)<1000:raise RuntimeError(f"Inventory only has {len(rows)} scoped channels, refusing incomplete V4 publication")
  print("Inventory",inventory_source,"channels",len(rows),flush=True)
  overrides=load_overrides()
- programmes=load_epgs(rows,overrides)
+ programmes,decisions,match_counts=load_epgs(rows,overrides)
  tv=ET.Element("tv",{"generator-info-name":"My-EPG V4 full inventory"})
  now=datetime.now(timezone.utc)
  start=now.strftime("%Y%m%d%H%M%S +0000")
  end=(now+timedelta(days=1)).strftime("%Y%m%d%H%M%S +0000")
- counts={"inventory_source":inventory_source,"channels":0,"programmes":0,"fallback_channels":0,"mapped_channels":0,"categories":{}}
+ counts={"inventory_source":inventory_source,"channels":0,"programmes":0,"fallback_channels":0,"mapped_channels":0,"categories":{},"source_matches":match_counts,"scheduled_by_source":{},"unmatched_by_category":{}}
  seen=set()
  for row in rows:
   sid=val(row,"StreamID")
@@ -143,24 +200,18 @@ def generate():
   counts["categories"][group]=counts["categories"].get(group,0)+1
   name=val(row,"NewChannelName","ChannelName","OriginalChannelName") or "Stream "+sid
   title=title_for(row)
-  source=val(row,"EPGSource").lower()
-  epgid=val(row,"SourceChannelID")
-  if sid in overrides:
-   source,epgid,static_title=overrides[sid]
-   if static_title:title=static_title
-  elif source not in SOURCES or not epgid:
-   source="";epgid=val(row,"EPGID","ProviderID")
+  explicit=overrides.get(sid)
+  if explicit and explicit[2]:title=explicit[2]
+  selected=decisions.get(sid)
+  source,epgid=(selected[0],selected[1]) if selected else ("","")
   cid="v4."+sid
   ch=ET.SubElement(tv,"channel",id=cid)
   ET.SubElement(ch,"display-name").text=title
   ET.SubElement(ch,"display-name").text=clean(name)
-  events=programmes.get((source,epgid),[]) if source in SOURCES else []
-  if not events and source!="static" and epgid:
-   for candidate in ("epg37","epg6","epg2"):
-    if programmes.get((candidate,epgid)):
-     events=programmes[(candidate,epgid)];break
+  events=programmes.get((source,epgid),[]) if selected else []
   if events:
    counts["mapped_channels"]+=1
+   counts["scheduled_by_source"][source]=counts["scheduled_by_source"].get(source,0)+1
    for original in events:
     p=copy.deepcopy(original);p.set("channel",cid);tv.append(p);counts["programmes"]+=1
   else:
@@ -168,6 +219,7 @@ def generate():
    ET.SubElement(p,"title",lang="en").text=title
    ET.SubElement(p,"desc",lang="en").text="V4: no verified schedule available; channel retained for later correction"
    counts["fallback_channels"]+=1
+   counts["unmatched_by_category"][group]=counts["unmatched_by_category"].get(group,0)+1
   counts["channels"]+=1
  OUT.mkdir(parents=True,exist_ok=True)
  with gzip.open(OUT/"epg.xml.gz","wb",compresslevel=6) as f:
