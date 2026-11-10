@@ -1,5 +1,11 @@
 name: V4 Independent XMLTV Generator
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'v4/**'
+      - 'v4-mappings/**'
+      - '.github/workflows/v4-xmltv.yml'
   workflow_dispatch:
   schedule:
     - cron: '17 */4 * * *'
