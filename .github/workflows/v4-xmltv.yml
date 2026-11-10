@@ -30,6 +30,15 @@ jobs:
           path: v4-input
           merge-multiple: true
           github-token: ${{ github.token }}
+      - name: Recover known inventory artifact directly
+        if: ${{ hashFiles('v4-input/**/ALL_CHANNELS_Renamed.csv', 'v4-input/ALL_CHANNELS_Renamed.csv') == '' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p v4-input
+          gh api -H "Accept: application/vnd.github+json" /repos/${{ github.repository }}/actions/artifacts/13634518145/zip > /tmp/v4-inventory.zip
+          unzip -o /tmp/v4-inventory.zip -d v4-input
       - name: Identify V4 inventory inputs
         run: |
           echo 'Available V4 mapping files:'
