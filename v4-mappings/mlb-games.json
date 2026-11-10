@@ -1,0 +1,179 @@
+{
+  "project": "My-EPG-v4",
+  "category": "MLB Numbered Games",
+  "status": "verified_source_ids",
+  "source_snapshot": "2026-11-09 EPG37 and Xtream inventory",
+  "note": "17 exact numbered EPG37 channel IDs; currently offseason No Event Today programmes; do not invent matchups.",
+  "mappings": [
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 01",
+      "xtream_original_channel_name": "US - MLB GAME 01 :",
+      "xtream_stream_id": "233018",
+      "original_xtream_epgid": "MLB.GAME.01",
+      "source_channel_id": "115.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 02",
+      "xtream_original_channel_name": "US - MLB GAME 02 :",
+      "xtream_stream_id": "233019",
+      "original_xtream_epgid": "MLB.GAME.02",
+      "source_channel_id": "116.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 03",
+      "xtream_original_channel_name": "US - MLB GAME 03 :",
+      "xtream_stream_id": "233020",
+      "original_xtream_epgid": "MLB.GAME.03",
+      "source_channel_id": "117.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 04",
+      "xtream_original_channel_name": "US - MLB GAME 04 :",
+      "xtream_stream_id": "233021",
+      "original_xtream_epgid": "MLB.GAME.04",
+      "source_channel_id": "118.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 05",
+      "xtream_original_channel_name": "US - MLB GAME 05 :",
+      "xtream_stream_id": "232804",
+      "original_xtream_epgid": "MLB.GAME.05",
+      "source_channel_id": "119.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 06",
+      "xtream_original_channel_name": "US - MLB GAME 06 :",
+      "xtream_stream_id": "233022",
+      "original_xtream_epgid": "MLB.GAME.06",
+      "source_channel_id": "120.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 07",
+      "xtream_original_channel_name": "US - MLB GAME 07 :",
+      "xtream_stream_id": "232803",
+      "original_xtream_epgid": "MLB.GAME.07",
+      "source_channel_id": "121.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 08",
+      "xtream_original_channel_name": "US - MLB GAME 08 :",
+      "xtream_stream_id": "232801",
+      "original_xtream_epgid": "MLB.GAME.08",
+      "source_channel_id": "122.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 09",
+      "xtream_original_channel_name": "US - MLB GAME 09 :",
+      "xtream_stream_id": "232807",
+      "original_xtream_epgid": "MLB.GAME.14",
+      "source_channel_id": "123.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 10",
+      "xtream_original_channel_name": "US - MLB GAME 10 :",
+      "xtream_stream_id": "232806",
+      "original_xtream_epgid": "MLB.GAME.09",
+      "source_channel_id": "124.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 11",
+      "xtream_original_channel_name": "US - MLB GAME 11 :",
+      "xtream_stream_id": "232802",
+      "original_xtream_epgid": "MLB.GAME.10",
+      "source_channel_id": "125.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 12",
+      "xtream_original_channel_name": "US - MLB GAME 12 :",
+      "xtream_stream_id": "233023",
+      "original_xtream_epgid": "MLB.GAME.11",
+      "source_channel_id": "126.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 13",
+      "xtream_original_channel_name": "US - MLB GAME 13 :",
+      "xtream_stream_id": "233024",
+      "original_xtream_epgid": "MLB.GAME.12",
+      "source_channel_id": "127.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 14",
+      "xtream_original_channel_name": "US - MLB GAME 14 :",
+      "xtream_stream_id": "233025",
+      "original_xtream_epgid": "MLB.GAME.13",
+      "source_channel_id": "128.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 15",
+      "xtream_original_channel_name": "US - MLB GAME 15 :",
+      "xtream_stream_id": "232808",
+      "original_xtream_epgid": "MLB.GAME.15",
+      "source_channel_id": "129.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 16",
+      "xtream_original_channel_name": "US - MLB GAME 16 :",
+      "xtream_stream_id": "236409",
+      "original_xtream_epgid": "MLB.GAME.16",
+      "source_channel_id": "130.MLB"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB Game 17",
+      "xtream_original_channel_name": "US - MLB GAME 17 :",
+      "xtream_stream_id": "971648",
+      "original_xtream_epgid": "",
+      "source_channel_id": "131.MLB"
+    }
+  ]
+}
