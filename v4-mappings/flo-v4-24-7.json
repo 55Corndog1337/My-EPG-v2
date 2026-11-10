@@ -1,0 +1,63 @@
+{
+  "project": "My-EPG-v4",
+  "category": "FloSports 24/7",
+  "source": "epg6",
+  "programme_generation_enabled": false,
+  "mappings": [
+    {
+      "channel": "US - FLORACING 24/7",
+      "xtream_group": "AM | USA | FLO SPORTS TV",
+      "xtream_original_channel_name": "US - FLORACING 24/7",
+      "xtream_stream_id": "1337424",
+      "original_xtream_epgid": "",
+      "source": "epg6",
+      "source_channel_id": "dummy-712665",
+      "programme_generation_enabled": false,
+      "status": "source_verified"
+    },
+    {
+      "channel": "US - PBR RIDEPASS 24/7",
+      "xtream_group": "AM | USA | FLO SPORTS TV",
+      "xtream_original_channel_name": "US - PBR RIDEPASS 24/7",
+      "xtream_stream_id": "1337425",
+      "original_xtream_epgid": "",
+      "source": "epg6",
+      "source_channel_id": "PBRRidePass.us",
+      "programme_generation_enabled": false,
+      "status": "source_verified"
+    },
+    {
+      "channel": "US - FLOHOCKEY 24/7",
+      "xtream_group": "AM | USA | FLO SPORTS TV",
+      "xtream_original_channel_name": "US - FLOHOCKEY 24/7",
+      "xtream_stream_id": "1337426",
+      "original_xtream_epgid": "",
+      "source": "epg6",
+      "source_channel_id": null,
+      "programme_generation_enabled": false,
+      "status": "epg6_preferred_source_unmatched_static_fallback"
+    },
+    {
+      "channel": "US - FLOVARSITY TV 24/7",
+      "xtream_group": "AM | USA | FLO SPORTS TV",
+      "xtream_original_channel_name": "US - FLOVARSITY TV 24/7",
+      "xtream_stream_id": "1337427",
+      "original_xtream_epgid": "",
+      "source": "epg6",
+      "source_channel_id": null,
+      "programme_generation_enabled": false,
+      "status": "epg6_preferred_source_unmatched_static_fallback"
+    },
+    {
+      "channel": "US - FLOMARCHING RADIO 24/7",
+      "xtream_group": "AM | USA | FLO SPORTS TV",
+      "xtream_original_channel_name": "US - FLOMARCHING RADIO 24/7",
+      "xtream_stream_id": "1337428",
+      "original_xtream_epgid": "",
+      "source": "epg6",
+      "source_channel_id": null,
+      "programme_generation_enabled": false,
+      "status": "epg6_preferred_source_unmatched_static_fallback"
+    }
+  ]
+}
