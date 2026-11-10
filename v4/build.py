@@ -194,9 +194,25 @@ def load_epgs(rows,overrides):
   if provider:
    for src in ("epg37","epg2","epg6"):preferred.append((src,provider))
   chosen=None
+  # Match ESPN+ 247-600 to real EPG2 programmes, not placeholder titles.
+  group=val(row,"Group").upper()
+  if "ESPN PLUS" in group:
+   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
+   slot=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
+   number=int(slot.group(1)) if slot else 0
+   if 247<=number<=600:
+    for candidate in (f"ESPN.PLUS.{number}",f"ESPNPlus.{number}",f"ESPN+.{number}",f"ESPN+ {number:03d}"):
+     canonical=by_id.get(("epg2",candidate.lower()))
+     if canonical:
+      chosen=("epg2",canonical,"espn_slot");break
+    if not chosen:
+     for candidate in (f"ESPN+ {number:03d}",f"ESPN+ {number}",f"ESPN PLUS {number:03d}",f"ESPN PLUS {number}"):
+      matches=by_name.get(("epg2",norm(candidate)),set())
+      if len(matches)==1:
+       chosen=("epg2",next(iter(matches)),"espn_slot_name");break
   for src,cid in preferred:
    canonical=by_id.get((src,cid.lower()))
-   if canonical:
+   if canonical and not chosen:
     chosen=(src,canonical,"id");break
   # Never infer event-channel schedules from generic channel names:
   # Game 01, ESPN+ 01, FloSports 01, etc. require event-specific mapping.
