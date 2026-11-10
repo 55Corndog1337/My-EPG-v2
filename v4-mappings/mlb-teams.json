@@ -1,0 +1,309 @@
+{
+  "project": "My-EPG-v4",
+  "category": "MLB Team Channels",
+  "status": "verified_source_ids",
+  "source_snapshot": "2026-11-09 EPG37 and Xtream inventory",
+  "note": "30 team identity EPG37 IDs verified; some source IDs use sxm12. Preserve provider naming including Oakland Athletics.",
+  "mappings": [
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Cleveland Guardians",
+      "xtream_original_channel_name": "US - MLB TEAMS : CLEVELAND GUARDIANS",
+      "xtream_stream_id": "294525",
+      "original_xtream_epgid": "",
+      "source_channel_id": "ClevelandGuardians.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Minnesota Twins",
+      "xtream_original_channel_name": "US - MLB TEAMS : MINNESOTA TWINS",
+      "xtream_stream_id": "294516",
+      "original_xtream_epgid": "",
+      "source_channel_id": "MinnesotaTwins.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Arizona Diamondbacks",
+      "xtream_original_channel_name": "US - MLB TEAMS : ARIZONA DIAMONDBACKS",
+      "xtream_stream_id": "294531",
+      "original_xtream_epgid": "",
+      "source_channel_id": "ArizonaDiamondbacks.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "San Diego Padres",
+      "xtream_original_channel_name": "US - MLB TEAMS : SAN DIEGO PADRES",
+      "xtream_stream_id": "294510",
+      "original_xtream_epgid": "",
+      "source_channel_id": "SanDiegoPadres.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Washington Nationals",
+      "xtream_original_channel_name": "US - MLB TEAMS : WASHINGTON NATIONALS",
+      "xtream_stream_id": "294503",
+      "original_xtream_epgid": "",
+      "source_channel_id": "WashingtonNationals.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Cincinnati Reds",
+      "xtream_original_channel_name": "US - MLB TEAMS : CINCINNATI REDS",
+      "xtream_stream_id": "294526",
+      "original_xtream_epgid": "",
+      "source_channel_id": "CincinnatiReds.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "St. Louis Cardinals",
+      "xtream_original_channel_name": "US - MLB TEAMS : ST. LOUIS CARDINALS",
+      "xtream_stream_id": "294507",
+      "original_xtream_epgid": "",
+      "source_channel_id": "StLouisCardinals.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Kansas City Royals",
+      "xtream_original_channel_name": "US - MLB TEAMS : KANSAS CITY ROYALS",
+      "xtream_stream_id": "294521",
+      "original_xtream_epgid": "",
+      "source_channel_id": "KansasCityRoyals.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Colorado Rockies",
+      "xtream_original_channel_name": "US - MLB TEAMS : COLORADO ROCKIES",
+      "xtream_stream_id": "294524",
+      "original_xtream_epgid": "",
+      "source_channel_id": "ColoradoRockies.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Tampa Bay Rays",
+      "xtream_original_channel_name": "US - MLB TEAMS : TAMPA BAY RAYS",
+      "xtream_stream_id": "294506",
+      "original_xtream_epgid": "",
+      "source_channel_id": "TampaBayRays.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Miami Marlins",
+      "xtream_original_channel_name": "US - MLB TEAMS : MIAMI MARLINS",
+      "xtream_stream_id": "294518",
+      "original_xtream_epgid": "",
+      "source_channel_id": "MiamiMarlins.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Milwaukee Brewers",
+      "xtream_original_channel_name": "US - MLB TEAMS : MILWAUKEE BREWERS",
+      "xtream_stream_id": "294517",
+      "original_xtream_epgid": "",
+      "source_channel_id": "MilwaukeeBrewers.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Texas Rangers",
+      "xtream_original_channel_name": "US - MLB TEAMS : TEXAS RANGERS",
+      "xtream_stream_id": "294505",
+      "original_xtream_epgid": "",
+      "source_channel_id": "TexasRangers.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Houston Astros",
+      "xtream_original_channel_name": "US - MLB TEAMS : HOUSTON ASTROS",
+      "xtream_stream_id": "294532",
+      "original_xtream_epgid": "",
+      "source_channel_id": "HoustonAstros.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Atlanta Braves",
+      "xtream_original_channel_name": "US - MLB TEAMS : ATLANTA BRAVES",
+      "xtream_stream_id": "294530",
+      "original_xtream_epgid": "",
+      "source_channel_id": "AtlantaBraves.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Baltimore Orioles",
+      "xtream_original_channel_name": "US - MLB TEAMS : BALTIMORE ORIOLES",
+      "xtream_stream_id": "294529",
+      "original_xtream_epgid": "",
+      "source_channel_id": "BaltimoreOrioles.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Boston Red Sox",
+      "xtream_original_channel_name": "US - MLB TEAMS : BOSTON RED SOX",
+      "xtream_stream_id": "294528",
+      "original_xtream_epgid": "",
+      "source_channel_id": "BostonRedSox.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Chicago Cubs",
+      "xtream_original_channel_name": "US - MLB TEAMS : CHICAGO CUBS",
+      "xtream_stream_id": "294527",
+      "original_xtream_epgid": "",
+      "source_channel_id": "ChicagoCubs.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Los Angeles Angels",
+      "xtream_original_channel_name": "US - MLB TEAMS : LOS ANGELES ANGELS",
+      "xtream_stream_id": "294520",
+      "original_xtream_epgid": "",
+      "source_channel_id": "LosAngelesAngels.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Los Angeles Dodgers",
+      "xtream_original_channel_name": "US - MLB TEAMS : LOS ANGELES DODGERS",
+      "xtream_stream_id": "294519",
+      "original_xtream_epgid": "",
+      "source_channel_id": "LosAngelesDodgers.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Oakland Athletics",
+      "xtream_original_channel_name": "US - MLB TEAMS : OAKLAND ATHLETICS",
+      "xtream_stream_id": "294513",
+      "original_xtream_epgid": "",
+      "source_channel_id": "Athletics.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Pittsburgh Pirates",
+      "xtream_original_channel_name": "US - MLB TEAMS : PITTSBURGH PIRATES",
+      "xtream_stream_id": "294511",
+      "original_xtream_epgid": "",
+      "source_channel_id": "PittsburghPirates.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "San Francisco Giants",
+      "xtream_original_channel_name": "US - MLB TEAMS : SAN FRANCISCO GIANTS",
+      "xtream_stream_id": "294508",
+      "original_xtream_epgid": "",
+      "source_channel_id": "SanFranciscoGiants.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Toronto Blue Jays",
+      "xtream_original_channel_name": "US - MLB TEAMS : TORONTO BLUE JAYS",
+      "xtream_stream_id": "294504",
+      "original_xtream_epgid": "",
+      "source_channel_id": "TorontoBlueJays.sxm12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Philadelphia Phillies",
+      "xtream_original_channel_name": "US - MLB TEAMS : PHILADELPHIA PHILLIES",
+      "xtream_stream_id": "294512",
+      "original_xtream_epgid": "",
+      "source_channel_id": "PhiladelphiaPhillies.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Chicago White Sox",
+      "xtream_original_channel_name": "US - MLB TEAMS : CHICAGO WHITE SOX",
+      "xtream_stream_id": "294523",
+      "original_xtream_epgid": "",
+      "source_channel_id": "ChicagoWhiteSox.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "New York Yankees",
+      "xtream_original_channel_name": "US - MLB TEAMS : NEW YORK YANKEES",
+      "xtream_stream_id": "294514",
+      "original_xtream_epgid": "",
+      "source_channel_id": "NewYorkYankees.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "New York Mets",
+      "xtream_original_channel_name": "US - MLB TEAMS : NEW YORK METS",
+      "xtream_stream_id": "294515",
+      "original_xtream_epgid": "",
+      "source_channel_id": "NewYorkMets.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Detroit Tigers",
+      "xtream_original_channel_name": "US - MLB TEAMS : DETROIT TIGERS",
+      "xtream_stream_id": "294522",
+      "original_xtream_epgid": "",
+      "source_channel_id": "DetroitTigers.mlb12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "Seattle Mariners",
+      "xtream_original_channel_name": "US - MLB TEAMS : SEATTLE MARINERS",
+      "xtream_stream_id": "294509",
+      "original_xtream_epgid": "",
+      "source_channel_id": "SeattleMariners.mlb12"
+    }
+  ]
+}
