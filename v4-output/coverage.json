@@ -1,9 +1,9 @@
 {
   "inventory_source": "/home/runner/work/My-EPG-v2/My-EPG-v2/v4/inventory.csv",
   "channels": 8147,
-  "programmes": 549548,
-  "fallback_channels": 1712,
-  "mapped_channels": 6435,
+  "programmes": 550086,
+  "fallback_channels": 1717,
+  "mapped_channels": 6430,
   "categories": {
     "AM | USA | NEWS": 88,
     "AM | USA | SPECTRUM NETWORK": 60,
@@ -105,14 +105,14 @@
   "source_matches": {
     "epg2_id": 339,
     "epg2_name": 62,
-    "epg37_name": 1897,
+    "epg37_name": 1892,
     "epg6_id": 2049,
     "epg6_name": 47,
     "epg37_id": 1705
   },
   "scheduled_by_source": {
     "epg2": 393,
-    "epg37": 3568,
+    "epg37": 3563,
     "epg6": 2096,
     "nba-xtream-streamid": 38,
     "ahl-season-csv": 31,
@@ -136,6 +136,7 @@
     "AM | USA | APPLE TV F1 PPV": 50,
     "AM | USA | DAZN PPV": 50,
     "AM | USA | PRIME PPV": 100,
+    "AM | USA | TRILLER\u00a0TV": 1,
     "AM | USA | DEPORTES": 3,
     "AM | USA | PARAMOUNT+": 100,
     "AM | USA | LIVE EVENT": 32,
@@ -147,7 +148,7 @@
     "AM | USA | NFL": 17,
     "AM | USA | MLB": 2,
     "AM | USA | PEACOCK": 100,
-    "AM | USA | TENNIS": 7,
+    "AM | USA | TENNIS": 10,
     "AM | USA | FLO SPORTS TV": 3,
     "AM | USA | VICTORY +": 100,
     "AM | USA | TELEMUNDO": 1,
@@ -180,6 +181,7 @@
     "EU | UK | UEFA PPV": 36,
     "EU | UK | PPV": 29,
     "EU | UK | PSF PPV": 15,
+    "EU | UK | SETANTA": 1,
     "VIP | CHRISTMAS": 17,
     "AM | USA | CINEMANIA SHOWS": 63
   }
