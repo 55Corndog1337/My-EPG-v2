@@ -1,9 +1,9 @@
 {
   "inventory_source": "/home/runner/work/My-EPG-v2/My-EPG-v2/v4/inventory.csv",
   "channels": 8147,
-  "programmes": 551073,
-  "fallback_channels": 2055,
-  "mapped_channels": 6092,
+  "programmes": 551595,
+  "fallback_channels": 1715,
+  "mapped_channels": 6432,
   "categories": {
     "AM | USA | NEWS": 88,
     "AM | USA | SPECTRUM NETWORK": 60,
@@ -113,7 +113,9 @@
   "scheduled_by_source": {
     "epg2": 401,
     "epg37": 3595,
-    "epg6": 2096
+    "epg6": 2096,
+    "ahl-season-csv": 31,
+    "24-7-static": 309
   },
   "unmatched_by_category": {
     "AM | USA | NEWS": 8,
@@ -140,7 +142,7 @@
     "AM | USA | PPV": 30,
     "AM | USA | NBA": 34,
     "AM | USA | NBA IN ARENA": 30,
-    "AM | USA | AHL": 32,
+    "AM | USA | AHL": 1,
     "AM | USA | NFL": 17,
     "AM | USA | MLB": 2,
     "AM | USA | PEACOCK": 100,
@@ -178,8 +180,6 @@
     "EU | UK | PPV": 29,
     "EU | UK | PSF PPV": 15,
     "VIP | CHRISTMAS": 17,
-    "AM | USA | CINEMANIA SHOWS": 63,
-    "AM | USA | 24/7": 247,
-    "EU | UK | 24/7": 62
+    "AM | USA | CINEMANIA SHOWS": 63
   }
 }
