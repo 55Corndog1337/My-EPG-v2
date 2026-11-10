@@ -1,0 +1,885 @@
+Network,StreamID,Original Channel,Original EPGID,Callsign,V4 Source,V4 EPG ID,Snapshot Programmes,Status,Match Basis
+NBC,214237,US - NBC 12 MONTGOMERY AL (WSFA) FHD,nbc12wsfa.us,WSFA,epg37,NBCWSFA.us12,216,matched,unique_network_callsign
+NBC,214249,US - NBC 13 BIRMINGHAM AL (WVTM) FHD,nbc13wvtm.us,WVTM,epg37,NBCWVTM.us12,207,matched,unique_network_callsign
+NBC,214245,US - NBC 13 DOTHAN AL (WRGX) FHD,nbc13wrgx.us,WRGX,epg37,NBCWRGX.us12,210,matched,unique_network_callsign
+NBC,214262,US - NBC 15 MOBILE AL (WPMI) FHD,nbc15wpmi.us,WPMI,,,0,needs_review,
+NBC,214345,US - NBC 48 HUNTSVILLE AL (WAFF) FHD,nbc48waff.us,WAFF,epg37,NBCWAFF.us12,197,matched,unique_network_callsign
+NBC,214259,US - NBC 2 ANCHORAGE AK (KTUU) FHD,nbc4ktiv.us,KTUU,epg37,NBCKTUU.us12,207,matched,unique_network_callsign
+NBC,214282,US - NBC 5 JUNEAU AK (KATH) FHD,nbcwkyc.us,KATH,epg37,NBCKATH.us12,207,matched,unique_network_callsign
+NBC,214223,US - NBC 11 FAIRBANKS AK (KTVF) FHD,nbc11ktvf.us,KTVF,epg37,NBCKTVF.us12,212,matched,unique_network_callsign
+NBC,214137,US - NBC 4 TUCSON AZ (KVOA) FHD,nbc4kvoa.us,KVOA,epg37,NBCKVOA.us12,203,matched,unique_network_callsign
+NBC,214214,US - NBC 12 PHOENIX AZ (KPNX)  FHD,nbc10wcau.us,KPNX,epg37,NBCKPNX.us12,199,matched,unique_network_callsign
+NBC,214253,US - NBC 13 YUMA AZ (KYMA) FHD,nbc13kyma2.us,KYMA,epg37,NBCKYMADT2.us12,207,matched,unique_network_callsign
+NBC,214127,US - NBC 4 LITTLE ROCK AR (KARK) FHD,nbc4kark.us,KARK,epg37,NBCKARK.us12,196,matched,unique_network_callsign
+NBC,1280982,US - NBC 51 ST. ROGERS AR (KNWA)  FHD,,KNWA,epg37,NBCKNWA.us12,209,matched,unique_network_callsign
+NBC,214113,US - NBC 3 EUREKA CA (KIEM) FHD,nbc3kiem.us,KIEM,epg37,NBCKIEM.us12,221,matched,unique_network_callsign
+NBC,214624,US - NBC 3 SACRAMENTO CA (KCRA) FHD,nbckcra.us,KCRA,epg37,NBCKCRA.us12,200,matched,unique_network_callsign
+NBC,214133,US - NBC 4 LOS ANGELES CA (KNBC) FHD,KNBC,KNBC,epg37,NBCKNBC.us12,199,matched,unique_network_callsign
+NBC,214165,US - NBC 6 PALM SPRINGS (KMIR) FHD,nbc6kmir.us,KMIR,epg37,NBCKMIR.us12,226,matched,unique_network_callsign
+NBC,214167,US - NBC 6 SAN LUIS OBISPO CA (KSBY) FHD,nbc6ksby.us,KSBY,epg37,NBCKSBY.us12,208,matched,unique_network_callsign
+NBC,214195,US - NBC 8 SALINAS CA (KSBW) FHD,nbc8ksbw.us,KSBW,epg37,NBCKSBW.us12,209,matched,unique_network_callsign
+NBC,1280983,US - NBC 11 BAY AREA (KNTV) FHD,,KNTV,epg37,NBCKNTV.us12,202,matched,unique_network_callsign
+NBC,214230,US - NBC 11 SAN JOSE CA (KNTV) FHD,nbc11kntv.us,KNTV,epg37,NBCKNTV.us12,202,matched,unique_network_callsign
+NBC,214273,US - NBC 17 BAKERSFIELD CA (KGET) FHD,nbc17kget.us,KGET,epg37,NBCKGET.us12,203,matched,unique_network_callsign
+NBC,214304,US - NBC 24 CHICO CA (KNVN) FHD,nbc24knvn.us,KNVN,epg37,NBCKNVN.us12,199,matched,unique_network_callsign
+NBC,214306,US - NBC 24 FRESNO CA (KSEE) FHD,nbc24ksee.us,KSEE,epg37,NBCKSEE.us12,209,matched,unique_network_callsign
+NBC,1280985,US - NBC 39 SAN DIEGO CA (KNSD)  FHD,nbcknsd.us,KNSD,epg37,NBCKNSD.us12,198,matched,unique_network_callsign
+NBC,214142,US - NBC 5 PUEBLO CO (KOAA) FHD,nbckxas.us,KOAA,epg37,NBCKOAA.us12,203,matched,unique_network_callsign
+NBC,214198,US - NBC 9 DENVER CO (KUSA) FHD,nbc9kusa.us,KUSA,epg37,NBCKUSA.us12,196,matched,unique_network_callsign
+NBC,214175,US - NBC 11 GRAND JUNCTION CO (KKCO) FHD,nbc4wyff.us,KKCO,epg37,NBCKKCO.us12,202,matched,unique_network_callsign
+NBC,1280986,US - NBC 30 HARTFORD CT (WVIT) FHD,,WVIT,epg37,NBCWVIT.us12,205,matched,unique_network_callsign
+NBC,214109,US - NBC 2 ORLANDO FL (WESH) FHD,nbcwesh.us,WESH,epg37,NBCWESH.us12,176,matched,unique_network_callsign
+NBC,214155,US - NBC 5 WEST PALM BEACH FL (WPTV) FHD,nbc5wptv.us,WPTV,epg37,NBCWPTV.us12,199,matched,unique_network_callsign
+NBC,214160,US - NBC 6 MIAMI FL (WTVJ) FHD,nbc6wtvj.us,WTVJ,epg37,NBCWTVJ.us12,199,matched,unique_network_callsign
+NBC,214184,US - NBC 7 PANAMA CITY FL (WJHG) FHD,nbc7wjhg.us,WJHG,epg37,NBCWJHG.us12,215,matched,unique_network_callsign
+NBC,214196,US - NBC 8 TAMPA FL (WFLA) FHD,nbcwfla.us,WFLA,epg37,NBCWFLA.us12,206,matched,unique_network_callsign
+NBC,214200,US - NBC 9 GAINESVILLE FL (WNBW) FHD,nbc9wnbw.us,WNBW,,,0,needs_review,
+NBC,214236,US - NBC 12 JACKSONVILLE FL (WTLV) FHD,nbcwtlv.us,WTLV,epg37,NBCWTLV.us12,208,matched,unique_network_callsign
+NBC,214268,US - NBC 16 LAFAYETTE (WPBI) FHD,nbc46klaf.us,WPBI,epg37,NBCWPBIDT2.us12,221,matched,unique_network_callsign
+NBC,214258,US - NBC 20 FORT MYERS FL (WBBH) FHD,nbcksnv.us,WBBH,epg37,NBCWBBH.us12,185,matched,unique_network_callsign
+NBC,214339,US - NBC 40 TALLAHASSEE FL (WTWC) FHD,nbc40wtwc.us,WTWC,epg37,NBCWTWC.us12,211,matched,unique_network_callsign
+NBC,214118,US - NBC 3 SAVANNAH GA (WSAV) FHD,nbc3wsav.us,WSAV,epg37,NBCWSAV.us12,209,matched,unique_network_callsign
+NBC,214206,US - NBC 10 ALBANY GA (WALB) FHD,nbc10walb.us,WALB,epg37,NBCWALB.us12,207,matched,unique_network_callsign
+NBC,214228,US - NBC 11 ATLANTA GA (WXIA) FHD,nbcwxia.us,WXIA,epg37,NBCWXIA.us12,202,matched,unique_network_callsign
+NBC,214231,US - NBC 26 AUGUSTA GA (WAGT) FHD,nbc41wmgt.us,WAGT,epg37,NBCWAGT.us12,201,matched,unique_network_callsign
+NBC,1063021,US - NBC 38 COLUMBUS GA (WLTZ) FHD,nbc38wltz.us,WLTZ,epg37,NBCWLTZ.us12,202,matched,unique_network_callsign
+NBC,214341,US - NBC 41 MACON GA (WMGT) FHD,nbc41wmgt.us,WMGT,epg37,NBCWMGT.us12,205,matched,unique_network_callsign
+NBC,214130,US - NBC 13 HONOLULU HI (KHNL) FHD,nbc7krnv.us,KHNL,epg37,NBCKHNL.us12,215,matched,unique_network_callsign
+NBC,214166,US - NBC 6 POCATELLO ID (KPVI) FHD,nbc6kpvi.us,KPVI,epg37,NBCKPVI.us12,218,matched,unique_network_callsign
+NBC,214174,US - NBC 7 BOISE ID (KTVB) FHD,nbc7ktft.us,KTVB,epg37,NBCKTVB.us12,198,matched,unique_network_callsign
+NBC,1280987,US - NBC 7 TWIN FALLS ID (KTFT) FHD,nbc7ktft.us,KTFT,,,0,needs_review,
+NBC,214154,US - NBC 5 CHICAGO IL (WMAQ) FHD,nbc5wmaq.us,WMAQ,epg37,NBCWMAQ.us12,205,matched,unique_network_callsign
+NBC,214216,US - NBC 10 QUINCY IL (WGEM) FHD,nbc10wgem.us,WGEM,epg37,NBCWGEM.us12,192,matched,unique_network_callsign
+NBC,214252,US - NBC 13 ROCKFORD IL (WREX) FHD,nbc13wrex.us,WREX,epg37,NBCWREX.us12,207,matched,unique_network_callsign
+NBC,214274,US - NBC 17 DECATUR IL (WAND) FHD,nbc17wand.us,WAND,epg37,NBCWAND.us12,203,matched,unique_network_callsign
+NBC,214310,US - NBC 25 PEORIA IL (WEEK) FHD,nbc25week.us,WEEK,epg37,NBCWEEK.us12,197,matched,unique_network_callsign
+NBC,214105,US - NBC 2 TERRE HAUTE IN (WTWO) FHD,nbc2wtwo.us,WTWO,epg37,NBCWTWO.us12,224,matched,unique_network_callsign
+NBC,214247,US - NBC 13 INDIANAPOLIS IN (WTHR) FHD,nbc13wthr.us,WTHR,epg37,NBCWTHR.us12,210,matched,unique_network_callsign
+NBC,214255,US - NBC 14 EVANSVILLE IN (WFIE) FHD,nbc14wfie.us,WFIE,epg37,NBCWFIE.us12,214,matched,unique_network_callsign
+NBC,214271,US - NBC 16 SOUTH BEND IN (WNDU) FHD,nbc16wndu.us,WNDU,epg37,NBCWNDU.us12,194,matched,unique_network_callsign
+NBC,214291,US - NBC 21 FORT WAYNE IN (WPTA) FHD,nbc21wpta.us,WPTA,epg37,NBCWPTADT2.us12,211,matched,unique_network_callsign
+NBC,214101,US - NBC 3 WICHITA KS (KSNW) FHD,nbc3ksnw.us,KSNW,epg37,NBCKSNW.us12,197,matched,unique_network_callsign
+NBC,214095,US - NBC 4 SIOUX CITY IA (KTIV) FHD,nbc4ktiv.us,KTIV,epg37,NBCKTIV.us12,420,matched,unique_network_callsign
+NBC,214158,US - NBC 6 DAVENPORT IA (KWQC) FHD,nbc6kwqc.us,KWQC,epg37,NBCKWQC.us12,213,matched,unique_network_callsign
+NBC,214185,US - NBC 7 WATERLOO IA (KWWL) FHD,nbc7kwwl.us,KWWL,epg37,NBCKWWL.us12,208,matched,unique_network_callsign
+NBC,214244,US - NBC 13 DES MOINES IA (WHO) FHD,nbc13who.us,WHO,epg37,NBCWHO.us12,205,matched,unique_network_callsign
+NBC,214317,US - NBC 27 TOPEKA KS (KSNT) FHD,nbc27ksnt.us,KSNT,epg37,NBCKSNT.us12,213,matched,unique_network_callsign
+NBC,214117,US - NBC 3 LOUISVILLE KY (WAVE) FHD,nbcwave.us,WAVE,epg37,NBCWAVE.us12,195,matched,unique_network_callsign
+NBC,214164,US - NBC 6 PADUCAH KY (WPSD) FHD,nbc6wpsd.us,WPSD,epg37,NBCWPSD.us12,207,matched,unique_network_callsign
+NBC,1280989,US - NBC 18  ELMIRA (WETM) FHD,,WETM,epg37,NBCWETM.us12,201,matched,unique_network_callsign
+NBC,214278,US - NBC 18 LEXINGTON KY (WLEX) FHD,nbc18wlex.us,WLEX,epg37,NBCWLEX.us12,206,matched,unique_network_callsign
+NBC,214338,US - NBC 40 BOWLING GREEN KY (WNKY) FHD,nbc40wnky.us,WNKY,epg37,NBCWNKY.us12,217,matched,unique_network_callsign
+NBC,214145,US - NBC 5 ALEXANDRIA LA (KALB) FHD,nbc5kalb.us,KALB,epg37,NBCKALB.us12,217,matched,unique_network_callsign
+NBC,214162,US - NBC 6 NEW ORLEANS LA (WDSU) FHD,nbcwdsu.us,WDSU,epg37,NBCWDSU.us12,183,matched,unique_network_callsign
+NBC,214168,US - NBC 6 SHREVEPORT LA (KTAL) FHD,nbc6ktal.us,KTAL,epg37,NBCKTAL.us12,424,matched,unique_network_callsign
+NBC,214177,US - NBC 7 LAKE CHARLES LA (KPLC) FHD,nbc7kplc.us,KPLC,epg37,NBCKPLC.us12,220,matched,unique_network_callsign
+NBC,1280990,US - NBC 10 WEST MONROE LA (KTVE)   FHD,,KTVE,epg37,NBCKTVE.us12,201,matched,unique_network_callsign
+NBC,214328,US - NBC 32 BATON ROUGE LA (WVLA) FHD,nbc33wvla.us,WVLA,epg37,NBCWVLA.us12,207,matched,unique_network_callsign
+NBC,214097,US - NBC 2 BANGOR ME (WLBZ) FHD,nbc2wlbz.us,WLBZ,epg37,NBCWLBZ.us12,194,matched,unique_network_callsign
+NBC,214172,US - NBC 6 PORTLAND ME (WCSH) FHD,nbcwcsh.us,WCSH,epg37,NBCWCSH.us12,194,matched,unique_network_callsign
+NBC,214222,US - NBC 11 BALTIMORE MD (WBAL) FHD,nbcwbal.us,WBAL,epg37,NBCWBAL.us12,188,matched,unique_network_callsign
+NBC,214218,US - NBC 10 BOSTON MA (WBTS) FHD,a3cine.us,WBTS,,,0,needs_review,
+NBC,214296,US - NBC 22 SPRINGFIELD MA (WWLP) FHD,nbc22wwlp.us,WWLP,epg37,NBCWWLP.us12,222,matched,unique_network_callsign
+NBC,214124,US - NBC 4 DETROIT MI (WDIV) FHD,nbcwdiv.us,WDIV,epg37,NBCWDIV.us12,204,matched,unique_network_callsign
+NBC,214182,US - NBC 7 TRAVERSE CITY MI (WPBN) FHD,nbc7wpbn.us,WPBN,epg37,NBCWPBN.us12,231,matched,unique_network_callsign
+NBC,214188,US - NBC 8 GRAND RAPIDS MI (WOOD) FHD,nbc8wood.us,WOOD,epg37,NBCWOOD.us12,194,matched,unique_network_callsign
+NBC,214213,US - NBC 10 ONONDAGA MI (WILX) FHD,nbc10wilx.us,WILX,epg37,NBCWILX.us12,205,matched,unique_network_callsign
+NBC,214254,US - NBC 6 DULUTH MN (KBJR) FHD,nbc4ksnb.us,KBJR,epg37,NBCKBJR.us12,214,matched,unique_network_callsign
+NBC,214226,US - NBC 11 MINNEAPOLIS MN (KARE) FHD,nbckare.us,KARE,epg37,NBCKARE.us12,204,matched,unique_network_callsign
+NBC,214115,US - NBC 3 JACKSON MS (WLBT) FHD,nbc3wlbt.us,WLBT,epg37,NBCWLBT.us12,233,matched,unique_network_callsign
+NBC,214176,US - NBC 7 HATTIESBURG MS (WDAM) FHD,nbc7wdam.us,WDAM,epg37,NBCWDAM.us12,212,matched,unique_network_callsign
+NBC,214204,US - NBC 9 TUPELO MS (WTVA) FHD,nbc9wtva.us,WTVA,epg37,NBCWTVA.us12,214,matched,unique_network_callsign
+NBC,214309,US - NBC 25 GULFPORT MS (WXXV) FHD,nbc25wxxvdt2.us,WXXV,epg37,NBCWXXVDT2.us12,197,matched,unique_network_callsign
+NBC,214240,US - NBC 30 MERIDIAN MS (WGBC) FHD,nbc11kntv.us,WGBC,epg37,NBCWGBCDT2.us12,213,matched,unique_network_callsign
+NBC,214119,US - NBC 3 SPRINGFIELD MO (KYTV) FHD,nbc22wwlp.us,KYTV,epg37,NBCKYTV.us12,213,matched,unique_network_callsign
+NBC,214151,US - NBC 5 ST LOUIS MO (KSDK) FHD,nbc5ksdk.us,KSDK,epg37,NBCKSDK.us12,224,matched,unique_network_callsign
+NBC,214189,US - NBC 8 JEFFERSON CITY MO (KOMU) FHD,nbc8komu.us,KOMU,epg37,NBCKOMU.us12,220,matched,unique_network_callsign
+NBC,214275,US - NBC 17 JOPLIN MO (KSNF) FHD,,KSNF,epg37,NBCKSNF.us12,203,matched,unique_network_callsign
+NBC,214294,US - NBC 21 ST. JOSEPH MO (KNPG) FHD,nbc21knpg.us,KNPG,epg37,NBCKNPG.us12,201,matched,unique_network_callsign
+NBC,214340,US - NBC 41 KANSAS CITY MO (KSHB) FHD,nbc41kshb.us,KSHB,epg37,NBCKSHB.us12,198,matched,unique_network_callsign
+NBC,214186,US - NBC 8 BILLINGS MT (KULR) FHD,nbc8kulr.us,KULR,epg37,NBCKULR.us12,198,matched,unique_network_callsign
+NBC,214235,US - NBC 12 HELENA MT (KTVH) FHD,nbc12ktvh.us,KTVH,epg37,NBCKTVH.us12,204,matched,unique_network_callsign
+NBC,1280992,US - NBC 13 BUTTE MT (KTVM)  FHD,,KTVM,epg37,NBCKTVM.us12,198,matched,unique_network_callsign
+NBC,214250,US - NBC 13 MISSOULA MT (KECI) FHD,nbc13keci.us,KECI,epg37,NBCKECI.us12,198,matched,unique_network_callsign
+NBC,214104,US - NBC 2 NORTH PLATTE NE (KNOP) FHD,nbc2knop.us,KNOP,epg37,NBCKNOP.us12,203,matched,unique_network_callsign
+NBC,1280993,US - NBC 4 HASTINGS NE (KSNB) FHD,,KSNB,epg37,NBCKSNB.us12,203,matched,unique_network_callsign
+NBC,214163,US - NBC 6 OMAHA NE (WOWT) FHD,nbc6wowt.us,WOWT,epg37,NBCWOWT.us12,202,matched,unique_network_callsign
+NBC,214116,US - NBC 3 LAS VEGAS NV (KSNV) FHD,nbcksnv.us,KSNV,epg37,NBCKSNV.us12,209,matched,unique_network_callsign
+NBC,214179,US - NBC 7 RENO NV (KRXI-DT2) FHD,nbc7krnv.us,KRXI-DT2,epg37,NBCKRXIDT2.us12,199,matched,unique_network_callsign
+NBC,214098,US - NBC 2 BUFFALO NY (WGRZ) FHD,nbc2wgrz.us,WGRZ,epg37,NBCWGRZ.us12,199,matched,unique_network_callsign
+NBC,214107,US - NBC 2 UTICA NY (WKTV) FHD,nbc2wktv.us,WKTV,epg37,NBCWKTV.us12,211,matched,unique_network_callsign
+NBC,214120,US - NBC 3 SYRACUSE NY (WSTM) FHD,nbc3wstm.us,WSTM,epg37,NBCWSTM.us12,219,matched,unique_network_callsign
+NBC,214121,US - NBC 4 ALBUQUERQUE NM (KOB) FHD,nbc4kob.us,KOB,,,0,needs_review,
+NBC,214129,US - NBC 4 NEW YORK NY (WNBC) FHD,nbcwnbc.us,WNBC,epg37,NBCWNBC.us12,207,matched,unique_network_callsign
+NBC,214148,US - NBC 5 PLATTSBURGH NY (WPTZ) FHD,nbcwptz.us,WPTZ,epg37,NBCWPTZ.us12,191,matched,unique_network_callsign
+NBC,214221,US - NBC 10 ROCHESTER NY (WHEC) FHD,nbc10kttc.us,WHEC,epg37,NBCWHEC.us12,197,matched,unique_network_callsign
+NBC,214242,US - NBC 13 ALBANY NY (WNYT) FHD,abc10wten.us,WNYT,epg37,NBCWNYT.us12,213,matched,unique_network_callsign
+NBC,214285,US - NBC 20 BINGHAMTON NY (WBGH) FHD,nbc20wbgh.us,WBGH,epg37,NBCWBGH.us12,221,matched,unique_network_callsign
+NBC,214149,US - NBC 5 RALEIGH NC (WRAL) FHD,nbc5wral.us,WRAL,epg37,NBCWRAL.us12,211,matched,unique_network_callsign
+NBC,214171,US - NBC 6 WILMINGTON NC (WECT) FHD,nbc6wect.us,WECT,epg37,NBCWECT.us12,215,matched,unique_network_callsign
+NBC,214183,US - NBC 7 WASHINGTON NC (WITN) FHD,nbc7witn.us,WITN,epg37,NBCWITN.us12,199,matched,unique_network_callsign
+NBC,1280994,US - NBC 12 GREENSBORO NC (WXII)  FHD,,WXII,epg37,NBCWXII.us12,195,matched,unique_network_callsign
+NBC,214335,US - NBC 36 CHARLOTTE NC (WCNC) FHD,nbcwcnc.us,WCNC,epg37,NBCWCNC.us12,219,matched,unique_network_callsign
+NBC,214139,US - NBC 5 BISMARCK ND (KFYR) FHD,nbc5kfyr.us,KFYR,epg37,NBCKFYR.us12,205,matched,unique_network_callsign
+NBC,214224,US - NBC 11 FARGO ND (KVLY) FHD,nbc11kvly.us,KVLY,epg37,NBCKVLY.us12,203,matched,unique_network_callsign
+NBC,214100,US - NBC 2 DAYTON OH (WDTN) FHD,nbc2wdtn.us,WDTN,epg37,NBCWDTN.us12,198,matched,unique_network_callsign
+NBC,214111,US - NBC 3 CLEVELAND OH (WKYC) FHD,nbcwkyc.us,WKYC,epg37,NBCWKYC.us12,188,matched,unique_network_callsign
+NBC,214123,US - NBC 4 COLUMBUS OH (WCMH) FHD,nbc4wcmh.us,WCMH,epg37,NBCWCMH.us12,188,matched,unique_network_callsign
+NBC,214141,US - NBC 5 CINCINNATI OH (WLWT) FHD,nbc5wlwt.us,WLWT,epg37,NBCWLWT.us12,187,matched,unique_network_callsign
+NBC,214193,US - NBC 8 LIMA OH (WLIO) FHD,nbcwlio.us,WLIO,epg37,NBCWLIO.us12,215,matched,unique_network_callsign
+NBC,214203,US - NBC 9 STEUBENVILLE OH (WTOV) FHD,nbc9wtov.us,WTOV,epg37,NBCWTOV.us12,194,matched,unique_network_callsign
+NBC,214279,US - NBC 18 ZANESVILLE OH (WHIZ) FHD,nbcwhiz.us,WHIZ,epg37,NBCWHIZ.us12,219,matched,unique_network_callsign
+NBC,214295,US - NBC 21 YOUNGSTOWN OH (WFMJ) FHD,nbc21wfmj.us,WFMJ,epg37,NBCWFMJ.us12,201,matched,unique_network_callsign
+NBC,214307,US - NBC 24 TOLEDO OH (WNWO) FHD,nbc24wnwo.us,WNWO,epg37,NBCWNWO.us12,228,matched,unique_network_callsign
+NBC,214106,US - NBC 2 TULSA OK (KJRH) FHD,nbckjrh.us,KJRH,epg37,NBCKJRH.us12,211,matched,unique_network_callsign
+NBC,214134,US - NBC 4 OKLAHOMA CITY (KFOR)  FHD,nbc4kfor.us,KFOR,epg37,NBCKFOR.us12,200,matched,unique_network_callsign
+NBC,214146,US - NBC 5 MEDFORD OR (KOBI) FHD,nbc5kobi.us,KOBI,epg37,NBCKOBI.us12,199,matched,unique_network_callsign
+NBC,235487,US - NBC 8 PORTLAND OR (KGW) FHD,nbcwcsh.us,KGW,,,0,needs_review,
+NBC,1280995,US - NBC 16 SPRINGFIELD OR (KMTR) FHD,,KMTR,epg37,NBCKMTR.us12,199,matched,unique_network_callsign
+NBC,214290,US - NBC 21 BEND OR (KTVZ) FHD,nbc21ktvz.us,KTVZ,epg37,NBCKTVZ.us12,191,matched,unique_network_callsign
+NBC,214159,US - NBC 6 JOHNSTOWN PA (WJAC) FHD,nbc6wjac.us,WJAC,epg37,NBCWJAC.us12,229,matched,unique_network_callsign
+NBC,214191,US - NBC 8 LANCASTER PA (WGAL) FHD,nbc8wgal.us,WGAL,epg37,NBCWGAL.us12,195,matched,unique_network_callsign
+NBC,214217,US - NBC 10 PHILADELPHIA PA (WCAU) FHD,nbc10wcau.us,WCAU,epg37,NBCWCAU.us12,195,matched,unique_network_callsign
+NBC,214229,US - NBC 11 PITTSBURGH PA (WPXI) FHD,nbcwpxi.us,WPXI,epg37,NBCWPXI.us12,199,matched,unique_network_callsign
+NBC,214233,US - NBC 12 ERIE PA (WICU) FHD,nbc12wicu.us,WICU,epg37,NBCWICU.us12,207,matched,unique_network_callsign
+NBC,214320,US - NBC 28 WILKES-BARRE PA (WBRE) FHD,nbc28wbre.us,WBRE,epg37,NBCWBRE.us12,191,matched,unique_network_callsign
+NBC,214219,US - NBC 10 RHODE ISLAND (WJAR)  FHD,nbc10wjar.us,WJAR,epg37,NBCWJAR.us12,206,matched,unique_network_callsign
+NBC,214099,US - NBC 2 CHARLESTON SC (WCBD) FHD,nbc2wcbd.us,WCBD,epg37,NBCWCBD.us12,201,matched,unique_network_callsign
+NBC,214125,US - NBC 4 GREENVILLE SC (WYFF) FHD,nbc4wyff.us,WYFF,epg37,NBCWYFF.us12,198,matched,unique_network_callsign
+NBC,214208,US - NBC 10 COLUMBIA SC (WIS) FHD,nb10wis.us,WIS,epg37,NBCWIS.us12,200,matched,unique_network_callsign
+NBC,214327,US - NBC 32 MYRTLE BEACH SC (WMBF) FHD,nbc32wmbf.us,WMBF,epg37,NBCWMBF.us12,222,matched,unique_network_callsign
+NBC,214292,US - NBC 21 RAPID CITY SD (KNBN) FHD,nbc21knbn.us,KNBN,epg37,NBCKNBN.us12,193,matched,unique_network_callsign
+NBC,214344,US - NBC 46 SIOUX FALLS SD (KDLT) FHD,nbc46kdlt.us,KDLT,epg37,NBCKDLT.us12,225,matched,unique_network_callsign
+NBC,214112,US - NBC 3 CHATTANOOGA TN (WRCB) FHD,nbc3wrcb.us,WRCB,,,0,needs_review,
+NBC,214135,US - NBC 4 NASHVILLE TN (WSMV) FHD,nbcwsmw.us,WSMV,epg37,NBCWSMV.us12,194,matched,unique_network_callsign
+NBC,214147,US - NBC 5 MEMPHIS TN (WMC) FHD,nbc5wmc.us,WMC,epg37,NBCWMC.us12,214,matched,unique_network_callsign
+NBC,214211,US - NBC 10 KNOXVILLE TN (WBIR) FHD,nbc10wbir.us,WBIR,epg37,NBCWBIR.us12,194,matched,priority_station_verified
+NBC,214108,US - NBC 2 HOUSTON TX (KPRC) FHD,nbckprc.us,KPRC,epg37,NBCKPRC.us12,214,matched,unique_network_callsign
+NBC,214096,US - NBC 3 WICHITA FALLS (KFDX) FHD,nbc3ksnw.us,KFDX,epg37,NBCKFDX.us12,212,matched,unique_network_callsign
+NBC,214131,US - NBC 4 SAN ANTONIO TX (WOAI) FHD,nbcwoai.us,WOAI,epg37,NBCWOAI.us12,209,matched,unique_network_callsign
+NBC,214122,US - NBC 4 AMARILLO TX (KAMR) FHD,nbc4kamr.us,KAMR,epg37,NBCKAMR.us12,205,matched,unique_network_callsign
+NBC,1280996,US - NBC 5 DALLAS TX (KXAS) FHD,nbckxas.us,KXAS,epg37,NBCKXAS.us12,206,matched,unique_network_callsign
+NBC,214157,US - NBC 6 CORPUS CHRISTI TX (KRIS) FHD,nbc6kris.us,KRIS,epg37,NBCKRIS.us12,212,matched,unique_network_callsign
+NBC,214170,US - NBC 6 TEMPLE TX (KCEN) FHD,nbc6kcen.us,KCEN,epg37,NBCKCEN.us12,207,matched,unique_network_callsign
+NBC,214192,US - NBC 8 LAREDO TX (KGNS) FHD,nbc8kgns.us,KGNS,epg37,NBCKGNS.us12,222,matched,unique_network_callsign
+NBC,214202,US - NBC 9 ODESSA TX (KWES) FHD,nbc9kwes.us,KWES,epg37,NBCKWES.us12,199,matched,unique_network_callsign
+NBC,214199,US - NBC 9 EL PASO TX (KTSM) FHD,nbc9ktsm.us,KTSM,epg37,NBCKTSM.us12,185,matched,unique_network_callsign
+NBC,214197,US - NBC 9 ABILENE TX (KRBC) FHD,nbc9krbc.us,KRBC,epg37,NBCKRBC.us12,222,matched,unique_network_callsign
+NBC,1280997,US - NBC 10 DENISON TX (KTEN) FHD,,KTEN,epg37,NBCKTEN.us12,214,matched,unique_network_callsign
+NBC,214225,US - NBC 11 LUBBOCK TX (KCBD) FHD,nbc11kcbd.us,KCBD,epg37,NBCKCBD.us12,210,matched,unique_network_callsign
+NBC,214212,US - NBC 12 BEAUMONT/PORT ARTHUR (KBMT-DT2) FHD,nbc12kbmtdt2.us,KBMT-DT2,epg37,NBCKBMTDT2.us12,217,matched,unique_network_callsign
+NBC,214270,US - NBC 16 SAN ANGELO TX (KSAN) FHD,nbc16ksan.us,KSAN,epg37,NBCKSAN.us12,223,matched,unique_network_callsign
+NBC,214277,US - NBC 17 VICTORIA TX (KMOL) FHD,nbc17kmol.us,KMOL,epg37,NBCKMOL.us12,201,matched,unique_network_callsign
+NBC,214297,US - NBC 23 BROWNSVILLE TX (KVEO) FHD,nbc23kveo.us,KVEO,epg37,NBCKVEO.us12,213,matched,unique_network_callsign
+NBC,214298,US - NBC 23 BRYAN TX (KAGS) FHD,nbc23kags.us,KAGS,epg37,NBCKAGS.us12,208,matched,unique_network_callsign
+NBC,214180,US - NBC 30 NEW BRITAIN (WVIT) FHD,nbcknsd.us,WVIT,epg37,NBCWVIT.us12,205,matched,unique_network_callsign
+NBC,214347,US - NBC 56 JACKSONVILLE TX (KETK) FHD,nbcwtlv.us,KETK,epg37,NBCKETK.us12,199,matched,unique_network_callsign
+NBC,214150,US - NBC 5 SALT LAKE CITY UT (KSL) FHD,nbc5ksl.us,KSL,epg37,NBCKSL.us12,205,matched,unique_network_callsign
+NBC,214140,US - NBC 5 BRISTOL VA (WCYB) FHD,nbc5wcyb.us,WCYB,epg37,NBCWCYB.us12,412,matched,priority_station_verified
+NBC,214215,US - NBC 10 PORTSMOUTH VA (WAVY) FHD,nbc10wavy.us,WAVY,epg37,NBCWAVY.us12,200,matched,unique_network_callsign
+NBC,214220,US - NBC 10 ROANOKE VA (WSLS) FHD,nbc10wsls.us,WSLS,epg37,NBCWSLS.us12,210,matched,unique_network_callsign
+NBC,214239,US - NBC 12 RICHMOND VA (WWBT) FHD,nbc12wwbt.us,WWBT,epg37,NBCWWBT.us12,208,matched,unique_network_callsign
+NBC,214321,US - NBC 29 CHARLOTTESVILLE VA (WVIR) FHD,nbc29wvir.us,WVIR,epg37,NBCWVIR.us12,208,matched,unique_network_callsign
+NBC,214132,US - NBC 4 WASHINGTON DC (WRC-TV) FHD,nbcwrc.us,,,,0,needs_review,
+NBC,214153,US - NBC 5 SEATTLE WA (KING) FHD,nbcking.us,KING,epg37,NBCKING.us12,192,matched,unique_network_callsign
+NBC,214169,US - NBC 6 SPOKANE WA (KHQ) FHD,nbc6khq.us,KHQ,epg37,NBCKHQ.us12,218,matched,unique_network_callsign
+NBC,214311,US - NBC 23 YAKIMA WA (KNDO) FHD,nbc23kndo.us,KNDO,epg37,NBCKNDO.us12,216,matched,unique_network_callsign
+NBC,214114,US - NBC 3 HUNTINGTON WV (WSAZ) FHD,nbcwsaz.us,WSAZ,epg37,NBCWSAZ.us12,202,matched,unique_network_callsign
+NBC,214626,US - NBC 6 BLUEFIELD WV (WVVA) FHD,nbc6wvva.us,WVVA,epg37,NBCWVVA.us12,217,matched,unique_network_callsign
+NBC,214232,US - NBC 12 CLARKSBURG WV (WBOY) FHD,nbc12wboy.us,WBOY,epg37,NBCWBOY.us12,218,matched,unique_network_callsign
+NBC,214265,US - NBC 15 PARKERSBURG WV (WTAP) FHD,nbc15wtap.us,WTAP,epg37,NBCWTAP.us12,189,matched,unique_network_callsign
+NBC,214128,US - NBC 4 MILWAUKEE WI (WTMJ) FHD,nbcwtmj.us,WTMJ,epg37,NBCWTMJ.us12,195,matched,unique_network_callsign
+NBC,1280999,US - NBC 12 WAUSAU WI (WJFW) FHD,,WJFW,epg37,NBCWJFW.us12,206,matched,unique_network_callsign
+NBC,214246,US - NBC 13 EAU CLAIRE WI (WEAU) FHD,nbcweau.us,WEAU,epg37,NBCWEAU.us12,224,matched,unique_network_callsign
+NBC,214263,US - NBC 15 MADISON WI (WMTV) FHD,nbc15wmtv.us,WMTV,epg37,NBCWMTV.us12,216,matched,unique_network_callsign
+NBC,214314,US - NBC 26 GREEN BAY WI (WGBA) FHD,nbc26wgba.us,WGBA,epg37,NBCWGBA.us12,211,matched,unique_network_callsign
+NBC,1281000,US - NBC 13 CHEYENNE WY (KGWN-DT2) FHD,,KGWN-DT2,epg37,NBCKGWNDT2.us1,223,matched,unique_network_callsign
+NBC,214243,US - NBC 13 CASPER WY (KCWY) FHD,nbc13kcwy.us,KCWY,epg37,NBCKCWY.us12,219,matched,unique_network_callsign
+NBC,214136,US - NBC 4 LINCOLN (KSNB) FHD,nbc4ksnb.us,KSNB,epg37,NBCKSNB.us12,203,matched,unique_network_callsign
+NBC,214144,US - NBC 5 THE COLONY (KXAS) FHD,nbckxas.us,KXAS,epg37,NBCKXAS.us12,206,matched,unique_network_callsign
+NBC,214161,US - NBC 6 MARQUETTE (WLUC) FHD,nbcwluc.us,WLUC,epg37,NBCWLUC.us12,209,matched,unique_network_callsign
+NBC,1063037,US - NBC 7 SAN DIEGO (KNSD) FHD,cbs8kfmb.us,KNSD,epg37,NBCKNSD.us12,198,matched,unique_network_callsign
+NBC,214190,US - NBC 8 JONESBORO (KAIT) FHD,nbc8kait.us,KAIT,epg37,NBCKAITDT2.us12,210,matched,unique_network_callsign
+NBC,214205,US - NBC 10 ADA (KTEN) FHD,nbc10kten.us,KTEN,epg37,NBCKTEN.us12,214,matched,unique_network_callsign
+NBC,214234,US - NBC 12 GREAT FALLS (KTGF) FHD,nbc12ktgf.us,KTGF,epg37,NBCKTGF.us12,204,matched,unique_network_callsign
+NBC,214238,US - NBC 12 RHINELANDER (WJFW) FHD,nbcwjfw.us,WJFW,epg37,NBCWJFW.us12,206,matched,unique_network_callsign
+NBC,214241,US - NBC 12 WINSTON-SALEM (WXII) FHD,nbc12wxii.us,WXII,epg37,NBCWXII.us12,195,matched,unique_network_callsign
+NBC,214251,US - NBC 13 MONTANA (KTVM) FHD,nbc13ktvm.us,KTVM,epg37,NBCKTVM.us12,198,matched,unique_network_callsign
+NBC,214312,US - NBC 25 SAGINAW (WSMH-DT2) FHD,nbc25weyi.us,WSMH-DT2,epg37,NBCWSMHDT2.us12,212,matched,unique_network_callsign
+NBC,214323,US - NBC 31 SALISBURY (WRDE) FHD,nbc31wrde.us,WRDE,epg37,NBCWRDE.us12,223,matched,unique_network_callsign
+NBC,214334,US - NBC 36 AUSTIN (KXAN) FHD,nbc36kxan.us,KXAN,epg37,NBCKXAN.us12,196,matched,unique_network_callsign
+NBC,214337,US - NBC 39 JACKSON (WNBJ) FHD,nbc3wlbt.us,WNBJ,epg37,NBCWNBJ.us12,226,matched,unique_network_callsign
+NBC,214343,US - NBC 46 LAFAYETTE (KLAF) FHD,nbc46klaf.us,KLAF,epg37,NBCKLAF.us12,219,matched,unique_network_callsign
+NBC,214346,US - NBC 51 FORT SMITH (KNWA) FHD,nbc51knwa.us,KNWA,epg37,NBCKNWA.us12,209,matched,unique_network_callsign
+NBC,1410441,US - NBC 10 (KTTC) ROCHESTER,nbc10kttc.us,KTTC,epg37,NBCKTTC.us12,189,matched,unique_network_callsign
+ABC,1030010,US - ABC 18 DOTHAN AL (WDHN) HD,abcwdhn.us,WDHN,epg37,ABCWDHN.us12,206,matched,unique_network_callsign
+ABC,1076677,US - ABC 31 HUNTSVILLE AL (WAAY) HD,abc3340wbma.us,WAAY,epg37,ABCWAAY.us12,214,matched,unique_network_callsign
+ABC,1076588,US - ABC 32 MONTGOMERY AL (WNCF) HD,,WNCF,epg37,ABCWNCF.us12,190,matched,unique_network_callsign
+ABC,213908,US - ABC 33 BIRMINGHAM AL (WABM) HD,abc3340wbma.us,WABM,,,0,needs_review,
+ABC,1076670,US - ABC 13 ANCHORAGE AK (KYUR) HD,,KYUR,epg37,ABCKYUR.us12,230,matched,unique_network_callsign
+ABC,1076628,US - ABC 15 PHOENIX AZ (KNXV) HD,,KNXV,epg37,ABCKNXV.us12,193,matched,unique_network_callsign
+ABC,213897,US - ABC 15 PHOENIX AZ (KNXV) HD,abcknvx.us,KNXV,epg37,ABCKNXV.us12,193,matched,unique_network_callsign
+ABC,1062258,US - ABC 07 LITTLE ROCK AR (KATV) HD,,KATV,epg37,ABCKATV.us12,214,matched,unique_network_callsign
+ABC,1076676,US - ABC 40/29 FORT SMITH AR (KHBS) HD,,KHBS,epg37,ABCKHBS.us12,194,matched,unique_network_callsign
+ABC,1076620,US - ABC 03 PALM SPRINGS CA (KESQ) HD,,KESQ,epg37,ABCKESQ.us12,200,matched,unique_network_callsign
+ABC,1076598,US - ABC 03 SANTA BARBARA CA (KEYT) HD,,KEYT,epg37,ABCKEYT.us12,205,matched,unique_network_callsign
+ABC,1076630,US - ABC 05/09 EL CENTRO (KECY-DT2) HD,abckgtv.us,KECY-DT2,epg37,ABCKECYDT2.us12,388,matched,unique_network_callsign
+ABC,213873,US - ABC 07 SAN FRANCISCO CA (KGO) HD,abckgo.us,KGO,epg37,ABCKGO.us12,193,matched,unique_network_callsign
+ABC,213872,US - ABC 07 LOS ANGELES CA (KABC) HD,abc7kabctv.us,KABC,epg37,ABCKABC.us12,195,matched,unique_network_callsign
+ABC,213888,US - ABC 10 SACRAMENTO CA (KXTV) HD,abckxtv.us,KXTV,epg37,ABCKXTV.us12,196,matched,unique_network_callsign
+ABC,213889,US - ABC 10 SAN DIEGO CA (KGTV) HD,abckgtv.us,KGTV,epg37,ABCKGTV.us12,203,matched,unique_network_callsign
+ABC,1076647,US - ABC 23 BAKERSFIELD CA (KERO) HD,,KERO,epg37,ABCKERO.us12,204,matched,unique_network_callsign
+ABC,213876,US - ABC 07 DENVER CO (KMGH) HD,abc7kmghtv.us,KMGH,epg37,ABCKMGH.us12,223,matched,unique_network_callsign
+ABC,1076642,US - ABC 08 GRAND JUNCTION CO (KJCT) HD,,KJCT,epg37,ABCKJCT.us12,220,matched,unique_network_callsign
+ABC,1076601,US - ABC 13 COLORADO SPRINGS (KRDO) HD,,KRDO,epg37,ABCKRDO.us12,203,matched,unique_network_callsign
+ABC,213881,US - ABC 08 NEW HAVEN CT (WTNH) HD,,WTNH,epg37,ABCWTNH.us12,209,matched,unique_network_callsign
+ABC,214563,US - ABC 07 WASHINGTON DC (WJLA) HD,abcwjla.us,WJLA,epg37,ABCWJLA.us12,207,matched,unique_network_callsign
+ABC,213858,US - ABC 03 PENSACOLA FL (WEAR) HD,,WEAR,epg37,ABCWEAR.us12,420,matched,unique_network_callsign
+ABC,213878,US - ABC 07 FORT MYERS FL (WZVN) HD,abcwzvn.us,WZVN,epg37,ABCWZVN.us12,198,matched,unique_network_callsign
+ABC,213882,US - ABC 09 ORLANDO FL (WFTV) HD,abcwftv.us,WFTV,epg37,ABCWFTV.us12,211,matched,unique_network_callsign
+ABC,213886,US - ABC 10 MIAMI FL (WPLG) HD,abc10wplg.us,WPLG,,,0,needs_review,
+ABC,1076638,US - ABC 13 PANAMA CITY FL (WMBB) HD,,WMBB,epg37,ABCWMBB.us12,203,matched,unique_network_callsign
+ABC,213898,US - ABC 20 GAINESVILLE FL (WCJB) HD,abcwcjb.us,WCJB,epg37,ABCWCJB.us12,201,matched,unique_network_callsign
+ABC,1076668,US - ABC 25 JACKSONVILLE FL (WJXX) HD,,WJXX,epg37,ABCWJXX.us12,218,matched,unique_network_callsign
+ABC,1281648,US - ABC 25 WEST PALM BEACH FL (WPBF) HD,,WPBF,epg37,ABCWPBF.us12,192,matched,unique_network_callsign
+ABC,1076606,US - ABC 27 TALLAHASSEE FL (WTXL) HD,,WTXL,epg37,ABCWTXL.us12,221,matched,unique_network_callsign
+ABC,1257340,US - ABC 28 TAMPA FL (WFTS) HD,abc28wfts.us,WFTS,epg37,ABCWFTS.us12,209,matched,unique_network_callsign
+ABC,213854,US - ABC 02 ATLANTA GA (WSB) HD,,WSB,,,0,needs_review,
+ABC,213869,US - ABC 06 AUGUSTA GA (WJBF) HD,abcwjbf.us,WJBF,epg37,ABCWJBF.us12,216,matched,unique_network_callsign
+ABC,1076562,US - ABC 09 COLUMBUS GA (WTVM) HD,,WTVM,epg37,ABCWTVM.us12,222,matched,unique_network_callsign
+ABC,1076575,US - ABC 22 SAVANNAH GA (WJCL) HD,,WJCL,epg37,ABCWJCL.us12,200,matched,unique_network_callsign
+ABC,213863,US - ABC 04 HONOLULU HI (KITV) HD,abckitv.us,KITV,epg37,ABCKITV.us12,205,matched,unique_network_callsign
+ABC,1076663,US - ABC 06 BOISE (KIVI) HD,,KIVI,epg37,ABCKIVI.us12,210,matched,unique_network_callsign
+ABC,1076640,US - ABC 06 TWIN FALLS  (KSAW-LD) HD,,,,,0,needs_review,
+ABC,1281649,US - ABC 08 IDAHO FALLS (KIFI) HD,,KIFI,epg37,ABCKIFI.us12,194,matched,unique_network_callsign
+ABC,1076673,US - ABC 03 HARRISBURG IL (WSIL) HD,,WSIL,epg37,ABCWSIL.us12,197,matched,unique_network_callsign
+ABC,213870,US - ABC 07 CHICAGO IL (WLS) HD,abc7wlstv.us,WLS,epg37,ABCWLS.us12,204,matched,unique_network_callsign
+ABC,1076633,US - ABC 17 ROCKFORD IL (WTVO) HD,,WTVO,epg37,ABCWTVO.us12,208,matched,unique_network_callsign
+ABC,1076593,US - ABC 25 PEORIA (WEEK-DT2) HD,,WEEK-DT2,epg37,ABCWEEKDT2.us12,212,matched,unique_network_callsign
+ABC,1076685,US - ABC 06 GREENWOOD (WABG) HD,,WABG,epg37,ABCWABG.us12,198,matched,unique_network_callsign
+ABC,1076561,US - ABC 06 INDIANAPOLIS IN (WRTV) HD,abcwrtv.us,WRTV,epg37,ABCWRTV.us12,207,matched,unique_network_callsign
+ABC,1076619,US - ABC 21 FORT WAYNE (WPTA) HD,,WPTA,epg37,ABCWPTA.us12,201,matched,unique_network_callsign
+ABC,1076649,US - ABC 25 EVANSVILLE IN (WEHT) HD,,WEHT,epg37,ABCWEHT.us12,195,matched,unique_network_callsign
+ABC,1076581,US - ABC 35 LAFAYETTE (WPBY-LD) HD,,,,,0,needs_review,
+ABC,1076662,US - ABC 57 SOUTH BEND IN (WBND) HD,,WBND,epg37,ABCWBND.us12,218,matched,unique_network_callsign
+ABC,1076659,US - ABC 05 WEST DES MOINES IA (WOI) HD,,WOI,epg37,ABCWOI.us12,190,matched,unique_network_callsign
+ABC,1076678,US - ABC 09 CEDAR RAPIDS IA (KCRG) HD,,KCRG,epg37,ABCKCRG.us12,198,matched,unique_network_callsign
+ABC,1076580,US - ABC 09 SIOUX CITY IA (KCAU) HD,,KCAU,epg37,ABCKCAU.us12,191,matched,unique_network_callsign
+ABC,1076590,US - ABC 10 WICHITA KS (KAKE) HD,,KAKE,epg37,ABCKAKE.us12,195,matched,unique_network_callsign
+ABC,1076591,US - ABC 49 TOPEKA KS (KTKA) HD,,KTKA,epg37,ABCKTKA.us12,215,matched,unique_network_callsign
+ABC,1076583,US - ABC 11 LOUISVILLE KY (WHAS) HD,,WHAS,epg37,ABCWHAS.us12,200,matched,unique_network_callsign
+ABC,1076639,US - ABC 13 BOWLING GREEN KY (WBKO) HD,,WBKO,epg37,ABCWBKO.us12,193,matched,unique_network_callsign
+ABC,213909,US - ABC 36 LEXINGTON KY (WTVQ) HD,,WTVQ,epg37,ABCWTVQ.us12,226,matched,unique_network_callsign
+ABC,213853,US - ABC 02 BATON ROUGE LA (WBRZ) HD,,WBRZ,epg37,ABCWBRZ.us12,193,matched,unique_network_callsign
+ABC,688688,US - ABC 03 LAFAYETTE LA (KATC) HD,,KATC,epg37,ABCKATC.us12,209,matched,unique_network_callsign
+ABC,1076664,US - ABC 03 LAFAYETTE LA (KATC) HD,,KATC,epg37,ABCKATC.us12,209,matched,unique_network_callsign
+ABC,213859,US - ABC 03 SHREVEPORT LA (KTBS) HD,abc3ktbs.us,KTBS,epg37,ABCKTBS.us12,185,matched,unique_network_callsign
+ABC,213901,US - ABC 26 NEW ORLEANS (WGNO)  HD,abc26wgno.us,WGNO,epg37,ABCWGNO.us12,212,matched,unique_network_callsign
+ABC,1076684,US - ABC 29 LAKE CHARLES  (KVHP DT) HD,,,,,0,needs_review,
+ABC,1076599,US - ABC 31 ALEXANDRIA LA (KLAX) HD,,KLAX,epg37,ABCKLAX.us12,226,matched,unique_network_callsign
+ABC,1076631,US - ABC 08 PORTLAND ME (WMTW) HD,,WMTW,epg37,ABCWMTW.us12,192,matched,unique_network_callsign
+ABC,213855,US - ABC 02 BALTIMORE MD (WMAR) HD,abcwmar.us,WMAR,epg37,ABCWMAR.us12,225,matched,unique_network_callsign
+ABC,1076629,US - ABC 47 SALISBURY (WMDT) HD,,WMDT,epg37,ABCWMDT.us12,210,matched,unique_network_callsign
+ABC,213865,US - ABC 05 BOSTON MA (WCVB) HD,abcwcvb.us,WCVB,,,0,needs_review,
+ABC,1076665,US - ABC 04 BATTLE CREEK MI (WOTV) HD,,WOTV,epg37,ABCWOTV.us12,216,matched,unique_network_callsign
+ABC,213868,US - ABC 05 MINNEAPOLIS MN (KSTP) HD,ABC ST PAUL MN KSTP,KSTP,epg37,ABCKSTP.us12,204,matched,unique_network_callsign
+ABC,1076570,US - ABC 06 KNOXVILLE (WATE) HD,,WATE,epg37,ABCWATE.us12,210,matched,priority_station_verified
+ABC,213871,US - ABC 07 DETROIT MI (WXYZ) HD,abc7wxyz.us,WXYZ,epg37,ABCWXYZ.us12,198,matched,unique_network_callsign
+ABC,1076564,US - ABC 12 FLINT MI (WJRT) HD,,WJRT,epg37,ABCWJRT.us12,189,matched,unique_network_callsign
+ABC,1076666,US - ABC 13 GRAND RAPIDS MI (WZZM) HD,,WZZM,epg37,ABCWZZM.us12,212,matched,unique_network_callsign
+ABC,1076627,US - ABC 29 TRAVERSE CITY  (WGTU) HD,,WGTU,epg37,ABCWGTU.us12,213,matched,unique_network_callsign
+ABC,1076646,US - ABC 53 LANSING MI (WLAJ) HD,,WLAJ,epg37,ABCWLAJ.us12,216,matched,unique_network_callsign
+ABC,1076608,US - ABC 06 ROCHESTER MN (KAAL) HD,,KAAL,epg37,ABCKAAL.us12,182,matched,unique_network_callsign
+ABC,1076653,US - ABC 10 DULUTH MN (WDIO) HD,,WDIO,epg37,ABCWDIO.us12,177,matched,unique_network_callsign
+ABC,1076645,US - ABC 11 MERIDIAN MS (WTOK) HD,,WTOK,epg37,ABCWTOK.us12,217,matched,unique_network_callsign
+ABC,1076572,US - ABC 13 BILOXI MS (WLOX) HD,,WLOX,epg37,ABCWLOX.us12,204,matched,unique_network_callsign
+ABC,1076661,US - ABC 16 JACKSON MS (WAPT) HD,,WAPT,epg37,ABCWAPT.us12,192,matched,unique_network_callsign
+ABC,1281650,US - ABC 09 KANSAS CITY MO (KMBC) HD,abc9kmbc.us,KMBC,epg37,ABCKMBC.us12,204,matched,unique_network_callsign
+ABC,1076637,US - ABC 12 JOPLIN MO (KODE) HD,,KODE,epg37,ABCKODE.us12,209,matched,unique_network_callsign
+ABC,1076675,US - ABC 17 COLUMBIA MO (KMIZ) HD,,KMIZ,epg37,ABCKMIZ.us12,212,matched,unique_network_callsign
+ABC,1076656,US - ABC 33 SPRINGFIELD MO (KSPR) HD,,KSPR,epg37,ABCKSPR.us12,204,matched,unique_network_callsign
+ABC,213906,US - ABC 30 ST LOUIS MO (KDNL) HD,abc30kdnl.us,KDNL,,,0,needs_review,
+ABC,213905,US - ABC 30 FRESNO (KFSN) HD,abc30kfsn.us,KFSN,epg37,ABCKFSN.us12,200,matched,unique_network_callsign
+ABC,1076669,US - ABC 33 MISSOURI  (KSPR) HD,,KSPR,epg37,ABCKSPR.us12,204,matched,unique_network_callsign
+ABC,1076644,US - ABC 05 GREAT FALLS MT (KFBB) HD,,KFBB,epg37,ABCKFBB.us12,207,matched,unique_network_callsign
+ABC,1076648,US - ABC 06 BILLINGS MT (KSVI) HD,,KSVI,epg37,ABCKSVI.us12,227,matched,unique_network_callsign
+ABC,1076650,US - ABC 18 BUTTE MT (KWYB) HD,,KWYB,epg37,ABCKWYB.us12,206,matched,unique_network_callsign
+ABC,1076683,US - ABC 21 HELENA (KHBB-DT) HD,,KHBB-DT,,,0,needs_review,
+ABC,1076611,US - ABC 23 MISSOULA MT (KTMF) HD,,KTMF,epg37,ABCKTMF.us12,206,matched,unique_network_callsign
+ABC,1076592,US - ABC 07 OMAHA NE (KETV) HD,,KETV,epg37,ABCKETV.us12,202,matched,unique_network_callsign
+ABC,1076609,US - ABC 08 LINCOLN NE (KLKN) HD,,KLKN,epg37,ABCKLKN.us12,201,matched,unique_network_callsign
+ABC,1076632,US - ABC 08 RENO NV (KOLO) HD,,KOLO,epg37,ABCKOLO.us12,205,matched,unique_network_callsign
+ABC,213896,US - ABC 13 LAS VEGAS NV (KTNV) HD,abcktnv.us,KTNV,epg37,ABCKTNV.us12,211,matched,unique_network_callsign
+ABC,213883,US - ABC 09 MANCHESTER NH (WMUR) HD,abcwmur.us,WMUR,epg37,ABCWMUR.us12,187,matched,unique_network_callsign
+ABC,1076559,US - ABC 07 ALBUQUERQUE NM (KOAT) HD,,KOAT,epg37,ABCKOAT.us12,183,matched,unique_network_callsign
+ABC,213862,US - ABC 04 CHARLESTON (WCIV-DT) HD,wchs.us,WCIV-DT,epg37,ABCWCIVDT2.us12,198,matched,unique_network_callsign
+ABC,213875,US - ABC 07 BUFFALO NY (WKBW) HD,abcwkbw.us,WKBW,,,0,needs_review,
+ABC,222674,US - ABC 07 NEW YORK NY (WABC) HD,abcwabc.us,WABC,epg37,ABCWABC.us12,180,matched,unique_network_callsign
+ABC,213885,US - ABC 09 SYRACUSE NY (WSYR) HD,abcwsoc.us,WSYR,epg37,ABCWSYR.us12,225,matched,unique_network_callsign
+ABC,213887,US - ABC 10 ALBANY NY (WTEN) HD,abc10wten.us,WTEN,epg37,ABCWTEN.us12,215,matched,unique_network_callsign
+ABC,1076635,US - ABC 13 ROCHESTER NY (WHAM) HD,,WHAM,epg37,ABCWHAM.us12,209,matched,unique_network_callsign
+ABC,1076634,US - ABC 20 UTICA (WUTR) HD,,WUTR,epg37,ABCWUTR.us12,217,matched,unique_network_callsign
+ABC,1076604,US - ABC 34 BINGHAMTON NY (WIVT) HD,,WIVT,epg37,ABCWIVT.us12,221,matched,unique_network_callsign
+ABC,1076567,US - ABC 03 WILMINGTON (WWAY) HD,,WWAY,epg37,ABCWWAY.us12,221,matched,unique_network_callsign
+ABC,213884,US - ABC 09 CHARLOTTE NC (WSOC) HD,abcwsoc.us,WSOC,epg37,ABCWSOC.us12,212,matched,unique_network_callsign
+ABC,1281651,US - ABC 11 DURHAM NC (WTVD) HD,,WTVD,epg37,ABCWTVD.us12,201,matched,unique_network_callsign
+ABC,1076660,US - ABC 12 NEW BERN NC (WCTI) HD,,WCTI,epg37,ABCWCTI.us12,229,matched,unique_network_callsign
+ABC,325714,US - ABC 13 ASHEVILLE NC (WLOS) HD,,WLOS,epg37,ABCWLOS.us12,456,matched,unique_network_callsign
+ABC,213910,US - ABC 45 WINSTON NC (WXLV) HD,,WXLV,epg37,ABCWXLV.us12,220,matched,unique_network_callsign
+ABC,1076657,US - ABC 06 FARGO ND (WDAY) HD,,WDAY,epg37,ABCWDAY.us12,204,matched,unique_network_callsign
+ABC,1076584,US - ABC 17 MINOT ND (KBMY) HD,,KBMY,epg37,ABCKBMY.us12,180,matched,unique_network_callsign
+ABC,213866,US - ABC 05 CLEVELAND OH (WEWS) HD,abcwews.us,WEWS,epg37,ABCWEWS.us12,206,matched,unique_network_callsign
+ABC,896817,US - ABC 06 COLUMBUS OH (WSYX) HD,,WSYX,epg37,ABCWSYX.us12,203,matched,unique_network_callsign
+ABC,1076568,US - ABC 09 CINCINNATI OH (WCPO) HD,abcwcpo.us,WCPO,epg37,ABCWCPO.us12,215,matched,unique_network_callsign
+ABC,667393,US - ABC 13 TOLEDO OH (WTVG) HD,,WTVG,epg37,ABCWTVG.us12,211,matched,unique_network_callsign
+ABC,1076565,US - ABC 22 DAYTON OH (WKEF) HD,,WKEF,epg37,ABCWKEF.us12,218,matched,unique_network_callsign
+ABC,1076612,US - ABC 33 YOUNGSTOWN OH (WYTV) HD,,WYTV,epg37,ABCWYTV.us12,211,matched,unique_network_callsign
+ABC,1076587,US - ABC 35 LIMA (WOHL-CD) HD,,,,,0,needs_review,
+ABC,213867,US - ABC 05 OKLAHOMA CITY OK (KOCO) HD,abckoco.us,KOCO,epg37,ABCKOCO.us12,191,matched,unique_network_callsign
+ABC,1076571,US - ABC 07 LAWTON OK (KSWO) HD,,KSWO,epg37,ABCKSWO.us12,207,matched,unique_network_callsign
+ABC,1076672,US - ABC 08 TULSA OK (KTUL) HD,,KTUL,epg37,ABCKTUL.us12,215,matched,unique_network_callsign
+ABC,213857,US - ABC 02 PORTLAND OR (KATU) HD,abc2katu.us,KATU,epg37,ABCKATU.us12,193,matched,unique_network_callsign
+ABC,1076576,US - ABC 09 EUGENE OR (KEZI) HD,,KEZI,epg37,ABCKEZI.us12,210,matched,unique_network_callsign
+ABC,1076614,US - ABC 12 MEDFORD OR (KDRV) HD,,KDRV,epg37,ABCKDRV.us12,199,matched,unique_network_callsign
+ABC,213864,US - ABC 04 PITTSBURGH PA (WTAE) HD,abcwtae.us,WTAE,epg37,ABCWTAE.us12,184,matched,unique_network_callsign
+ABC,263608,US - ABC 06 PHILADELPHIA PA (WPVI) HD,abcwpvi.us,WPVI,epg37,ABCWPVI.us12,200,matched,unique_network_callsign
+ABC,302790,US - ABC 16 SCRANTON (WNEP) HD,,WNEP,epg37,ABCWNEP.us12,213,matched,unique_network_callsign
+ABC,1076589,US - ABC 23 JOHNSTOWN PA (WATM) HD,,WATM,epg37,ABCWATM.us12,225,matched,unique_network_callsign
+ABC,1076603,US - ABC 24 ERIE PA (WJET) HD,,WJET,epg37,ABCWJET.us12,208,matched,unique_network_callsign
+ABC,213902,US - ABC 27 HARRISBURG PA (WHTM) HD,ABC HARRISONBURG VA WHSV,WHTM,epg37,ABCWHTM.us12,208,matched,unique_network_callsign
+ABC,1076658,US - ABC 06 PROVIDENCE RI (WLNE) HD,,WLNE,,,0,needs_review,
+ABC,1076655,US - ABC 15 FLORENCE SC (WPDE) HD,,WPDE,epg37,ABCWPDE.us12,193,matched,unique_network_callsign
+ABC,213900,US - ABC 25 COLUMBIA SC (WOLO) HD,,WOLO,epg37,ABCWOLO.us12,211,matched,unique_network_callsign
+ABC,1076596,US - ABC 03 RAPID CITY SD (KOTA) HD,,KOTA,epg37,ABCKOTA.us12,213,matched,unique_network_callsign
+ABC,1076643,US - ABC 13 SIOUX FALLS SD (KSFY) HD,,KSFY,epg37,ABCKSFY.us12,205,matched,unique_network_callsign
+ABC,213856,US - ABC 02 NASHVILLE TN (WKRN) HD,,WKRN,epg37,ABCWKRN.us12,198,matched,unique_network_callsign
+ABC,1076578,US - ABC 07 JACKSON TN (WBBJ) HD,,WBBJ,epg37,ABCWBBJ.us12,206,matched,unique_network_callsign
+ABC,1076618,US - ABC 07 REDDING (KRCR) HD,,KRCR,epg37,ABCKRCR.us12,187,matched,unique_network_callsign
+ABC,1076579,US - ABC 09 CHATTANOOGA TN (WTVC) HD,,WTVC,epg37,ABCWTVC.us12,203,matched,unique_network_callsign
+ABC,345608,US - ABC 24 MEMPHIS TN (WATN) HD,abc24watn.us,WATN,epg37,ABCWATN.us12,217,matched,unique_network_callsign
+ABC,1076563,US - ABC 02 MIDLAND TX (KMID) HD,,KMID,epg37,ABCKMID.us12,202,matched,unique_network_callsign
+ABC,1076622,US - ABC 02 ST JOSEPH (KQTV) HD,,KQTV,epg37,ABCKQTV.us12,224,matched,unique_network_callsign
+ABC,1029308,US - ABC 03 CORPUS CHRISTI TX (KIII) HD,,KIII,epg37,ABCKIII.us12,205,matched,unique_network_callsign
+ABC,427651,US - ABC 06 WESLACO TX (KRGV) HD,,KRGV,epg37,ABCKRGV.us12,206,matched,unique_network_callsign
+ABC,1076558,US - ABC 07 AMARILLO TX (KVII) HD,,KVII,epg37,ABCKVII.us12,211,matched,unique_network_callsign
+ABC,213877,US - ABC 07 EL PASO TX (KVIA) HD,abc7kvia.us,KVIA,epg37,ABCKVIA.us12,191,matched,unique_network_callsign
+ABC,1076582,US - ABC 07 TYLER TX (KLTV) HD,,KLTV,epg37,ABCKLTV.us12,207,matched,unique_network_callsign
+ABC,263607,US - ABC 08 DALLAS TX (WFAA) HD,abc8wfaa.us,WFAA,epg37,ABCWFAA.us12,214,matched,unique_network_callsign
+ABC,1076602,US - ABC 12 ABILENE TX (KTXS) HD,,KTXS,epg37,ABCKTXS.us12,216,matched,unique_network_callsign
+ABC,1076577,US - ABC 12 BEAUMONT TX (KBMT) HD,,KBMT,epg37,ABCKBMT.us12,220,matched,unique_network_callsign
+ABC,213892,US - ABC 12 SAN ANTONIO TX (KSAT) HD,abcksat.us,KSAT,epg37,ABCKSAT.us12,208,matched,unique_network_callsign
+ABC,213893,US - ABC 13 HOUSTON TX (KTRK) HD,abc13ktrktv.us,KTRK,epg37,ABCKTRK.us12,210,matched,unique_network_callsign
+ABC,1076681,US - ABC 24 AUSTIN TX (KVUE) HD,abckvue.us,KVUE,epg37,ABCKVUE.us12,195,matched,unique_network_callsign
+ABC,1076682,US - ABC 25 VICTORIA TX (KAVU) HD,,KAVU,epg37,ABCKAVU.us12,195,matched,unique_network_callsign
+ABC,1076674,US - ABC 25 WACO TX (KXXV) HD,abc25kxxv.us,KXXV,epg37,ABCKXXV.us12,213,matched,unique_network_callsign
+ABC,1076671,US - ABC 28 LUBBOCK TX (KAMC) HD,,KAMC,epg37,ABCKAMC.us12,194,matched,unique_network_callsign
+ABC,213861,US - ABC 04 SALT LAKE CITY UT (KTVX) HD,abcktvx.us,KTVX,epg37,ABCKTVX.us12,210,matched,unique_network_callsign
+ABC,1076641,US - ABC 22 BURLINGTON VT (WVNY) HD,,WVNY,epg37,ABCWVNY.us12,226,matched,unique_network_callsign
+ABC,1076688,US - ABC 06 WHEELING (WTRF) HD,,WTRF,epg37,ABCWTRFDT3.us12,222,matched,unique_network_callsign
+ABC,1076680,US - ABC 08 RICHMOND VA (WRIC) HD,,WRIC,epg37,ABCWRIC.us12,207,matched,unique_network_callsign
+ABC,1076654,US - ABC 13 HARRISONBURG VA (WHSV) HD,,WHSV,epg37,ABCWHSV.us12,208,matched,unique_network_callsign
+ABC,1076605,US - ABC 13 LYNCHBURG VA (WSET) HD,,WSET,epg37,ABCWSET.us12,212,matched,unique_network_callsign
+ABC,213894,US - ABC 13 NORFOLK VA (WVEC) HD,,WVEC,epg37,ABCWVEC.us12,204,matched,unique_network_callsign
+ABC,1076636,US - ABC 16 CHARLOTTESVILLE VA (WVAW) HD,,WVAW,epg37,ABCWVAW.us12,201,matched,unique_network_callsign
+ABC,213860,US - ABC 04 SEATTLE WA (KOMO) HD,,KOMO,epg37,ABCKOMO.us12,209,matched,unique_network_callsign
+ABC,1076586,US - ABC 04 SPOKANE WA (KXLY) HD,,KXLY,epg37,ABCKXLY.us12,217,matched,unique_network_callsign
+ABC,1076574,US - ABC 42 KENNEWICK WA (KVEW) HD,,KVEW,epg37,ABCKVEW.us12,208,matched,unique_network_callsign
+ABC,1076679,US - ABC 08 CHARLESTON WV (WCHS) HD,,WCHS,epg37,ABCWCHS.us12,223,matched,unique_network_callsign
+ABC,1076557,US - ABC 02 GREEN BAY WI (WBAY) HD,,WBAY,epg37,ABCWBAY.us12,203,matched,unique_network_callsign
+ABC,1076607,US - ABC 09 WAUSAU WI (WAOW) HD,,WAOW,epg37,ABCWAOW.us12,208,matched,unique_network_callsign
+ABC,213891,US - ABC 12 MILWAUKEE WI (WISN) HD,abcwisn.us,WISN,epg37,ABCWISN.us12,188,matched,unique_network_callsign
+ABC,1076555,US - ABC 18 EAU CLAIRE WI (WQOW) HD,,WQOW,epg37,ABCWQOW.us12,201,matched,unique_network_callsign
+ABC,1076600,US - ABC 19 LA CROSS WI (WXOW) HD,,WXOW,epg37,ABCWXOW.us12,201,matched,unique_network_callsign
+ABC,213903,US - ABC 27 MADISON WI (WKOW) HD,abcwkow.us,WKOW,epg37,ABCWKOW.us12,205,matched,unique_network_callsign
+ABC,1076569,US - ABC 02 CASPER/RIVERTON (KTWO) HD,,KTWO,epg37,ABCKTWO.us12,223,matched,unique_network_callsign
+ABC,213879,US - ABC 07 SARASOTA (WWSB) HD,abcwwsb.us,WWSB,epg37,ABCWWSB.us12,232,matched,unique_network_callsign
+ABC,1076595,US - ABC 07 RAPID CITY (KEVN) HD,,KEVN,,,0,needs_review,
+ABC,1076613,US - ABC 07 QUINCY (KHQA) HD,,KHQA,epg37,ABCKHQADT2.us12,191,matched,unique_network_callsign
+ABC,1244044,US - ABC 07 TAMPA (WWSB) HD,,WWSB,epg37,ABCWWSB.us12,232,matched,unique_network_callsign
+ABC,1076566,US - ABC 07 BANGOR/PRESQUE ISLE (WVII) HD,,WVII,epg37,ABCWVII.us12,216,matched,unique_network_callsign
+ABC,1076610,US - ABC 08 LAREDO (KGNS-DT2) HD,,KGNS-DT2,,,0,needs_review,
+ABC,1076667,US - ABC 08 MOLINE (WQAD) HD,,WQAD,epg37,ABCWQAD.us12,178,matched,unique_network_callsign
+ABC,1076686,US - ABC 08 JONESBORO (KAIT) HD,,KAIT,epg37,ABCKAIT.us12,205,matched,unique_network_callsign
+ABC,1076556,US - ABC 09 COLUMBUS (WTVA) HD,,WTVA,epg37,ABCWTVADT2.us12,215,matched,unique_network_callsign
+ABC,1076651,US - ABC 09 BEND (KOHD-DT) HD,,KOHD-DT,,,0,needs_review,
+ABC,1076597,US - ABC 08 SALINA (KSBW-DT2) HD,,KSBW-DT2,epg37,ABCKSBWDT2.us12,183,matched,unique_network_callsign
+ABC,303553,US - ABC 09 TUCSON AZ (KGUN) HD,,KGUN,epg37,ABCKGUN.us12,223,matched,unique_network_callsign
+ABC,1076615,US - ABC 11 TRI CITIES (WJHL-DT2) HD,,WJHL-DT2,epg37,ABCWJHLDT2.us12,217,matched,priority_station_verified
+ABC,213890,US - ABC 11 RALEIGH (WTVD) HD,abc11wtvd.us,WTVD,epg37,ABCWTVD.us12,201,matched,unique_network_callsign
+ABC,1076573,US - ABC 12 SAN ANGELO (KTXE-LD) HD,,,,,0,needs_review,
+ABC,1076594,US - ABC 13 OMAHA (KMTV) HD,,KMTV,,,0,needs_review,
+PBS,1248226,US - PBS HD,,,,,0,needs_review,
+PBS,1248227,US - PBS KIDS HD,pbskids.us,,epg6,pbskids.us,342,matched,provider_id_and_callsign
+PBS,1248229,US - PBS NATURE FHD,,,,,0,needs_review,
+PBS,1248230,US - PBS (WNET) NEW YORK HD,,WNET,epg6,wnet.us,58,matched,exact_callsign_source_id
+PBS,1248231,US - PBS (WPBT) MIAMI HD,pbswpbt.us,WPBT,epg37,WPBT(PBS)(WPBT).us1,240,matched,unique_network_callsign
+PBS,1248232,US - PBS (WYIN/WTTW) CHICAGO HD,pbswttw.us,,,,0,needs_review,
+PBS,1248233,US - PBS (KAET) PHOENIX ARIZONA HD,,KAET,epg37,KAET(PBS)(KAET).us1,240,matched,unique_network_callsign
+PBS,1248234,US - PBS (WHYY) PHILADELPHIA HD,,WHYY,epg37,WHYY(PBS)(WHYY).us1,224,matched,unique_network_callsign
+PBS,1248235,US - PBS (WTVI) CHARLOTTE HD,,WTVI,epg37,WTVI(PBS)(WTVI).us1,228,matched,unique_network_callsign
+PBS,1248236,US - PBS (KOPB) OREGON HD,,KOPB,epg37,KOPB(PBS)(KOPB).us1,262,matched,unique_network_callsign
+PBS,1248237,US - PBS (WYES) NEW ORLEANS HD,pbswyes.us,WYES,epg37,WYES(PBS)(WYES).us1,230,matched,unique_network_callsign
+PBS,1248238,US - PBS (WABE) ATLANTA HD,pbswgtv.us,WABE,epg37,WABE(PBS)(WABE).us1,244,matched,unique_network_callsign
+PBS,1248239,US - PBS (AZPM) AZ TUCSON HD,pbskuat.us,AZPM,,,0,needs_review,
+PBS,1248240,US - PBS (SCETV) FLORENCE HD,,SCETV,,,0,needs_review,
+PBS,1248241,US - PBS (WETA) WASHINGTON HD,pbswhut.us,WETA,epg37,WETA(PBS)(WETA).us1,227,matched,unique_network_callsign
+PBS,1248242,US - PBS (KUHT) HOUSTON HD,,KUHT,epg37,KUHT(PBS)(KUHT).us1,241,matched,unique_network_callsign
+PBS,1248243,US - PBS (KLRN) SAN ANTONIO HD,pbsklrn.us,KLRN,epg37,KLRN(PBS)(KLRN).us1,242,matched,unique_network_callsign
+PBS,1248244,US - PBS (KCTS) SEATTLE HD,pbskcts.us,KCTS,epg37,KCTS(PBS)(KCTS).us1,238,matched,unique_network_callsign
+PBS,1248245,US - PBS (KQED) SAN FRANCISCO HD,pbskqed.us,KQED,epg37,KQED(PBS)(KQED).us1,243,matched,unique_network_callsign
+PBS,1248246,US - PBS (KLVX) LAS VEGAS HD,pbsklvx.us,KLVX,epg37,KLVX(PBS)(KLVX).us1,236,matched,unique_network_callsign
+PBS,1248247,US - PBS (KPBS) SAN DIEGO HD,pbskpbs.us,KPBS,,,0,needs_review,
+PBS,1248248,US - PBS (WFYI) INDIANPOLIS HD,,WFYI,epg37,WFYI(PBS)(WFYI).us1,265,matched,unique_network_callsign
+PBS,1248249,US - PBS (WHUT) WASHINGTON DC HD,,WHUT,epg37,WHUT(PBS)(WHUT).us1,221,matched,unique_network_callsign
+PBS,1248250,US - PBS (WEDU) TAMPA HD,,WEDU,epg37,WEDU(PBS)(WEDU).us1,235,matched,unique_network_callsign
+PBS,1248251,US - PBS (WUCF) ORLANDO HD,,WUCF,epg37,WUCF(PBS)(WUCF).us1,227,matched,unique_network_callsign
+PBS,1248252,US - PBS (KPBT) ODESSA/MIDLAND HD,,KPBT,epg37,KPBT(PBS)(KPBT).us1,236,matched,unique_network_callsign
+PBS,1248253,US - PBS (WMVS) MILWAUKEE HD,pbswmvs.us,WMVS,epg37,WMVS(PBS)(WMVS).us1,238,matched,unique_network_callsign
+PBS,1248254,US - PBS (WLRN) MIAMI DADE COUNT HD,,WLRN,epg37,WLRN(PBS)(WLRN).us1,232,matched,unique_network_callsign
+PBS,1248256,US - PBS (KCPT) KANSAS CITY HD,pbskcpt.us,KCPT,epg37,KCPT(PBS)(KCPT).us1,230,matched,unique_network_callsign
+PBS,1248257,US - PBS (WTVS) DETROIT HD,,WTVS,epg37,WTVS(PBS)(WTVS).us1,234,matched,unique_network_callsign
+PBS,1248258,US - PBS (KBDI) DENVER COLORADO HD,,KBDI,epg37,KBDI(PBS)(KBDI).us1,266,matched,unique_network_callsign
+PBS,1248259,US - PBS (KERA) DALLAS HD,,KERA,epg37,KERA(PBS)(KERA).us1,253,matched,unique_network_callsign
+PBS,1248260,US - PBS (WOSU) COLUMBUS HD,,WOSU,epg37,WOSU(PBS)(WOSU).us1,246,matched,unique_network_callsign
+PBS,1248261,US - PBS (WRLK) COLUMBIA HD,pbswrlk.us,WRLK,epg37,WRLK(PBS)(WRLK).us1,241,matched,unique_network_callsign
+PBS,1248262,US - PBS (GBH) BOSTON HD,,GBH,epg37,WGBH-DT(PBS)(WGBHDT).us1,250,matched,unique_network_callsign
+PBS,1248263,US - PBS (KACV) AMARILLO HD,,KACV,epg37,KACV(PBS)(KACV).us1,235,matched,unique_network_callsign
+PBS,1248264,US - PBS (KNME) ALBUQUERQUE SANTA FE HD,,KNME,epg37,KNME(PBS)(KNME).us1,237,matched,unique_network_callsign
+PBS,1248265,US - PBS (WLIW) NEW YORK HD,,WLIW,epg37,WLIW(PBS)(WLIW).us1,228,matched,unique_network_callsign
+PBS,1248266,US - PBS (WCMU) MOUNT PLEASANT HD,,WCMU,epg37,WCMU(PBS)(WCMU).us1,246,matched,unique_network_callsign
+PBS,1248267,US - PBS (WBIQ) BIRMINGHAM HD,,WBIQ,epg37,WBIQ(PBS)(WBIQ).us1,238,matched,unique_network_callsign
+PBS,1248268,US - PBS (WKLE) KY | KET Lexington HD,,WKLE,epg37,WKLE(PBS)(WKLE).us1,261,matched,unique_network_callsign
+PBS,1248269,US - PBS (KVIE) SACRAMENTO HD,pbskvie.us,KVIE,epg37,KVIE(PBS)(KVIE).us1,230,matched,unique_network_callsign
+PBS,1248270,US - PBS (KAFT) FORT SMITH HD,,KAFT,epg37,KAFT(PBS)(KAFT).us1,246,matched,unique_network_callsign
+PBS,1248271,US - PBS (WEDH) HARTFORD HD,wedh.us,WEDH,epg37,WEDH(PBS)(WEDH).us1,242,matched,unique_network_callsign
+PBS,1248273,US - PBS (WUNC) NC CHAPEL HILL HD,,WUNC,epg37,WUNC(PBS)(WUNC).us1,262,matched,unique_network_callsign
+PBS,1248274,US - PBS (CET) CINCINNATI HD,,CET,epg37,WCET(PBS)(WCET).us1,233,matched,unique_network_callsign
+PBS,1248275,US - PBS (WXXI) ROCHESTER HD,,WXXI,epg37,WXXI(PBS)(WXXI).us1,240,matched,unique_network_callsign
+PBS,1248276,US - PBS (KCWC) RIVERTON HD,,KCWC,epg37,KCWC(PBS)(KCWC).us1,240,matched,unique_network_callsign
+PBS,1248277,US - PBS (WETP) KNOXVILLE HD,,WETP,epg37,WETP(PBS)(WETP).us1,222,matched,priority_station_verified
+PBS,1248278,US - PBS KANSAS CITY /TOPEKA (KTWU) HD,,KTWU,epg37,KTWU(PBS)(KTWU).us1,258,matched,unique_network_callsign
+PBS,1248279,US - PBS TOLEDO OHIO (WGTE) HD,,WGTE,epg37,WGTE(PBS)(WGTE).us1,240,matched,unique_network_callsign
+PBS,1248280,US - PBS SYRACUSE (WCNY) HD,,WCNY,epg37,WCNY(PBS)(WCNY).us1,251,matched,unique_network_callsign
+PBS,1248281,US - PBS JACKSONVILLE (WJCT) HD,,WJCT,epg37,WJCT(PBS)(WJCT).us1,224,matched,unique_network_callsign
+PBS,1248282,US - PBS MOLINE (WQPT) HD,,WQPT,epg37,WQPT(PBS)(WQPT).us1,263,matched,unique_network_callsign
+PBS,1248283,US - PBS GAINESVILLE (WUFT) HD,pbswuft.us,WUFT,epg37,WUFT(PBS)(WUFT).us1,262,matched,unique_network_callsign
+PBS,1248284,US - PBS SALT LAKE CITY (KUED) HD,,KUED,epg37,KUED(PBS)(KUED).us1,249,matched,unique_network_callsign
+PBS,1248285,US - PBS FORT MYERS (WGCU) HD,,WGCU,epg37,WGCU(PBS)(WGCU).us1,233,matched,unique_network_callsign
+PBS,1248286,US - PBS TROY NY (WMHT) HD,,WMHT,epg37,WMHT(PBS)(WMHT).us1,231,matched,unique_network_callsign
+PBS,1248287,US - PBS NINE ST LOUIS (KETC) HD,,KETC,epg37,KETC(PBS)(KETC).us1,256,matched,unique_network_callsign
+PBS,1248288,US - PBS WARRENSBURG (KMOS) HD,,KMOS,epg37,KMOS(PBS)(KMOS).us1,236,matched,unique_network_callsign
+PBS,1248289,US - PBS AUSTIN (KLRU) HD,pbsklru.us,KLRU,epg37,KLRU(PBS)(KLRU).us1,253,matched,unique_network_callsign
+PBS,1248290,US - PBS CORPUS CHRISTI (KEDT) HD,,KEDT,epg37,KEDT(PBS)(KEDT).us1,249,matched,unique_network_callsign
+PBS,1248291,US - PBS REDDING (KIXE) HD,,KIXE,epg37,KIXE(PBS)(KIXE).us1,237,matched,unique_network_callsign
+PBS,1248292,US - PBS LOS ANGELES (KLCS) HD,,KLCS,epg37,PBSKLCS.us1,273,matched,unique_network_callsign
+PBS,1248293,US - PBS LAS CRUCES (KRWG) HD,,KRWG,epg37,KRWG(PBS)(KRWG).us1,250,matched,unique_network_callsign
+PBS,1248294,US - PBS FAIRBANKS (KUAC) HD,pbskuac.us,KUAC,epg37,KUAC(PBS)(KUAC).us1,243,matched,unique_network_callsign
+PBS,1248295,US - PBS RENO (KNPB) HD,,KNPB,epg37,KNPB(PBS)(KNPB).us1,240,matched,unique_network_callsign
+PBS,1248296,US - PBS VINCENNES (WVUT) HD,,WVUT,epg37,WVUT(PBS)(WVUT).us1,323,matched,unique_network_callsign
+PBS,1248297,US - PBS CHARLESTON (WEIU) HD,,WEIU,,,0,needs_review,
+PBS,1248298,US - PBS TALLAHASSEE (WFSU) HD,,WFSU,epg37,WFSU(PBS)(WFSU).us1,230,matched,unique_network_callsign
+PBS,1248299,US - PBS URBANA CHAMPAIGN (WILL) HD,,WILL,epg37,WILL(PBS)(WILL).us1,241,matched,unique_network_callsign
+PBS,1248300,US - PBS MEMPHIS (WKNO) HD,wkno.us,WKNO,epg37,WKNO(PBS)(WKNO).us1,221,matched,unique_network_callsign
+PBS,1248301,US - PBS (WPBS) WATERTOWN HD,,WPBS,,,0,needs_review,
+PBS,1248302,US - PBS ERIE (WQLN) HD,,WQLN,epg37,WQLN(PBS)(WQLN).us1,235,matched,unique_network_callsign
+PBS,1248303,US - PBS CHATTANOOGA (WTCI) HD,,WTCI,epg37,WTCI(PBS)(WTCI).us1,212,matched,unique_network_callsign
+PBS,1248304,US - PBS SCRANTON (WVIA) HD,,WVIA,epg37,WVIA(PBS)(WVIA).us1,229,matched,unique_network_callsign
+PBS,1248305,US - PBS NEW YORK (WNET) HD,,WNET,epg6,wnet.us,58,matched,exact_callsign_source_id
+PBS,1248306,US - PBS INDIANAPOLIS (WFYI) HD,pbswfyi.us,WFYI,epg37,WFYI(PBS)(WFYI).us1,265,matched,unique_network_callsign
+PBS,1248307,US - PBS EMERGE (KMOS) HD,,KMOS,epg37,KMOS(PBS)(KMOS).us1,236,matched,unique_network_callsign
+PBS,1248308,US - PBS PITTSBURGH KANSAS (WQED) HD,,WQED,epg37,WQED(PBS)(WQED).us1,216,matched,unique_network_callsign
+PBS,1248309,US - PBS SEATTLE (KBTC) HD,pbskcts.us,KBTC,epg37,KBTC(PBS)(KBTC).us1,223,matched,unique_network_callsign
+PBS,1248310,US - PBS OMAHA (KBIN) HD,,KBIN,epg37,KBIN(PBS)(KBIN).us1,240,matched,unique_network_callsign
+PBS,1248311,US - PBS CLEVELAND (WVIZ) HD,,WVIZ,epg37,WVIZ(PBS)(WVIZ).us1,228,matched,unique_network_callsign
+PBS,1248312,US - PBS CARBONDALE (WSIU) HD,,WSIU,epg37,WSIU(PBS)(WSIU).us1,254,matched,unique_network_callsign
+PBS,1248313,US - PBS ASHEVILLE (WNTV) HD,,WNTV,epg37,WNTV(PBS)(WNTV).us1,241,matched,unique_network_callsign
+PBS,1248314,US - PBS HARRISBURG (WKPD) HD,,WKPD,epg37,WKPD(PBS)(WKPD).us1,261,matched,unique_network_callsign
+PBS,1248315,US - PBS CHARLESTON (WITV) HD,,WITV,epg37,WITV(PBS)(WITV).us1,241,matched,unique_network_callsign
+PBS,1248316,US - PBS ALBANY (WGTV) HD,,WGTV,epg37,WGTV(PBS)(WGTV).us1,235,matched,unique_network_callsign
+PBS,1248317,US - PBS TALLAHASSEE (WFSU-TV) HD,,,,,0,needs_review,
+PBS,1248319,US - PBS FRESNO (KVPT) HD,,KVPT,epg37,KVPT(PBS)(KVPT).us1,230,matched,unique_network_callsign
+PBS,1248320,US - PBS SAINT PAUL (KTCA) HD,,KTCA,epg37,KTCA(PBS)(KTCA).us1,220,matched,unique_network_callsign
+PBS,1248321,US - PBS SIOUX (KSIN) HD,,KSIN,epg37,KSIN(PBS)(KSIN).us1,244,matched,unique_network_callsign
+PBS,1248322,US - PBS BRAINERD (KAWB) HD,,KAWB,epg37,KAWB(PBS)(KAWB).us1,267,matched,unique_network_callsign
+PBS,1248323,US - PBS BOSTON (WENH) HD,pbswgbh.us,WENH,epg37,WENH(PBS)(WENH).us1,238,matched,unique_network_callsign
+PBS,1248324,US - PBS WISCONSIN GREEN BAY (WPNE) HD,,WPNE,epg37,WPNE(PBS)(WPNE).us1,245,matched,unique_network_callsign
+PBS,1248325,US - PBS PENSACOLA (WSRE) HD,,WSRE,epg37,PBSWSRE.us1,213,matched,unique_network_callsign
+PBS,1248326,US - PBS LEXINGTON (WKLE) HD,,WKLE,epg37,WKLE(PBS)(WKLE).us1,261,matched,unique_network_callsign
+CBS,1030011,US - CBS 4 DOTHAN AL (WTVY) FHD,cbs4wtvy.us,WTVY,epg37,CBSWTVY.us12,216,matched,unique_network_callsign
+CBS,213966,US - CBS 5 MOBILE AL (WKRG) FHD,cbs5wkrg.us,WKRG,epg37,CBSWKRG.us12,220,matched,unique_network_callsign
+CBS,214055,US - CBS 19 HUNTSVILLE AL (WHNT) FHD,cbs19whnt.us,WHNT,epg37,CBSWHNT.us12,200,matched,unique_network_callsign
+CBS,214080,US - CBS 42 BIRMINGHAM AL (WIAT) FHD,cbs42wiat.us,WIAT,,,0,needs_review,
+CBS,213960,US - CBS 22 ANCHORAGE AK (KTVA) FHD,cbskyes.us,KTVA,,,0,needs_review,
+CBS,213961,US - CBS 5 PHOENIX AZ (KPHO) FHD,cbs5kpho.us,KPHO,epg37,CBSKPHO.us12,227,matched,unique_network_callsign
+CBS,214045,US - CBS 13 TUCSON AZ (KOLD) FHD,cbs13kold.us,KOLD,epg37,CBSKOLD.us12,209,matched,unique_network_callsign
+CBS,1076818,US - CBS 5 FORT SMITH AR (KFSM) FHD,cbs5kfsm.us,KFSM,epg37,CBSKFSM.us12,211,matched,unique_network_callsign
+CBS,214013,US - CBS 11 LITTLE ROCK AR (KTHV) FHD,cbs11kthv.us,KTHV,epg37,CBSKTHV.us12,201,matched,unique_network_callsign
+CBS,214071,US - CBS 29 BAKERSFIELD CA (KBAK) FHD,cbs29kbak.us,KBAK,epg37,CBSKBAK.us12,222,matched,unique_network_callsign
+CBS,213933,US - CBS 2 LOS ANGELES CA (KCBS) FHD,cbs2kcbs.us,KCBS,epg37,CBSKCBS.us12,219,matched,unique_network_callsign
+CBS,213969,US - CBS 5 SAN FRANCISCO CA (KPIX) FHD,cbs5kpix.us,KPIX,epg37,CBSKPIX.us12,226,matched,unique_network_callsign
+CBS,213989,US - CBS 8 SAN DIEGO CA (KFMB) FHD,cbs8kfmb.us,KFMB,epg37,CBSKFMB.us12,209,matched,unique_network_callsign
+CBS,213994,US - CBS 9 LOS ANGELES CA (KCAL) FHD,cbs9kcal.us,KCAL,,,0,needs_review,
+CBS,1076811,US - CBS 12 SANTA MARIA CA (KCOY) FHD,,KCOY,,,0,needs_review,
+CBS,214044,US - CBS 13 SACRAMENTO CA (KOVR) FHD,cbs.kovr.sacramento.ca.us,KOVR,epg37,CBSKOVR.us12,226,matched,unique_network_callsign
+CBS,214083,US - CBS 46 MONTEREY CA (KION) FHD,cbs46kion.us,KION,epg37,CBSKION.us12,216,matched,unique_network_callsign
+CBS,214086,US - CBS 47 FRESNO CA (KGPE) FHD,cbs47kgpe.us,KGPE,epg37,CBSKGPE.us12,220,matched,unique_network_callsign
+CBS,213951,US - CBS 4 DENVER CO (KCNC) FHD,cbs4kcnc.us,KCNC,epg37,CBSKCNC.us12,227,matched,unique_network_callsign
+CBS,214008,US - CBS 11 COLORADO SPRINGS CO (KKTV) FHD,cbs11kktv.us,KKTV,epg37,CBSKKTV.us12,209,matched,unique_network_callsign
+CBS,1076848,US - CBS 5 GRAND JUNCTION CO (KREX) FHD,cbs5krex.us,KREX,epg37,CBSKREX.us12,209,matched,unique_network_callsign
+CBS,213939,US - CBS 3 HARTFORD CT (WFSB) FHD,cbs3wfsb.us,WFSB,epg37,CBSWFSB.us12,222,matched,unique_network_callsign
+CBS,213995,US - CBS 9 WASHINGTON DC (WUSA) FHD,cbs9wusa.us,WUSA,epg37,CBSWUSA.us12,212,matched,unique_network_callsign
+CBS,213946,US - CBS 4 MIAMI FL (WFOR) FHD,cbs4wfor.us,WFOR,epg37,CBSWFOR.us12,229,matched,unique_network_callsign
+CBS,213971,US - CBS 6 ORLANDO FL (WKMG) FHD,cbs6wkmg.us,WKMG,epg37,CBSWKMG.us12,214,matched,unique_network_callsign
+CBS,1076822,US - CBS 6 TALLAHASSEE FL (WCTV) FHD,cbs6wctv.us,WCTV,epg37,CBSWCTV.us12,214,matched,unique_network_callsign
+CBS,214005,US - CBS 10 TAMPA FL (WTSP) FHD,cbswtsp.us,WTSP,epg37,CBSWTSP.us12,208,matched,unique_network_callsign
+CBS,214010,US - CBS 11 FORT MYERS FL (WINK) FHD,abcwzvn.us,WINK,epg37,CBSWINK.us12,219,matched,unique_network_callsign
+CBS,214031,US - CBS 12 WEST PALM BEACH FL (WPEC) FHD,cbs12wpec.us,WPEC,epg37,CBSWPEC.us12,228,matched,unique_network_callsign
+CBS,214085,US - CBS 47 JACKSONVILLE FL (WJAX) FHD,cbs47wjax.us,WJAX,epg37,CBSWJAX.us12,229,matched,unique_network_callsign
+CBS,1076830,US - CBS 3 COLUMBUS GA (WRBL) FHD,cbs3wrbl.us,WRBL,epg37,CBSWRBL.us12,214,matched,unique_network_callsign
+CBS,214015,US - CBS 11 SAVANNAH GA (WTOC) FHD,cbs11wtoc.us,WTOC,epg37,CBSWTOC.us12,218,matched,unique_network_callsign
+CBS,214021,US - CBS 12 AUGUSTA GA (WRDW) FHD,cbs12wrdw.us,WRDW,epg37,CBSWRDW.us12,206,matched,unique_network_callsign
+CBS,214039,US - CBS 13 MACON GA (WMAZ) FHD,cbs13wmaz.us,WMAZ,epg37,CBSWMAZ.us12,203,matched,unique_network_callsign
+CBS,214082,US - CBS 46 ATLANTA GA (WGCL) FHD,cbs46wgcl.us,WGCL,,,0,needs_review,
+CBS,893542,US - CBS 5 HONOLULU HI (KGMB),,KGMB,epg37,CBSKGMB.us12,203,matched,unique_network_callsign
+CBS,213929,US - CBS 2 BOISE ID (KBOI) FHD,cbs2kboi.us,KBOI,epg37,CBSKBOI.us12,221,matched,unique_network_callsign
+CBS,1280943,US - CBS 3 IDAHO FALLS (KIFI) FHD,cbskifi2.us,KIFI,epg37,CBSKIFIDT2.us12,208,matched,unique_network_callsign
+CBS,1076851,US - CBS 11 TWIN FALLS ID (KMVT) FHD,cbs11kmvt.us,KMVT,epg37,CBSKMVT.us12,226,matched,unique_network_callsign
+CBS,213931,US - CBS 2 CHICAGO IL (WBBM) FHD,cbs2wbbm.us,WBBM,epg37,CBSWBBM.us12,217,matched,unique_network_callsign
+CBS,213937,US - CBS 3 CHAMPAIGN IL (WCIA) FHD,cbs3wcia.us,WCIA,epg37,CBSWCIA.us12,198,matched,unique_network_callsign
+CBS,213956,US - CBS 4 ROCK ISLAND IL (WHBF) FHD,cbs4whbf.us,WHBF,epg37,CBSWHBF.us12,215,matched,unique_network_callsign
+CBS,1280944,US - CBS 7 QUINCY IL (KHQA) FHD,cbs7khqa.us,KHQA,epg37,CBSKHQA.us12,201,matched,unique_network_callsign
+CBS,1076845,US - CBS 23 ROCKFORD IL (WIFR) FHD,cbs23wifr.us,WIFR,epg37,CBSWIFR.us12,222,matched,unique_network_callsign
+CBS,1076809,US - CBS 31 PEORIA IL (WMBD) FHD,cbs31wmbd.us,WMBD,epg37,CBSWMBD.us12,218,matched,unique_network_callsign
+CBS,1076817,US - CBS 4 INDIANAPOLIS IN (WTTV) FHD,cbs4wttv.us,WTTV,epg37,CBSWTTV.us12,217,matched,unique_network_callsign
+CBS,1076846,US - CBS 10 TERRE HAUTE IN (WTHI) FHD,cbs10wthi.us,WTHI,epg37,CBSWTHI.us12,226,matched,unique_network_callsign
+CBS,214047,US - CBS 15 FORT WAYNE IN (WANE) FHD,cbs15wane.us,WANE,epg37,CBSWANE.us12,218,matched,unique_network_callsign
+CBS,894450,US - CBS 22 SOUTH BEND IN (WSBT) FHD,cbs22wsbt.us,WSBT,epg37,CBSWSBT.us12,206,matched,unique_network_callsign
+CBS,1076816,US - CBS 22 SOUTH BEND IN (WSBT) FHD,cbs22wsbt.us,WSBT,epg37,CBSWSBT.us12,206,matched,unique_network_callsign
+CBS,1076853,US - CBS 18 PANAMA CITY (WECP-LD) FHD,cbs18wecp.us,,,,0,needs_review,
+CBS,1076833,US - CBS 18 LAFAYETTE IN (WLFI) FHD,cbs10klfy.us,WLFI,epg37,CBSWLFI.us12,219,matched,unique_network_callsign
+CBS,214081,US - CBS 44 EVANSVILLE IN (WEVV) FHD,cbs44wevv.us,WEVV,epg37,CBSWEVV.us12,212,matched,unique_network_callsign
+CBS,213930,US - CBS 2 CEDAR RAPIDS IA (KGAN) FHD,cbs2kgan.us,KGAN,epg37,CBSKGAN.us12,215,matched,unique_network_callsign
+CBS,1076820,US - CBS 3 MASON CITY IA (KIMT) FHD,,KIMT,epg37,CBSKIMT.us12,221,matched,unique_network_callsign
+CBS,213983,US - CBS 8 DES MOINES IA (KCCI) FHD,cbs8kcci.us,KCCI,epg37,CBSKCCI.us12,197,matched,unique_network_callsign
+CBS,1076854,US - CBS 7 PITTSBURG KS (KOAM) FHD,cbs2kdka.us,KOAM,epg37,CBSKOAM.us12,200,matched,unique_network_callsign
+CBS,1405880,US - CBS 12 WICHITA KS (KWCH) FHD,cbs6kauz.us,KWCH,epg37,CBSKWCH.us12,219,matched,unique_network_callsign
+CBS,1076829,US - CBS 13 TOPEKA KS (WIBW) FHD,cbs13wibw.us,WIBW,epg37,CBSWIBW.us12,226,matched,unique_network_callsign
+CBS,214069,US - CBS 27 LEXINGTON KY (WKYT) FHD,cbs27wkyt.us,WKYT,epg37,CBSWKYT.us12,234,matched,unique_network_callsign
+CBS,214623,US - CBS 32 LOUISVILLE KY (WLKY) FHD,cbs32wlky.us,WLKY,epg37,CBSWLKY.us12,203,matched,unique_network_callsign
+CBS,1076852,US - CBS 40 BOWLING GREEN KY (WNKY) FHD,cbs40wnky2.us,WNKY,epg37,CBSWNKYDT2.us12,205,matched,unique_network_callsign
+CBS,213955,US - CBS 4 NEW ORLEANS LA (WWL) FHD,cbs4wwl.us,WWL,epg37,CBSWWL.us12,223,matched,unique_network_callsign
+CBS,1076850,US - CBS 8 MONROE LA (KNOE) FHD,,KNOE,epg37,CBSKNOE.us12,215,matched,unique_network_callsign
+CBS,269545,US - CBS 9 BATON ROUGE LA (WAFB) FHD,,WAFB,epg37,CBSWAFB.us12,208,matched,unique_network_callsign
+CBS,214002,US - CBS 10 LAFAYETTE LA (KLFY) FHD,cbs10klfy.us,KLFY,epg37,CBSKLFY.us12,208,matched,unique_network_callsign
+CBS,214030,US - CBS 12 SHREVEPORT LA (KSLA) FHD,cbs12ksla.us,KSLA,epg37,CBSKSLA.us12,211,matched,unique_network_callsign
+CBS,214043,US - CBS 13 PORTLAND ME (WGME) FHD,cbs6koin.us,WGME,epg37,CBSWGME.us12,217,matched,unique_network_callsign
+CBS,1076815,US - CBS 5 BANGOR (WABI)  FHD,cbs5wabi.us,WABI,epg37,CBSWABI.us12,205,matched,unique_network_callsign
+CBS,1076859,US - CBS 57 HAZARD (WYMT) FHD,cbs57wymtdt.us,WYMT,epg37,CBSWYMT.us12,222,matched,unique_network_callsign
+CBS,214035,US - CBS 13 BALTIMORE MD (WJZ) FHD,cbs13wjz.us,WJZ,epg37,CBSWJZ.us12,220,matched,unique_network_callsign
+CBS,1369515,US - CBS 16 SALISBURY MD (WBOC) HD,,WBOC,epg37,CBSWBOC.us12,199,matched,unique_network_callsign
+CBS,1076828,US - CBS 3 SPRINGFIELD MA (WSHM) FHD,cbs10kolr.us,WSHM,epg37,CBSWSHM.us12,223,matched,unique_network_callsign
+CBS,464739,US - CBS 4 BOSTON MA (WBZ) FHD,cbs4wbz.us,WBZ,epg37,CBSWBZ.us12,239,matched,unique_network_callsign
+CBS,1076812,US - CBS 38 BOSTON (WSBK) FHD,cbs4wbz.us,WSBK,,,0,needs_review,
+CBS,213940,US - CBS 3 KALAMAZOO MI (WWMT) FHD,cbs3wwmt.us,WWMT,epg37,CBSWWMT.us12,216,matched,unique_network_callsign
+CBS,213963,US - CBS 5 SAGINAW MI (WNEM) FHD,cbswnem.us,WNEM,epg37,CBSWNEM.us12,221,matched,unique_network_callsign
+CBS,213973,US - CBS 6 LANSING MI (WLNS) FHD,cbs6wlns.us,WLNS,epg37,CBSWLNS.us12,227,matched,unique_network_callsign
+CBS,213996,US - CBS 9 CADILLAC MI (WWTV) FHD,cbs9wwtv.us,WWTV,epg37,CBSWWTV.us12,223,matched,unique_network_callsign
+CBS,214090,US - CBS 62 DETROIT MI (WWJ) FHD,cbs62wwj.us,WWJ,epg37,CBSWWJ.us12,230,matched,unique_network_callsign
+CBS,213954,US - CBS 4 MINNEAPOLIS MN (WCCO) FHD,cbs4wcco.us,WCCO,epg37,CBSWCCO.us12,229,matched,unique_network_callsign
+CBS,213950,US - CBS 4 COLUMBUS MS (WCBI) FHD,cbs4wcbi.us,WCBI,epg37,CBSWCBI.us12,218,matched,unique_network_callsign
+CBS,214026,US - CBS 12 JACKSON MS (WJTV) FHD,cbs12wjtv.us,WJTV,,,0,needs_review,
+CBS,1076836,US - CBS 13 GULFPORT MS (WLOX) FHD,cbs13wloxdt2.us,WLOX,epg37,CBSWLOXDT2.us12,214,matched,unique_network_callsign
+CBS,1076837,US - CBS 22 HATTIESBURG MS (WHLT) FHD,cbs22whlt.us,WHLT,epg37,CBSWHLT.us12,223,matched,unique_network_callsign
+CBS,1076843,US - CBS 24 MERIDIAN MS (WMDN) FHD,cbs24wmdn.us,WMDN,epg37,CBSWMDN.us12,229,matched,unique_network_callsign
+CBS,213957,US - CBS 4 ST LOUIS MO (KMOV) FHD,cbs4kmov.us,KMOV,epg37,CBSKMOV.us12,229,matched,unique_network_callsign
+CBS,214004,US - CBS 10 SPRINGFIELD MO (KOLR) FHD,cbs3wshm.us,KOLR,epg37,CBSKOLR.us12,222,matched,unique_network_callsign
+CBS,214022,US - CBS 12 CAPE GIRARDEAU MO (KFVS) FHD,cbs12kfvs.us,KFVS,epg37,CBSKFVS.us12,212,matched,unique_network_callsign
+CBS,214041,US - CBS 13 JEFFERSON CITY MO (KRCG) FHD,cbs13krcg.us,KRCG,epg37,CBSKRCG.us12,211,matched,unique_network_callsign
+CBS,1076841,US - CBS 2 BILLINGS MT (KTVQ) FHD,cbs2ktvq.us,KTVQ,epg37,CBSKTVQ.us12,199,matched,unique_network_callsign
+CBS,1076844,US - CBS 3 GREAT FALLS MT (KRTV) FHD,cbs3krtv.us,KRTV,epg37,CBSKRTV.us12,199,matched,unique_network_callsign
+CBS,1076840,US - CBS 4 BUTTE MT (KXLF) FHD,cbs4kxlf.us,KXLF,epg37,CBSKXLF.us12,204,matched,unique_network_callsign
+CBS,1280945,US - CBS 8 MISSOULA MT (KPAX) FHD,,KPAX,epg37,CBSKPAX.us12,214,matched,unique_network_callsign
+CBS,213943,US - CBS 3 OMAHA NE (KMTV) FHD,cbs3kmtv.us,KMTV,epg37,CBSKMTV.us12,211,matched,unique_network_callsign
+CBS,1076802,US - CBS 10 LINCOLN NE (KOLN) FHD,cbs10koln.us,KOLN,epg37,CBSKOLN.us12,213,matched,unique_network_callsign
+CBS,213935,US - CBS 2 RENO NV (KTVN) FHD,cbs2ktvn.us,KTVN,epg37,CBSKTVN.us12,217,matched,unique_network_callsign
+CBS,213986,US - CBS 8 LAS VEGAS NV (KLAS) FHD,cbs8klas.us,KLAS,epg37,CBSKLAS.us12,215,matched,unique_network_callsign
+CBS,214033,US - CBS 13 ALBUQUERQUE NM (KRQE) FHD,cbs13krqe.us,KRQE,,,0,needs_review,
+CBS,213926,US - CBS 2 NEW YORK NY (WCBS) FHD,cbs2wcbs.us,WCBS,epg37,CBSWCBS.us12,230,matched,unique_network_callsign
+CBS,213970,US - CBS 5 SYRACUSE NY (WTVH) FHD,cbs5wtvh.us,WTVH,,,0,needs_review,
+CBS,429029,US - CBS 5 SYRACUSE NY (WTVH) FHD,cbs5wtvh.us,WTVH,,,0,needs_review,
+CBS,213949,US - CBS 4 BUFFALO NY (WIVB) FHD,cbs4wivb.us,WIVB,epg37,CBSWIVB.us12,221,matched,unique_network_callsign
+CBS,213972,US - CBS 6 ALBANY NY (WRGB) FHD,cbs6wrgb.us,WRGB,epg37,CBSWRGB.us12,199,matched,unique_network_callsign
+CBS,1076858,US - CBS 8 ROCHESTER NY (WROC) FHD,cbs8wroc.us,WROC,epg37,CBSWROC.us12,223,matched,unique_network_callsign
+CBS,1076804,US - CBS 10/55 RIVERHEAD NY (WLNY) FHD,cbs55wlny.us,WLNY,,,0,needs_review,
+CBS,1076823,US - CBS 12 BINGHAMTON NY (WBNG) FHD,cbs12wbng.us,WBNG,epg37,CBSWBNG.us12,223,matched,unique_network_callsign
+CBS,213932,US - CBS 2 GREENSBORO NC (WFMY) FHD,cbs2wfmy.us,WFMY,epg37,CBSWFMY.us12,197,matched,unique_network_callsign
+CBS,213938,US - CBS 3 CHARLOTTE NC (WBTV) FHD,cbs3wbtv.us,WBTV,epg37,CBSWBTV.us12,222,matched,unique_network_callsign
+CBS,213945,US - CBS 3 WILMINGTON NC (WWAY) FHD,cbs3wwaydt2.us,WWAY,epg37,CBSWWAYDT2.us12,222,matched,unique_network_callsign
+CBS,213993,US - CBS 9 GREENVILLE NC (WNCT) FHD,cbs9wnct.us,WNCT,epg37,CBSWNCT.us12,218,matched,unique_network_callsign
+CBS,214048,US - CBS 17 RALEIGH NC (WNCN) FHD,cbs15wane.us,WNCN,epg37,CBSWNCN.us12,217,matched,unique_network_callsign
+CBS,1076832,US - CBS 13 MINOT ND (KXMC) FHD,cbs13cbskxmc.us,KXMC,,,0,needs_review,
+CBS,214074,US - CBS 30 FARGO ND (KXJB) FHD,cbs30kxjb.us,KXJB,epg37,CBSKXJB.us12,216,matched,unique_network_callsign
+CBS,213978,US - CBS 7 DAYTON OH (WHIO) FHD,cbs7whio.us,WHIO,epg37,CBSWHIO.us12,227,matched,unique_network_callsign
+CBS,214000,US - CBS 10 COLUMBUS OH (WBNS) FHD,cbs10wbns.us,WBNS,epg37,CBSWBNS.us12,200,matched,unique_network_callsign
+CBS,214019,US - CBS 11 TOLEDO OH (WTOL) FHD,cbs11wtol.us,WTOL,epg37,CBSWTOL.us12,205,matched,unique_network_callsign
+CBS,214024,US - CBS 12 CINCINNATI OH (WKRC) FHD,cbs12wkrc.us,WKRC,epg37,CBSWKRC.us12,206,matched,unique_network_callsign
+CBS,214053,US - CBS 19 CLEVELAND OH (WOIO) FHD,cbs19woio.us,WOIO,epg37,CBSWOIO.us12,204,matched,unique_network_callsign
+CBS,214070,US - CBS 27 YOUNGSTOWN OH (WKBN) FHD,cbs27wkbn.us,WKBN,epg37,CBSWKBN.us12,215,matched,unique_network_callsign
+CBS,213977,US - CBS 6 TULSA OK (KOTV) FHD,cbs6kotv.us,KOTV,epg37,CBSKOTV.us12,209,matched,unique_network_callsign
+CBS,213997,US - CBS 9 OKLAHOMA CITY OK (KWTV) FHD,cbs9kwtv.us,KWTV,epg37,CBSKWTV.us12,205,matched,unique_network_callsign
+CBS,213974,US - CBS 6 PORTLAND OR (KOIN) FHD,cbs6koin.us,KOIN,epg37,CBSKOIN.us12,208,matched,unique_network_callsign
+CBS,1076839,US - CBS 7 BEND OR (KBNZ) FHD,cbs7kbnzld.us,KBNZ,epg37,CBSKBNZ.us12,222,matched,unique_network_callsign
+CBS,1076842,US - CBS 10 MEDFORD OR (KTVL) FHD,cbs10ktvl.us,KTVL,epg37,CBSKTVL.us12,216,matched,unique_network_callsign
+CBS,214036,US - CBS 13 EUGENE OR (KVAL) FHD,cbs13kval.us,KVAL,epg37,CBSKVAL.us12,205,matched,unique_network_callsign
+CBS,213934,US - CBS 2 PITTSBURGH PA (KDKA) FHD,cbs2kdka.us,KDKA,epg37,CBSKDKA.us12,212,matched,unique_network_callsign
+CBS,213944,US - CBS 3 PHILADELPHIA PA (KYW) FHD,cbs3kyw.us,KYW,epg37,CBSKYW.us12,220,matched,unique_network_callsign
+CBS,213999,US - CBS 10 ALTOONA PA (WTAJ) FHD,cbs10wtaj.us,WTAJ,epg37,CBSWTAJ.us12,220,matched,unique_network_callsign
+CBS,214061,US - CBS 21 HARRISBURG PA (WHP) FHD,cbs21whp.us,WHP,epg37,CBSWHP.us12,212,matched,unique_network_callsign
+CBS,1076807,US - CBS 22 SCRANTON PA (WYOU) FHD,cbs22wyou.us,WYOU,epg37,CBSWYOU.us12,222,matched,unique_network_callsign
+CBS,1076824,US - CBS 35 ERIE PA (WSEE) FHD,cbs35wsee.us,WSEE,epg37,CBSWSEE.us12,214,matched,unique_network_callsign
+CBS,214028,US - CBS 12 PROVIDENCE RI (WPRI) FHD,cbs12wpri.us,WPRI,epg37,CBSWPRI.us12,212,matched,unique_network_callsign
+CBS,213965,US - CBS 5 KANSAS CITY MO (KCTV) FHD,cbs5kctv.us,KCTV,epg37,CBSKCTV.us12,219,matched,unique_network_callsign
+CBS,213962,US - CBS 5 CHARLESTON SC (WCSC) FHD,cbs5wcsc.us,WCSC,epg37,CBSWCSC.us12,200,matched,unique_network_callsign
+CBS,213982,US - CBS 7 SPARTANBURG SC (WSPA) FHD,cbs7wspa.us,WSPA,,,0,needs_review,
+CBS,214038,US - CBS 13 FLORENCE SC (WBTW) FHD,cbs13wbtw.us,WBTW,epg37,CBSWBTW.us12,219,matched,unique_network_callsign
+CBS,214054,US - CBS 19 COLUMBIA SC (WLTX) FHD,cbs19wltx.us,WLTX,epg37,CBSWLTX.us12,203,matched,unique_network_callsign
+CBS,1076827,US - CBS 11 RAPID CITY SD (KCLO) FHD,cbs11kclo.us,KCLO,,,0,needs_review,
+CBS,214016,US - CBS 11 SIOUX FALLS SD (KELO) FHD,cbs11kelo.us,KELO,epg37,CBSKELO.us12,214,matched,unique_network_callsign
+CBS,345602,US - CBS 3 MEMPHIS TN (WREG) FHD,cbs3wreg.us,WREG,epg37,CBSWREG.us12,219,matched,unique_network_callsign
+CBS,213967,US - CBS 5 NASHVILLE TN (WTVF) FHD,cbs5wtvf.us,WTVF,epg37,CBSWTVF.us12,205,matched,unique_network_callsign
+CBS,213985,US - CBS 8 KNOXVILLE TN (WVLT) FHD,cbs8wvlt.us,WVLT,epg37,CBSWVLT.us12,211,matched,unique_network_callsign
+CBS,1076808,US - CBS 11 JOHNSON CITY TN (WJHL) FHD,cbs11wjhl.us,WJHL,epg37,CBSWJHL.us12,432,matched,priority_station_verified
+CBS,214020,US - CBS 12 CHATTANOOGA TN (WDEF) FHD,cbs12wdef.us,WDEF,epg37,CBSWDEF.us12,226,matched,unique_network_callsign
+CBS,214079,US - CBS 42 AUSTIN TX (KEYE) FHD,cbs42keye.us,KEYE,epg37,CBSKEYE.us12,216,matched,unique_network_callsign
+CBS,1076813,US - CBS 3 BRYAN TX (KBTX) FHD,cbs3kbtx.us,KBTX,epg37,CBSKBTX.us12,223,matched,unique_network_callsign
+CBS,213952,US - CBS 4 EL PASO TX (KDBC) FHD,cbs4kdbc.us,KDBC,epg37,CBSKDBC.us12,215,matched,unique_network_callsign
+CBS,213959,US - CBS 5 SAN ANTONIO TX (KENS) FHD,cbs5kens.us,KENS,epg37,CBSKENS.us12,220,matched,unique_network_callsign
+CBS,1076825,US - CBS 6 WICHITA FALLS TX (KAUZ) FHD,cbs6kauz.us,KAUZ,epg37,CBSKAUZ.us12,207,matched,unique_network_callsign
+CBS,214032,US - CBS 6 WICHITA FALLS TX (KAUZ) FHD,cbs6kauz.us,KAUZ,epg37,CBSKAUZ.us12,207,matched,unique_network_callsign
+CBS,1076835,US - CBS 6 BEAUMONT TX (KFDM) FHD,,KFDM,epg37,CBSKFDM.us12,210,matched,unique_network_callsign
+CBS,1076806,US - CBS 7 ODESSA TX (KOSA) FHD,,KOSA,epg37,CBSKOSA.us12,214,matched,unique_network_callsign
+CBS,1076857,US - CBS 8 SAN ANGELO TX (KLST) FHD,cbs8klst.us,KLST,epg37,CBSKLST.us12,203,matched,unique_network_callsign
+CBS,214006,US - CBS 10 WACO TX (KWTX) FHD,cbs10kwtx.us,KWTX,epg37,CBSKWTX.us12,219,matched,unique_network_callsign
+CBS,214001,US - CBS 10 CORPUS CHRISTI TX (KZTV) FHD,cbs10kztv.us,KZTV,epg37,CBSKZTV.us12,207,matched,unique_network_callsign
+CBS,1076862,US - CBS 10 AMARILLO TX (KFDA) FHD,cbs10kfda.us,KFDA,epg37,CBSKFDA.us12,225,matched,unique_network_callsign
+CBS,214012,US - CBS 11 HOUSTON TX (KHOU) FHD,cbs11khou.us,KHOU,epg37,CBSKHOU.us12,209,matched,unique_network_callsign
+CBS,214011,US - CBS 11 DALLAS TX (KTVT) FHD,cbs11ktvt.us,KTVT,epg37,CBSKTVT.us12,227,matched,unique_network_callsign
+CBS,1280949,US - CBS 12 SHERMAN TX (KXII) FHD,cbs12kxii.us,KXII,epg37,CBSKXII.us12,220,matched,unique_network_callsign
+CBS,1076814,US - CBS 13 LUBBOCK TX (KLBK) FHD,cbs13klbk.us,KLBK,epg37,CBSKLBK.us12,205,matched,unique_network_callsign
+CBS,214057,US - CBS 19 TYLER TX (KYTX) FHD,cbs19kytx.us,KYTX,epg37,CBSKYTX.us12,235,matched,unique_network_callsign
+CBS,1076856,US - CBS 32 ABILENE TX (KTAB) FHD,cbs32ktab.us,KTAB,epg37,CBSKTAB.us12,206,matched,unique_network_callsign
+CBS,213928,US - CBS 2 SALT LAKE CITY UT (KUTV) FHD,cbs2kutv.us,KUTV,epg37,CBSKUTV.us12,222,matched,unique_network_callsign
+CBS,213936,US - CBS 3 BURLINGTON VT (WCAX) FHD,cbs3wcax.us,WCAX,epg37,CBSWCAX.us12,218,matched,unique_network_callsign
+CBS,213942,US - CBS 3 NORFOLK VA (WTKR) FHD,cbs.wtkr.norfolk.va.us,WTKR,epg37,CBSWTKR.us12,208,matched,unique_network_callsign
+CBS,213975,US - CBS 6 RICHMOND VA (WTVR) FHD,cbs6wtvr.us,WTVR,epg37,CBSWTVR.us12,213,matched,unique_network_callsign
+CBS,213980,US - CBS 7 ROANOKE VA (WDBJ) FHD,cbs7wdbj.us,WDBJ,epg37,CBSWDBJ.us12,205,matched,unique_network_callsign
+CBS,1076855,US - CBS 19 CHARLOTTESVILLE VA (WCAV) FHD,cbs19wcav.us,WCAV,epg37,CBSWCAV.us12,222,matched,unique_network_callsign
+CBS,213927,US - CBS 2 SPOKANE WA (KREM) FHD,cbs2krem.us,KREM,epg37,CBSKREM.us12,189,matched,unique_network_callsign
+CBS,213981,US - CBS 7 SEATTLE WA (KIRO) FHD,cbs7kiro.us,KIRO,,,0,needs_review,
+CBS,214073,US - CBS 29 YAKIMA WA (KIMA) FHD,cbs29kima.us,KIMA,epg37,CBSKIMA.us12,219,matched,unique_network_callsign
+CBS,214040,US - CBS 13 HUNTINGTON WV (WOWK) FHD,cbs13wowk.us,WOWK,epg37,CBSWOWK.us12,220,matched,unique_network_callsign
+CBS,1076805,US - CBS 3 MADISON WI (WISC) FHD,cbs3wisc.us,WISC,epg37,CBSWISC.us12,203,matched,unique_network_callsign
+CBS,1076821,US - CBS 7 WAUSAU WI (WSAW) FHD,cbs7wsaw.us,WSAW,epg37,CBSWSAW.us12,221,matched,unique_network_callsign
+CBS,213964,US - CBS 5 GREEN BAY WI (WFRV) FHD,cbs5wfrv.us,WFRV,epg37,CBSWFRV.us12,215,matched,unique_network_callsign
+CBS,213987,US - CBS 8 LA CROSSE WI (WKBT) FHD,cbs8wkbt.us,WKBT,epg37,CBSWKBT.us12,205,matched,unique_network_callsign
+CBS,214088,US - CBS 58 MILWAUKEE WI (WDJT) FHD,cbs58wdjt.us,WDJT,epg37,CBSWDJT.us12,213,matched,unique_network_callsign
+CBS,1076861,US - CBS 5 CHEYENNE WY (KGWN) FHD,cbs5kgwn.us,KGWN,epg37,CBSKGWN.us12,214,matched,unique_network_callsign
+CBS,1280951,US - CBS 14 CASPER (KGWC) FHD,,KGWC,epg37,CBSKGWC.us12,229,matched,unique_network_callsign
+CBS,1076819,US - CBS 2 PALM SPRINGS (KPSP) FHD,cbs2kpsp.us,KPSP,epg37,CBSKPSPCD2.us12,224,matched,unique_network_callsign
+CBS,1076826,US - CBS 5 ALEXANDRIA (KALB-DT2) FHD,cbs5kalbdt2.us,KALB-DT2,epg37,CBSKALBDT2.us12,204,matched,unique_network_callsign
+CBS,1076834,US - CBS 7 JACKSON (WBBJ-DT3) FHD,cbs12wjtv.us,WBBJ-DT3,epg37,CBSWBBJDT3.us12,210,matched,unique_network_callsign
+CBS,657309,US - CBS 8 MONTGOMERY AL (WAKA) FHD,kval.us,WAKA,epg37,CBSWAKA.us12,206,matched,unique_network_callsign
+CBS,1076860,US - CBS 12 SANTA BARBARA (KEYT) FHD,,KEYT,epg37,CBSKEYTDT2.us12,214,matched,unique_network_callsign
+CBS,1076838,US - CBS 13 HARRISONBURG (WSVF-CD2) FHD,cbs13wsvfcd2.us,,,,0,needs_review,
+CBS,1076847,US - CBS 17 LAKE CHARLES (KSWL-LD) FHD,cbs17kswlld.us,,,,0,needs_review,
+CBS,1076831,US - CBS 35 LIMA (WOHL-CD2) FHD,cbs35wohlcd2.us,,,,0,needs_review,
+CBS,1076849,US - CBS 39 JONESBORO (KJNB-LD2) FHD,cbs39kjnbld2.us,,,,0,needs_review,
+CBS,1269342,US - CBS 44 VALDOSTA (WSWG) FHD,,WSWG,epg37,CBSWSWG.us1,208,matched,unique_network_callsign
+CBS,214089,US - CBS 62 DETROIT MI (WWJ-TV) FHD,cbs62wwj.us,,,,0,needs_review,
+CBS,1282795,US - CBS 8 MONTGOMERY (WAKA) FHD,,WAKA,epg37,CBSWAKA.us12,206,matched,unique_network_callsign
+FOX,214398,US - FOX 6 BIRMINGHAM AL (WBRC) HD,fox6wbrc.us,WBRC,epg37,FOXWBRC.us12,227,matched,unique_network_callsign
+FOX,521173,US - FOX 20 MONTGOMERY AL (WCOV) HD,fox20wcov.us,WCOV,epg37,FOXWCOV.us12,260,matched,unique_network_callsign
+FOX,214540,US - FOX 67 RIO GRANDE VALLEY (KFXV) HD,fox67kfxv.us,KFXV,epg37,FOXKFXV.us12,242,matched,unique_network_callsign
+FOX,214412,US - FOX 10 MOBILE AL (WALA) HD,fox10wala.us,WALA,epg37,FOXWALA.us12,236,matched,unique_network_callsign
+FOX,514623,US - FOX 34 DOTHAN AL (WDFX) HD,fox34wdfx.us,WDFX,epg37,FOXWDFX.us12,255,matched,unique_network_callsign
+FOX,214533,US - FOX 54 HUNTSVILLE AL (WZDX) HD,fox54wzdx.us,WZDX,epg37,FOXWZDX.us12,245,matched,unique_network_callsign
+FOX,214414,US - FOX 10 PHOENIX AZ (KSAZ) HD,fox10ksaz.us,KSAZ,epg37,FOXKSAZ.us12,221,matched,unique_network_callsign
+FOX,214417,US - FOX 11 TUCSON AZ (KMSB) HD,fox11kmsb.us,KMSB,epg37,FOXKMSB.us12,228,matched,unique_network_callsign
+FOX,214432,US - FOX 16 LITTLE ROCK AR (KLRT) HD,fox16klrt.us,KLRT,epg37,FOXKLRT.us12,223,matched,unique_network_callsign
+FOX,214455,US - FOX 24 FORT SMITH AR (KFTA) HD,fox24kfta.us,KFTA,epg37,FoxKFTA.us12,252,matched,unique_network_callsign
+FOX,214494,US - FOX 35 SALINAS CA (KCBA) HD,fox35kcba.us,KCBA,,,0,needs_review,
+FOX,521149,US - FOX 39 JONESBORO AR (KJNB) HD,fox39kjnb.us,KJNB,epg37,FOXKJNB.us1,257,matched,unique_network_callsign
+FOX,214385,US - FOX 2 SAN FRANCISCO CA (KTVU) HD,foxktvu.us,KTVU,epg37,FOXKTVU.us12,209,matched,unique_network_callsign
+FOX,214391,US - FOX 5 SAN DIEGO CA (KSWB) HD,foxkswb.us,KSWB,epg37,FOXKSWB.us12,226,matched,unique_network_callsign
+FOX,521163,US - FOX 9 EL CENTRO CA (KECY) HD,fox9kecy.us,KECY,epg37,FOXKECY.us12,250,matched,unique_network_callsign
+FOX,214418,US - FOX 11 LOS ANGELES CA (KTTV) HD,fox11kttv.us,KTTV,epg37,FOXKTTV.us12,212,matched,unique_network_callsign
+FOX,521166,US - FOX 11 SANTA BARBARA (KKFX) HD,fox11kttv.us,KKFX,epg37,FOXKKFX.us12,254,matched,unique_network_callsign
+FOX,214464,US - FOX 26 FRESNO CA (KMPH) HD,fox26kmph.us,KMPH,epg37,FOXKMPH.us12,217,matched,unique_network_callsign
+FOX,214466,US - FOX 26 FRESNO CA (KMPH) HD,fox26kmph.us,KMPH,epg37,FOXKMPH.us12,217,matched,unique_network_callsign
+FOX,521144,US - FOX 33 PALM SPRINGS CA (KDFX) HD,fox11kdfx.us,KDFX,epg37,FOXKDFXCD2.us12,233,matched,unique_network_callsign
+FOX,214505,US - FOX 40 SACRAMENTO CA (KTXL) HD,foxktxl.us,KTXL,epg37,FOXKTXL.us12,230,matched,unique_network_callsign
+FOX,521156,US - FOX 4 GRAND JUNCTION CO (KFQX) HD,foxkfqx.us,KFQX,epg37,FOXKFQX.us12,246,matched,unique_network_callsign
+FOX,214445,US - FOX 21 COLORADO SPRINGS CO (KXRM) HD,fox21kxrm.us,KXRM,epg37,FOXKXRM.us12,230,matched,unique_network_callsign
+FOX,214485,US - FOX 31 DENVER CO (KDVR) HD,fox31kdvr.us,KDVR,epg37,FOXKDVR.us12,226,matched,unique_network_callsign
+FOX,214537,US - FOX 61 HARTFORD CT (WTIC) HD,fox61wtic.us,WTIC,epg37,FOXWTIC.us12,220,matched,unique_network_callsign
+FOX,515945,US - FOX 5 WASHINGTON DC (WTTG) HD,foxwttg.us,WTTG,epg37,FOXWTTG.us12,194,matched,unique_network_callsign
+FOX,214397,US - FOX 5+ WASHINGTON DC (WDCA) HD,foxwttg.us,WDCA,epg37,Fox5PlusWDCA.us12,265,matched,unique_network_callsign
+FOX,214401,US - FOX 7 MIAMI FL (WSVN) HD,WSVN,WSVN,epg37,FOXWSVN.us12,245,matched,unique_network_callsign
+FOX,214427,US - FOX 13 TAMPA FL (WTVT) HD,foxwtvt.us,WTVT,epg37,FOXWTVT.us12,225,matched,unique_network_callsign
+FOX,514613,US - FOX 28 PANAMA CITY FL (WPGX) HD,fox28wpgx.us,WPGX,epg37,FOXWPGX.us12,259,matched,unique_network_callsign
+FOX,214481,US - FOX 29 WEST PALM BEACH FL (WFLX) HD,fox29wflx.us,WFLX,epg37,FOXWFLX.us12,268,matched,unique_network_callsign
+FOX,214482,US - FOX 30 JACKSONVILLE FL (WFOX) HD,fox30wfox.us,WFOX,epg37,FOXWFOX.us12,250,matched,unique_network_callsign
+FOX,543439,US - FOX 35 ORLANDO FL (WOFL) HD,foxwofl.us,WOFL,epg37,FOXWOFL.us12,198,matched,unique_network_callsign
+FOX,214498,US - FOX 36 CAPE CORAL FL (WFTX) HD,fox36wftx.us,WFTX,epg37,FOXWFTX.us12,230,matched,unique_network_callsign
+FOX,521132,US - FOX 40 TALLAHASSEE FL (WTWC) HD,,WTWC,epg37,FOXWTWCDT2.us12,235,matched,unique_network_callsign
+FOX,214394,US - FOX 51 GAINESVILLE FL (WOGX) HD,fox51wogx.us,WOGX,epg37,FOXWOGX.us12,180,matched,unique_network_callsign
+FOX,214396,US - FOX 5 ATLANTA GA (WAGA) HD,foxwaga.us,WAGA,epg37,FOXWAGA.us12,199,matched,unique_network_callsign
+FOX,214456,US - FOX 24 MACON GA (WGXA) HD,fox24wgxa.us,WGXA,epg37,FOXWGXA.us12,258,matched,unique_network_callsign
+FOX,521140,US - FOX 31 ALBANY GA (WFXL) HD,fox23wxxa.us,WFXL,epg37,FOXWFXL.us12,234,matched,unique_network_callsign
+FOX,214532,US - FOX 54 AUGUSTA GA (WFXG) HD,fox54wfxg.us,WFXG,epg37,FOXWFXG.us12,239,matched,unique_network_callsign
+FOX,214471,US - FOX 54 COLUMBUS GA (WXTX) HD,fox28wtte.us,WXTX,epg37,FOXWXTX.us12,254,matched,unique_network_callsign
+FOX,214384,US - FOX 2 HONOLULU HI (KHON) HD,foxkhon.us,KHON,epg37,FOXKHON.us12,198,matched,unique_network_callsign
+FOX,521159,US - FOX 5 IDAHO FALLS ID (KXPI) HD,foxkidkdt2.us,KXPI,,,0,needs_review,
+FOX,214407,US - FOX 9 BOISE ID (KNIN) HD,fox9knin.us,KNIN,epg37,FOXKNIN.us12,234,matched,unique_network_callsign
+FOX,1280958,US - FOX 14 TWIN FALLS ID (KSVT) HD,fox14ksvt.us,KSVT,epg37,FOXKSVT.us12,253,matched,unique_network_callsign
+FOX,214486,US - FOX 32 CHICAGO IL (WFLD) HD,fox32wfld.us,WFLD,epg37,FOXWFLD.us12,152,matched,unique_network_callsign
+FOX,514594,US - FOX 39 ROCKFORD IL (WQRF) HD,fox39wqrf.us,WQRF,epg37,FOXWQRF.us12,252,matched,unique_network_callsign
+FOX,214510,US - FOX 43 BLOOMINGTON IL (WYZZ) HD,fox43wyzz.us,WYZZ,epg37,FOXWYZZ.us12,254,matched,unique_network_callsign
+FOX,1280963,US - FOX 55 SPRINGFIELD IL (WRSP) HD,fox55wrsp.us,WRSP,epg37,FOXWRSP.us12,236,matched,unique_network_callsign
+FOX,214449,US - FOX 22 SOUTH BEND IN (WSBT) HD,fox22wsbt.us,WSBT,epg37,FOXWSBTDT2.us12,253,matched,unique_network_callsign
+FOX,521164,US - FOX 10 TERRE HAUTE IN (WTHI) HD,fox10wthidt2.us,WTHI,epg37,FOXWTHIDT2.us12,239,matched,unique_network_callsign
+FOX,214430,US - FOX 16 LAFAYETTE IN (WPBI) HD,fox16wpbi.us,WPBI,epg37,FOXWPBI.us12,252,matched,unique_network_callsign
+FOX,214518,US - FOX 44 EVANSVILLE IN (WEVV) HD,fox44wevv.us,WEVV,epg37,FOXWEVVDT2.us12,246,matched,unique_network_callsign
+FOX,214534,US - FOX 55 FORT WAYNE IN (WFFT) HD,fox55wfft.us,WFFT,epg37,FOXWFFT.us12,222,matched,unique_network_callsign
+FOX,214536,US - FOX 59 INDIANAPOLIS IN (WXIN) HD,fox59wxin.us,WXIN,epg37,FOXWXIN.us12,200,matched,unique_network_callsign
+FOX,214433,US - FOX 17 DES MOINES IA (KDSM) HD,fox17kdsm.us,KDSM,epg37,FOXKDSM.us12,246,matched,unique_network_callsign
+FOX,214440,US - FOX 18 DAVENPORT IA (KLJB) HD,fox18kljb.us,KLJB,epg37,FOXKLJB.us12,256,matched,unique_network_callsign
+FOX,514600,US - FOX 28 CEDAR RAPIDS IA (KFXA) HD,foxkgan2.us,KFXA,,,0,needs_review,
+FOX,521152,US - FOX 44 SIOUX CITY IA (KPTH) HD,fox44kpth.us,KPTH,epg37,FOXKPTH.us12,256,matched,unique_network_callsign
+FOX,521170,US - FOX 14 PITTSBURG KS (KFJX) HD,fox14kfjx.us,KFJX,epg37,FOXKFJX.us12,250,matched,unique_network_callsign
+FOX,521180,US - FOX 24 WICHITA KS (KSAS) HD,fox24ksas.us,KSAS,epg37,FOXKSAS.us12,248,matched,unique_network_callsign
+FOX,521150,US - FOX 43 TOPEKA KS (KTMJ) HD,fox43ktmj.us,KTMJ,epg37,FOXKTMJ.us12,245,matched,unique_network_callsign
+FOX,214443,US - FOX 19 NEWPORT KY (WXIX) HD,foxwxix.us,WXIX,epg37,FOXWXIX.us12,406,matched,unique_network_callsign
+FOX,214507,US - FOX 41 LOUISVILLE KY (WDRB) HD,fox41wdrb.us,WDRB,epg37,FOXWDRB.us12,197,matched,unique_network_callsign
+FOX,214380,US - FOX 56 LEXINGTON KY (WDKY) HD,fox23wpfo.us,WDKY,epg37,FOXWDKY.us12,234,matched,unique_network_callsign
+FOX,214406,US - FOX 8 NEW ORLEANS LA (WVUE) HD,foxwvue.us,WVUE,epg37,FOXWVUE.us12,224,matched,unique_network_callsign
+FOX,521168,US - FOX 14 WEST MONROE LA (KARD) HD,,KARD,epg37,FOXKARD.us12,250,matched,unique_network_callsign
+FOX,514621,US - FOX 29 LAKE CHARLES LA (KVHP) HD,fox29kvhp.us,KVHP,epg37,FOXKVHP.us12,262,matched,unique_network_callsign
+FOX,521145,US - FOX 33 SHREVEPORT LA (KMSS) HD,fox33kmss.us,KMSS,epg37,FOXKMSS.us12,240,matched,unique_network_callsign
+FOX,214516,US - FOX 44 BATON ROUGE LA (WGMB) HD,fox44wgmb.us,WGMB,epg37,FOXWGMB.us12,256,matched,unique_network_callsign
+FOX,214451,US - FOX 23 PORTLAND ME (WPFO) HD,fox23wpfo.us,WPFO,,,0,needs_review,
+FOX,1369514,US - FOX 16 SALISBURY MD (WBOC) HD,,WBOC,epg37,FOXWBOCDT2.us12,258,matched,unique_network_callsign
+FOX,214521,US - FOX 45 BALTIMORE MD (WBFF) HD,foxwbff.us,WBFF,epg37,FOXWBFF.us12,220,matched,unique_network_callsign
+FOX,362623,US - FOX 25 BOSTON MA (WFXT) HD,fox25wfxt.us,WFXT,epg37,FOXWFXT.us12,178,matched,unique_network_callsign
+FOX,214506,US - FOX 40 SPRINGFIELD MA (WGGB) HD,fox55wrsp.us,WGGB,epg37,FOXWGGBDT2.us12,249,matched,unique_network_callsign
+FOX,214383,US - FOX 2 DETROIT MI (WJBK) HD,foxwjbk.us,WJBK,epg37,FOXWJBK.us12,158,matched,unique_network_callsign
+FOX,214434,US - FOX 17 GRAND RAPIDS MI (WXMI) HD,fox17wxmi.us,WXMI,epg37,FOXWXMI.us12,217,matched,unique_network_callsign
+FOX,214524,US - FOX 47 LANSING MI (WSYM) HD,fox47wsym.us,WSYM,epg37,FOXWSYM.us12,226,matched,unique_network_callsign
+FOX,214411,US - FOX 66 FLINT MI (WSMH) HD,fox10wala.us,WSMH,epg37,FOXWSMH.us12,228,matched,unique_network_callsign
+FOX,214409,US - FOX 9 MINNEAPOLIS MN (KMSP) HD,foxkmsp.us,KMSP,epg37,FOXKMSP.us12,196,matched,unique_network_callsign
+FOX,1280966,US - FOX 9 SAINT PAUL MN (WFTC) HD,fox29wftc.us,WFTC,epg37,FOXWFTC.us1,196,matched,unique_network_callsign
+FOX,521176,US - FOX 21 DULUTH MN (KQDS) HD,fox21kqds.us,KQDS,epg37,FOXKQDS.us12,204,matched,unique_network_callsign
+FOX,514598,US - FOX 47 ROCHESTER MN (KXLT) HD,fox47kxlt.us,KXLT,epg37,FOXKXLT.us12,249,matched,unique_network_callsign
+FOX,521178,US - FOX 22 HATTIESBURG (WHPM) HD,fox22whpm.us,WHPM,epg37,FOXWHPM.us12,242,matched,unique_network_callsign
+FOX,214463,US - FOX 25 GULFPORT MS (WXXV) HD,fox25wxxv.us,WXXV,epg37,FOXWXXV.us12,231,matched,unique_network_callsign
+FOX,521133,US - FOX 28 COLUMBUS MS (WCBI-DT2) HD,fox28wsyxdt3.us,WCBI-DT2,epg37,FOXWCBIDT2.us12,257,matched,unique_network_callsign
+FOX,214484,US - FOX 30 MERIDIAN MS (WGBC) HD,fox30wgbc.us,WGBC,epg37,FOXWGBC.us12,256,matched,unique_network_callsign
+FOX,214503,US - FOX 40 JACKSON MS (WDBD) HD,fox40wdbd.us,WDBD,epg37,FOXWDBD.us12,237,matched,unique_network_callsign
+FOX,521130,US - FOX 48 ALEXANDRIA MS (WNTZ) HD,fox48wntz.us,WNTZ,epg37,FOXWNTZ.us12,237,matched,unique_network_callsign
+FOX,214386,US - FOX 2 ST LOUIS MO (KTVI) HD,fox2ktvi.us,KTVI,epg37,FOXKTVI.us12,211,matched,unique_network_callsign
+FOX,214389,US - FOX 4 KANSAS CITY MO (WDAF) HD HD,fox4wdaf.us,WDAF,epg37,FOXWDAF.us12,217,matched,unique_network_callsign
+FOX,521177,US - FOX 22 COLUMBIA MO (KQFX) HD,fox22kqfx.us,KQFX,epg37,FOXKQFX.us12,246,matched,unique_network_callsign
+FOX,214480,US - FOX 23 CAPE GIRARDEAU MO (KBSI) HD,foxwtxf.us,KBSI,epg37,FOXKBSI.us12,486,matched,unique_network_callsign
+FOX,214525,US - FOX 49 SPRINGFIELD MO (KRBK) HD,fox49krbkd2.us,KRBK,epg37,FOXKRBK.us12,234,matched,unique_network_callsign
+FOX,521155,US - FOX 4 BILLINGS MT (KHMT) HD,fox4khmt.us,KHMT,epg37,FOXKHMT.us12,215,matched,unique_network_callsign
+FOX,521158,US - FOX 5 GREAT FALLS MT (KFBB) HD,fox5kfbbdt2.us,KFBB,epg37,FOXKFBBDT2.us12,252,matched,unique_network_callsign
+FOX,214393,US - FOX 42 OMAHA NE (KPTM) HD,fox42kptm.us,KPTM,epg37,FOXKPTM.us12,218,matched,unique_network_callsign
+FOX,214529,US - FOX 51 LINCOLN NE (KFXL) HD,fox51kfxl.us,KFXL,epg37,FOXKFXL.us12,223,matched,unique_network_callsign
+FOX,214395,US - FOX 5 LAS VEGAS NV (KVVU) HD,foxkvvu.us,KVVU,epg37,FOXKVVU.us12,199,matched,unique_network_callsign
+FOX,214416,US - FOX 11 RENO NV (KRXI) HD,fox11krxi.us,KRXI,epg37,FOXKRXI.us12,233,matched,unique_network_callsign
+FOX,214422,US - FOX 13 ALBUQUERQUE NM (KRQE) HD,KRQE,KRQE,epg37,FOXKRQE.us1,228,matched,unique_network_callsign
+FOX,214392,US - FOX 5 NEW YORK NY (WNYW) HD,foxwnyw.us,WNYW,epg37,FOXWNYW.us12,201,matched,unique_network_callsign
+FOX,214450,US - FOX 23 ALBANY NY (WXXA) HD,fox23wxxa.us,WXXA,epg37,FOXWXXA.us12,254,matched,unique_network_callsign
+FOX,214476,US - FOX 29 BUFFALO NY (WUTV) HD,fox29wutv.us,WUTV,epg37,FOXWUTV.us12,250,matched,unique_network_callsign
+FOX,514599,US - FOX 31 ROCHESTER NY (WUHF) HD,fox31wuhf.us,WUHF,epg37,FOXWUHF.us12,225,matched,unique_network_callsign
+FOX,521146,US - FOX 33 UTICA NY (WFXV) HD,fox33wfxv.us,WFXV,epg37,FOXWFXV.us12,240,matched,unique_network_callsign
+FOX,514602,US - FOX 40 BINGHAMTON NY (WICZ) HD,fox40wicz.us,WICZ,epg37,FOXWICZ.us12,272,matched,unique_network_callsign
+FOX,214541,US - FOX 68 SYRACUSE NY (WSYT) HD,fox68wsyt.us,WSYT,epg37,FOXWSYT.us12,256,matched,unique_network_callsign
+FOX,214404,US - FOX 8 GREENSBORO NC (WGHP) HD,foxwghp.us,WGHP,epg37,FOXWGHP.us12,220,matched,unique_network_callsign
+FOX,214446,US - FOX 14 GREENVILLE NC (WYDO) HD,fox14wydo.us,WYDO,,,0,needs_review,
+FOX,1280971,US - FOX 26 WILMINGTON NC (WSFX) HD,fox26wsfx.us,WSFX,epg37,FOXWSFX.us12,241,matched,unique_network_callsign
+FOX,214522,US - FOX 46 BELMONT NC (WJZY) HD,fox46wjzy.us,WJZY,epg37,FOXWJZY.us12,199,matched,unique_network_callsign
+FOX,214528,US - FOX 50 RALEIGH NC (WRAZ) HD,fox50wraz.us,WRAZ,epg37,FOXWRAZ.us12,228,matched,unique_network_callsign
+FOX,214429,US - FOX 15 FARGO ND (KVRR) HD,fox15kvrr.us,KVRR,epg37,FOXKVRR.us12,257,matched,unique_network_callsign
+FOX,214403,US - FOX 8 CLEVELAND OH (WJW) HD,foxwjw.us,WJW,epg37,FOXWJW.us12,203,matched,unique_network_callsign
+FOX,214501,US - FOX 36 TOLEDO OH (WUPW) HD,fox36wupw.us,WUPW,epg37,FOXWUPW.us12,239,matched,unique_network_callsign
+FOX,214523,US - FOX 45 DAYTON OH (WKEF-D2) HD,fox45wkefdt2.us,WKEF-D2,,,0,needs_review,
+FOX,214538,US - FOX 62 YOUNGSTOWN OH (WYFX) HD,fox62wyfx.us,WYFX,epg37,FOXWYFX.us12,254,matched,unique_network_callsign
+FOX,214452,US - FOX 23 TULSA OK (KOKI) HD,foxkoki.us,KOKI,,,0,needs_review,
+FOX,214460,US - FOX 25 OKLAHOMA CITY OK (KOKH) HD,fox25kokh.us,KOKH,epg37,FOXKOKH.us12,208,matched,unique_network_callsign
+FOX,214419,US - FOX 12 PORTLAND OR (KPTV) HD,fox12kptv.us,KPTV,epg37,FOXKPTV.us12,203,matched,unique_network_callsign
+FOX,514611,US - FOX 26 MEDFORD OR (KMVU) HD,fox26kmvu.us,KMVU,epg37,FOXKMVU.us12,253,matched,unique_network_callsign
+FOX,214492,US - FOX 34 EUGENE OR (KLSR) HD,foxwofl.us,KLSR,epg37,FOXKLSR.us12,248,matched,unique_network_callsign
+FOX,521148,US - FOX 39 BEND OR (KFXO) HD,fox39kfxo.us,KFXO,epg37,FOXKFXO.us12,251,matched,unique_network_callsign
+FOX,521161,US - FOX 8 JOHNSTOWN PA (WWCP) HD,fox8wwcp.us,WWCP,epg37,FOXWWCP.us12,247,matched,unique_network_callsign
+FOX,214477,US - FOX 29 PHILADELPHIA PA (WTXF) HD,foxwtxf.us,WTXF,epg37,FOXWTXF.us12,206,matched,unique_network_callsign
+FOX,214515,US - FOX 43 LANCASTER (WPMT) HD,fox43wpmt.us,WPMT,epg37,FOXWPMT.us12,232,matched,unique_network_callsign
+FOX,214531,US - FOX 53 PITTSBURGH PA (WPGH) HD,,WPGH,epg37,FOXWPGH.us12,245,matched,unique_network_callsign
+FOX,214405,US - FOX 66 ERIE PA (WFXP) HD,fox66wfxp.us,WFXP,epg37,FOXWFXP.us12,243,matched,unique_network_callsign
+FOX,214539,US - FOX 64 PROVIDENCE RI (WNAC) HD,fox64wnac.us,WNAC,epg37,FOXWNAC.us12,228,matched,unique_network_callsign
+FOX,214444,US - FOX 21 GREENVILLE SC (WHNS) HD,fox21whns.us,WHNS,epg37,FOXWHNS.us12,206,matched,unique_network_callsign
+FOX,214453,US - FOX 8 CHARLESTON WV (WCHS-DT2) HD,fox24wtat.us,WCHS-DT2,epg37,FOXWCHSDT2.us12,219,matched,unique_network_callsign
+FOX,214479,US - FOX 28 HARDEEVILLE SC (WTGS) HD,fox29wflx.us,WTGS,epg37,FOXWTGS.us12,266,matched,unique_network_callsign
+FOX,214513,US - FOX 43 MYRTLE BEACH SC (WFXB) HD,foxwfxb.us,WFXB,epg37,FOXWFXB.us12,243,matched,unique_network_callsign
+FOX,214535,US - FOX 57 COLUMBIA SC (WACH) HD,,WACH,epg37,FOXWACH.us12,220,matched,unique_network_callsign
+FOX,214415,US - FOX 24 CHARLESTON SC (WTAT) HD,fox24wtat.us,WTAT,epg37,FOXWTAT.us12,249,matched,unique_network_callsign
+FOX,214438,US - FOX 17 SIOUX FALLS SD (KTTW) HD,,KTTW,,,0,needs_review,
+FOX,521162,US - FOX 9 CHATTANOOGA TN (WTVC) HD,fox9wtvcdt.us,WTVC,epg37,FOXWTVC2.us12,238,matched,unique_network_callsign
+FOX,214423,US - FOX 13 MEMPHIS TN (WHBQ) HD,fox13whbq.us,WHBQ,epg37,FOXWHBQ.us12,242,matched,unique_network_callsign
+FOX,521171,US - FOX 16 JACKSON TN (WJKT) HD,fox40wdbd.us,WJKT,epg37,FOXWJKT.us12,251,matched,unique_network_callsign
+FOX,214437,US - FOX 17 NASHVILLE TN (WZTV) HD,foxwztv.us,WZTV,epg37,FOXWZTV.us12,206,matched,unique_network_callsign
+FOX,214381,US - FOX 39 GREENEVILLE TN (WCYB-D3) HD,FOX TRI CITIES WA KCYU,WCYB-DT3,epg37,FOXWCYBDT3.us1,237,matched,priority_station_verified
+FOX,214512,US - FOX 43 KNOXVILLE TN (WTNZ) HD,fox43wtnz.us,WTNZ,epg37,FOXWTNZ.us12,218,matched,priority_station_verified
+FOX,214388,US - FOX 4 DALLAS TX (KDFW) HD,foxkdfw.us,KDFW,epg37,FOXKDFW.us12,198,matched,unique_network_callsign
+FOX,214400,US - FOX 7 AUSTIN TX (KTBC) HD,fox7ktbc.us,KTBC,epg37,FOXKTBC.us12,187,matched,unique_network_callsign
+FOX,514604,US - FOX 10 SAN ANGELO TX (KIDY) HD,fox10kidy.us,KIDY,epg37,FOXKIDY.us12,243,matched,unique_network_callsign
+FOX,514603,US - FOX 12 SHERMAN TX (KXII) HD,fox12kxii3.us,KXII,epg37,FOXKXIIDT3.us12,260,matched,unique_network_callsign
+FOX,521167,US - FOX 14 EL PASO TX (KFOX) HD,fox14kfox.us,KFOX,epg37,FOXKFOX.us12,220,matched,unique_network_callsign
+FOX,521169,US - FOX 14 AMARILLO TX (KCIT) HD,fox14kcit.us,KCIT,epg37,FOXKCIT.us12,263,matched,unique_network_callsign
+FOX,514605,US - FOX 15 ABILENE TX (KXVA) HD,fox15kxva.us,KXVA,epg37,FOXKXVA.us12,243,matched,unique_network_callsign
+FOX,521172,US - FOX 18 WICHITA FALLS TX (KJTL) HD,fox18kjtl.us,KJTL,epg37,FOXKJTL.us12,251,matched,unique_network_callsign
+FOX,214441,US - FOX 19 VICTORIA TX (KVCT) HD,fox19kvct.us,KVCT,epg37,FOXKVCT.us12,235,matched,unique_network_callsign
+FOX,521182,US - FOX 24 MIDLAND TX (KPEJ) HD,fox24kpej.us,KPEJ,epg37,FOXKPEJ.us12,242,matched,unique_network_callsign
+FOX,214465,US - FOX 26 HOUSTON TX (KRIV) HD,foxkriv.us,KRIV,epg37,FOXKRIV.us12,201,matched,unique_network_callsign
+FOX,214467,US - FOX 26 HOUSTON TX (KRIV) HD,foxkriv.us,KRIV,epg37,FOXKRIV.us12,201,matched,unique_network_callsign
+FOX,214478,US - FOX 29 SAN ANTONIO TX (KABB) HD,foxkabb.us,KABB,epg37,FOXKABB.us12,221,matched,unique_network_callsign
+FOX,514624,US - FOX 34 LUBBOCK TX (KJTV) HD,fox34kjtv.us,KJTV,epg37,FOXKJTV.us12,243,matched,unique_network_callsign
+FOX,214502,US - FOX 38 CORPUS CHRISTI TX (KSCC) HD,fox38kscc.us,KSCC,epg37,FOXKSCC.us12,244,matched,unique_network_callsign
+FOX,521147,US - FOX 39 LAREDO TX (KXOF) HD,fox39kxof.us,KXOF,epg37,FOXKXOF.us12,241,matched,unique_network_callsign
+FOX,214519,US - FOX 44 WACO TX (KWKT) HD,fox44kwkt.us,KWKT,epg37,FOXKWKT.us12,257,matched,unique_network_callsign
+FOX,214530,US - FOX 51 LONGVIEW TX (KFXK) HD,fox51kfxk.us,KFXK,epg37,FOXKFXK.us12,243,matched,unique_network_callsign
+FOX,1280979,US - FOX 67 BROWNSVILLE TX (KXFX) HD,,KXFX,,,0,needs_review,
+FOX,214425,US - FOX 13 SALT LAKE CITY UT (KSTU) HD,fox13kstu.us,KSTU,epg37,FOXKSTU.us12,223,matched,unique_network_callsign
+FOX,214517,US - FOX 44 BURLINGTON VT (WFFF) HD,fox44wfff.us,WFFF,epg37,FOXWFFF.us12,506,matched,unique_network_callsign
+FOX,214470,US - FOX 27 ROANOKE VA (WFXR) HD,fox27wfxr.us,WFXR,epg37,FOXWFXR.us12,227,matched,unique_network_callsign
+FOX,214493,US - FOX 35 RICHMOND VA (WRLH) HD,fox35wrlh.us,WRLH,epg37,FOXWRLH.us12,229,matched,unique_network_callsign
+FOX,514625,US - FOX 43 HARRISONBURG VA (WHSV) HD,fox43wsvf.us,WHSV,,,0,needs_review,
+FOX,214514,US - FOX 43 VIRGINIA BEACH VA (WVBT) HD,fox43wvbt.us,WVBT,epg37,FOXWVBT.us12,216,matched,unique_network_callsign
+FOX,214424,US - FOX 13 SEATTLE WA (KCPQ) HD,foxkzjo.us,KCPQ,epg37,FOXKCPQ.us12,200,matched,unique_network_callsign
+FOX,214474,US - FOX 28 SPOKANE WA (KAYU) HD,fox28kayu.us,KAYU,epg37,FOXKAYU.us12,234,matched,unique_network_callsign
+FOX,214508,US - FOX 41 YAKIMA WA (KCYU) HD,fox41kcyu.us,KCYU,,,0,needs_review,
+FOX,214399,US - FOX 6 MILWAUKEE WI (WITI) HD,foxwiti.us,WITI,epg37,FOXWITI.us12,202,matched,unique_network_callsign
+FOX,521165,US - FOX 11 GREEN BAY WI (WLUK) HD,fox11wluk.us,WLUK,epg37,FOXWLUK.us12,187,matched,unique_network_callsign
+FOX,514622,US - FOX 33 WAUSAU WI (WZAW) HD,fox33wzaw.us,WZAW,epg37,FOXWZAW.us12,267,matched,unique_network_callsign
+FOX,214426,US - FOX 47 MADISON WI (WMSN) HD,fox47wmsn.us,WMSN,epg37,FOXWMSN.us12,236,matched,unique_network_callsign
+FOX,521183,US - FOX 27 CHEYENNE WY (KLWY) HD,fox27klwy.us,KLWY,epg37,FOXKLWY.us12,244,matched,unique_network_callsign
+FOX,521157,US - FOX 04 ANCHORAGE (KTBY) HD,,KTBY,epg37,FOXKTBY.us12,248,matched,unique_network_callsign
+FOX,214413,US - FOX 10 XTRA PHOENIX (KUTP) HD,fox10kutp.us,KUTP,,,0,needs_review,
+FOX,521174,US - FOX 20 CHICO/REDDING (KCVU) HD,,KCVU,,,0,needs_review,
+FOX,521181,US - FOX 22 BANGOR (WFVX) HD,foxwfvx.us,WFVX,epg37,FoxWFVX.us12,228,matched,unique_network_callsign
+FOX,521143,US - FOX 27 CASPER/RIVERTON (KFNB) HD,fox27kfnb.us,KFNB,epg37,FOXKFNB.us12,244,matched,unique_network_callsign
+FOX,521139,US - FOX 28 EUREKA (KBVU) HD,fox28kbvu.us,KBVU,,,0,needs_review,
+FOX,1280905,US - FOX 32 CADILLAC/MICHIGAN (WFQX-TV) HD,,,,,0,needs_review,
+FOX,214511,US - FOX 43 HARRISONBURG  (WSVF) HD,fox43wsvf.us,WSVF,epg37,FOXWSVF.us12,245,matched,unique_network_callsign
+FOX,214410,US - FOX 56 WILKES-BARRE (WOLF) HD,foxkmsp.us,WOLF,epg37,FOXWOLF.us12,233,matched,unique_network_callsign
+FOX,214527,US - FOX 58 BAKERSFIELD (KBFX) HD,fox50wraz.us,KBFX,epg37,FOXKBFX.us12,230,matched,unique_network_callsign
