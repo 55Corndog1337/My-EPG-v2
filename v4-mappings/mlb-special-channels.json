@@ -1,0 +1,59 @@
+{
+  "project": "My-EPG-v4",
+  "category": "MLB Specialty Channels",
+  "status": "verified_source_ids",
+  "source_snapshot": "2026-11-09 EPG37 and Xtream inventory",
+  "note": "Five verified specialty streams. Panamerican Championship StreamID 1388886 excluded pending verified EPG37 source.",
+  "mappings": [
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB NETWORK HD",
+      "xtream_original_channel_name": "US - MLB NETWORK HD",
+      "xtream_stream_id": "71945",
+      "original_xtream_epgid": "mlbnetwork.us",
+      "source_channel_id": "MLBNetwork.us12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB NETWORK ALT HD",
+      "xtream_original_channel_name": "US - MLB NETWORK ALT HD",
+      "xtream_stream_id": "71916",
+      "original_xtream_epgid": "mlbnetwork.us",
+      "source_channel_id": "MLBNetwork.us12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB STRIKEZONE HD",
+      "xtream_original_channel_name": "US - MLB STRIKEZONE HD",
+      "xtream_stream_id": "71915",
+      "original_xtream_epgid": "mlbnetworkstrikezone.us",
+      "source_channel_id": "MLBStrikeZone.us12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "MLB BIG INNING HD",
+      "xtream_original_channel_name": "US - MLB BIG INNING HD",
+      "xtream_stream_id": "302488",
+      "original_xtream_epgid": "",
+      "source_channel_id": "MLBBigInning.us12"
+    },
+    {
+      "xtream_group": "AM | USA | MLB",
+      "source": "epg37",
+      "status": "user_approved_source_verified",
+      "channel": "THE MLB CHANNEL FHD",
+      "xtream_original_channel_name": "US - THE MLB CHANNEL FHD",
+      "xtream_stream_id": "1388877",
+      "original_xtream_epgid": "",
+      "source_channel_id": "TheMLBChannel.us1"
+    }
+  ]
+}
