@@ -1,0 +1,31 @@
+{
+  "channels": 48,
+  "epg_mapped": 30,
+  "static": 18,
+  "missing_source_ids": [],
+  "zero_programme_ids": [],
+  "accuracy_review": [
+    {
+      "stream_id": "682420",
+      "issue": "AHC uses Canadian EPG"
+    },
+    {
+      "stream_id": "148719",
+      "issue": "Discovery History uses UK EPG"
+    },
+    {
+      "stream_id": "878417",
+      "issue": "Investigation Discovery West uses unspecified feed"
+    },
+    {
+      "stream_id": "1452107",
+      "issue": "Discovery Turbo uses MotorTrend listings"
+    },
+    {
+      "stream_id": "115597",
+      "issue": "Smithsonian West uses unspecified feed"
+    }
+  ],
+  "validation": "archived EPG 2/6/37 catalog and programme counts; live accuracy not established",
+  "v2_unchanged": true
+}
