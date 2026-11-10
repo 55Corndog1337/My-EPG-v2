@@ -1,0 +1,64 @@
+{
+  "total": 175,
+  "unique_stream_ids": 175,
+  "status_counts": {
+    "snapshot_programmes_present": 32,
+    "static": 29,
+    "mapped": 114
+  },
+  "approved_alternatives": [
+    {
+      "stream_id": "1060159",
+      "source": "epg37",
+      "epg_id": "RetroPlexPacific.us12",
+      "programme_count": 133,
+      "first_last": [
+        "20261108203700 +0000",
+        "20261115213400 +0000"
+      ]
+    },
+    {
+      "stream_id": "1032494",
+      "source": "epg6",
+      "epg_id": "showtime2west.us",
+      "programme_count": 44,
+      "first_last": [
+        "20261108174500 +0000",
+        "20261112091000 +0000"
+      ]
+    },
+    {
+      "stream_id": "1032495",
+      "source": "epg37",
+      "epg_id": "ShowtimeNextPacific.us12",
+      "programme_count": 94,
+      "first_last": [
+        "20261108180000 +0000",
+        "20261115191500 +0000"
+      ]
+    },
+    {
+      "stream_id": "1032496",
+      "source": "epg37",
+      "epg_id": "ShowtimeShowcasePacific.us12",
+      "programme_count": 93,
+      "first_last": [
+        "20261108170000 +0000",
+        "20261115191500 +0000"
+      ]
+    },
+    {
+      "stream_id": "977937",
+      "source": "epg37",
+      "epg_id": "CinemaxSpanish.us12",
+      "programme_count": 92,
+      "first_last": [
+        "20261108161300 +0000",
+        "20261115191000 +0000"
+      ]
+    }
+  ],
+  "missing_source_ids": [],
+  "zero_programme_ids": [],
+  "snapshot_note": "Programme counts from archived EPG source files, not proof of current live coverage."
+}
