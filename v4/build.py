@@ -78,6 +78,24 @@ def load_overrides():
    title=val(r,"Programme Title","Static Title")
    if src=="static" or status=="static":overrides[sid]=("static","",title)
    elif src in SOURCES and epg:overrides[sid]=(src,epg,title)
+ # Reuse V4 JSON mapping work (FloSports, ESPN+, BTN+, 24/7, etc.)
+ # instead of limiting V4 to the three original CSV mapping sets.
+ for p in sorted(MAPPINGS.glob("*.json")):
+  try:
+   doc=json.loads(p.read_text(encoding="utf-8"))
+   items=doc.get("mappings",[]) if isinstance(doc,dict) else []
+   for item in items:
+    sid=str(item.get("xtream_stream_id") or item.get("stream_id") or "").strip()
+    if not sid:continue
+    src=(item.get("source") or item.get("epg_source") or "").lower()
+    epgid=item.get("source_channel_id") or ""
+    title=item.get("clean_programme_title") or ""
+    if src in SOURCES and epgid:
+     if sid not in overrides or overrides[sid][0]=="static":
+      overrides[sid]=(src,epgid,title)
+    elif title and sid not in overrides:
+     overrides[sid]=("static","",title)
+  except Exception as e:print("JSON mapping skipped",p.name,e,flush=True)
  return overrides
 def clean(name):
  name=re.sub(r"^(?:US|USA|UK|CA|VIP)\s*[-|:]\s*","",name,flags=re.I)
