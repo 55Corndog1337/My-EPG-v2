@@ -117,6 +117,17 @@ def norm(text):
 def sports_event(row):
  group=val(row,"Group").upper()
  return any(x in group for x in ("NFL","NBA","NHL","MLB","MILB","MLS","AHL","WNBA","NCAA","ESPN PLUS","FLO SPORTS","BTN+","PPV","LIVE EVENT","PEACOCK","PARAMOUNT+","SN+","TSN+","VICTORY +"))
+def event_name_keys(row):
+ # Match only descriptive, event-specific names; never generic numbered slots.
+ keys=[]
+ for label in (val(row,"OriginalChannelName"),val(row,"ChannelName"),val(row,"NewChannelName")):
+  label=clean(label)
+  if ":" in label:label=label.split(":",1)[1].strip()
+  label=re.sub(r"^(?:peacock|paramount\\+?)\\s*[-:]?\\s*", "", label,flags=re.I)
+  key=norm(label)
+  if len(key)>=12 and not re.fullmatch(r"(?:peacock|paramount|event|live|game|channel|stream|ppv)\\d*",key):
+   keys.append(key)
+ return list(dict.fromkeys(keys))
 def load_epgs(rows,overrides):
  # Index the actual channel catalogs first, so EPG 37, 2, and 6 can
  # fill holes even when the provider's EPG ID differs from the source ID.
@@ -170,6 +181,15 @@ def load_epgs(rows,overrides):
     chosen=(src,canonical,"id");break
   # Never infer event-channel schedules from generic channel names:
   # Game 01, ESPN+ 01, FloSports 01, etc. require event-specific mapping.
+  group=val(row,"Group").upper()
+  if not chosen and ("PEACOCK" in group or "PARAMOUNT+" in group):
+   # Streaming slots are often numbered; only accept an exact unique
+   # descriptive event name, not "Peacock 01" or "Paramount+ 01".
+   for src in ("epg2","epg6","epg37"):
+    candidates=set()
+    for key in event_name_keys(row):candidates.update(by_name.get((src,key),set()))
+    if len(candidates)==1:
+     chosen=(src,next(iter(candidates)),"event_name");break
   if not chosen and not sports_event(row):
    keys=[]
    for label in (val(row,"OriginalChannelName"),val(row,"ChannelName"),val(row,"NewChannelName")):
