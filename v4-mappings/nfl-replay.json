@@ -1,8 +1,8 @@
 {
   "project": "My-EPG-v4",
   "category": "NFL Replay",
-  "status": "partial",
-  "note": "Replay 01–14 approved as daily static 24-hour fallbacks. EPG37 candidate IDs for 02–14 confirmed present with programme records in November 9 snapshot; actual matchup information not verified. Replay Info and Highlights remain outstanding. V2 unchanged.",
+  "status": "complete",
+  "note": "Replay 01–14, Replay Info, and Replay Highlights approved as daily static 24-hour fallbacks. EPG37 candidate IDs retained only when verified; no game matchups inferred. V2 unchanged.",
   "mappings": [
     {
       "channel": "NFL Replay 01",
@@ -223,6 +223,38 @@
       "epg37_candidate_verified": true,
       "programme_title": "NFL Replay 14",
       "programme_description": "NFL Replay",
+      "programme_duration_hours": 24,
+      "programme_repeat": "daily",
+      "status": "approved"
+    },
+    {
+      "channel": "NFL Replay Info",
+      "xtream_original_channel_name": "US - NFL REPLAY INFO HD",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "1329643",
+      "original_xtream_epgid": "",
+      "source": "static",
+      "source_channel_id": null,
+      "epg37_candidate_channel_id": "NFLREPLAYINFOHD.d120",
+      "epg37_candidate_verified": true,
+      "programme_title": "NFL Replay Info",
+      "programme_description": "NFL Replay Info",
+      "programme_duration_hours": 24,
+      "programme_repeat": "daily",
+      "status": "approved"
+    },
+    {
+      "channel": "NFL Replay Highlights",
+      "xtream_original_channel_name": "US - NFL REPLAY HIGHLIGHTS HD",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "1329644",
+      "original_xtream_epgid": "",
+      "source": "static",
+      "source_channel_id": null,
+      "epg37_candidate_channel_id": null,
+      "epg37_candidate_verified": false,
+      "programme_title": "NFL Replay Highlights",
+      "programme_description": "NFL Replay Highlights",
       "programme_duration_hours": 24,
       "programme_repeat": "daily",
       "status": "approved"
