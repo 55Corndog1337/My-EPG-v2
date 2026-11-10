@@ -332,6 +332,7 @@ def generate():
  end=(now+timedelta(days=1)).strftime("%Y%m%d%H%M%S +0000")
  counts={"inventory_source":inventory_source,"channels":0,"programmes":0,"fallback_channels":0,"mapped_channels":0,"categories":{},"source_matches":match_counts,"scheduled_by_source":{},"unmatched_by_category":{}}
  seen=set()
+ output_ids=set()
  for row in rows:
   sid=val(row,"StreamID")
   if sid in seen:continue
