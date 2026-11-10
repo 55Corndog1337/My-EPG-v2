@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'v4/**'
+      - 'v4/build.py'
       - 'v4-mappings/**'
       - '.github/workflows/v4-xmltv.yml'
   workflow_dispatch:
@@ -53,7 +54,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v4-output/epg.xml.gz v4-output/coverage.json
+          git add v4-output/epg.xml.gz v4-output/coverage.json v4-output/epg-source-catalog.csv
           if ! git diff --cached --quiet; then
             git commit -m "Update independent V4 XMLTV guide"
             git push
