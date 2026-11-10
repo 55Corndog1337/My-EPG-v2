@@ -1,9 +1,9 @@
 {
   "inventory_source": "/home/runner/work/My-EPG-v2/My-EPG-v2/v4/inventory.csv",
   "channels": 8147,
-  "programmes": 526915,
-  "fallback_channels": 3724,
-  "mapped_channels": 4423,
+  "programmes": 551073,
+  "fallback_channels": 2055,
+  "mapped_channels": 6092,
   "categories": {
     "AM | USA | NEWS": 88,
     "AM | USA | SPECTRUM NETWORK": 60,
@@ -103,17 +103,17 @@
     "EU | UK | 24/7": 66
   },
   "source_matches": {
-    "epg2_id": 359,
+    "epg2_id": 339,
     "epg2_name": 62,
-    "epg37_name": 2357,
-    "epg6_id": 461,
+    "epg37_name": 1894,
+    "epg6_id": 2049,
     "epg6_name": 47,
-    "epg37_id": 1141
+    "epg37_id": 1705
   },
   "scheduled_by_source": {
-    "epg2": 421,
-    "epg37": 3494,
-    "epg6": 508
+    "epg2": 401,
+    "epg37": 3595,
+    "epg6": 2096
   },
   "unmatched_by_category": {
     "AM | USA | NEWS": 8,
@@ -128,7 +128,6 @@
     "AM | USA | NBC": 1,
     "AM | USA | CW & MY": 4,
     "AM | USA | SPORTS": 21,
-    "AM | USA | ESPN PLUS": 600,
     "AM | USA | MAX PPV": 100,
     "AM | USA | HBO MAX PPV": 20,
     "AM | USA | APPLE TV F1 PPV": 50,
@@ -139,20 +138,14 @@
     "AM | USA | LIVE EVENT": 32,
     "AM | USA | UEFA PPV": 36,
     "AM | USA | PPV": 30,
-    "AM | USA | NCAA": 16,
-    "AM | USA | NBA": 49,
+    "AM | USA | NBA": 34,
     "AM | USA | NBA IN ARENA": 30,
-    "AM | USA | WNBA": 10,
-    "AM | USA | BTN+": 100,
-    "AM | USA | NHL": 17,
     "AM | USA | AHL": 32,
-    "AM | USA | MLS": 34,
-    "AM | USA | NFL": 34,
-    "AM | USA | MLB": 51,
-    "AM | USA | MILB": 70,
+    "AM | USA | NFL": 17,
+    "AM | USA | MLB": 2,
     "AM | USA | PEACOCK": 100,
     "AM | USA | TENNIS": 10,
-    "AM | USA | FLO SPORTS TV": 805,
+    "AM | USA | FLO SPORTS TV": 3,
     "AM | USA | VICTORY +": 100,
     "AM | USA | TELEMUNDO": 1,
     "AM | USA | UNIVISION": 4,
@@ -186,7 +179,7 @@
     "EU | UK | PSF PPV": 15,
     "VIP | CHRISTMAS": 17,
     "AM | USA | CINEMANIA SHOWS": 63,
-    "AM | USA | 24/7": 186,
+    "AM | USA | 24/7": 247,
     "EU | UK | 24/7": 62
   }
 }
