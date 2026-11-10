@@ -93,7 +93,7 @@ def title_for(row):
 def norm(text):
  text=clean(text).lower()
  text=re.sub(r"[◉★™®]", "", text)
- text=re.sub(r"\\b(?:uhd|fhd|hd|sd|4k|1080p|720p|hevc|h265|h264)\\b", "", text)
+ text=re.sub(r"\b(?:uhd|fhd|hd|sd|4k|1080p|720p|hevc|h265|h264)\b", "", text)
  text=re.sub(r"[^a-z0-9]+", "", text)
  return text
 def sports_event(row):
@@ -107,7 +107,7 @@ def load_epgs(rows,overrides):
   try:
    print("Downloading",source,flush=True)
    data=request(url)
-   if data[:2]==b"\\x1f\\x8b":data=gzip.decompress(data)
+   if data[:2]==b"\x1f\x8b":data=gzip.decompress(data)
    channels={}
    for _,item in ET.iterparse(io.BytesIO(data),events=("end",)):
     if item.tag=="channel":
