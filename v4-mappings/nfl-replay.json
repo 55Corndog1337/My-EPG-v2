@@ -1,0 +1,23 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NFL Replay",
+  "status": "partial",
+  "note": "Only Replay 01 approved. EPG37 candidate has empty programmes; use static 24-hour fallback, not inferred game data. V2 unchanged.",
+  "mappings": [
+    {
+      "channel": "NFL Replay 01",
+      "xtream_original_channel_name": "US - NFL REPLAY 1 HD",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "1329645",
+      "original_xtream_epgid": "",
+      "source": "static",
+      "source_channel_id": null,
+      "epg37_candidate_channel_id": "NFLREPLAY1HD.d120",
+      "programme_title": "NFL Replay 01",
+      "programme_description": "NFL Replay",
+      "programme_duration_hours": 24,
+      "programme_repeat": "daily",
+      "status": "approved"
+    }
+  ]
+}
