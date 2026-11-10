@@ -1,0 +1,90 @@
+{
+  "scope": "V4-only USA local broadcast channel mappings",
+  "inventory": "v2-matching-reports.zip archived Xtream snapshot",
+  "epg_catalogs": [
+    "epg37",
+    "epg6",
+    "epg2"
+  ],
+  "total": 884,
+  "matched_with_archived_programmes": 814,
+  "needs_review": 70,
+  "by_network": {
+    "NBC": {
+      "total": 213,
+      "matched": 205,
+      "needs_review": 8
+    },
+    "ABC": {
+      "total": 196,
+      "matched": 179,
+      "needs_review": 17
+    },
+    "PBS": {
+      "total": 97,
+      "matched": 88,
+      "needs_review": 9
+    },
+    "CBS": {
+      "total": 192,
+      "matched": 171,
+      "needs_review": 21
+    },
+    "FOX": {
+      "total": 186,
+      "matched": 171,
+      "needs_review": 15
+    }
+  },
+  "priority_stations": [
+    [
+      "WCYB",
+      "214140",
+      "NBCWCYB.us12",
+      412
+    ],
+    [
+      "WBIR",
+      "214211",
+      "NBCWBIR.us12",
+      194
+    ],
+    [
+      "WATE",
+      "1076570",
+      "ABCWATE.us12",
+      210
+    ],
+    [
+      "WJHL-DT2 ABC",
+      "1076615",
+      "ABCWJHLDT2.us12",
+      217
+    ],
+    [
+      "WJHL CBS",
+      "1076808",
+      "CBSWJHL.us12",
+      432
+    ],
+    [
+      "FOX 39 Greeneville WCYB-DT3",
+      "214381",
+      "FOXWCYBDT3.us1",
+      237
+    ],
+    [
+      "FOX 43 Knoxville WTNZ",
+      "214512",
+      "FOXWTNZ.us12",
+      218
+    ],
+    [
+      "PBS Knoxville WETP",
+      "1248277",
+      "WETP(PBS)(WETP).us1",
+      222
+    ]
+  ],
+  "note": "Counts reflect archived EPG programme entries, not verified live guide coverage. Unmatched stations must remain flagged for review; do not substitute another market. No V2 active workflow edits."
+}
