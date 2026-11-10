@@ -1,0 +1,54 @@
+{
+  "project": "My-EPG-v4",
+  "category": "NFL Network and Special Channels",
+  "status": "approved",
+  "note": "V4 only. Preserve original Xtream EPGIDs. EPG37 used for Network and RedZone; Super Bowl replay static 24h without any verified EPG37 source. No V2 changes.",
+  "mappings": [
+    {
+      "channel": "NFL Network",
+      "xtream_original_channel_name": "US - NFL NETWORK HD ◉",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "71983",
+      "original_xtream_epgid": "nflnetwork.us",
+      "source": "epg37",
+      "source_channel_id": "NFLNetwork.us12",
+      "status": "approved"
+    },
+    {
+      "channel": "NFL RedZone",
+      "xtream_original_channel_name": "US - NFL REDZONE HD ◉",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "71984",
+      "original_xtream_epgid": "nflredzone.us",
+      "source": "epg37",
+      "source_channel_id": "NFLRedZone.us12",
+      "status": "approved"
+    },
+    {
+      "channel": "NFL RedZone Backup",
+      "xtream_original_channel_name": "US - NFL REDZONE HD [BK]",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "1009486",
+      "original_xtream_epgid": "",
+      "source": "epg37",
+      "source_channel_id": "NFLRedZone.us12",
+      "status": "approved"
+    },
+    {
+      "channel": "Super Bowl Replay 2024",
+      "xtream_original_channel_name": "REPLAY - SUPER BOWL CHAMPION SHIP 2024",
+      "xtream_group": "AM | USA | NFL",
+      "xtream_stream_id": "685415",
+      "original_xtream_epgid": "",
+      "source": "static",
+      "source_channel_id": null,
+      "epg37_candidate_channel_id": null,
+      "epg37_candidate_verified": false,
+      "programme_title": "Super Bowl Replay 2024",
+      "programme_description": "Super Bowl Replay 2024",
+      "programme_duration_hours": 24,
+      "programme_repeat": "daily",
+      "status": "approved"
+    }
+  ]
+}
