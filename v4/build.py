@@ -267,6 +267,56 @@ def add_ahl(tv,cid,games,now,horizon):
  if cursor<horizon:
   add_programme(tv,cid,cursor,horizon,"Event concluded" if upcoming else "No Game Scheduled");added+=1
  return added
+def nba_from_inventory(rows):
+ # Use Xtream StreamID as the only output identity. Match team feeds
+ # to original NBA GAME slot matchup, never to generic EPG IDs.
+ games=[]
+ teams={}
+ for row in rows:
+  if val(row,"Group").upper()!="AM | USA | NBA":continue
+  sid=val(row,"StreamID")
+  raw=val(row,"OriginalChannelName","ChannelName")
+  m=re.search(r"NBA GAME\\s*(\\d+)\\s*:\\s*(.*?)\\s+@\\s+(.*?)(?:\\s*\\(|\\s+NOV\\s+\\d+|$)",raw,re.I)
+  if m:
+   try:
+    d=re.search(r"\\bNOV\\s+(\\d+)\\s*[–-]\\s*(\\d{1,2}):(\\d{2})\\s*(AM|PM)\\s*ET",raw,re.I)
+    if not d:continue
+    day,hour,minute,ap=d.groups()
+    hour=int(hour)%12+(12 if ap.upper()=="PM" else 0)
+    # Original Xtream labels are Eastern; November is EST after DST ends.
+    eastern=timezone(timedelta(hours=-5))
+    st=datetime(datetime.now(eastern).year,11,int(day),hour,int(minute),tzinfo=eastern).astimezone(timezone.utc)
+    away=m.group(2).strip().upper()
+    home=m.group(3).strip().upper()
+    games.append((sid,st,st+timedelta(hours=4),away,home,int(m.group(1))))
+   except ValueError:continue
+  elif "NBA TEAMS -" in raw.upper():
+   team=re.sub(r"\\s+(?:FHD|HD|SD|4K)\\b.*$","",raw.split("NBA TEAMS -",1)[-1],flags=re.I).strip().upper()
+   teams[sid]=team
+ return games,teams
+def add_nba(tv,cid,sid,now,games,teams):
+ horizon=now+timedelta(days=7)
+ if sid in teams:
+  team=teams[sid]
+  relevant=sorted([g for g in games if team in (g[3],g[4]) and g[2]>now and g[1]<horizon],key=lambda g:g[1])
+  cursor=now
+  n=0
+  for _,st,en,away,home,_ in relevant:
+   if st>cursor:
+    add_programme(tv,cid,cursor,st,"Next Game: "+away.title()+" @ "+home.title()+" ("+st.astimezone(timezone(timedelta(hours=-5))).strftime("%b %d, %I:%M %p EST")+")");n+=1
+   add_programme(tv,cid,max(st,cursor),en,away.title()+" @ "+home.title());n+=1
+   cursor=max(cursor,en)
+  if cursor<horizon:
+   add_programme(tv,cid,cursor,horizon,"Event concluded" if relevant else "No Game Scheduled");n+=1
+  return n
+ for gameid,st,en,away,home,num in games:
+  if gameid==sid:
+   if st>now:add_programme(tv,cid,now,st,"Next Game: "+away.title()+" @ "+home.title());n=1
+   else:n=0
+   if en>now:add_programme(tv,cid,max(st,now),en,away.title()+" @ "+home.title(),st.astimezone(timezone(timedelta(hours=-5))).strftime("%b %d, %I:%M %p EST"));n+=1
+   if en<horizon:add_programme(tv,cid,max(now,en),horizon,"Event concluded");n+=1
+   return n
+ return 0
 def generate():
  rows,inventory_source=find_inventory()
  rows=[r for r in rows if val(r,"StreamID") and in_scope(r)]
@@ -275,6 +325,7 @@ def generate():
  overrides=load_overrides()
  programmes,decisions,match_counts=load_epgs(rows,overrides)
  ahl=ahl_schedule()
+ nba_games,nba_teams=nba_from_inventory(rows)
  tv=ET.Element("tv",{"generator-info-name":"My-EPG V4 full inventory"})
  now=datetime.now(timezone.utc)
  start=now.strftime("%Y%m%d%H%M%S +0000")
@@ -298,7 +349,12 @@ def generate():
   ET.SubElement(ch,"display-name").text=title
   ET.SubElement(ch,"display-name").text=clean(name)
   events=programmes.get((source,epgid),[]) if selected else []
-  if "AHL" in group.upper() and sid in ahl:
+  if group.upper()=="AM | USA | NBA" and (sid in nba_teams or any(g[0]==sid for g in nba_games)):
+   n=add_nba(tv,cid,sid,now,nba_games,nba_teams)
+   counts["mapped_channels"]+=1
+   counts["programmes"]+=n
+   counts["scheduled_by_source"]["nba-xtream-streamid"]=counts["scheduled_by_source"].get("nba-xtream-streamid",0)+1
+  elif "AHL" in group.upper() and sid in ahl:
    horizon=now+timedelta(days=7)
    n=add_ahl(tv,cid,ahl[sid],now,horizon)
    counts["mapped_channels"]+=1
