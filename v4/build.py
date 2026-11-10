@@ -123,7 +123,7 @@ def event_name_keys(row):
  for label in (val(row,"OriginalChannelName"),val(row,"ChannelName"),val(row,"NewChannelName")):
   label=clean(label)
   if ":" in label:label=label.split(":",1)[1].strip()
-  label=re.sub(r"^(?:peacock|paramount\\+?)\\s*[-:]?\\s*", "", label,flags=re.I)
+  label=re.sub(r"^(?:peacock|paramount\+?)\s*[-:]?\s*", "", label,flags=re.I)
   key=norm(label)
   if len(key)>=12 and not re.fullmatch(r"(?:peacock|paramount|event|live|game|channel|stream|ppv)\\d*",key):
    keys.append(key)
@@ -276,10 +276,10 @@ def nba_from_inventory(rows):
   if val(row,"Group").upper()!="AM | USA | NBA":continue
   sid=val(row,"StreamID")
   raw=val(row,"OriginalChannelName","ChannelName")
-  m=re.search(r"NBA GAME\\s*(\\d+)\\s*:\\s*(.*?)\\s+@\\s+(.*?)(?:\\s*\\(|\\s+NOV\\s+\\d+|$)",raw,re.I)
+  m=re.search(r"NBA GAME\s*(\d+)\s*:\s*(.*?)\s+@\s+(.*?)(?:\s*\(|\s+NOV\s+\d+|$)",raw,re.I)
   if m:
    try:
-    d=re.search(r"\\bNOV\\s+(\\d+)\\s*[–-]\\s*(\\d{1,2}):(\\d{2})\\s*(AM|PM)\\s*ET",raw,re.I)
+    d=re.search(r"\bNOV\s+(\d+)\s*[–-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)\s*ET",raw,re.I)
     if not d:continue
     day,hour,minute,ap=d.groups()
     hour=int(hour)%12+(12 if ap.upper()=="PM" else 0)
@@ -291,7 +291,7 @@ def nba_from_inventory(rows):
     games.append((sid,st,st+timedelta(hours=4),away,home,int(m.group(1))))
    except ValueError:continue
   elif "NBA TEAMS -" in raw.upper():
-   team=re.sub(r"\\s+(?:FHD|HD|SD|4K)\\b.*$","",raw.split("NBA TEAMS -",1)[-1],flags=re.I).strip().upper()
+   team=re.sub(r"\s+(?:FHD|HD|SD|4K)\b.*$","",raw.split("NBA TEAMS -",1)[-1],flags=re.I).strip().upper()
    teams[sid]=team
  return games,teams
 def add_nba(tv,cid,sid,now,games,teams):
