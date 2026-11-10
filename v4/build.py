@@ -37,7 +37,7 @@ def inventory_from_zip(blob):
  return []
 def find_inventory():
  # Prefer the freshest inventory from GitHub Actions; no credentials or Xtream URLs embedded in code.
- local=[ROOT/"v4"/"inventory.csv",ROOT/"xtream-inventory.csv",ROOT/"sports-renamed"/"ALL_CHANNELS_Renamed.csv"]
+ local=[ROOT/"v4-input"/"sports-renamed"/"ALL_CHANNELS_Renamed.csv",ROOT/"v4-input"/"ALL_CHANNELS_Renamed.csv",ROOT/"v4"/"inventory.csv",ROOT/"xtream-inventory.csv",ROOT/"sports-renamed"/"ALL_CHANNELS_Renamed.csv"]
  for p in local:
   if p.exists():
    rows=read_csv(p.read_bytes())
