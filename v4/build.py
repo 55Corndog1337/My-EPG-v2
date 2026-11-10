@@ -197,6 +197,37 @@ def load_epgs(rows,overrides):
   print(source,"matched programmes",count,flush=True)
  print("Source decisions",dict(match_counts),flush=True)
  return programmes,decisions,dict(match_counts)
+def ahl_schedule():
+ p=MAPPINGS/"ahl-season-2026-27.csv"
+ result=defaultdict(list)
+ if not p.exists():return result
+ for r in read_csv(p.read_bytes()):
+  sid=val(r,"StreamID")
+  try:
+   st=datetime.fromisoformat(val(r,"StartUTC")).astimezone(timezone.utc)
+   en=datetime.fromisoformat(val(r,"EndUTC")).astimezone(timezone.utc)
+   if en>st:result[sid].append((st,en,val(r,"Event","Title")))
+  except (ValueError,TypeError):continue
+ for games in result.values():games.sort(key=lambda x:x[0])
+ return result
+def add_programme(tv,cid,begin,end,title,desc=""):
+ p=ET.SubElement(tv,"programme",start=begin.strftime("%Y%m%d%H%M%S +0000"),stop=end.strftime("%Y%m%d%H%M%S +0000"),channel=cid)
+ ET.SubElement(p,"title",lang="en").text=title
+ if desc:ET.SubElement(p,"desc",lang="en").text=desc
+def add_ahl(tv,cid,games,now,horizon):
+ cursor=now
+ added=0
+ upcoming=[g for g in games if g[1]>now and g[0]<horizon]
+ for st,en,event in upcoming:
+  if st>cursor:
+   label="Next Game: "+event+" ("+st.strftime("%B %d, %I:%M %p UTC")+")"
+   add_programme(tv,cid,cursor,min(st,horizon),label);added+=1
+  if en>max(st,cursor):
+   add_programme(tv,cid,max(st,cursor),min(en,horizon),event);added+=1
+  cursor=max(cursor,en)
+ if cursor<horizon:
+  add_programme(tv,cid,cursor,horizon,"Event concluded" if upcoming else "No Game Scheduled");added+=1
+ return added
 def generate():
  rows,inventory_source=find_inventory()
  rows=[r for r in rows if val(r,"StreamID") and in_scope(r)]
@@ -204,6 +235,7 @@ def generate():
  print("Inventory",inventory_source,"channels",len(rows),flush=True)
  overrides=load_overrides()
  programmes,decisions,match_counts=load_epgs(rows,overrides)
+ ahl=ahl_schedule()
  tv=ET.Element("tv",{"generator-info-name":"My-EPG V4 full inventory"})
  now=datetime.now(timezone.utc)
  start=now.strftime("%Y%m%d%H%M%S +0000")
@@ -227,7 +259,18 @@ def generate():
   ET.SubElement(ch,"display-name").text=title
   ET.SubElement(ch,"display-name").text=clean(name)
   events=programmes.get((source,epgid),[]) if selected else []
-  if events:
+  if "AHL" in group.upper() and sid in ahl:
+   horizon=now+timedelta(days=7)
+   n=add_ahl(tv,cid,ahl[sid],now,horizon)
+   counts["mapped_channels"]+=1
+   counts["programmes"]+=n
+   counts["scheduled_by_source"]["ahl-season-csv"]=counts["scheduled_by_source"].get("ahl-season-csv",0)+1
+  elif "24/7" in group.upper() and not events:
+   add_programme(tv,cid,now,now+timedelta(days=1),title,"24/7 repeating channel")
+   counts["mapped_channels"]+=1
+   counts["programmes"]+=1
+   counts["scheduled_by_source"]["24-7-static"]=counts["scheduled_by_source"].get("24-7-static",0)+1
+  elif events:
    counts["mapped_channels"]+=1
    counts["scheduled_by_source"][source]=counts["scheduled_by_source"].get(source,0)+1
    for original in events:
