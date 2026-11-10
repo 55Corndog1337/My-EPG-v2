@@ -11,6 +11,7 @@ on:
     - cron: '17 */4 * * *'
 permissions:
   contents: write
+  actions: read
 concurrency:
   group: v4-xmltv-generator
   cancel-in-progress: false
@@ -20,6 +21,12 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
+      - name: Identify V4 inventory inputs
+        run: |
+          echo 'Available V4 mapping files:'
+          find v4-mappings -maxdepth 1 -type f | sort
+          echo 'Local inventory candidates:'
+          find . -maxdepth 3 -iname '*inventory*.csv' -o -iname '*all_channels_renamed.csv' | head -30
       - name: Generate independent V4 guide
         env:
           GH_TOKEN: ${{ github.token }}
