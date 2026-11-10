@@ -57,5 +57,22 @@ jobs:
           git add v4-output/epg.xml.gz v4-output/coverage.json v4-output/epg-source-catalog.csv
           if ! git diff --cached --quiet; then
             git commit -m "Update independent V4 XMLTV guide"
-            git push
+            # Other workflows may update main during this build.
+            # Retry safely without force-pushing or modifying V2.
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "Rebase conflict: refusing to overwrite other commits."
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "Published V4 output successfully."
+                exit 0
+              fi
+              echo "Push attempt $attempt failed; checking for concurrent updates."
+              sleep 5
+            done
+            echo "V4 publish failed after retries. Check branch rules and token permissions."
+            exit 1
           fi
