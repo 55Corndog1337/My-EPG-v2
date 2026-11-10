@@ -149,6 +149,25 @@ def load_epgs(rows,overrides):
    catalogs[source]=(data,channels)
    print(source,"catalog channels",len(channels),flush=True)
   except Exception as e:print("Source failure",source,str(e),flush=True)
+ # Export the real source catalog for manual Peacock/Paramount+ matching.
+ # Each row includes the source channel ID, display name and sample programme titles.
+ catalog_path=OUT/"epg-source-catalog.csv"
+ OUT.mkdir(parents=True,exist_ok=True)
+ with catalog_path.open("w",newline="",encoding="utf-8-sig") as fh:
+  writer=csv.writer(fh)
+  writer.writerow(["EPG Source","Source Channel ID","Source Display Names","Sample Programme Titles"])
+  for src,(blob,channels) in catalogs.items():
+   samples=defaultdict(list)
+   for _,item in ET.iterparse(io.BytesIO(blob),events=("end",)):
+    if item.tag!="programme":continue
+    cid=item.get("channel")
+    if cid in channels and len(samples[cid])<3:
+     title=item.findtext("title") or ""
+     if title and title not in samples[cid]:samples[cid].append(title)
+    item.clear()
+   for cid,names in channels.items():
+    writer.writerow([src,cid," | ".join(names)," | ".join(samples.get(cid,[]))])
+ print("Wrote real EPG source catalog",catalog_path,flush=True)
  by_id={}
  by_name={}
  for source,(data,channels) in catalogs.items():
