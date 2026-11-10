@@ -1,0 +1,134 @@
+{
+  "project": "My-EPG-v4",
+  "category": "wnba",
+  "source": "epg37",
+  "programme_generation_enabled": false,
+  "source_comparison": {
+    "epg37_numbered_matches": 10,
+    "epg6_numbered_matches": 10,
+    "epg2_numbered_matches": 10
+  },
+  "notes": "Original Xtream IDs/names/EPGIDs from November 9 snapshot. EPG37 exact numbered display names. No live event/time verified; EPG6 contains invalid 2098 placeholders.",
+  "mappings": [
+    {
+      "channel_number": 1,
+      "xtream_stream_id": "851940",
+      "xtream_original_channel_name": "US - WNBA GAME 01 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "46.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 2,
+      "xtream_stream_id": "851939",
+      "xtream_original_channel_name": "US - WNBA GAME 02 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "47.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 3,
+      "xtream_stream_id": "851938",
+      "xtream_original_channel_name": "US - WNBA GAME 03 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "48.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 4,
+      "xtream_stream_id": "851937",
+      "xtream_original_channel_name": "US - WNBA GAME 04 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "49.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 5,
+      "xtream_stream_id": "851936",
+      "xtream_original_channel_name": "US - WNBA GAME 05 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "50.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 6,
+      "xtream_stream_id": "851935",
+      "xtream_original_channel_name": "US - WNBA GAME 06 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "51.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 7,
+      "xtream_stream_id": "851934",
+      "xtream_original_channel_name": "US - WNBA GAME 07 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "52.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 8,
+      "xtream_stream_id": "851933",
+      "xtream_original_channel_name": "US - WNBA GAME 08 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "53.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 9,
+      "xtream_stream_id": "851932",
+      "xtream_original_channel_name": "US - WNBA GAME 09 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "54.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    },
+    {
+      "channel_number": 10,
+      "xtream_stream_id": "851931",
+      "xtream_original_channel_name": "US - WNBA GAME 10 :",
+      "original_xtream_epgid": "",
+      "xtream_group": "AM | USA | WNBA",
+      "epg_source": "epg37",
+      "source_channel_id": "55.WNBA",
+      "source_channel_identity_verified": true,
+      "source_event_and_time_verified": false,
+      "programme_generation_enabled": false
+    }
+  ]
+}
