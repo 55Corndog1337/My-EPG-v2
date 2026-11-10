@@ -1,0 +1,1513 @@
+{
+  "project": "My-EPG-v4",
+  "category": "uk-24-7",
+  "epg_source_priority": [
+    "epg37",
+    "epg2",
+    "epg6"
+  ],
+  "matching_policy": "Match exact normalized clean titles; select unique source ID in priority EPG37 > EPG2 > EPG6. Ambiguous and unmatched channels retain static 24h title. Do not generate unverified EPG programmes.",
+  "mappings": [
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013890",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | AL PACINO HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "AL PACINO",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "ALPACINO.d360",
+          "UK247ALPACINOHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714867",
+          "dummy-1715180",
+          "dummy-1744753"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013893",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | ARCHER HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "ARCHER",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "ARCHER.d360",
+          "ARCHERFHD.d360",
+          "UK247ARCHERHD.d120"
+        ],
+        "epg6": [
+          "dummy-1713851",
+          "dummy-1714881",
+          "dummy-1715218"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013894",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | ARNOLD SCHWARZENEGGERHD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "ARNOLD SCHWARZENEGGERHD",
+      "epg_source": "epg37",
+      "source_channel_id": "UK247ARNOLDSCHWARZENEGGERHD.d120",
+      "match_status": "unique_exact_normalized",
+      "programme_generation_enabled": false,
+      "programme_mode": "epg_source_pending_programme_validation",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "UK247ARNOLDSCHWARZENEGGERHD.d120"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013896",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BACK TO THE FUTURE HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BACK TO THE FUTURE",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "BACKTOTHEFUTURE.d360",
+          "BACKTOTHEFUTUREFHD.d360",
+          "UK247BACKTOTHEFUTUREHD.d120"
+        ],
+        "epg6": [
+          "dummy-1713857",
+          "dummy-1714884",
+          "dummy-1715215",
+          "dummy-1744758"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013898",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BATMAN MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BATMAN MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "BATMANMOVIES.d360",
+          "UK247BATMANMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714914",
+          "dummy-1715227"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013899",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BILLY THE EXTERMINATOR HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BILLY THE EXTERMINATOR",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "BILLYTHEEXTERMINATOR.d360",
+          "UK247BILLYTHEEXTERMINATORHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714916",
+          "dummy-1715189",
+          "dummy-1715226"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013900",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BILLY THE EXTERMINATOR HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BILLY THE EXTERMINATOR",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "BILLYTHEEXTERMINATOR.d360",
+          "UK247BILLYTHEEXTERMINATORHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714916",
+          "dummy-1715189",
+          "dummy-1715226"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013901",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BLADE MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BLADE MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "BLADEMOVIES.d360",
+          "UK247BLADEMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714885",
+          "dummy-1715214"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013902",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BONANZA HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BONANZA",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "BONANZA.d360",
+          "BONANZAFHD.d360",
+          "UK247BONANZAHD.d120"
+        ],
+        "epg6": [
+          "dummy-12375",
+          "dummy-1713885",
+          "dummy-1714913",
+          "dummy-1715225",
+          "dummy-1745051"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013903",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | BRUCE LEE MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "BRUCE LEE MOVIES",
+      "epg_source": "epg37",
+      "source_channel_id": "UK247BRUCELEEMOVIESHD.d120",
+      "match_status": "unique_exact_normalized",
+      "programme_generation_enabled": false,
+      "programme_mode": "epg_source_pending_programme_validation",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "UK247BRUCELEEMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714863",
+          "dummy-1715184"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013904",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | CHAPPELLE'S SHOW HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "CHAPPELLE'S SHOW",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "CHAPPELLESSHOW.d360",
+          "CHAPPELLESSHOWFHD.d360",
+          "UK247CHAPPELLESSHOWHD.d120"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013905",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 |  COMEDY MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "COMEDY MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "COMEDYMOVIES.d360",
+          "UK247COMEDYMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714872",
+          "dummy-1715182"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013906",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | CRIME MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "CRIME MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "CRIMEMOVIES.d360",
+          "UK247CRIMEMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714873",
+          "dummy-1715185"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013907",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | DEADLIEST CATCH HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "DEADLIEST CATCH",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "DEADLIESTCATCH.d360",
+          "DEADLIESTCATCHFHD.d360",
+          "UK247DEADLIESTCATCHHD.d120"
+        ],
+        "epg6": [
+          "dummy-1713923",
+          "dummy-1714918",
+          "dummy-1715229",
+          "dummy-1745183"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013908",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | DEGRASSI JUNIOR HIGH HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "DEGRASSI JUNIOR HIGH",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "DEGRASSIJUNIORHIGH.d360",
+          "UK247DEGRASSIJUNIORHIGHHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714917",
+          "dummy-1715228"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013909",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | DIE HARD HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "DIE HARD",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "DIEHARD.d360",
+          "UK247DIEHARDHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714911",
+          "dummy-1714989",
+          "dummy-1715190"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013910",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 |  EDDY MURPHY HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "EDDY MURPHY",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "EDDYMURPHY.d360",
+          "UK247EDDYMURPHYHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714857",
+          "dummy-1715173"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013911",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 |  FAMILY MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "FAMILY MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "FAMILYMOVIES.d360",
+          "UK247FAMILYMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714871",
+          "dummy-1715186"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013912",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | FIFTY SHADES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "FIFTY SHADES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "FIFTYSHADES.d360",
+          "UK247FIFTYSHADESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714886",
+          "dummy-1715213"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013913",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | FRIDAY THE 13TH HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "FRIDAY THE 13TH",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "FRIDAYTHE13TH.d360",
+          "UK247FRIDAYTHE13THHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714892",
+          "dummy-1715207"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013914",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | GREASE HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "GREASE",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "GREASE.d360",
+          "UK247GREASEHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714887",
+          "dummy-1715212"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013915",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | HARRY POTTER HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "HARRY POTTER",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "HARRYPOTTER.d360",
+          "UK247HARRYPOTTERHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714888",
+          "dummy-1715100",
+          "dummy-1715211"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013916",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | HORROR MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "HORROR MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "HORRORMOVIES.d360",
+          "UK247HORRORMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714874",
+          "dummy-1715187"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013917",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | INDIANA JONES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "INDIANA JONES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "INDIANAJONES.d360",
+          "UK247INDIANAJONESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714889",
+          "dummy-1714992",
+          "dummy-1715210"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013918",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | JAMES BOND HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "JAMES BOND",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "JAMESBOND.d360",
+          "UK247JAMESBONDHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714855",
+          "dummy-1715175"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013919",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | JASON BOURNE HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "JASON BOURNE",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "JASONBOURNE.d360",
+          "UK247JASONBOURNEHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714858",
+          "dummy-1715098",
+          "dummy-1715174"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013920",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | JCVD MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "JCVD MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "JCVDMOVIES.d360",
+          "UK247JCVDMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714890",
+          "dummy-1715209"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013921",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | JIM CARREY HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "JIM CARREY",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "JIMCARREY.d360",
+          "UK247JIMCARREYHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714859",
+          "dummy-1715176"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013922",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | JURASSIC PARK HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "JURASSIC PARK",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "JURASSICPARK.d360",
+          "UK247JURASSICPARKHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714891",
+          "dummy-1715208"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013923",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | KING OF THE HILL HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "KING OF THE HILL",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "KINGOFTHEHILL.d360",
+          "KINGOFTHEHILLFHD.d360",
+          "UK247KINGOFTHEHILLHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714015",
+          "dummy-1714883",
+          "dummy-1715216",
+          "dummy-1721383"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013925",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | LORD OF THE RINGS HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "LORD OF THE RINGS",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "LORDOFTHERINGS.d360",
+          "UK247LORDOFTHERINGSHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714893",
+          "dummy-1715206",
+          "dummy-1744829"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013926",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | MATRIX HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "MATRIX",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "MATRIX.d360",
+          "UK247MATRIXHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714894",
+          "dummy-1715205"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013927",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | MEN IN BLACK HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "MEN IN BLACK",
+      "epg_source": "epg37",
+      "source_channel_id": "UK247MENINBLACKHD.d120",
+      "match_status": "unique_exact_normalized",
+      "programme_generation_enabled": false,
+      "programme_mode": "epg_source_pending_programme_validation",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "UK247MENINBLACKHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714895",
+          "dummy-1714998",
+          "dummy-1715204"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013928",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 |  MR BEAN HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "MR BEAN",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "MRBEAN.d360",
+          "UK247MRBEANHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714856",
+          "dummy-1715181"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013929",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | NIGHT COURT HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "NIGHT COURT",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "NIGHTCOURT.d360",
+          "UK247NIGHTCOURTHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714879",
+          "dummy-1715221",
+          "dummy-1745109"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013930",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | PIRATES OF THE CARIBBEAN HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "PIRATES OF THE CARIBBEAN",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "PIRATESOFTHECARIBBEAN.d360",
+          "PIRATESOFTHECARIBBEAN4K.d360",
+          "UK247PIRATESOFTHECARIBBEANHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714897",
+          "dummy-1715095",
+          "dummy-1715202"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013931",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | PLANET OF THE APES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "PLANET OF THE APES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "PLANETOFTHEAPES.d360",
+          "UK247PLANETOFTHEAPESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714898",
+          "dummy-1715002",
+          "dummy-1715201"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013932",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | POLICE ACADEMY HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "POLICE ACADEMY",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "POLICEACADEMY.d360",
+          "UK247POLICEACADEMYHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714900",
+          "dummy-1715199"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013933",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | PREDATOR/ALIEN MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "PREDATOR/ALIEN MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "PREDATORALIENMOVIES.d360",
+          "UK247PREDATORALIENMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714899",
+          "dummy-1715200"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013934",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | QUENTIN TARANTINO MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "QUENTIN TARANTINO MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "QUENTINTARANTINOMOVIES.d360",
+          "UK247QUENTINTARANTINOMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714906",
+          "dummy-1715194"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013935",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | RAMBO HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "RAMBO",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "RAMBO.d360",
+          "UK247RAMBOHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714860",
+          "dummy-1715177"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013936",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | RICK AND MORTY HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "RICK AND MORTY",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "RICKANDMORTY.d360",
+          "RICKANDMORTYFHD.d360",
+          "UK247RICKANDMORTYHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714057",
+          "dummy-1714882",
+          "dummy-1715217",
+          "dummy-1745910",
+          "dummy-1745911"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013937",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | ROCKY HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "ROCKY",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "ROCKY.d360",
+          "ROCKY4K.d360",
+          "UK247ROCKYHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714901",
+          "dummy-1715093",
+          "dummy-1715198",
+          "dummy-1744870"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013938",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | ROMANCE MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "ROMANCE MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "ROMANCEMOVIES.d360",
+          "UK247ROMANCEMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714902",
+          "dummy-1715197"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013939",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | ROSEANNE HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "ROSEANNE",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "ROSEANNE.d360",
+          "ROSEANNEFHD.d360",
+          "UK247ROSEANNEHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714059",
+          "dummy-1714877",
+          "dummy-1715135",
+          "dummy-1715220",
+          "dummy-1745117"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013940",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | RUSH HOUR HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "RUSH HOUR",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "RUSHHOUR.d360",
+          "UK247RUSHHOURHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714903",
+          "dummy-1715004",
+          "dummy-1715196",
+          "dummy-1745807"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013941",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | SCIFI MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "SCIFI MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "SCIFIMOVIES.d360",
+          "UK247SCIFIMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714905",
+          "dummy-1715195"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013942",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | SHE-RA: PRINCESS OF POWER HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "SHE-RA: PRINCESS OF POWER",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "SHERAPRINCESSOFPOWER.d360",
+          "UK247SHERAPRINCESSOFPOWERHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714931",
+          "dummy-1715240"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013943",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | SIMPSONS HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "SIMPSONS",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "SIMPSONS.d360",
+          "UK247SIMPSONSHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714932",
+          "dummy-1715238"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013944",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | SIX MILLION DOLLAR MAN HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "SIX MILLION DOLLAR MAN",
+      "epg_source": "epg37",
+      "source_channel_id": "UK247SIXMILLIONDOLLARMANHD.d120",
+      "match_status": "unique_exact_normalized",
+      "programme_generation_enabled": false,
+      "programme_mode": "epg_source_pending_programme_validation",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "UK247SIXMILLIONDOLLARMANHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714930",
+          "dummy-1715237"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013945",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | SPONGEBOB SQUAREPANTS HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "SPONGEBOB SQUAREPANTS",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "SPONGEBOBSQUAREPANTS.d360",
+          "UK247SPONGEBOBSQUAREPANTSHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714876",
+          "dummy-1715222",
+          "dummy-1721404"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013946",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | SPORTS MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "SPORTS MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "SPORTSMOVIES.d360",
+          "UK247SPORTSMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714907",
+          "dummy-1715193",
+          "dummy-673623"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013947",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | STAR TREK MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "STAR TREK MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "STARTREKMOVIES.d360",
+          "UK247STARTREKMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714908",
+          "dummy-1715192"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013948",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | STAR WARS HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "STAR WARS",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "STARWARS.d360",
+          "UK247STARWARSHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714909",
+          "dummy-1715011",
+          "dummy-1715191"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013949",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | STEVEN SEAGAL HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "STEVEN SEAGAL",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "STEVENSEAGAL.d360",
+          "UK247STEVENSEAGALHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714865",
+          "dummy-1715178",
+          "dummy-1744880"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013950",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | TEXAS CHAINSAW MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "TEXAS CHAINSAW MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "TEXASCHAINSAWMOVIES.d360",
+          "UK247TEXASCHAINSAWMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714896",
+          "dummy-1715203"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013951",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 |THE ANDY GRIFFITH SHOW HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE ANDY GRIFFITH SHOW",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THEANDYGRIFFITHSHOW.d360",
+          "THEANDYGRIFFITHSHOWFHD.d360",
+          "UK247THEANDYGRIFFITHSHOWHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714078",
+          "dummy-1714929",
+          "dummy-1715236",
+          "dummy-1745127"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013952",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | THE BEVERLY HILLBILLIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE BEVERLY HILLBILLIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THEBEVERLYHILLBILLIES.d360",
+          "UK247THEBEVERLYHILLBILLIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714928",
+          "dummy-1715235",
+          "dummy-1745129"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013953",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | THE BIONIC WOMAN HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE BIONIC WOMAN",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THEBIONICWOMAN.d360",
+          "UK247THEBIONICWOMANHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714926",
+          "dummy-1715234"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013954",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | THE BOB NEWHART SHOW HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE BOB NEWHART SHOW",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THEBOBNEWHARTSHOW.d360",
+          "UK247THEBOBNEWHARTSHOWHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714925",
+          "dummy-1715233"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013955",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | THE CAROL BURNETT SHOW HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE CAROL BURNETT SHOW",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THECAROLBURNETTSHOW.d360",
+          "UK247THECAROLBURNETTSHOWHD.d120"
+        ],
+        "epg6": [
+          "656574",
+          "dummy-1714628",
+          "dummy-1714924",
+          "dummy-1715232",
+          "plex.tv.The.Carol.Burnett.Show.plex"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013956",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | THE LOVE BOAT HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE LOVE BOAT",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THELOVEBOAT.d360",
+          "THELOVEBOATFHD.d360",
+          "UK247THELOVEBOATHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714923",
+          "dummy-1715231"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013957",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | THE NANNY HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THE NANNY",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THENANNY.d360",
+          "THENANNY4k.d360",
+          "THENANNYFHD.d360",
+          "UK247THENANNYHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714091",
+          "dummy-1714919",
+          "dummy-1715113",
+          "dummy-1715230",
+          "dummy-1745695"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013958",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 |  THRILLER MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "THRILLER MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "THRILLERMOVIES.d360",
+          "UK247THRILLERMOVIESHD.d120"
+        ],
+        "epg6": [
+          "dummy-1714870",
+          "dummy-1715183"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013959",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | WILL FERRELL MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "WILL FERRELL MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "UK247WILLFERRELLMOVIESHD.d120",
+          "WILLFERRELLMOVIES.d360"
+        ],
+        "epg6": [
+          "dummy-1714864",
+          "dummy-1715188",
+          "dummy-1715223"
+        ]
+      }
+    },
+    {
+      "xtream_group": "EU | UK | 24/7",
+      "xtream_stream_id": "1013960",
+      "xtream_original_channel_name": "UK - GOLD TV 24/7 | WILL FERRELL MOVIES HD",
+      "original_xtream_epgid": "",
+      "clean_programme_title": "WILL FERRELL MOVIES",
+      "epg_source": null,
+      "source_channel_id": null,
+      "match_status": "ambiguous",
+      "programme_generation_enabled": true,
+      "programme_mode": "static_24h_fallback",
+      "candidate_source_ids_by_epg": {
+        "epg37": [
+          "UK247WILLFERRELLMOVIESHD.d120",
+          "WILLFERRELLMOVIES.d360"
+        ],
+        "epg6": [
+          "dummy-1714864",
+          "dummy-1715188",
+          "dummy-1715223"
+        ]
+      }
+    }
+  ]
+}
