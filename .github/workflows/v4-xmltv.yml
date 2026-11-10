@@ -21,6 +21,15 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
+      - name: Restore archived full Xtream matching report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          run-id: 42523714141
+          pattern: epg-matching-reports*
+          path: v4-input
+          merge-multiple: true
+          github-token: ${{ github.token }}
       - name: Identify V4 inventory inputs
         run: |
           echo 'Available V4 mapping files:'
