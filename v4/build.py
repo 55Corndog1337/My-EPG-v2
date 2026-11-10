@@ -194,22 +194,32 @@ def load_epgs(rows,overrides):
   if provider:
    for src in ("epg37","epg2","epg6"):preferred.append((src,provider))
   chosen=None
-  # Match ESPN+ 247-600 to real EPG2 programmes, not placeholder titles.
+  # ESPN+ slots 1-600: EPG2 exclusively. Never fall back to EPG6/37.
   group=val(row,"Group").upper()
-  if "ESPN PLUS" in group:
-   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
-   slot=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
-   number=int(slot.group(1)) if slot else 0
-   if 247<=number<=600:
-    for candidate in (f"ESPN.PLUS.{number}",f"ESPNPlus.{number}",f"ESPN+.{number}",f"ESPN+ {number:03d}"):
-     canonical=by_id.get(("epg2",candidate.lower()))
-     if canonical:
-      chosen=("epg2",canonical,"espn_slot");break
-    if not chosen:
-     for candidate in (f"ESPN+ {number:03d}",f"ESPN+ {number}",f"ESPN PLUS {number:03d}",f"ESPN PLUS {number}"):
-      matches=by_name.get(("epg2",norm(candidate)),set())
-      if len(matches)==1:
-       chosen=("epg2",next(iter(matches)),"espn_slot_name");break
+  raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
+  slot=re.search(r"ESPN\\s*(?:\\+|PLUS)\\s*0*(\\d{1,3})\\b",raw,re.I)
+  provider_slot=re.fullmatch(r"ESPN(?:\\.PLUS|Plus)\\.(\\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
+  number=int(slot.group(1)) if slot else (int(provider_slot.group(1)) if provider_slot else 0)
+  is_espn="ESPN PLUS" in group or (provider_slot is not None)
+  if is_espn and 1<=number<=600:
+   candidates=[f"ESPNPlus.{number}",f"ESPN.PLUS.{number}",f"ESPN+.{number}"]
+   if explicit and explicit[0]=="epg2":candidates.append(explicit[1])
+   if invsrc=="epg2" and invid:candidates.append(invid)
+   for candidate in candidates:
+    canonical=by_id.get(("epg2",candidate.lower()))
+    if canonical:
+     chosen=("epg2",canonical,"espn_slot");break
+   if not chosen:
+    for candidate in (f"ESPN+ {number:03d}",f"ESPN+ {number}",f"ESPN PLUS {number:03d}",f"ESPN PLUS {number}"):
+     matches=by_name.get(("epg2",norm(candidate)),set())
+     if len(matches)==1:
+      chosen=("epg2",next(iter(matches)),"espn_slot_name");break
+   # No EPG2 match means a placeholder, never a different provider's schedule.
+   decisions[sid]=chosen
+   if chosen:
+    wanted["epg2"].add(chosen[1])
+    match_counts["epg2_"+chosen[2]]+=1
+   continue
   for src,cid in preferred:
    canonical=by_id.get((src,cid.lower()))
    if canonical and not chosen:
@@ -370,10 +380,8 @@ def generate():
    number=int(slot.group(1)) if slot else (int(provider.group(1)) if provider else 0)
    if slot and provider and int(slot.group(1))!=int(provider.group(1)):
     raise RuntimeError(f"ESPN+ slot/provider mismatch for stream {sid}")
-   if 1<=number<=50:
+   if 1<=number<=600:
     cid=f"ESPNPlus.{number}"
-   elif 51<=number<=600:
-    cid=f"ESPN.PLUS.{number}"
   if cid in output_ids:
    raise RuntimeError(f"Duplicate XMLTV channel ID {cid}; refusing ambiguous mapping")
   output_ids.add(cid)
@@ -405,7 +413,7 @@ def generate():
   else:
    p=ET.SubElement(tv,"programme",start=start,stop=end,channel=cid)
    is_espn_slot = "ESPN PLUS" in group.upper() and cid.startswith(("ESPNPlus.", "ESPN.PLUS."))
-   ET.SubElement(p,"title",lang="en").text="No Event Scheduled" if is_espn_slot else title
+   ET.SubElement(p,"title",lang="en").text="No Scheduled Event" if is_espn_slot else title
    ET.SubElement(p,"desc",lang="en").text="No verified ESPN+ event currently scheduled" if is_espn_slot else "V4: no verified schedule available; channel retained for later correction"
    counts["fallback_channels"]+=1
    counts["unmatched_by_category"][group]=counts["unmatched_by_category"].get(group,0)+1
