@@ -356,7 +356,7 @@ def generate():
     raise RuntimeError(f"ESPN+ slot/provider mismatch for stream {sid}")
    if 1<=number<=50:
     cid=f"ESPNPlus.{number}"
-   elif 51<=number<=100:
+   elif 51<=number<=246:
     cid=f"ESPN.PLUS.{number}"
   if cid in output_ids:
    raise RuntimeError(f"Duplicate XMLTV channel ID {cid}; refusing ambiguous mapping")
