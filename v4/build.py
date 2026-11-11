@@ -1,3 +1,4 @@
+# V4 scheduled publication trigger 2026-11-11 12:00 EST
 # V4 scheduled publication trigger 2026-11-11 06:04 EST; no mapping changes.
 #!/usr/bin/env python3
 # V4 scheduled publication refresh trigger; generator behavior unchanged.
