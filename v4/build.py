@@ -520,8 +520,12 @@ def generate():
  nfl_targets={}
  for slot in range(1,17):
   cid=f"NFL.GAME.{slot:02d}"
-  aliases=[f"NFL Game {slot:02d}",f"NFL Game {slot}",f"NFL {slot:02d}",f"NFL {slot}",cid]
-  nfl_targets[cid]=nfl_epg2_id(cid,aliases)
+  # Verified user-selected EPG2 source: dummy-25609 through dummy-25624.
+  # Keep NFL.GAME.XX as the destination ID; copy EPG2 programmes unchanged.
+  source_id=f"dummy-{25608+slot}"
+  if source_id not in nfl_source_channels:
+   raise RuntimeError(f"Missing required EPG2 NFL source {source_id} for {cid}")
+  nfl_targets[cid]=source_id
  for cid,aliases in {
   "nflredzone.us":["NFL RedZone","NFL Red Zone","NFLRedZone.us","nflredzone.us"],
   "nflnetwork.us":["NFL Network","NFLNetwork.us","nflnetwork.us"],
