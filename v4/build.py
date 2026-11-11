@@ -1,3 +1,4 @@
+# V4 scheduled publication trigger 2026-11-11 18:00 ET; no mapping changes.
 # V4 scheduled publication trigger 2026-11-11 12:00 EST
 # V4 scheduled publication trigger 2026-11-11 06:04 EST; no mapping changes.
 #!/usr/bin/env python3
