@@ -19,6 +19,8 @@ jobs:
           url="https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg2.xml.gz"
           data=urllib.request.urlopen(url,timeout=120).read()
           if data[:2]==b"\x1f\x8b":data=gzip.decompress(data)
+          (Path("v4-output")).mkdir(exist_ok=True)
+          (Path("v4-output")/"epg2-complete.xml").write_bytes(data)
           channels=[]
           for _,element in ET.iterparse(io.BytesIO(data),events=("end",)):
               if element.tag=="channel":
@@ -39,6 +41,16 @@ jobs:
           print(f"EPG2 catalog {len(channels)} channels; NFL/football candidates {len(nfl)}")
           for source,name in nfl:print(f"{source} | {name}")
           PY
+      - name: Upload complete readable EPG2 XML and channel catalogs
+        uses: actions/upload-artifact@v4
+        with:
+          name: epg2-complete-readable-dump
+          path: |
+            v4-output/epg2-complete.xml
+            v4-output/epg2-all-raw-channels.csv
+            v4-output/epg2-nfl-raw-channels.csv
+            v4-output/epg2-nfl-raw-channels.txt
+          retention-days: 30
       - name: Commit readable catalogs
         run: |
           git config user.name "github-actions[bot]"
