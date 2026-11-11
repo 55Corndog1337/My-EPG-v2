@@ -502,7 +502,7 @@ def generate():
  print("NCAAB EPG2 direct 01-38",len(ncaab_slots),"inventory slots",sum(imported.values()),"source programmes",flush=True)
  with gzip.open(OUT/"ncaab-original-id-test.xml.gz","wb",compresslevel=6) as f:
   f.write(ET.tostring(test_tv,encoding="utf-8",xml_declaration=True))
- print("NCAAB original-ID test",len(remap),"remapped",len(ncaab_candidates)-len(remap),"kept unchanged",flush=True)
+ print("NCAAB direct EPG2 test generated",len(ncaab_slots),"inventory slots",sum(imported.values()),"programme entries",flush=True)
  (OUT/"coverage.json").write_text(json.dumps(counts,indent=2),encoding="utf-8")
  print("V4 generated",json.dumps({k:v for k,v in counts.items() if k!="categories"}),flush=True)
 if __name__=="__main__":generate()
