@@ -430,7 +430,7 @@ def generate():
  for row in rows:
   group=val(row,"Group").upper()
   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
-  match=re.search(r"NCAAB(?:\\s+GAME)?\\s*0*(\\d{1,2})\\b",raw,re.I)
+  match=re.search(r"NCAAB(?:\s+GAME)?\s*0*(\d{1,2})\b",raw,re.I)
   if not match or not 1<=int(match.group(1))<=38 or "NCAAB" not in group:continue
   sid=val(row,"StreamID")
   provider=val(row,"EPGID","ProviderID")
@@ -439,7 +439,7 @@ def generate():
  mapping_file=MAPPINGS/"ncaa-basketball.json"
  if mapping_file.exists():
   for item in json.loads(mapping_file.read_text(encoding="utf-8")).get("mappings",[]):
-   m=re.search(r"NCAAB Game (\\d+)",str(item.get("channel","")),re.I)
+   m=re.search(r"NCAAB Game (\d+)",str(item.get("channel","")),re.I)
    if m and 1<=int(m.group(1))<=38:
     sid=str(item.get("xtream_stream_id","")).strip()
     provider=str(item.get("original_xtream_epgid","")).strip()
