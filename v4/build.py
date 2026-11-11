@@ -538,7 +538,7 @@ def generate():
  for p in list(test_tv.findall("programme")):
   if p.get("channel") in nfl_old_to_new:test_tv.remove(p)
  for cid in nfl_targets:
-  if cid not in nfl_existing and cid not in nfl_old_to_new.values():
+  if cid not in {ch.get("id") for ch in test_tv.findall("channel")}:
    ch=ET.SubElement(test_tv,"channel",id=cid)
    ET.SubElement(ch,"display-name").text=cid
  # Import only matched real EPG2 programme records, preserving timestamps.
