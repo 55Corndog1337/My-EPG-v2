@@ -223,6 +223,22 @@ def load_epgs(rows,overrides):
     wanted["epg2"].add(chosen[1])
     match_counts["epg2_"+chosen[2]]+=1
    continue
+  # NCAAB slots 26-35 were omitted from the static JSON map.
+  # Resolve their EPG 2 dummy source dynamically against the actual catalog,
+  # using the original Xtream channel number and preserving its StreamID.
+  if not chosen and "NCAAB" in group:
+   slot_match=re.search(r"\\bNCAAB(?:\\s+GAME)?\\s*0*(\\d{1,2})\\b",raw,re.I)
+   if slot_match and 26<=int(slot_match.group(1))<=35:
+    slot_number=int(slot_match.group(1))
+    candidate=f"dummy-{5506284+slot_number}"
+    canonical=by_id.get(("epg2",candidate.lower()))
+    if canonical:
+     chosen=("epg2",canonical,"ncaab_slot_26_35")
+    else:
+     matches=set()
+     for label in (f"NCAAB {slot_number:02d}",f"NCAAB {slot_number}"):
+      matches.update(by_name.get(("epg2",norm(label)),set()))
+     if len(matches)==1:chosen=("epg2",next(iter(matches)),"ncaab_slot_name_26_35")
   for src,cid in preferred:
    canonical=by_id.get((src,cid.lower()))
    if canonical and not chosen:
