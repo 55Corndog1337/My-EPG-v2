@@ -497,6 +497,65 @@ def generate():
     test_tv.append(p);imported[cid]+=1
    item.clear()
   elif item.tag=="channel":item.clear()
+ # NFL additions to the SAME test file. Never change the regular V4 guide.
+ # Resolve real EPG2 IDs from the downloaded channel catalog; never assume
+ # dummy numbering or substitute EPG37 for numbered games / networks.
+ nfl_source_channels={}
+ for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
+  if item.tag=="channel":
+   source_id=item.get("id")
+   if source_id:
+    nfl_source_channels[source_id]=[(d.text or "").strip() for d in item.findall("display-name")]
+   item.clear()
+  elif item.tag=="programme":item.clear()
+ def nfl_epg2_id(target,aliases):
+  wanted_names={norm(x) for x in aliases}
+  matches=[]
+  for source_id,names in nfl_source_channels.items():
+   if norm(source_id) in wanted_names or any(norm(n) in wanted_names for n in names):
+    matches.append(source_id)
+  if len(matches)==1:return matches[0]
+  print("NFL EPG2 source unresolved",target,"matches",matches[:12],flush=True)
+  return None
+ nfl_targets={}
+ for slot in range(1,17):
+  cid=f"NFL.GAME.{slot:02d}"
+  aliases=[f"NFL Game {slot:02d}",f"NFL Game {slot}",f"NFL {slot:02d}",f"NFL {slot}",cid]
+  nfl_targets[cid]=nfl_epg2_id(cid,aliases)
+ for cid,aliases in {
+  "nflredzone.us":["NFL RedZone","NFL Red Zone","NFLRedZone.us","nflredzone.us"],
+  "nflnetwork.us":["NFL Network","NFLNetwork.us","nflnetwork.us"],
+ }.items():
+  nfl_targets[cid]=nfl_epg2_id(cid,aliases)
+ # Preserve the known Xtream StreamIDs; only XMLTV identities change.
+ nfl_stream_ids={f"NFL.GAME.{slot:02d}":str(79449+slot) for slot in range(1,17)}
+ nfl_stream_ids.update({"nflredzone.us":"71984","nflnetwork.us":"71983"})
+ nfl_old_to_new={"v4."+sid:cid for cid,sid in nfl_stream_ids.items()}
+ nfl_existing={ch.get("id") for ch in test_tv.findall("channel")}
+ for ch in test_tv.findall("channel"):
+  old=ch.get("id")
+  if old in nfl_old_to_new:ch.set("id",nfl_old_to_new[old])
+ for p in list(test_tv.findall("programme")):
+  if p.get("channel") in nfl_old_to_new:test_tv.remove(p)
+ for cid in nfl_targets:
+  if cid not in nfl_existing and cid not in nfl_old_to_new.values():
+   ch=ET.SubElement(test_tv,"channel",id=cid)
+   ET.SubElement(ch,"display-name").text=cid
+ # Import only matched real EPG2 programme records, preserving timestamps.
+ nfl_by_source=defaultdict(list)
+ for cid,source_id in nfl_targets.items():
+  if source_id:nfl_by_source[source_id].append(cid)
+ nfl_counts=defaultdict(int)
+ for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
+  if item.tag=="programme":
+   for cid in nfl_by_source.get(item.get("channel"),[]):
+    p=copy.deepcopy(item);p.set("channel",cid)
+    test_tv.append(p);nfl_counts[cid]+=1
+   item.clear()
+  elif item.tag=="channel":item.clear()
+ # NFL team channels are deliberately left as V4's existing EPG37 mappings.
+ print("NFL test EPG2",len([v for v in nfl_targets.values() if v]),
+       "of",len(nfl_targets),"resolved",sum(nfl_counts.values()),"programmes",flush=True)
  test_ids=[ch.get("id") for ch in test_tv.findall("channel")]
  if len(test_ids)!=len(set(test_ids)):raise RuntimeError("Duplicate IDs in NCAAB test guide")
  print("NCAAB EPG2 direct 01-38",len(ncaab_slots),"inventory slots",sum(imported.values()),"source programmes",flush=True)
