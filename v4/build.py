@@ -430,40 +430,48 @@ def generate():
  OUT.mkdir(parents=True,exist_ok=True)
  with gzip.open(OUT/"epg.xml.gz","wb",compresslevel=6) as f:
   f.write(ET.tostring(tv,encoding="utf-8",xml_declaration=True))
- # ESPN+ 001-500: exact user-provided EPG2 IDs dummy-3345444..3345943.
- # ESPN+ 501-600: explicit No Programming; test guide only, never alter main V4.
- # Source channel IDs are stable; preserve source programme timestamps and titles.
- test_espn_source={f"dummy-{3345443+i}":f"ESPNPlus.{i}" for i in range(1,501)}
- test_espn_ids={f"ESPNPlus.{i}" for i in range(1,601)}
- test_espn_existing={ch.get("id") for ch in test_tv.findall("channel")}
- for cid in test_espn_ids-test_espn_existing:
-  ch=ET.SubElement(test_tv,"channel",id=cid)
-  ET.SubElement(ch,"display-name").text=cid
- for p in list(test_tv.findall("programme")):
-  if p.get("channel") in test_espn_ids:test_tv.remove(p)
- test_espn_found=set()
- test_espn_counts=defaultdict(int)
- for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
-  if item.tag=="channel":
-   if item.get("id") in test_espn_source:test_espn_found.add(item.get("id"))
-   item.clear()
-  elif item.tag=="programme":
-   dest=test_espn_source.get(item.get("channel"))
-   if dest:
-    p=copy.deepcopy(item);p.set("channel",dest)
-    test_tv.append(p);test_espn_counts[dest]+=1
-   item.clear()
- missing_espn=set(test_espn_source)-test_espn_found
- if missing_espn:
-  raise RuntimeError(f"Missing {len(missing_espn)} EPG2 ESPN+ source IDs; first: {sorted(missing_espn)[:10]}")
- for slot in range(501,601):
-  p=ET.SubElement(test_tv,"programme",start=start,stop=end,channel=f"ESPNPlus.{slot}")
-  ET.SubElement(p,"title",lang="en").text="No Programming"
-  ET.SubElement(p,"desc",lang="en").text="No Programming"
- print("ESPN+ EPG2 test mapped",len(test_espn_found),"slots 001-500,",sum(test_espn_counts.values()),"source programmes; 501-600 No Programming",flush=True)
  # Direct EPG2 NCAAB test guide: one distinct channel ID per slot 01-38.
  # The published main V4 guide and provider inventory are unchanged.
  test_tv=copy.deepcopy(tv)
+ # Match NFL/NCAAB pattern: keep the Xtream stream-based XMLTV channel IDs,
+ # then copy actual EPG2 programme elements to those IDs.
+ espn_dest={}
+ espn_slots={}
+ for row in rows:
+  group=val(row,"Group").upper()
+  raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
+  m=re.search(r"ESPN\\s*(?:\\+|PLUS)\\s*0*(\\d{1,3})\\b",raw,re.I)
+  provider=re.fullmatch(r"ESPN(?:\\.PLUS|Plus)\\.(\\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
+  slot=int(m.group(1)) if m else (int(provider.group(1)) if provider else 0)
+  if not (1<=slot<=600 and ("ESPN PLUS" in group or provider)):continue
+  cid="v4."+val(row,"StreamID")
+  if slot in espn_slots and espn_slots[slot]!=cid:
+   raise RuntimeError(f"Duplicate ESPN+ slot {slot}")
+  espn_slots[slot]=cid
+  if slot<=500:espn_dest[f"dummy-{3345443+slot}"]=cid
+ # Replace only ESPN+ programmes in the test guide.
+ espn_ids=set(espn_slots.values())
+ for p in list(test_tv.findall("programme")):
+  if p.get("channel") in espn_ids:test_tv.remove(p)
+ espn_counts=defaultdict(int)
+ espn_found=set()
+ for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
+  if item.tag=="channel":
+   if item.get("id") in espn_dest:espn_found.add(item.get("id"))
+   item.clear()
+  elif item.tag=="programme":
+   cid=espn_dest.get(item.get("channel"))
+   if cid:
+    p=copy.deepcopy(item);p.set("channel",cid)
+    test_tv.append(p);espn_counts[cid]+=1
+   item.clear()
+ for slot,cid in espn_slots.items():
+  if slot>=501 or (slot<=500 and not espn_counts[cid]):
+   p=ET.SubElement(test_tv,"programme",start=start,stop=end,channel=cid)
+   ET.SubElement(p,"title",lang="en").text="No Programming"
+   ET.SubElement(p,"desc",lang="en").text="No Programming"
+ print("ESPN+ test",len(espn_slots),"Xtream slots",len(espn_found),"EPG2 sources",sum(espn_counts.values()),"programmes",flush=True)
+
  ncaab_slots={}
  for row in rows:
   group=val(row,"Group").upper()
