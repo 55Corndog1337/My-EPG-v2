@@ -427,6 +427,63 @@ def generate():
    counts["fallback_channels"]+=1
    counts["unmatched_by_category"][group]=counts["unmatched_by_category"].get(group,0)+1
   counts["channels"]+=1
+ # Publish the verified ESPN+ 51-500 source mapping in the MAIN V4 guide.
+ # ESPN+ 1-50 and every non-ESPN channel remain unchanged.
+ espn_publish={}
+ espn_old_ids={}
+ for row in rows:
+  group=val(row,"Group").upper()
+  raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
+  m=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
+  provider=re.fullmatch(r"ESPN(?:\.PLUS|Plus)\.(\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
+  slot=int(m.group(1)) if m else (int(provider.group(1)) if provider else 0)
+  if not (51<=slot<=500 and ("ESPN PLUS" in group or provider)):continue
+  old="v4."+val(row,"StreamID")
+  dest=f"ESPN.PLUS.{slot}"
+  src=f"dummy-{3345443+slot}"
+  if dest in espn_publish and espn_publish[dest]!=src:
+   raise RuntimeError(f"Conflicting ESPN+ mapping for {dest}")
+  if old in espn_old_ids and espn_old_ids[old]!=dest:
+   raise RuntimeError(f"ESPN+ stream assigned to multiple slots: {old}")
+  espn_publish[dest]=src
+  espn_old_ids[old]=dest
+ if len(set(espn_publish.values()))!=len(espn_publish):
+  raise RuntimeError("ESPN+ 51-500 source collision")
+ if espn_publish:
+  epg2_publish=request(SOURCES["epg2"])
+  if epg2_publish[:2]==b"\x1f\x8b":epg2_publish=gzip.decompress(epg2_publish)
+  if not epg2_publish.lstrip().startswith((b"<?xml",b"<tv",b"<!DOCTYPE")):
+   raise RuntimeError("EPG2 is not valid XML")
+  source_to_dest={src:dest for dest,src in espn_publish.items()}
+  copied=defaultdict(int)
+  staged=[]
+  for _,item in ET.iterparse(io.BytesIO(epg2_publish),events=("end",)):
+   if item.tag=="programme":
+    dest=source_to_dest.get(item.get("channel"))
+    if dest:
+     p=copy.deepcopy(item)
+     p.set("channel",dest)
+     staged.append(p)
+     copied[dest]+=1
+    item.clear()
+   elif item.tag=="channel":item.clear()
+  for ch in tv.findall("channel"):
+   old=ch.get("id")
+   if old in espn_old_ids:ch.set("id",espn_old_ids[old])
+  old_set=set(espn_old_ids)
+  dest_set=set(espn_publish)
+  for p in list(tv.findall("programme")):
+   if p.get("channel") in old_set or p.get("channel") in dest_set:tv.remove(p)
+  for p in staged:tv.append(p)
+  for dest in espn_publish:
+   if copied[dest]==0:
+    p=ET.SubElement(tv,"programme",start=start,stop=end,channel=dest)
+    ET.SubElement(p,"title",lang="en").text="No Scheduled Event"
+    ET.SubElement(p,"desc",lang="en").text="No verified EPG2 programme for this ESPN+ slot"
+  ids=[ch.get("id") for ch in tv.findall("channel")]
+  if len(ids)!=len(set(ids)):raise RuntimeError("Duplicate channel IDs after ESPN+ 51-500 publication")
+  counts["espn_51_500"]={"mapped_slots":len(espn_publish),"source_programmes":len(staged),"slots_with_programmes":sum(bool(copied[x]) for x in espn_publish)}
+  print("Published ESPN+ 51-500 direct EPG2 mapping",counts["espn_51_500"],flush=True)
  OUT.mkdir(parents=True,exist_ok=True)
  with gzip.open(OUT/"epg.xml.gz","wb",compresslevel=6) as f:
   f.write(ET.tostring(tv,encoding="utf-8",xml_declaration=True))
