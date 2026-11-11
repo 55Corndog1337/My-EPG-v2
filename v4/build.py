@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# V4 scheduled publication refresh trigger; generator behavior unchanged.
 """V4-only complete-inventory XMLTV. Never changes V2 files."""
 import csv, gzip, io, json, os, pathlib, re, urllib.request, zipfile, copy
 import xml.etree.ElementTree as ET
