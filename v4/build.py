@@ -493,7 +493,7 @@ def generate():
   cid="v4."+val(row,"StreamID")
   if slot in espn_slots and espn_slots[slot]!=cid:
    raise RuntimeError(f"Duplicate ESPN+ slot {slot}")
-  new_cid=f"ESPNPlus.{slot}" if slot<=50 else f"ESPN.Plus.{slot}"
+  new_cid=f"ESPNPlus.{slot}" if slot<=50 else f"ESPN.PLUS.{slot}"
   espn_slots[slot]=new_cid
   espn_old_to_new[cid]=new_cid
   # Keep the exact original Xtream channel name as the guide display name.
@@ -509,7 +509,7 @@ def generate():
    espn_dest[source_id]=new_cid
  # Fail fast if an ESPN+ source points at the wrong destination.
  for check_slot,check_source in ((1,"dummy-3345444"),(50,"dummy-3345493"),(51,"dummy-3345494"),(430,"dummy-3345873"),(500,"dummy-3345943")):
-  if check_slot in espn_slots and espn_dest.get(check_source)!=(f"ESPNPlus.{check_slot}" if check_slot<=50 else f"ESPN.Plus.{check_slot}"):
+  if check_slot in espn_slots and espn_dest.get(check_source)!=(f"ESPNPlus.{check_slot}" if check_slot<=50 else f"ESPN.PLUS.{check_slot}"):
    raise RuntimeError(f"ESPN+ mapping error: {check_source} does not match slot {check_slot}")
  print("ESPN+ EPG2 mapping verified",len(espn_dest),"unique sources",flush=True)
  # Rename ESPN+ channel IDs in this test guide only, as with NFL/NCAAB.
