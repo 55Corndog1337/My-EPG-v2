@@ -1,7 +1,7 @@
 {
   "inventory_source": "/home/runner/work/My-EPG-v2/My-EPG-v2/v4/inventory.csv",
   "channels": 8147,
-  "programmes": 546978,
+  "programmes": 546599,
   "fallback_channels": 1840,
   "mapped_channels": 6307,
   "categories": {
