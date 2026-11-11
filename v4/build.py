@@ -227,7 +227,7 @@ def load_epgs(rows,overrides):
   # Resolve their EPG 2 dummy source dynamically against the actual catalog,
   # using the original Xtream channel number and preserving its StreamID.
   if not chosen and "NCAAB" in group:
-   slot_match=re.search(r"\\bNCAAB(?:\\s+GAME)?\\s*0*(\\d{1,2})\\b",raw,re.I)
+   slot_match=re.search(r"\bNCAAB(?:\s+GAME)?\s*0*(\d{1,2})\b",raw,re.I)
    if slot_match and 26<=int(slot_match.group(1))<=35:
     slot_number=int(slot_match.group(1))
     candidate=f"dummy-{5506284+slot_number}"
