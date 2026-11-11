@@ -433,45 +433,6 @@ def generate():
  # Direct EPG2 NCAAB test guide: one distinct channel ID per slot 01-38.
  # The published main V4 guide and provider inventory are unchanged.
  test_tv=copy.deepcopy(tv)
- # Match NFL/NCAAB pattern: keep the Xtream stream-based XMLTV channel IDs,
- # then copy actual EPG2 programme elements to those IDs.
- espn_dest={}
- espn_slots={}
- for row in rows:
-  group=val(row,"Group").upper()
-  raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
-  m=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
-  provider=re.fullmatch(r"ESPN(?:\.PLUS|Plus)\.(\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
-  slot=int(m.group(1)) if m else (int(provider.group(1)) if provider else 0)
-  if not (1<=slot<=600 and ("ESPN PLUS" in group or provider)):continue
-  cid="v4."+val(row,"StreamID")
-  if slot in espn_slots and espn_slots[slot]!=cid:
-   raise RuntimeError(f"Duplicate ESPN+ slot {slot}")
-  espn_slots[slot]=cid
-  if slot<=500:espn_dest[f"dummy-{3345443+slot}"]=cid
- # Replace only ESPN+ programmes in the test guide.
- espn_ids=set(espn_slots.values())
- for p in list(test_tv.findall("programme")):
-  if p.get("channel") in espn_ids:test_tv.remove(p)
- espn_counts=defaultdict(int)
- espn_found=set()
- for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
-  if item.tag=="channel":
-   if item.get("id") in espn_dest:espn_found.add(item.get("id"))
-   item.clear()
-  elif item.tag=="programme":
-   cid=espn_dest.get(item.get("channel"))
-   if cid:
-    p=copy.deepcopy(item);p.set("channel",cid)
-    test_tv.append(p);espn_counts[cid]+=1
-   item.clear()
- for slot,cid in espn_slots.items():
-  if slot>=501 or (slot<=500 and not espn_counts[cid]):
-   p=ET.SubElement(test_tv,"programme",start=start,stop=end,channel=cid)
-   ET.SubElement(p,"title",lang="en").text="No Programming"
-   ET.SubElement(p,"desc",lang="en").text="No Programming"
- print("ESPN+ test",len(espn_slots),"Xtream slots",len(espn_found),"EPG2 sources",sum(espn_counts.values()),"programmes",flush=True)
-
  ncaab_slots={}
  for row in rows:
   group=val(row,"Group").upper()
@@ -516,6 +477,45 @@ def generate():
  if epg2_data[:2]==b"\x1f\x8b":epg2_data=gzip.decompress(epg2_data)
  if not epg2_data.lstrip().startswith((b"<?xml",b"<tv",b"<!DOCTYPE")):
   raise RuntimeError("EPG2 download is not XML after decompression")
+ # Match NFL/NCAAB pattern: keep the Xtream stream-based XMLTV channel IDs,
+ # then copy actual EPG2 programme elements to those IDs.
+ espn_dest={}
+ espn_slots={}
+ for row in rows:
+  group=val(row,"Group").upper()
+  raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
+  m=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
+  provider=re.fullmatch(r"ESPN(?:\.PLUS|Plus)\.(\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
+  slot=int(m.group(1)) if m else (int(provider.group(1)) if provider else 0)
+  if not (1<=slot<=600 and ("ESPN PLUS" in group or provider)):continue
+  cid="v4."+val(row,"StreamID")
+  if slot in espn_slots and espn_slots[slot]!=cid:
+   raise RuntimeError(f"Duplicate ESPN+ slot {slot}")
+  espn_slots[slot]=cid
+  if slot<=500:espn_dest[f"dummy-{3345443+slot}"]=cid
+ # Replace only ESPN+ programmes in the test guide.
+ espn_ids=set(espn_slots.values())
+ for p in list(test_tv.findall("programme")):
+  if p.get("channel") in espn_ids:test_tv.remove(p)
+ espn_counts=defaultdict(int)
+ espn_found=set()
+ for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
+  if item.tag=="channel":
+   if item.get("id") in espn_dest:espn_found.add(item.get("id"))
+   item.clear()
+  elif item.tag=="programme":
+   cid=espn_dest.get(item.get("channel"))
+   if cid:
+    p=copy.deepcopy(item);p.set("channel",cid)
+    test_tv.append(p);espn_counts[cid]+=1
+   item.clear()
+ for slot,cid in espn_slots.items():
+  if slot>=501 or (slot<=500 and not espn_counts[cid]):
+   p=ET.SubElement(test_tv,"programme",start=start,stop=end,channel=cid)
+   ET.SubElement(p,"title",lang="en").text="No Programming"
+   ET.SubElement(p,"desc",lang="en").text="No Programming"
+ print("ESPN+ test",len(espn_slots),"Xtream slots",len(espn_found),"EPG2 sources",sum(espn_counts.values()),"programmes",flush=True)
+
  source_to_slot={f"dummy-{5506284+slot}":f"NCAAB.{slot:02d}" for slot in range(1,39)}
  imported=defaultdict(int)
  for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
