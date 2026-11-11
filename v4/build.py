@@ -463,10 +463,17 @@ def generate():
     if sid and provider:ncaab_candidates["v4."+sid]=provider
  from collections import Counter
  counts_by_provider=Counter(ncaab_candidates.values())
- # Keep the first mapped channel for duplicate IDs only if it is the canonical
- # numbered slot; otherwise preserve both original V4 identities for safety.
+ # A duplicated provider EPGID cannot uniquely match two streams.
+ # The channel numbered 08 keeps NCAAB.08; Game 07 uses NCAAB.07
+ # as an explicit test-only corrected ID, never a silent provider-ID edit.
  remap={old:new for old,new in ncaab_candidates.items()
         if counts_by_provider[new]==1 and new not in output_ids}
+ if ncaab_candidates.get("v4.79596")=="NCAAB.08" and ncaab_candidates.get("v4.79597")=="NCAAB.08":
+  remap["v4.79596"]="NCAAB.07"
+  remap["v4.79597"]="NCAAB.08"
+ # Make sure no two channels receive the same test ID.
+ if len(remap.values())!=len(set(remap.values())):
+  raise RuntimeError("Duplicate target NCAAB test IDs")
  test_tv=copy.deepcopy(tv)
  for ch in test_tv.findall("channel"):
   old=ch.get("id")
@@ -474,6 +481,34 @@ def generate():
  for programme in test_tv.findall("programme"):
   old=programme.get("channel")
   if old in remap:programme.set("channel",remap[old])
+ # EPG2 dummy channels repeat an event title in two-hour placeholder
+ # blocks. On the TEST feed only, use the date/time embedded in a
+ # recognizable event title as a single four-hour EST game block.
+ # Do not infer dates from blank dummy titles or alter the main V4 feed.
+ eastern=timezone(timedelta(hours=-5))
+ ncaab_test_ids=set(remap.values())
+ event_pattern=re.compile(r"@\s*(?:Nov(?:ember)?)\s+(\d{1,2})\s+(\d{1,2}):(\d{2})\s*(AM|PM)\b",re.I)
+ by_channel=defaultdict(list)
+ for programme in list(test_tv.findall("programme")):
+  if programme.get("channel") in ncaab_test_ids:
+   by_channel[programme.get("channel")].append(programme)
+ for cid,entries in by_channel.items():
+  titles=[(p.findtext("title") or "").strip() for p in entries]
+  event_title=next((t for t in titles if event_pattern.search(t) and
+                    not t.startswith(":")),None)
+  if not event_title:continue
+  m=event_pattern.search(event_title)
+  day,hour,minute,ampm=m.groups()
+  hour=int(hour)%12+(12 if ampm.upper()=="PM" else 0)
+  try:
+   start_et=datetime(now.astimezone(eastern).year,11,int(day),hour,int(minute),tzinfo=eastern)
+   event_start=start_et.astimezone(timezone.utc)
+  except ValueError:continue
+  # Only use the source title if the event falls near the generated guide.
+  if not now-timedelta(days=2)<=event_start<=now+timedelta(days=7):continue
+  for p in entries:test_tv.remove(p)
+  add_programme(test_tv,cid,event_start,event_start+timedelta(hours=4),
+                event_title,"Start time interpreted as EST from EPG2 event title")
  test_ids=[ch.get("id") for ch in test_tv.findall("channel")]
  if len(test_ids)!=len(set(test_ids)):raise RuntimeError("Duplicate IDs in NCAAB test guide")
  with gzip.open(OUT/"ncaab-original-id-test.xml.gz","wb",compresslevel=6) as f:
