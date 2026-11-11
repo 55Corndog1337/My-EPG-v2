@@ -391,16 +391,6 @@ def generate():
   selected=decisions.get(sid)
   source,epgid=(selected[0],selected[1]) if selected else ("","")
   cid="v4."+sid
-  # Stable ESPN+ XMLTV IDs match M3U4U tvg-id, independent of changing events.
-  if "ESPN PLUS" in group.upper():
-   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
-   slot=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
-   provider=re.fullmatch(r"ESPNPlus\.(\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
-   number=int(slot.group(1)) if slot else (int(provider.group(1)) if provider else 0)
-   if slot and provider and int(slot.group(1))!=int(provider.group(1)):
-    raise RuntimeError(f"ESPN+ slot/provider mismatch for stream {sid}")
-   if 1<=number<=600:
-    cid=f"ESPNPlus.{number}"
   if cid in output_ids:
    raise RuntimeError(f"Duplicate XMLTV channel ID {cid}; refusing ambiguous mapping")
   output_ids.add(cid)
