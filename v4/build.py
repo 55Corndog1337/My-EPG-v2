@@ -440,77 +440,64 @@ def generate():
  OUT.mkdir(parents=True,exist_ok=True)
  with gzip.open(OUT/"epg.xml.gz","wb",compresslevel=6) as f:
   f.write(ET.tostring(tv,encoding="utf-8",xml_declaration=True))
- # Additional NCAAB test guide: preserve published V4 IDs and all V2 files.
- # Only unique original provider IDs for NCAAB slots 01-38 are substituted.
- # Duplicate original IDs retain their v4.StreamID to avoid XMLTV collisions.
- ncaab_candidates={}
+ # Direct EPG2 NCAAB test guide: one distinct channel ID per slot 01-38.
+ # The published main V4 guide and provider inventory are unchanged.
+ test_tv=copy.deepcopy(tv)
+ ncaab_slots={}
  for row in rows:
   group=val(row,"Group").upper()
   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
-  match=re.search(r"NCAAB(?:\s+GAME)?\s*0*(\d{1,2})\b",raw,re.I)
-  if not match or not 1<=int(match.group(1))<=38 or "NCAAB" not in group:continue
-  sid=val(row,"StreamID")
-  provider=val(row,"EPGID","ProviderID")
-  if sid and provider:ncaab_candidates["v4."+sid]=provider
- # The existing NCAAB mapping JSON is authoritative for original provider IDs.
+  match=re.search(r"\\bNCAAB(?:\\s+GAME)?\\s*0*(\\d{1,2})\\b",raw,re.I)
+  if not match or "NCAAB" not in group:continue
+  slot=int(match.group(1))
+  if 1<=slot<=38:
+   old="v4."+val(row,"StreamID")
+   if slot in ncaab_slots and ncaab_slots[slot]!=old:
+    raise RuntimeError(f"Multiple Xtream streams for NCAAB slot {slot}")
+   ncaab_slots[slot]=old
+ # The explicit mapping file covers slots with provider stream IDs.
  mapping_file=MAPPINGS/"ncaa-basketball.json"
  if mapping_file.exists():
   for item in json.loads(mapping_file.read_text(encoding="utf-8")).get("mappings",[]):
-   m=re.search(r"NCAAB Game (\d+)",str(item.get("channel","")),re.I)
-   if m and 1<=int(m.group(1))<=38:
-    sid=str(item.get("xtream_stream_id","")).strip()
-    provider=str(item.get("original_xtream_epgid","")).strip()
-    if sid and provider:ncaab_candidates["v4."+sid]=provider
- from collections import Counter
- counts_by_provider=Counter(ncaab_candidates.values())
- # A duplicated provider EPGID cannot uniquely match two streams.
- # The channel numbered 08 keeps NCAAB.08; Game 07 uses NCAAB.07
- # as an explicit test-only corrected ID, never a silent provider-ID edit.
- remap={old:new for old,new in ncaab_candidates.items()
-        if counts_by_provider[new]==1 and new not in output_ids}
- if ncaab_candidates.get("v4.79596")=="NCAAB.08" and ncaab_candidates.get("v4.79597")=="NCAAB.08":
-  remap["v4.79596"]="NCAAB.07"
-  remap["v4.79597"]="NCAAB.08"
- # Make sure no two channels receive the same test ID.
- if len(remap.values())!=len(set(remap.values())):
-  raise RuntimeError("Duplicate target NCAAB test IDs")
- test_tv=copy.deepcopy(tv)
+   match=re.search(r"NCAAB Game (\\d+)",str(item.get("channel","")),re.I)
+   if match and 1<=int(match.group(1))<=38:
+    slot=int(match.group(1))
+    old="v4."+str(item.get("xtream_stream_id","")).strip()
+    if old!="v4." and old in output_ids:ncaab_slots[slot]=old
+ remap={old:f"NCAAB.{slot:02d}" for slot,old in ncaab_slots.items()}
+ if len(remap)!=len(ncaab_slots):raise RuntimeError("NCAAB slot stream collision")
  for ch in test_tv.findall("channel"):
   old=ch.get("id")
   if old in remap:ch.set("id",remap[old])
- for programme in test_tv.findall("programme"):
-  old=programme.get("channel")
-  if old in remap:programme.set("channel",remap[old])
- # EPG2 dummy channels repeat an event title in two-hour placeholder
- # blocks. On the TEST feed only, use the date/time embedded in a
- # recognizable event title as a single four-hour EST game block.
- # Do not infer dates from blank dummy titles or alter the main V4 feed.
- eastern=timezone(timedelta(hours=-5))
- ncaab_test_ids=set(remap.values())
- event_pattern=re.compile(r"@\s*(?:Nov(?:ember)?)\s+(\d{1,2})\s+(\d{1,2}):(\d{2})\s*(AM|PM)\b",re.I)
- by_channel=defaultdict(list)
- for programme in list(test_tv.findall("programme")):
-  if programme.get("channel") in ncaab_test_ids:
-   by_channel[programme.get("channel")].append(programme)
- for cid,entries in by_channel.items():
-  titles=[(p.findtext("title") or "").strip() for p in entries]
-  event_title=next((t for t in titles if event_pattern.search(t) and
-                    not t.startswith(":")),None)
-  if not event_title:continue
-  m=event_pattern.search(event_title)
-  day,hour,minute,ampm=m.groups()
-  hour=int(hour)%12+(12 if ampm.upper()=="PM" else 0)
-  try:
-   start_et=datetime(now.astimezone(eastern).year,11,int(day),hour,int(minute),tzinfo=eastern)
-   event_start=start_et.astimezone(timezone.utc)
-  except ValueError:continue
-  # Only use the source title if the event falls near the generated guide.
-  if not now-timedelta(days=2)<=event_start<=now+timedelta(days=7):continue
-  for p in entries:test_tv.remove(p)
-  add_programme(test_tv,cid,event_start,event_start+timedelta(hours=4),
-                event_title,"Start time interpreted as EST from EPG2 event title")
+ for p in test_tv.findall("programme"):
+  old=p.get("channel")
+  if old in remap:test_tv.remove(p)
+  elif old in remap.values():test_tv.remove(p)
+ # Slots missing from Xtream still receive guide-only channel definitions;
+ # these do NOT invent Xtream streams.
+ existing={ch.get("id") for ch in test_tv.findall("channel")}
+ for slot in range(1,39):
+  cid=f"NCAAB.{slot:02d}"
+  if cid not in existing:
+   ch=ET.SubElement(test_tv,"channel",id=cid)
+   ET.SubElement(ch,"display-name").text=f"NCAAB Game {slot:02d}"
+ # Transfer actual EPG2 programme start/stop/title/description directly,
+ # without fabricated four-hour blocks or inferred EST times.
+ epg2_data=request(SOURCES["epg2"])
+ if epg2_data[:2]==b"\\x1f\\x8b":epg2_data=gzip.decompress(epg2_data)
+ source_to_slot={f"dummy-{5506284+slot}":f"NCAAB.{slot:02d}" for slot in range(1,39)}
+ imported=defaultdict(int)
+ for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
+  if item.tag=="programme":
+   cid=source_to_slot.get(item.get("channel"))
+   if cid:
+    p=copy.deepcopy(item);p.set("channel",cid)
+    test_tv.append(p);imported[cid]+=1
+   item.clear()
+  elif item.tag=="channel":item.clear()
  test_ids=[ch.get("id") for ch in test_tv.findall("channel")]
  if len(test_ids)!=len(set(test_ids)):raise RuntimeError("Duplicate IDs in NCAAB test guide")
+ print("NCAAB EPG2 direct 01-38",len(ncaab_slots),"inventory slots",sum(imported.values()),"source programmes",flush=True)
  with gzip.open(OUT/"ncaab-original-id-test.xml.gz","wb",compresslevel=6) as f:
   f.write(ET.tostring(test_tv,encoding="utf-8",xml_declaration=True))
  print("NCAAB original-ID test",len(remap),"remapped",len(ncaab_candidates)-len(remap),"kept unchanged",flush=True)
