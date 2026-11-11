@@ -484,7 +484,9 @@ def generate():
  # Transfer actual EPG2 programme start/stop/title/description directly,
  # without fabricated four-hour blocks or inferred EST times.
  epg2_data=request(SOURCES["epg2"])
- if epg2_data[:2]==b"\\x1f\\x8b":epg2_data=gzip.decompress(epg2_data)
+ if epg2_data[:2]==b"\x1f\x8b":epg2_data=gzip.decompress(epg2_data)
+ if not epg2_data.lstrip().startswith((b"<?xml",b"<tv",b"<!DOCTYPE")):
+  raise RuntimeError("EPG2 download is not XML after decompression")
  source_to_slot={f"dummy-{5506284+slot}":f"NCAAB.{slot:02d}" for slot in range(1,39)}
  imported=defaultdict(int)
  for _,item in ET.iterparse(io.BytesIO(epg2_data),events=("end",)):
