@@ -52,27 +52,36 @@ jobs:
         run: python3 v4/build.py
       - name: Publish V4 output only
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v4-output/epg.xml.gz v4-output/coverage.json v4-output/epg-source-catalog.csv v4-output/ncaab-original-id-test.xml.gz
-          if ! git diff --cached --quiet; then
-            git commit -m "Update independent V4 XMLTV guide"
-            # Other workflows may update main during this build.
-            # Retry safely without force-pushing or modifying V2.
-            for attempt in 1 2 3 4 5; do
-              git fetch origin main
-              if ! git rebase origin/main; then
-                git rebase --abort || true
-                echo "Rebase conflict: refusing to overwrite other commits."
-                exit 1
-              fi
-              if git push origin HEAD:main; then
-                echo "Published V4 output successfully."
-                exit 0
-              fi
-              echo "Push attempt $attempt failed; checking for concurrent updates."
-              sleep 5
+          # Save only generated V4 outputs outside the checkout before syncing.
+          # Never force-push or overwrite V2 or unrelated repository files.
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "$tmpdir"' EXIT
+          outputs=(epg.xml.gz coverage.json epg-source-catalog.csv ncaab-original-id-test.xml.gz)
+          for file in "${outputs[@]}"; do
+            cp "v4-output/$file" "$tmpdir/$file"
+          done
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            # This is an ephemeral CI checkout; generated files are saved above.
+            git reset --hard origin/main
+            for file in "${outputs[@]}"; do
+              cp "$tmpdir/$file" "v4-output/$file"
             done
-            echo "V4 publish failed after retries. Check branch rules and token permissions."
-            exit 1
-          fi
+            git add -- "${outputs[@]/#/v4-output/}"
+            if git diff --cached --quiet; then
+              echo "V4 outputs already current."
+              exit 0
+            fi
+            git commit -m "Update independent V4 XMLTV guide"
+            if git push origin HEAD:main; then
+              echo "Published V4 outputs successfully."
+              exit 0
+            fi
+            echo "Concurrent update; retrying on newest main (attempt $attempt)."
+            sleep 5
+          done
+          echo "V4 publish failed after retries."
+          exit 1
