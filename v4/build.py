@@ -481,6 +481,7 @@ def generate():
  # then copy actual EPG2 programme elements to those IDs.
  espn_dest={}
  espn_slots={}
+ espn_names={}
  for row in rows:
   group=val(row,"Group").upper()
   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
@@ -492,7 +493,16 @@ def generate():
   if slot in espn_slots and espn_slots[slot]!=cid:
    raise RuntimeError(f"Duplicate ESPN+ slot {slot}")
   espn_slots[slot]=cid
+  # Keep the exact original Xtream channel name as the guide display name.
+  espn_names[cid]=val(row,"OriginalChannelName","ChannelName","NewChannelName") or f"ESPN+ {slot:03d}"
   if slot<=500:espn_dest[f"dummy-{3345443+slot}"]=cid
+ # Align test-guide channel display names with the Xtream inventory, not
+ # the dated event labels from EPG2 or generic slot placeholders.
+ for ch in test_tv.findall("channel"):
+  cid=ch.get("id")
+  if cid in espn_names:
+   for label in list(ch.findall("display-name")):ch.remove(label)
+   ET.SubElement(ch,"display-name").text=espn_names[cid]
  # Replace only ESPN+ programmes in the test guide.
  espn_ids=set(espn_slots.values())
  for p in list(test_tv.findall("programme")):
