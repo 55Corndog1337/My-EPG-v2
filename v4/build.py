@@ -531,6 +531,14 @@ def generate():
   "nflnetwork.us":["NFL Network","NFLNetwork.us","nflnetwork.us"],
  }.items():
   nfl_targets[cid]=nfl_epg2_id(cid,aliases)
+ # NFL Replay channels have blank original Xtream EPGIDs.
+ # Retain their existing V4 stream-based IDs.
+ replay_sources={"v4.1329644":"dummy-25627"}
+ replay_sources.update({f"v4.{1329644+slot}":f"dummy-{25627+slot}" for slot in range(1,15)})
+ for cid,source_id in replay_sources.items():
+  if source_id not in nfl_source_channels:
+   raise RuntimeError(f"Missing required EPG2 NFL replay source {source_id} for {cid}")
+  nfl_targets[cid]=source_id
  # Preserve the known Xtream StreamIDs; only XMLTV identities change.
  nfl_stream_ids={f"NFL.GAME.{slot:02d}":str(79449+slot) for slot in range(1,17)}
  nfl_stream_ids.update({"nflredzone.us":"71984","nflnetwork.us":"71983"})
@@ -540,7 +548,7 @@ def generate():
   old=ch.get("id")
   if old in nfl_old_to_new:ch.set("id",nfl_old_to_new[old])
  for p in list(test_tv.findall("programme")):
-  if p.get("channel") in nfl_old_to_new:test_tv.remove(p)
+  if p.get("channel") in nfl_old_to_new or p.get("channel") in replay_sources:test_tv.remove(p)
  for cid in nfl_targets:
   if cid not in {ch.get("id") for ch in test_tv.findall("channel")}:
    ch=ET.SubElement(test_tv,"channel",id=cid)
