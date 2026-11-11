@@ -423,6 +423,45 @@ def generate():
  OUT.mkdir(parents=True,exist_ok=True)
  with gzip.open(OUT/"epg.xml.gz","wb",compresslevel=6) as f:
   f.write(ET.tostring(tv,encoding="utf-8",xml_declaration=True))
+ # Additional NCAAB test guide: preserve published V4 IDs and all V2 files.
+ # Only unique original provider IDs for NCAAB slots 01-38 are substituted.
+ # Duplicate original IDs retain their v4.StreamID to avoid XMLTV collisions.
+ ncaab_candidates={}
+ for row in rows:
+  group=val(row,"Group").upper()
+  raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
+  match=re.search(r"NCAAB(?:\\s+GAME)?\\s*0*(\\d{1,2})\\b",raw,re.I)
+  if not match or not 1<=int(match.group(1))<=38 or "NCAAB" not in group:continue
+  sid=val(row,"StreamID")
+  provider=val(row,"EPGID","ProviderID")
+  if sid and provider:ncaab_candidates["v4."+sid]=provider
+ # The existing NCAAB mapping JSON is authoritative for original provider IDs.
+ mapping_file=MAPPINGS/"ncaa-basketball.json"
+ if mapping_file.exists():
+  for item in json.loads(mapping_file.read_text(encoding="utf-8")).get("mappings",[]):
+   m=re.search(r"NCAAB Game (\\d+)",str(item.get("channel","")),re.I)
+   if m and 1<=int(m.group(1))<=38:
+    sid=str(item.get("xtream_stream_id","")).strip()
+    provider=str(item.get("original_xtream_epgid","")).strip()
+    if sid and provider:ncaab_candidates["v4."+sid]=provider
+ from collections import Counter
+ counts_by_provider=Counter(ncaab_candidates.values())
+ # Keep the first mapped channel for duplicate IDs only if it is the canonical
+ # numbered slot; otherwise preserve both original V4 identities for safety.
+ remap={old:new for old,new in ncaab_candidates.items()
+        if counts_by_provider[new]==1 and new not in output_ids}
+ test_tv=copy.deepcopy(tv)
+ for ch in test_tv.findall("channel"):
+  old=ch.get("id")
+  if old in remap:ch.set("id",remap[old])
+ for programme in test_tv.findall("programme"):
+  old=programme.get("channel")
+  if old in remap:programme.set("channel",remap[old])
+ test_ids=[ch.get("id") for ch in test_tv.findall("channel")]
+ if len(test_ids)!=len(set(test_ids)):raise RuntimeError("Duplicate IDs in NCAAB test guide")
+ with gzip.open(OUT/"ncaab-original-id-test.xml.gz","wb",compresslevel=6) as f:
+  f.write(ET.tostring(test_tv,encoding="utf-8",xml_declaration=True))
+ print("NCAAB original-ID test",len(remap),"remapped",len(ncaab_candidates)-len(remap),"kept unchanged",flush=True)
  (OUT/"coverage.json").write_text(json.dumps(counts,indent=2),encoding="utf-8")
  print("V4 generated",json.dumps({k:v for k,v in counts.items() if k!="categories"}),flush=True)
 if __name__=="__main__":generate()
