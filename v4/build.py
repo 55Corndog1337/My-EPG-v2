@@ -440,8 +440,8 @@ def generate():
  for row in rows:
   group=val(row,"Group").upper()
   raw=val(row,"OriginalChannelName","ChannelName","NewChannelName")
-  m=re.search(r"ESPN\\s*(?:\\+|PLUS)\\s*0*(\\d{1,3})\\b",raw,re.I)
-  provider=re.fullmatch(r"ESPN(?:\\.PLUS|Plus)\\.(\\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
+  m=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",raw,re.I)
+  provider=re.fullmatch(r"ESPN(?:\.PLUS|Plus)\.(\d{1,3})",val(row,"EPGID","ProviderID"),re.I)
   slot=int(m.group(1)) if m else (int(provider.group(1)) if provider else 0)
   if not (1<=slot<=600 and ("ESPN PLUS" in group or provider)):continue
   cid="v4."+val(row,"StreamID")
