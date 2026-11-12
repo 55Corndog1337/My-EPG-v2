@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Merge full EPG 2, UK EPG 6, sports EPG 37, and AHL."""
+# Manual refresh requested; this commit triggers the V4 push workflow.
 import gzip
 import csv
 from datetime import datetime, timedelta, timezone
