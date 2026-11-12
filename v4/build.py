@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Merge full EPG 2, UK EPG 6, sports EPG 37, and AHL."""
+"""Merge EPG 2 and 37 in full, UK EPG 6, and AHL."""
 # Manual refresh requested; this commit triggers the V4 push workflow.
 import gzip
 import csv
@@ -26,15 +26,12 @@ SPORTS = re.compile(r"\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\b", re.I)
 TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
 def select_channel(source, channel):
-    if source == "epg2":
+    # Preserve all EPG 2 and EPG 37 channels, including regular television.
+    # EPG 6 contributes UK channels only.
+    if source in ("epg2", "epg37"):
         return True
-    names = display_names(channel)
     if source == "epg6":
-        return any(UK.match(name) for name in names)
-    if source == "epg37":
-        # Select team feeds by league, but exclude numbered event/game feeds.
-        return any(SPORTS.search(name) and not re.search(r"\b(?:GAME|EVENT|PPV|ARENA)\s*#?\d+\b", name, re.I)
-                   for name in names)
+        return any(UK.match(name) for name in display_names(channel))
     return False
 
 def download(url):
