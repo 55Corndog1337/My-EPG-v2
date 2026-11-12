@@ -21,9 +21,9 @@ SOURCES = {
     "epg37": "https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg37.xml.gz",
 }
 # EPG 2 is the full base; EPG 6 adds UK, EPG 37 adds sports teams.
-UK = re.compile(r"^\\s*(?:UK|UNITED KINGDOM|GB|GBR)\\s*(?:[-|:–—]\\s*|\\b)", re.I)
-SPORTS = re.compile(r"\\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\\b", re.I)
-TEAM_HINT = re.compile(r"\\b(?:team|feed|home|away)\\b", re.I)
+UK = re.compile(r"^\s*(?:UK|UNITED KINGDOM|GB|GBR)\s*(?:[-|:–—]\s*|\b)", re.I)
+SPORTS = re.compile(r"\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\b", re.I)
+TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
 def select_channel(source, channel):
     if source == "epg2":
@@ -33,7 +33,7 @@ def select_channel(source, channel):
         return any(UK.match(name) for name in names)
     if source == "epg37":
         # Select team feeds by league, but exclude numbered event/game feeds.
-        return any(SPORTS.search(name) and not re.search(r"\\b(?:GAME|EVENT|PPV|ARENA)\\s*#?\\d+\\b", name, re.I)
+        return any(SPORTS.search(name) and not re.search(r"\b(?:GAME|EVENT|PPV|ARENA)\s*#?\d+\b", name, re.I)
                    for name in names)
     return False
 
