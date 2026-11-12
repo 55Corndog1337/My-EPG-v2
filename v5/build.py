@@ -40,6 +40,7 @@ def inventory():
 def normalize(s):
  s=re.sub(r"^(?:US|USA|UK|CA|VIP)\s*[-|:]\s*","",s,flags=re.I)
  s=re.sub(r"\b(?:UHD|FHD|HD|SD|4K|HEVC)\b","",s,flags=re.I)
+ s=re.sub(r"\\b(?:EASTERN|EAST|WESTERN|WEST|BACKUP|BK)\\b","",s,flags=re.I)
  return re.sub(r"[^a-z0-9]","",s.lower())
 def source_for(name,group):
  text=name+" "+group
@@ -110,6 +111,17 @@ def run():
    old=value(row,"EPGID","ProviderID")
    if old:candidates.append(old)
    candidates.extend(sorted(byname.get((src,normalize(name)),set())))
+  # Regular TV: prefer an existing source ID; otherwise require a unique name.
+  if not src:
+   old=value(row,"EPGID","ProviderID")
+   for candidate_source in ("epg37","epg2","epg6"):
+    if old and old in catalogs[candidate_source]:
+     src=candidate_source;candidates=[old];break
+   if not src:
+    for candidate_source in ("epg37","epg2","epg6"):
+     ids=byname.get((candidate_source,normalize(name)),set())
+     if len(ids)==1:
+      src=candidate_source;candidates=list(ids);break
   chosen=next((x for x in candidates if x in catalogs.get(src,{})),None)
   if chosen:
    channel=ET.SubElement(root,"channel",id="v5."+sid)
