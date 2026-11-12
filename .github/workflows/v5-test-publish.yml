@@ -1,6 +1,12 @@
 name: V5 EPG Test Publish
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/v5-test-publish.yml'
+      - 'v5/**'
+      - 'v5-input/**'
 permissions:
   contents: write
   actions: read
