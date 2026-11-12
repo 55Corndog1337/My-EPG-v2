@@ -178,6 +178,49 @@ def add_espn_programmes(merged, channels, signatures, guides):
     print("ESPN+: 600 channels; %d EPG6-only programmes" % added, flush=True)
     return added
 
+def add_ncaab_programmes(merged, channels, signatures, guides):
+    """Apply approved EPG2 NCAA basketball mappings to original Xtream EPG IDs."""
+    import json
+    path = ROOT / "v4-mappings" / "ncaa-basketball.json"
+    with path.open(encoding="utf-8") as f:
+        mappings = json.load(f)["mappings"]
+    epg2 = guides.get("epg2")
+    if epg2 is None:
+        raise RuntimeError("EPG2 unavailable for NCAAB mappings")
+    source_to_targets = defaultdict(set)
+    target_sources = defaultdict(list)
+    for item in mappings:
+        source_id = (item.get("source_channel_id") or "").strip()
+        target = (item.get("original_xtream_epgid") or "").strip()
+        if item.get("source") != "epg2" or not source_id or not target:
+            continue
+        source_to_targets[source_id].add(target)
+        target_sources[target].append(item["channel"])
+        if target not in channels:
+            channel = ET.SubElement(merged, "channel", id=target)
+            ET.SubElement(channel, "display-name").text = item["channel"]
+            channels[target] = channel
+    for target, names in target_sources.items():
+        if len(names) > 1:
+            print(f"NCAAB shared original EPG ID {target}: {', '.join(names)}; combining listings without changing IDs", flush=True)
+    added = 0
+    for programme in epg2.findall("programme"):
+        targets = source_to_targets.get(programme.get("channel"))
+        if not targets:
+            continue
+        for target in targets:
+            duplicate = ET.fromstring(ET.tostring(programme, encoding="utf-8"))
+            duplicate.set("channel", target)
+            sig = (target, duplicate.get("start"), duplicate.get("stop"),
+                   duplicate.findtext("title", default=""))
+            if sig in signatures:
+                continue
+            signatures.add(sig)
+            merged.append(duplicate)
+            added += 1
+    print(f"NCAAB: {len(mappings)} approved mappings, {len(target_sources)} unique original EPG IDs, {added} EPG2 programmes", flush=True)
+    return added
+
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
     all_channels = {}
@@ -219,6 +262,7 @@ def main():
         total += count
     print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2", flush=True)
     total += add_espn_programmes(merged, all_channels, signatures, guides)
+    total += add_ncaab_programmes(merged, all_channels, signatures, guides)
     add_inventory_channels(merged, all_channels, excluded_epg2_ids)
     total += add_ahl(merged, all_channels, signatures)
     if not all_channels or not total:
