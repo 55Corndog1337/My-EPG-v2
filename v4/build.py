@@ -131,7 +131,7 @@ def add_inventory_channels(merged, all_channels):
 
 
 def add_espn_programmes(merged, channels, signatures, guides):
-    """Use approved EPG6 source IDs and numbered EPG2 feeds for ESPN+ 1-600."""
+    """Use only approved EPG6 source IDs for ESPN+ 1-600."""
     import json
     mapping = {}
     for filename in ("espn-plus-01-25.json", "espn-plus-026-600.json"):
@@ -151,7 +151,7 @@ def add_espn_programmes(merged, channels, signatures, guides):
             ET.SubElement(channel, "display-name").text = "ESPN+ %03d" % number
             channels[target] = channel
         for source, tv in guides.items():
-            if source not in ("epg2", "epg6"):
+            if source != "epg6":
                 continue
             source_ids = set()
             if source == "epg6":
@@ -174,7 +174,7 @@ def add_espn_programmes(merged, channels, signatures, guides):
                 signatures.add(sig)
                 merged.append(duplicate)
                 added += 1
-    print("ESPN+: 600 channels; %d EPG2/EPG6 programmes" % added, flush=True)
+    print("ESPN+: 600 channels; %d EPG6-only programmes" % added, flush=True)
     return added
 
 def main():
