@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Merge EPG 2, 6 and 37 into one XMLTV file, limited to US/UK/CA/VIP."""
+"""Merge full EPG 2, UK EPG 6, sports EPG 37, and AHL."""
 import gzip
 import csv
 from datetime import datetime, timedelta, timezone
@@ -19,8 +19,22 @@ SOURCES = {
     "epg6": "https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg6.xml.gz",
     "epg37": "https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg37.xml.gz",
 }
-# Require explicit country/category prefixes; never guess from programme titles.
-GROUP = re.compile(r"^\s*(?:US|USA|UK|CA|CANADA|VIP)\s*(?:[-|:–—]\s*|\b)", re.I)
+# EPG 2 is the full base; EPG 6 adds UK, EPG 37 adds sports teams.
+UK = re.compile(r"^\\s*(?:UK|UNITED KINGDOM|GB|GBR)\\s*(?:[-|:–—]\\s*|\\b)", re.I)
+SPORTS = re.compile(r"\\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\\b", re.I)
+TEAM_HINT = re.compile(r"\\b(?:team|feed|home|away)\\b", re.I)
+SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
+def select_channel(source, channel):
+    if source == "epg2":
+        return True
+    names = display_names(channel)
+    if source == "epg6":
+        return any(UK.match(name) for name in names)
+    if source == "epg37":
+        # Select team feeds by league, but exclude numbered event/game feeds.
+        return any(SPORTS.search(name) and not re.search(r"\\b(?:GAME|EVENT|PPV|ARENA)\\s*#?\\d+\\b", name, re.I)
+                   for name in names)
+    return False
 
 def download(url):
     req = urllib.request.Request(url, headers={"User-Agent": "My-EPG-combined/1.0"})
@@ -99,7 +113,7 @@ def main():
         selected = {}
         for channel in tv.findall("channel"):
             cid = channel.get("id")
-            if not cid or not any(GROUP.match(n) for n in display_names(channel)):
+            if not cid or not select_channel(source, channel):
                 continue
             # Identical IDs are shared; keep one channel entry, combine listings.
             selected[cid] = cid
