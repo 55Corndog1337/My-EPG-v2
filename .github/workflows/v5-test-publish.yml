@@ -1,0 +1,39 @@
+name: V5 EPG Test Publish
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate isolated V5 test EPG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 v5/build.py
+      - name: Validate generated XMLTV
+        run: |
+          python3 - <<'PY'
+          import gzip,xml.etree.ElementTree as ET
+          p='v5-output/epg.xml.gz'
+          with gzip.open(p,'rb') as f: root=ET.parse(f).getroot()
+          channels=root.findall('channel')
+          programmes=root.findall('programme')
+          print('V5 test:',len(channels),'channels,',len(programmes),'programmes')
+          assert channels and programmes, 'Empty test guide'
+          PY
+      - name: Commit V5 test output only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v5-output/epg.xml.gz v5-output/mapping-report.csv
+          git diff --cached --quiet || (git commit -m 'Publish V5 test EPG' && git push)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v5-test-epg
+          path: |
+            v5-output/epg.xml.gz
+            v5-output/mapping-report.csv
