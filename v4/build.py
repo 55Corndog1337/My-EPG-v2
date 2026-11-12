@@ -137,12 +137,12 @@ def add_espn_programmes(merged, channels, signatures, guides):
     for filename in ("espn-plus-01-25.json", "espn-plus-026-600.json"):
         with (ROOT / "v4-mappings" / filename).open(encoding="utf-8") as f:
             for item in json.load(f)["mappings"]:
-                match = re.search(r"ESPN\\+\\s*0*(\\d+)", item["channel"], re.I)
+                match = re.search(r"ESPN\+\s*0*(\d+)", item["channel"], re.I)
                 if match:
                     mapping[int(match.group(1))] = item
     if len(mapping) != 600:
         raise RuntimeError("Incomplete ESPN+ mapping")
-    number_pattern = re.compile(r"ESPN\\s*(?:\\+|PLUS|\\.PLUS)\\s*[-_. #]*0*(\\d{1,3})\\b", re.I)
+    number_pattern = re.compile(r"ESPN\s*(?:\+|PLUS|\.PLUS)\s*[-_. #]*0*(\d{1,3})\b", re.I)
     added = 0
     for number, item in mapping.items():
         target = item.get("original_xtream_epgid") or "ESPNPlus." + str(number)
