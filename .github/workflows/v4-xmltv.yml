@@ -1,4 +1,5 @@
 name: Combined EPG 2 UK6 Sports37 AHL
+# Manual refresh requested November 12, 2026 at 3:48 PM Eastern.
 on:
   workflow_dispatch:
   push:
