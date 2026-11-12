@@ -1,4 +1,4 @@
-name: V4 Combined EPG 2 6 37
+name: Combined EPG 2 UK6 Sports37 AHL
 on:
   workflow_dispatch:
   push:
@@ -7,7 +7,8 @@ on:
       - 'v4/build.py'
       - '.github/workflows/v4-xmltv.yml'
   schedule:
-    - cron: '17 10 * * *'
+    # Hourly trigger; local-time gate below handles EST and EDT.
+    - cron: '0 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -18,10 +19,27 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
+      - name: Check Eastern schedule
+        id: clock
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          hour = datetime.now(ZoneInfo('America/New_York')).hour
+          allowed = os.environ['EVENT_NAME'] != 'schedule' or hour in (6, 12, 18)
+          print('run=' + str(allowed).lower())
+          print('Eastern hour:', hour, file=__import__('sys').stderr)
+          PY
       - uses: actions/checkout@v4
+        if: steps.clock.outputs.run == 'true'
       - name: Merge source guides
+        if: steps.clock.outputs.run == 'true'
         run: python3 v4/build.py
       - name: Validate XMLTV
+        if: steps.clock.outputs.run == 'true'
         run: |
           python3 - <<'PY'
           import gzip,xml.etree.ElementTree as ET
@@ -33,6 +51,7 @@ jobs:
           print('XMLTV valid')
           PY
       - name: Publish combined guide
+        if: steps.clock.outputs.run == 'true'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
