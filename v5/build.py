@@ -94,6 +94,10 @@ def run():
   group=value(row,"Group")
   if not any(k in group.upper() for k in ("UK","US","CA","VIP","CHRISTMAS")):continue
   src=source_for(name,group)
+  # ESPN+ 501-600 are outside the EPG 2 numbered series.
+  espn_number=re.search(r"ESPN\s*(?:\+|PLUS)\s*0*(\d{1,3})\b",name,re.I)
+  if espn_number and int(espn_number.group(1))>500:
+   src="external-espn-plus"
   if re.search(r"\bAHL\b",name+" "+group,re.I):src="generated-ahl"
   candidates=[]
   if src=="epg2":
