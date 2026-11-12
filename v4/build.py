@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Merge EPG 2, 6 and 37 into one XMLTV file, limited to US/UK/CA/VIP."""
 import gzip
+import csv
+from datetime import datetime, timedelta, timezone
 import io
 import os
 import re
@@ -30,6 +32,61 @@ def download(url):
 
 def display_names(channel):
     return [(n.text or "").strip() for n in channel.findall("display-name")]
+
+def add_ahl(merged, all_channels, signatures):
+    """Append the existing 2026-27 AHL team schedule; no missing Hamilton channel."""
+    path = ROOT / "v4-mappings" / "ahl-season-2026-27.csv"
+    if not path.exists():
+        raise RuntimeError("AHL schedule CSV missing")
+    by_team = {}
+    with path.open(newline="", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            cid = row.get("XMLTV_ID", "").strip()
+            team = row.get("Team", "").strip()
+            if not cid or not team or team.casefold() == "hamilton":
+                continue
+            try:
+                start = datetime.fromisoformat(row["StartUTC"]).astimezone(timezone.utc)
+                end = datetime.fromisoformat(row["EndUTC"]).astimezone(timezone.utc)
+            except (ValueError, KeyError):
+                continue
+            if end <= start:
+                continue
+            by_team.setdefault((cid, team), []).append((start, end, row))
+    now = datetime.now(timezone.utc)
+    horizon = now + timedelta(days=7)
+    fmt = lambda dt: dt.strftime("%Y%m%d%H%M%S +0000")
+    added = 0
+    for (cid, team), events in by_team.items():
+        events.sort(key=lambda e: e[0])
+        if cid not in all_channels:
+            channel = ET.SubElement(merged, "channel", id=cid)
+            ET.SubElement(channel, "display-name").text = team
+            all_channels[cid] = channel
+        current = now
+        for start, end, row in events:
+            if end <= now or start >= horizon:
+                continue
+            if start > current:
+                pre_end = min(start, horizon)
+                upcoming = row.get("Event") or f'{row.get("Away")} @ {row.get("Home")}'
+                title = "Next Game: " + upcoming + " " + start.strftime("%B %d %I:%M %p UTC")
+                p = ET.SubElement(merged, "programme", channel=cid, start=fmt(current), stop=fmt(pre_end))
+                ET.SubElement(p, "title").text = title
+                added += 1
+            game_start = max(start, now)
+            game_end = min(end, horizon)
+            if game_end > game_start:
+                p = ET.SubElement(merged, "programme", channel=cid, start=fmt(game_start), stop=fmt(game_end))
+                ET.SubElement(p, "title").text = row.get("Event") or f'{row.get("Away")} @ {row.get("Home")}'
+                added += 1
+                current = game_end
+        if current < horizon:
+            p = ET.SubElement(merged, "programme", channel=cid, start=fmt(current), stop=fmt(horizon))
+            ET.SubElement(p, "title").text = "Event concluded"
+            added += 1
+    print(f"AHL: {len(by_team)} team channels, {added} programmes", flush=True)
+    return added
 
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
@@ -63,6 +120,7 @@ def main():
             count += 1
         print(f"{source}: {len(selected)} channels, {count} programmes", flush=True)
         total += count
+    total += add_ahl(merged, all_channels, signatures)
     if not all_channels or not total:
         raise RuntimeError("No matching channels/programmes; existing guide preserved")
     OUT.parent.mkdir(parents=True, exist_ok=True)
