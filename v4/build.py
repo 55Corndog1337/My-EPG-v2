@@ -100,6 +100,35 @@ def add_ahl(merged, all_channels, signatures):
     print(f"AHL: {len(by_team)} team channels, {added} programmes", flush=True)
     return added
 
+def add_inventory_channels(merged, all_channels):
+    """Preserve every scoped Xtream channel even without a source listing."""
+    path = ROOT / "v4" / "inventory.csv"
+    if not path.exists():
+        raise RuntimeError("Xtream inventory missing: refusing incomplete guide")
+    added = 0
+    rows = 0
+    with path.open(newline="", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            group = (row.get("Group") or "").strip()
+            if not (group.startswith("AM | USA |") or group.startswith("AM | CA |")
+                    or group.startswith("EU | UK |") or group.startswith("VIP |")):
+                continue
+            name = (row.get("ChannelName") or "").strip()
+            if not name or name.startswith("#####"):
+                continue
+            rows += 1
+            epgid = (row.get("EPGID") or "").strip()
+            streamid = (row.get("StreamID") or "").strip()
+            cid = epgid or ("xtream-stream-" + streamid if streamid else "")
+            if not cid or cid in all_channels:
+                continue
+            channel = ET.SubElement(merged, "channel", id=cid)
+            ET.SubElement(channel, "display-name").text = name
+            all_channels[cid] = channel
+            added += 1
+    print(f"Xtream inventory: {rows} scoped rows, {added} additional channel IDs", flush=True)
+    return added
+
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
     all_channels = {}
