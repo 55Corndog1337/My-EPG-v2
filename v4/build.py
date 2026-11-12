@@ -129,14 +129,65 @@ def add_inventory_channels(merged, all_channels):
     print(f"Xtream inventory: {rows} scoped rows, {added} additional channel IDs", flush=True)
     return added
 
+
+def add_espn_programmes(merged, channels, signatures, guides):
+    """Use approved EPG6 source IDs and numbered EPG2 feeds for ESPN+ 1-600."""
+    import json
+    mapping = {}
+    for filename in ("espn-plus-01-25.json", "espn-plus-026-600.json"):
+        with (ROOT / "v4-mappings" / filename).open(encoding="utf-8") as f:
+            for item in json.load(f)["mappings"]:
+                match = re.search(r"ESPN\\+\\s*0*(\\d+)", item["channel"], re.I)
+                if match:
+                    mapping[int(match.group(1))] = item
+    if len(mapping) != 600:
+        raise RuntimeError("Incomplete ESPN+ mapping")
+    number_pattern = re.compile(r"ESPN\\s*(?:\\+|PLUS|\\.PLUS)\\s*[-_. #]*0*(\\d{1,3})\\b", re.I)
+    added = 0
+    for number, item in mapping.items():
+        target = item.get("original_xtream_epgid") or "ESPNPlus." + str(number)
+        if target not in channels:
+            channel = ET.SubElement(merged, "channel", id=target)
+            ET.SubElement(channel, "display-name").text = "ESPN+ %03d" % number
+            channels[target] = channel
+        for source, tv in guides.items():
+            if source not in ("epg2", "epg6"):
+                continue
+            source_ids = set()
+            if source == "epg6":
+                source_ids.add(item["source_channel_id"])
+            else:
+                for ch in tv.findall("channel"):
+                    labels = [ch.get("id", "")] + display_names(ch)
+                    if any((m and int(m.group(1)) == number)
+                           for label in labels for m in [number_pattern.search(label)]):
+                        source_ids.add(ch.get("id"))
+            for programme in tv.findall("programme"):
+                if programme.get("channel") not in source_ids:
+                    continue
+                duplicate = ET.fromstring(ET.tostring(programme, encoding="utf-8"))
+                duplicate.set("channel", target)
+                sig = (target, duplicate.get("start"), duplicate.get("stop"),
+                       duplicate.findtext("title", default=""))
+                if sig in signatures:
+                    continue
+                signatures.add(sig)
+                merged.append(duplicate)
+                added += 1
+    print("ESPN+: 600 channels; %d EPG2/EPG6 programmes" % added, flush=True)
+    return added
+
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
     all_channels = {}
     signatures = set()
     total = 0
+    guides = {}
     for source, url in SOURCES.items():
         data = download(url)
         tv = ET.fromstring(data)
+        if source in ('epg2', 'epg6'):
+            guides[source] = tv
         selected = {}
         for channel in tv.findall("channel"):
             cid = channel.get("id")
@@ -161,6 +212,8 @@ def main():
             count += 1
         print(f"{source}: {len(selected)} channels, {count} programmes", flush=True)
         total += count
+    total += add_espn_programmes(merged, all_channels, signatures, guides)
+    add_inventory_channels(merged, all_channels)
     total += add_ahl(merged, all_channels, signatures)
     if not all_channels or not total:
         raise RuntimeError("No matching channels/programmes; existing guide preserved")
