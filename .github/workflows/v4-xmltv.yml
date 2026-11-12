@@ -1,78 +1,51 @@
-name: V4 Independent XMLTV Generator
+name: V4 Combined EPG 2 6 37
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'v4/**'
       - 'v4/build.py'
-      - 'v4-mappings/**'
       - '.github/workflows/v4-xmltv.yml'
-  workflow_dispatch:
   schedule:
-    - cron: '17 */4 * * *'
+    - cron: '17 10 * * *'
 permissions:
   contents: write
-  actions: read
 concurrency:
   group: v4-xmltv-generator
   cancel-in-progress: false
 jobs:
-  build-v4:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
-      - name: Restore archived full Xtream matching report
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          run-id: 42523714141
-          pattern: epg-matching-reports*
-          path: v4-input
-          merge-multiple: true
-          github-token: ${{ github.token }}
-      - name: Identify V4 inventory inputs
-        run: |
-          echo 'Available V4 mapping files:'
-          find v4-mappings -maxdepth 1 -type f | sort
-          echo 'Local inventory candidates:'
-          find . -maxdepth 3 -iname '*inventory*.csv' -o -iname '*all_channels_renamed.csv' | head -30
-      - name: Generate independent V4 guide
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Merge source guides
         run: python3 v4/build.py
-      - name: Publish V4 output only
+      - name: Validate XMLTV
+        run: |
+          python3 - <<'PY'
+          import gzip,xml.etree.ElementTree as ET
+          with gzip.open('v4-output/epg.xml.gz','rb') as f:
+              root=ET.parse(f).getroot()
+          assert root.tag=='tv'
+          assert len(root.findall('channel'))>0
+          assert len(root.findall('programme'))>0
+          print('XMLTV valid')
+          PY
+      - name: Publish combined guide
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Save only generated V4 outputs outside the checkout before syncing.
-          # Never force-push or overwrite V2 or unrelated repository files.
-          tmpdir="$(mktemp -d)"
-          trap 'rm -rf "$tmpdir"' EXIT
-          outputs=(epg.xml.gz coverage.json epg-source-catalog.csv ncaab-original-id-test.xml.gz)
-          for file in "${outputs[@]}"; do
-            cp "v4-output/$file" "$tmpdir/$file"
-          done
+          cp v4-output/epg.xml.gz /tmp/combined-epg.xml.gz
           for attempt in 1 2 3 4 5; do
             git fetch origin main
-            # This is an ephemeral CI checkout; generated files are saved above.
             git reset --hard origin/main
-            for file in "${outputs[@]}"; do
-              cp "$tmpdir/$file" "v4-output/$file"
-            done
-            git add -- "${outputs[@]/#/v4-output/}"
-            if git diff --cached --quiet; then
-              echo "V4 outputs already current."
-              exit 0
-            fi
-            git commit -m "Update independent V4 XMLTV guide"
-            if git push origin HEAD:main; then
-              echo "Published V4 outputs successfully."
-              exit 0
-            fi
-            echo "Concurrent update; retrying on newest main (attempt $attempt)."
+            cp /tmp/combined-epg.xml.gz v4-output/epg.xml.gz
+            git add v4-output/epg.xml.gz
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Refresh combined EPG 2 6 37"
+            if git push origin HEAD:main; then exit 0; fi
             sleep 5
           done
-          echo "V4 publish failed after retries."
           exit 1
