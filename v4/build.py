@@ -18,13 +18,13 @@ SOURCES = {
     "epg37": "https://raw.githubusercontent.com/ferteque/Curated-M3U-Repository/main/epg37.xml.gz",
 }
 # Require explicit country/category prefixes; never guess from programme titles.
-GROUP = re.compile(r"^\\s*(?:US|USA|UK|CA|CANADA|VIP)\\s*(?:[-|:–—]\\s*|\\b)", re.I)
+GROUP = re.compile(r"^\s*(?:US|USA|UK|CA|CANADA|VIP)\s*(?:[-|:–—]\s*|\b)", re.I)
 
 def download(url):
     req = urllib.request.Request(url, headers={"User-Agent": "My-EPG-combined/1.0"})
     with urllib.request.urlopen(req, timeout=180) as response:
         data = response.read()
-    if data[:2] == b"\\x1f\\x8b":
+    if data[:2] == b"\x1f\x8b":
         data = gzip.decompress(data)
     return data
 
