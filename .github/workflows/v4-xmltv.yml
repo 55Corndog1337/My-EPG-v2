@@ -29,7 +29,7 @@ jobs:
           from datetime import datetime
           from zoneinfo import ZoneInfo
           hour = datetime.now(ZoneInfo('America/New_York')).hour
-          allowed = os.environ['EVENT_NAME'] != 'schedule' or hour in (6, 12, 18)
+          allowed = os.environ['EVENT_NAME'] != 'schedule' or hour in (6, 12, 15, 18)
           print('run=' + str(allowed).lower())
           print('Eastern hour:', hour, file=__import__('sys').stderr)
           PY
