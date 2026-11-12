@@ -40,7 +40,7 @@ def inventory():
 def normalize(s):
  s=re.sub(r"^(?:US|USA|UK|CA|VIP)\s*[-|:]\s*","",s,flags=re.I)
  s=re.sub(r"\b(?:UHD|FHD|HD|SD|4K|HEVC)\b","",s,flags=re.I)
- s=re.sub(r"\\b(?:EASTERN|EAST|WESTERN|WEST|BACKUP|BK)\\b","",s,flags=re.I)
+ s=re.sub(r"\b(?:EASTERN|EAST|WESTERN|WEST|BACKUP|BK)\b","",s,flags=re.I)
  return re.sub(r"[^a-z0-9]","",s.lower())
 def source_for(name,group):
  text=name+" "+group
