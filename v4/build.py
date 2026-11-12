@@ -23,6 +23,7 @@ SOURCES = {
 # EPG 2 is the full base; EPG 6 adds UK, EPG 37 adds sports teams.
 UK = re.compile(r"^\s*(?:UK|UNITED KINGDOM|GB|GBR)\s*(?:[-|:–—]\s*|\b)", re.I)
 SPORTS = re.compile(r"\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\b", re.I)
+FLOSPORTS = re.compile(r"\bFLO\s*SPORTS?\b|\bFLO(?:HOOPS|WRESTLING|RACING|FOOTBALL|VOLLEYBALL|HOCKEY|BASEBALL|SOFTBALL|TRACK|GYMNASTICS|CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE)\b", re.I)
 TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
 def select_channel(source, channel):
@@ -100,7 +101,7 @@ def add_ahl(merged, all_channels, signatures):
     print(f"AHL: {len(by_team)} team channels, {added} programmes", flush=True)
     return added
 
-def add_inventory_channels(merged, all_channels):
+def add_inventory_channels(merged, all_channels, excluded_epg2_ids):
     """Preserve every scoped Xtream channel even without a source listing."""
     path = ROOT / "v4" / "inventory.csv"
     if not path.exists():
@@ -120,7 +121,7 @@ def add_inventory_channels(merged, all_channels):
             epgid = (row.get("EPGID") or "").strip()
             streamid = (row.get("StreamID") or "").strip()
             cid = epgid or ("xtream-stream-" + streamid if streamid else "")
-            if not cid or cid in all_channels:
+            if not cid or cid in all_channels or cid in excluded_epg2_ids:
                 continue
             channel = ET.SubElement(merged, "channel", id=cid)
             ET.SubElement(channel, "display-name").text = name
@@ -183,6 +184,7 @@ def main():
     signatures = set()
     total = 0
     guides = {}
+    excluded_epg2_ids = set()
     for source, url in SOURCES.items():
         data = download(url)
         tv = ET.fromstring(data)
@@ -192,6 +194,9 @@ def main():
         for channel in tv.findall("channel"):
             cid = channel.get("id")
             if not cid or not select_channel(source, channel):
+                continue
+            if source == "epg2" and any(FLOSPORTS.search(label) for label in [cid, *display_names(channel)]):
+                excluded_epg2_ids.add(cid)
                 continue
             # Identical IDs are shared; keep one channel entry, combine listings.
             selected[cid] = cid
@@ -212,8 +217,9 @@ def main():
             count += 1
         print(f"{source}: {len(selected)} channels, {count} programmes", flush=True)
         total += count
+    print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2", flush=True)
     total += add_espn_programmes(merged, all_channels, signatures, guides)
-    add_inventory_channels(merged, all_channels)
+    add_inventory_channels(merged, all_channels, excluded_epg2_ids)
     total += add_ahl(merged, all_channels, signatures)
     if not all_channels or not total:
         raise RuntimeError("No matching channels/programmes; existing guide preserved")
