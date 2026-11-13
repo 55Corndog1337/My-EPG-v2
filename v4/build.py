@@ -261,6 +261,37 @@ def add_college_programmes(merged, channels, signatures, guides):
               f"new programmes by source {by_source}", flush=True)
     return total
 
+
+# Adjust only written sports times, never XMLTV scheduling attributes.
+WRITTEN_TIME = re.compile(r"(?<!\\d)(?P<hour>1[0-2]|0?[1-9]):(?P<minute>[0-5]\\d)\\s*(?P<period>AM|PM)\\b(?:\\s*(?P<zone>EST|EDT|ET|UTC|GMT|PST|PDT|CST|CDT))?", re.I)
+TARGET_SPORT = re.compile(r"\\b(?:NBA|NHL|NFL|NCAAF|NCAAB|NCAA|ESPN\\s*\\+|ESPN\\s*PLUS|ESPNPLUS)\\b", re.I)
+
+def shift_written_sports_times(merged, channels):
+    eligible = {cid for cid, channel in channels.items()
+                if TARGET_SPORT.search(" ".join([cid, *display_names(channel)]))}
+    updated = 0
+    for programme in merged.findall("programme"):
+        if programme.get("channel") not in eligible:
+            continue
+        for tag in ("title", "desc", "sub-title"):
+            for node in programme.findall(tag):
+                if not node.text:
+                    continue
+                def replace(match):
+                    if (match.group("zone") or "").upper() == "EST":
+                        return match.group(0)
+                    hour = int(match.group("hour")) % 12
+                    if match.group("period").upper() == "PM":
+                        hour += 12
+                    hour = (hour + 3) % 24
+                    period = "AM" if hour < 12 else "PM"
+                    return f"{hour % 12 or 12}:{match.group('minute')} {period} EST"
+                new_text = WRITTEN_TIME.sub(replace, node.text)
+                if new_text != node.text:
+                    node.text = new_text
+                    updated += 1
+    print(f"Sports written-time fields adjusted: {updated}; XMLTV start/stop unchanged", flush=True)
+
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
     all_channels = {}
@@ -305,6 +336,7 @@ def main():
     total += add_college_programmes(merged, all_channels, signatures, guides)
     add_inventory_channels(merged, all_channels, excluded_epg2_ids)
     total += add_ahl(merged, all_channels, signatures)
+    shift_written_sports_times(merged, all_channels)
     if not all_channels or not total:
         raise RuntimeError("No matching channels/programmes; existing guide preserved")
     OUT.parent.mkdir(parents=True, exist_ok=True)
