@@ -28,7 +28,7 @@ TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
 # Exclude only the obsolete ESPN+ dummy IDs; retain genuine ESPN channel IDs.
 def excluded_dummy_id(cid):
-    match = re.fullmatch(r"dummy-(\\d+)", cid or "", re.I)
+    match = re.fullmatch(r"dummy-(\d+)", cid or "", re.I)
     return bool(match and 3345444 <= int(match.group(1)) <= 3345943)
 
 def select_channel(source, channel):
