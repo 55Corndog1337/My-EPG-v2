@@ -26,6 +26,11 @@ SPORTS = re.compile(r"\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\b", re.I)
 FLOSPORTS = re.compile(r"\bFLO\s*SPORTS?\b|\bFLO(?:HOOPS|WRESTLING|RACING|FOOTBALL|VOLLEYBALL|HOCKEY|BASEBALL|SOFTBALL|TRACK|GYMNASTICS|CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE)\b", re.I)
 TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
+# Exclude only the obsolete ESPN+ dummy IDs; retain genuine ESPN channel IDs.
+def excluded_dummy_id(cid):
+    match = re.fullmatch(r"dummy-(\\d+)", cid or "", re.I)
+    return bool(match and 3345444 <= int(match.group(1)) <= 3345943)
+
 def select_channel(source, channel):
     # Preserve all EPG 2 and EPG 37 channels, including regular television.
     # EPG 6 contributes UK channels only.
@@ -121,7 +126,7 @@ def add_inventory_channels(merged, all_channels, excluded_epg2_ids):
             epgid = (row.get("EPGID") or "").strip()
             streamid = (row.get("StreamID") or "").strip()
             cid = epgid or ("xtream-stream-" + streamid if streamid else "")
-            if not cid or cid in all_channels or cid in excluded_epg2_ids:
+            if not cid or cid in all_channels or cid in excluded_epg2_ids or excluded_dummy_id(cid):
                 continue
             channel = ET.SubElement(merged, "channel", id=cid)
             ET.SubElement(channel, "display-name").text = name
@@ -147,6 +152,8 @@ def add_espn_programmes(merged, channels, signatures, guides):
     added = 0
     for number, item in mapping.items():
         target = item.get("original_xtream_epgid") or "ESPNPlus." + str(number)
+        if excluded_dummy_id(target):
+            continue
         if target not in channels:
             channel = ET.SubElement(merged, "channel", id=target)
             ET.SubElement(channel, "display-name").text = "ESPN+ %03d" % number
@@ -269,7 +276,7 @@ def main():
         selected = {}
         for channel in tv.findall("channel"):
             cid = channel.get("id")
-            if not cid or not select_channel(source, channel):
+            if not cid or excluded_dummy_id(cid) or not select_channel(source, channel):
                 continue
             if source == "epg2" and any(FLOSPORTS.search(label) for label in [cid, *display_names(channel)]):
                 excluded_epg2_ids.add(cid)
