@@ -270,6 +270,27 @@ def shift_written_sports_times(merged, channels):
     eligible = {cid for cid, channel in channels.items()
                 if TARGET_SPORT.search(" ".join([cid, *display_names(channel)]))}
     updated = 0
+    # Xtream can embed the event time in the channel display-name itself.
+    # Shift that written label too, while preserving the XMLTV channel ID.
+    def shift_text(value):
+        def replace(match):
+            if (match.group("zone") or "").upper() == "EST":
+                return match.group(0)
+            hour = int(match.group("hour")) % 12
+            if match.group("period").upper() == "PM":
+                hour += 12
+            hour = (hour + 3) % 24
+            period = "AM" if hour < 12 else "PM"
+            return f"{hour % 12 or 12}:{match.group('minute')} {period} EST"
+        return WRITTEN_TIME.sub(replace, value)
+
+    for cid in eligible:
+        for node in channels[cid].findall("display-name"):
+            if node.text:
+                new_text = shift_text(node.text)
+                if new_text != node.text:
+                    node.text = new_text
+                    updated += 1
     for programme in merged.findall("programme"):
         if programme.get("channel") not in eligible:
             continue
@@ -286,11 +307,11 @@ def shift_written_sports_times(merged, channels):
                     hour = (hour + 3) % 24
                     period = "AM" if hour < 12 else "PM"
                     return f"{hour % 12 or 12}:{match.group('minute')} {period} EST"
-                new_text = WRITTEN_TIME.sub(replace, node.text)
+                new_text = shift_text(node.text)
                 if new_text != node.text:
                     node.text = new_text
                     updated += 1
-    print(f"Sports written-time fields adjusted: {updated}; XMLTV start/stop unchanged", flush=True)
+    print(f"Sports written-time fields adjusted (channel names and programme text): {updated}; XMLTV start/stop unchanged", flush=True)
 
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
