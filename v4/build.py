@@ -26,11 +26,13 @@ UK = re.compile(r"^\s*(?:UK|UNITED KINGDOM|GB|GBR)\s*(?:[-|:–—]\s*|\b)", re.
 SPORTS = re.compile(r"\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\b", re.I)
 # Recognize FloSports and alternate provider labels, including FloHoops and
 # FLSPORTS spellings, across all three imported EPG sources.
+# Exclude imported Flo/FLSP aliases, including numbered FLO 001 channels.
+# Match provider tokens only, not unrelated words beginning with "flo".
 FLOSPORTS = re.compile(
-    r"(?<![A-Za-z0-9])(?:FLO[\\s._-]*SPORTS?|FL[\\s._-]*SPORTS?|"
-    r"FLO(?:HOOPS|WRESTLING|RACING|FOOTBALL|VOLLEYBALL|HOCKEY|BASEBALL|"
-    r"SOFTBALL|TRACK|GYMNASTICS|CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE))"
-    r"(?=$|[^A-Za-z])", re.I)
+    r"(?<![A-Za-z0-9])(?:FLSP|FLSPORTS?|FLO(?:SPORTS?|HOOPS|WRESTLING|RACING|"
+    r"FOOTBALL|VOLLEYBALL|HOCKEY|BASEBALL|SOFTBALL|TRACK|GYMNASTICS|"
+    r"CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE)?)(?=$|[\s._:#/–—-]|\d)",
+    re.I)
 
 TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
@@ -141,6 +143,10 @@ def add_inventory_channels(merged, all_channels, excluded_epg2_ids):
                 continue
             name = (row.get("ChannelName") or "").strip()
             if not name or name.startswith("#####"):
+                continue
+            # Never reintroduce Flo/FLSP channels from the Xtream inventory.
+            # Canonical numbered FloSports channels are generated separately.
+            if FLOSPORTS.search(name):
                 continue
             rows += 1
             epgid = (row.get("EPGID") or "").strip()
