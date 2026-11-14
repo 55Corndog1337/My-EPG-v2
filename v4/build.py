@@ -186,6 +186,17 @@ def add_espn_programmes(merged, channels, signatures, guides):
             added += programme(cid, now, horizon, f"{n} - No Scheduled Event")
             continue
         event = label[:match.start()].strip(" -–—")
+        # Xtream supplies uppercase event names; keep acronyms and team initials.
+        words = re.split(r"(\\s+)", event)
+        acronyms = {"NFL", "NBA", "NHL", "MLB", "MLS", "NCAA", "NCAAF", "NCAAB", "UFC", "PFL", "ESPN", "ACC", "SEC", "SIU", "SMU", "UNC", "UCLA", "USC", "UAB", "UTSA", "FCS", "FBS", "A&M", "TV", "FC", "VS"}
+        def title_word(word):
+            if not word or word.isspace():
+                return word
+            parts = re.split(r"([-/])", word)
+            return "".join(p if p.upper() in acronyms or p in ("-", "/") or p.isdigit()
+                           else p[:1].upper()+p[1:].lower() for p in parts)
+        event = "".join(title_word(w) for w in words)
+        event = re.sub(r"\\bVs\\b", "vs.", event)
         try:
             month = next(v for k,v in months.items() if match["month"].upper().startswith(k))
             hour = int(match["hour"]) % 12 + (12 if match["ampm"].upper()=="PM" else 0)
