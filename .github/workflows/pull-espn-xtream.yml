@@ -5,8 +5,6 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/pull-espn-xtream.yml'
-  schedule:
-    - cron: '0 * * * *'
 permissions:
   contents: write
 jobs:
@@ -19,20 +17,7 @@ jobs:
       XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD || secrets.XTREAM_PASS }}
     steps:
       - uses: actions/checkout@v4
-      - name: Check Eastern schedule
-        id: clock
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          python3 - <<'PY' >> "$GITHUB_OUTPUT"
-          import os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          hour=datetime.now(ZoneInfo('America/New_York')).hour
-          print('run='+str(os.environ['EVENT_NAME']!='schedule' or hour in (6,12,18)).lower())
-          PY
       - name: Fetch current live channel names
-        if: steps.clock.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -75,7 +60,6 @@ jobs:
           print('ESPN+ entries:',len(rows))
           PY
       - name: Upload current inventory and 165–175 report
-        if: steps.clock.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: live-xtream-espn-plus
@@ -83,7 +67,6 @@ jobs:
           retention-days: 7
 
       - name: Publish snapshot for V4 generator
-        if: steps.clock.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail
