@@ -51,24 +51,27 @@ jobs:
           req=urllib.request.Request(host+"/player_api.php?"+params,headers={"User-Agent":"My-EPG-FloSports/1.0"})
           with urllib.request.urlopen(req,timeout=100) as resp:streams=json.load(resp)
           if not isinstance(streams,list):raise SystemExit("Invalid Xtream response")
-          # Actual Xtream category naming: US - FLO 001 : EVENT NAME – 1:00 PM ET / 6:00 PM UK.
-          # Match the numbered FLO slot before ':'; never mistake 24/7 for slot 024.
-          numbered=re.compile(r"^\\s*(?:US\\s*[-–—]\\s*)?FLO\\s*0*(\\d{1,3})\\s*(?::|[-–—])",re.I)
-          category_id="465"  # AM | USA | FLO SPORTS TV in the original Xtream dump
+          # Match actual Xtream names, not stale category IDs. FLO 001 : EVENT.
+          numbered=re.compile(r"^\s*(?:US\s*[-–—]\s*)?FLO\s*0*(\d{1,3})\s*:",re.I)
           found={}
           always_on=[]
+          categories={}
           for item in streams:
               name=str(item.get("name") or "")
-              if str(item.get("category_id") or "")!=category_id:continue
-              if re.search(r"24\\s*/\\s*7",name,re.I):
-                  always_on.append(name)
-                  continue
+              category=str(item.get("category_id") or "")
               m=numbered.search(name)
-              if not m:continue
-              n=int(m.group(1))
-              if 1<=n<=800 and n not in found:
-                  found[n]={"FloSports":n,"StreamID":str(item.get("stream_id","")),"OriginalName":name,"EPGID":str(item.get("epg_channel_id") or "")}
-          print("24/7 FloSports channels:",len(always_on),always_on)
+              if m:
+                  n=int(m.group(1))
+                  if 1<=n<=800:
+                      categories[category]=categories.get(category,0)+1
+                      if n not in found:
+                          found[n]={"FloSports":n,"StreamID":str(item.get("stream_id","")),"OriginalName":name,"EPGID":str(item.get("epg_channel_id") or "")}
+                  continue
+              if re.search(r"24\s*/\s*7",name,re.I) and re.search(r"\bFLO(?:\s|SPORTS|RACING|HOOPS|WRESTLING|HOCKEY|FOOTBALL|LIVE)",name,re.I):
+                  always_on.append(name)
+          print("FloSports category IDs discovered:",categories)
+          print("24/7 FloSports candidates:",len(always_on),always_on[:20])
+          print("Numbered FloSports found:",len(found))
           if len(found)<700:raise SystemExit(f"Only {len(found)} numbered FloSports channels found (expected ~800); preserving existing snapshot")
           Path("inventory-output").mkdir(exist_ok=True)
           with open("inventory-output/flosports-1-800.csv","w",newline="",encoding="utf-8") as f:
