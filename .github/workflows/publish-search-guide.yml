@@ -6,6 +6,7 @@ on:
       - 'guide/**'
       - 'index.html'
       - 'v4-output/epg.xml.gz'
+      - 'guide/build-search-index.py'
       - '.github/workflows/publish-search-guide.yml'
   workflow_dispatch:
 permissions:
@@ -24,11 +25,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Generate mobile programme index
+        run: python3 guide/build-search-index.py
       - name: Stage small public website
         run: |
           mkdir -p public/guide public/v4-output
           cp index.html public/index.html
           cp guide/index.html public/guide/index.html
+          cp guide/programmes.json public/guide/programmes.json
           if [ -f v4-output/epg.xml.gz ]; then cp v4-output/epg.xml.gz public/v4-output/epg.xml.gz; fi
           find public -type f -printf '%p %s bytes\\n'
       - uses: actions/upload-pages-artifact@v3
