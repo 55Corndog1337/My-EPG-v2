@@ -69,7 +69,8 @@ def add_flosports_programmes(merged, channels, signatures):
         if not match:
             event=clean_event(label)
             title=f"{n:03d} - Upcoming Event: {event}" if event else f"{n:03d} - No Scheduled Event"
-            emit(cid,now,horizon,title)
+            # Undated events use a rolling 24-hour programme block.
+            emit(cid,now,now+timedelta(hours=24),title)
             continue
         event=clean_event(label[:match.start()])
         try:
