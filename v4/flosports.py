@@ -57,8 +57,16 @@ def add_flosports_programmes(merged, channels, signatures):
         ET.SubElement(p,"title",lang="en").text=title
         signatures.add((cid,p.get("start"),p.get("stop"),title))
         added+=1
+    # Five 24/7 services followed by 800 numbered event channels.
+    for i in range(1,6):
+        cid=f"{6516+i}.1ONEAED"
+        if cid not in channels:
+            ch=ET.SubElement(merged,"channel",id=cid)
+            ET.SubElement(ch,"display-name").text=f"FloSports 24/7 {i}"
+            channels[cid]=ch
+        emit(cid,now,now+timedelta(hours=24),f"FloSports 24/7 {i}")
     for n in range(1,801):
-        cid=f"FloSports.{n:03d}"
+        cid=f"{6521+n}.1ONEAED"
         if cid not in channels:
             ch=ET.SubElement(merged,"channel",id=cid)
             ET.SubElement(ch,"display-name").text=f"FloSports {n:03d}"
@@ -92,5 +100,5 @@ def add_flosports_programmes(merged, channels, signatures):
         if start>now:emit(cid,now,min(start,horizon),f"{n:03d} - Upcoming Event: {event}")
         if end>now and start<horizon:emit(cid,max(start,now),min(end,horizon),f"{n:03d} - {event}")
         if end<horizon:emit(cid,max(end,now),horizon,f"{n:03d} - Event Concluded")
-    print(f"FloSports: {len(rows)} live names, 800 channel IDs, {added} programmes",flush=True)
+    print(f"FloSports: {len(rows)} live names, 805 channel IDs (5 24/7 + 800 events), {added} programmes",flush=True)
     return added
