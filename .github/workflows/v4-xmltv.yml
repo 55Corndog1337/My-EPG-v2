@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'v4/build.py'
+      - 'v4/espn-plus-live.csv'
       - '.github/workflows/v4-xmltv.yml'
   schedule:
     # Hourly trigger; local-time gate below handles EST and EDT.
