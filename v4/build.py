@@ -23,7 +23,14 @@ SOURCES = {
 # EPG 2 is the full base; EPG 6 adds UK, EPG 37 adds sports teams.
 UK = re.compile(r"^\s*(?:UK|UNITED KINGDOM|GB|GBR)\s*(?:[-|:–—]\s*|\b)", re.I)
 SPORTS = re.compile(r"\b(?:NFL|NBA|NHL|MLB|MiLB|MLS|WNBA|AHL)\b", re.I)
-FLOSPORTS = re.compile(r"\bFLO\s*SPORTS?\b|\bFLO(?:HOOPS|WRESTLING|RACING|FOOTBALL|VOLLEYBALL|HOCKEY|BASEBALL|SOFTBALL|TRACK|GYMNASTICS|CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE)\b", re.I)
+# Recognize FloSports and alternate provider labels, including FloHoops and
+# FLSPORTS spellings, across all three imported EPG sources.
+FLOSPORTS = re.compile(
+    r"(?<![A-Za-z0-9])(?:FLO[\\s._-]*SPORTS?|FL[\\s._-]*SPORTS?|"
+    r"FLO(?:HOOPS|WRESTLING|RACING|FOOTBALL|VOLLEYBALL|HOCKEY|BASEBALL|"
+    r"SOFTBALL|TRACK|GYMNASTICS|CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE))"
+    r"(?=$|[^A-Za-z])", re.I)
+
 TEAM_HINT = re.compile(r"\b(?:team|feed|home|away)\b", re.I)
 SPORTS_LEAGUES = ("NFL", "NBA", "NHL", "MLB", "MiLB", "MLS", "WNBA", "AHL")
 # Exclude only the obsolete ESPN+ dummy IDs; retain genuine ESPN channel IDs.
@@ -397,7 +404,7 @@ def main():
             cid = channel.get("id")
             if not cid or excluded_dummy_id(cid) or source_espn_plus_number(channel) is not None or not select_channel(source, channel):
                 continue
-            if source == "epg2" and any(FLOSPORTS.search(label) for label in [cid, *display_names(channel)]):
+            if any(FLOSPORTS.search(label) for label in [cid, *display_names(channel)]):
                 excluded_epg2_ids.add(cid)
                 continue
             # Identical IDs are shared; keep one channel entry, combine listings.
@@ -419,7 +426,7 @@ def main():
             count += 1
         print(f"{source}: {len(selected)} channels, {count} programmes", flush=True)
         total += count
-    print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2", flush=True)
+    print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2, 6 and 37", flush=True)
     total += add_espn_programmes(merged, all_channels, signatures, guides)
     total += add_college_programmes(merged, all_channels, signatures, guides)
     add_inventory_channels(merged, all_channels, excluded_epg2_ids)
