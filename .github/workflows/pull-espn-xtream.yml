@@ -5,8 +5,10 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/pull-espn-xtream.yml'
+  schedule:
+    - cron: '0 * * * *'
 permissions:
-  contents: read
+  contents: write
 jobs:
   pull:
     runs-on: ubuntu-latest
@@ -16,7 +18,21 @@ jobs:
       XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME || secrets.XTREAM_USER }}
       XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD || secrets.XTREAM_PASS }}
     steps:
+      - uses: actions/checkout@v4
+      - name: Check Eastern schedule
+        id: clock
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          hour=datetime.now(ZoneInfo('America/New_York')).hour
+          print('run='+str(os.environ['EVENT_NAME']!='schedule' or hour in (6,12,18)).lower())
+          PY
       - name: Fetch current live channel names
+        if: steps.clock.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -59,8 +75,30 @@ jobs:
           print('ESPN+ entries:',len(rows))
           PY
       - name: Upload current inventory and 165–175 report
+        if: steps.clock.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: live-xtream-espn-plus
           path: inventory-output/
           retention-days: 7
+
+      - name: Publish snapshot for V4 generator
+        if: steps.clock.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp inventory-output/espn-plus-1-600.csv /tmp/espn-plus-live.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p v4
+            cp /tmp/espn-plus-live.csv v4/espn-plus-live.csv
+            git add v4/espn-plus-live.csv
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Refresh live Xtream ESPN+ 1-600 inventory"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1
