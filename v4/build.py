@@ -202,17 +202,22 @@ def add_espn_programmes(merged, channels, signatures, guides):
             added += programme(cid, now, horizon, f"{n} - No Scheduled Event")
             continue
         event = label[:match.start()].strip(" -–—")
-        # Xtream supplies uppercase event names; keep acronyms and team initials.
-        words = re.split(r"(\\s+)", event)
-        acronyms = {"NFL", "NBA", "NHL", "MLB", "MLS", "NCAA", "NCAAF", "NCAAB", "UFC", "PFL", "ESPN", "ACC", "SEC", "SIU", "SMU", "UNC", "UCLA", "USC", "UAB", "UTSA", "FCS", "FBS", "A&M", "TV", "FC", "VS"}
-        def title_word(word):
-            if not word or word.isspace():
-                return word
-            parts = re.split(r"([-/])", word)
-            return "".join(p if p.upper() in acronyms or p in ("-", "/") or p.isdigit()
-                           else p[:1].upper()+p[1:].lower() for p in parts)
-        event = "".join(title_word(w) for w in words)
-        event = re.sub(r"\\bVs\\b", "vs.", event)
+        # Capitalize each word in Xtream event titles, retaining standard acronyms.
+        acronyms = {"NFL", "NBA", "NHL", "MLB", "MLS", "NCAA", "NCAAF", "NCAAB",
+                    "UFC", "PFL", "ESPN", "ACC", "SEC", "SIU", "SMU", "UNC",
+                    "UCLA", "USC", "UAB", "UTSA", "FCS", "FBS", "A&M", "TV", "FC"}
+        def capitalize_token(token):
+            if not token or token.isspace():
+                return token
+            if token.upper() in acronyms:
+                return token.upper()
+            if token.lower() in ("vs", "vs."):
+                return "vs."
+            return token[:1].upper() + token[1:].lower()
+        event = re.sub(r"[A-Za-zÀ-ÿ0-9&.']+", lambda m: capitalize_token(m.group(0)), event)
+        # Preserve established league acronyms even when adjacent to punctuation.
+        event = re.sub(r"\\b(?:NCAA|NFL|NBA|NHL|MLB|MLS|ACC|SEC|ESPN|UFC|PFL)\\b",
+                       lambda m: m.group(0).upper(), event, flags=re.I)
         try:
             month = next(v for k,v in months.items() if match["month"].upper().startswith(k))
             hour = int(match["hour"]) % 12 + (12 if match["ampm"].upper()=="PM" else 0)
