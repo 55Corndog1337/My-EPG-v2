@@ -175,22 +175,26 @@ def add_espn_programmes(merged, channels, signatures, guides):
         ET.SubElement(p, "title", lang="en").text = title
         signatures.add((cid, p.get("start"), p.get("stop"), title))
         return 1
-    # Replace source ESPN+ entries for these exact IDs, never unrelated channels.
-    targets = {((rows.get(n) or {}).get("EPGID") or "ESPN.PLUS."+str(n)).strip()
-               for n in range(1,601)}
+    # Canonical XMLTV IDs: ESPN+ 1 = 1706.ESPN, ESPN+ 600 = 2305.ESPN.
+    # Remove any imported programmes using those IDs before writing our schedule.
+    targets = {f"{1705+n}.ESPN" for n in range(1, 601)}
     for p in list(merged.findall("programme")):
         if p.get("channel") in targets:
             merged.remove(p)
     added = 0
-    for n in range(1,601):
+    for n in range(1, 601):
         row = rows.get(n, {})
-        cid = (row.get("EPGID") or "ESPN.PLUS."+str(n)).strip()
-        if excluded_dummy_id(cid):
-            cid = "ESPN.PLUS."+str(n)
+        cid = f"{1705+n}.ESPN"
         if cid not in channels:
             ch = ET.SubElement(merged, "channel", id=cid)
-            ET.SubElement(ch, "display-name").text = "ESPN+ "+str(n)
+            ET.SubElement(ch, "display-name").text = f"ESPN+ {n}"
             channels[cid] = ch
+        else:
+            # Keep a single channel definition and show the correct numbered name.
+            ch = channels[cid]
+            for node in ch.findall("display-name"):
+                ch.remove(node)
+            ET.SubElement(ch, "display-name").text = f"ESPN+ {n}"
         name = (row.get("OriginalName") or "").strip()
         label = name.split(":",1)[1].strip() if ":" in name else ""
         match = event_re.search(label)
@@ -341,7 +345,7 @@ def shift_written_sports_times(merged, channels):
         return WRITTEN_TIME.sub(replace, value)
 
     for cid in eligible:
-        if re.fullmatch(r"ESPN(?:\.PLUS|Plus)\.\d+", cid, re.I):
+        if re.fullmatch(r"(?:ESPN(?:\.PLUS|Plus)\.\d+|(?:1[7-9]\d\d|2[0-2]\d\d|230[0-5])\.ESPN)", cid, re.I):
             continue
         for node in channels[cid].findall("display-name"):
             if node.text:
