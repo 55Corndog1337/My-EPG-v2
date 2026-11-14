@@ -145,6 +145,8 @@ def add_espn_programmes(merged, channels, signatures, guides):
     with path.open(newline="", encoding="utf-8-sig") as f:
         rows = {int(row["ESPNPlus"]): row for row in csv.DictReader(f)
                 if row.get("ESPNPlus", "").isdigit() and 1 <= int(row["ESPNPlus"]) <= 600}
+    if len(rows) != 600:
+        raise RuntimeError(f"Expected 600 live ESPN+ channels, found {len(rows)}")
     eastern = ZoneInfo("America/New_York")
     now = datetime.now(timezone.utc)
     horizon = now + timedelta(days=2)
@@ -202,7 +204,7 @@ def add_espn_programmes(merged, channels, signatures, guides):
                 if local.utcoffset().total_seconds()!=expected*3600:
                     raise ValueError("Timezone label disagrees with event date")
         except (ValueError, StopIteration):
-            added += programme(cid, now, horizon, "No Scheduled Event")
+            added += programme(cid, now, horizon, f"{n} - No Scheduled Event")
             continue
         label_date=local.strftime("%b %d, %Y")
         label_time=local.strftime("%I:%M %p").lstrip("0")+" ET"
@@ -316,7 +318,7 @@ def shift_written_sports_times(merged, channels):
         return WRITTEN_TIME.sub(replace, value)
 
     for cid in eligible:
-        if re.fullmatch(r"ESPN\.PLUS\.\d+", cid, re.I):
+        if re.fullmatch(r"ESPN(?:\.PLUS|Plus)\.\d+", cid, re.I):
             continue
         for node in channels[cid].findall("display-name"):
             if node.text:
