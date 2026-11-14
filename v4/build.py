@@ -12,6 +12,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
+from flosports import add_flosports_programmes
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "v4-output" / "epg.xml.gz"
@@ -357,7 +358,7 @@ def shift_written_sports_times(merged, channels):
         return WRITTEN_TIME.sub(replace, value)
 
     for cid in eligible:
-        if re.fullmatch(r"(?:ESPN(?:\.PLUS|Plus)\.\d+|(?:1[7-9]\d\d|2[0-2]\d\d|230[0-5])\.ESPN)", cid, re.I):
+        if re.fullmatch(r"(?:ESPN(?:\.PLUS|Plus)\.\d+|(?:1[7-9]\d\d|2[0-2]\d\d|230[0-5])\.ESPN|FloSports\.\d{3})", cid, re.I):
             continue
         for node in channels[cid].findall("display-name"):
             if node.text:
@@ -428,6 +429,7 @@ def main():
         total += count
     print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2, 6 and 37", flush=True)
     total += add_espn_programmes(merged, all_channels, signatures, guides)
+    total += add_flosports_programmes(merged, all_channels, signatures)
     total += add_college_programmes(merged, all_channels, signatures, guides)
     add_inventory_channels(merged, all_channels, excluded_epg2_ids)
     total += add_ahl(merged, all_channels, signatures)
