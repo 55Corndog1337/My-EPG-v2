@@ -8,8 +8,11 @@ now=datetime.datetime.now(datetime.timezone.utc)
 cutoff=now+datetime.timedelta(days=2)
 def parse(s):
     if not s:return None
-    try:return datetime.datetime.strptime(s[:14],"%Y%m%d%H%M%S").replace(tzinfo=datetime.timezone(datetime.timedelta(hours=int(s[15:18]),minutes=int(s[18:20])*(1 if s[15]=="+" else -1)))) if len(s)>=20 and s[15] in "+-" else datetime.datetime.strptime(s[:14],"%Y%m%d%H%M%S").replace(tzinfo=datetime.timezone.utc)
-    except (ValueError,TypeError):return None
+    try:
+        return datetime.datetime.strptime(s.strip(),"%Y%m%d%H%M%S %z")
+    except (ValueError,TypeError):
+        try:return datetime.datetime.strptime(s[:14],"%Y%m%d%H%M%S").replace(tzinfo=datetime.timezone.utc)
+        except (ValueError,TypeError):return None
 if not src.exists():raise SystemExit("Combined EPG missing")
 with gzip.open(src,"rb") as f:root=ET.parse(f).getroot()
 names={c.get("id"):next((n.text for n in c.findall("display-name") if n.text),c.get("id")) for c in root.findall("channel")}
