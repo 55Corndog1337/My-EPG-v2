@@ -137,52 +137,83 @@ def add_inventory_channels(merged, all_channels, excluded_epg2_ids):
 
 
 def add_espn_programmes(merged, channels, signatures, guides):
-    """Use only approved EPG6 source IDs for ESPN+ 1-600."""
-    import json
-    mapping = {}
-    for filename in ("espn-plus-01-25.json", "espn-plus-026-600.json"):
-        with (ROOT / "v4-mappings" / filename).open(encoding="utf-8") as f:
-            for item in json.load(f)["mappings"]:
-                match = re.search(r"ESPN\+\s*0*(\d+)", item["channel"], re.I)
-                if match:
-                    mapping[int(match.group(1))] = item
-    if len(mapping) != 600:
-        raise RuntimeError("Incomplete ESPN+ mapping")
-    number_pattern = re.compile(r"ESPN\s*(?:\+|PLUS|\.PLUS)\s*[-_. #]*0*(\d{1,3})\b", re.I)
+    """Build ESPN+ 1-600 from the latest Xtream snapshot, not EPG6 programme data."""
+    from zoneinfo import ZoneInfo
+    path = ROOT / "v4" / "espn-plus-live.csv"
+    if not path.exists():
+        raise RuntimeError("Live ESPN+ snapshot missing; refusing stale ESPN+ listings")
+    with path.open(newline="", encoding="utf-8-sig") as f:
+        rows = {int(row["ESPNPlus"]): row for row in csv.DictReader(f)
+                if row.get("ESPNPlus", "").isdigit() and 1 <= int(row["ESPNPlus"]) <= 600}
+    eastern = ZoneInfo("America/New_York")
+    now = datetime.now(timezone.utc)
+    horizon = now + timedelta(days=2)
+    stamp = lambda dt: dt.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000")
+    event_re = re.compile(
+        r"\b(?P<month>JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:T(?:EMBER)?)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)"
+        r"\s+(?P<day>\d{1,2})(?:,?\s+(?P<year>20\d{2}))?"
+        r"\s*[-–—]\s*(?P<hour>\d{1,2}):(?P<minute>\d{2})\s*(?P<ampm>AM|PM)\s*(?P<zone>ET|EST|EDT)\b", re.I)
+    months = {m: i for i, m in enumerate(("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"),1)}
+    def programme(cid, start, stop, title):
+        if stop <= start:
+            return 0
+        p = ET.SubElement(merged, "programme", channel=cid, start=stamp(start), stop=stamp(stop))
+        ET.SubElement(p, "title", lang="en").text = title
+        signatures.add((cid, p.get("start"), p.get("stop"), title))
+        return 1
+    # Replace source ESPN+ entries for these exact IDs, never unrelated channels.
+    targets = {((rows.get(n) or {}).get("EPGID") or "ESPN.PLUS."+str(n)).strip()
+               for n in range(1,601)}
+    for p in list(merged.findall("programme")):
+        if p.get("channel") in targets:
+            merged.remove(p)
     added = 0
-    for number, item in mapping.items():
-        target = item.get("original_xtream_epgid") or "ESPNPlus." + str(number)
-        if excluded_dummy_id(target):
+    for n in range(1,601):
+        row = rows.get(n, {})
+        cid = (row.get("EPGID") or "ESPN.PLUS."+str(n)).strip()
+        if excluded_dummy_id(cid):
+            cid = "ESPN.PLUS."+str(n)
+        if cid not in channels:
+            ch = ET.SubElement(merged, "channel", id=cid)
+            ET.SubElement(ch, "display-name").text = "ESPN+ "+str(n)
+            channels[cid] = ch
+        name = (row.get("OriginalName") or "").strip()
+        label = name.split(":",1)[1].strip() if ":" in name else ""
+        match = event_re.search(label)
+        if not match:
+            added += programme(cid, now, horizon, "No Scheduled Event")
             continue
-        if target not in channels:
-            channel = ET.SubElement(merged, "channel", id=target)
-            ET.SubElement(channel, "display-name").text = "ESPN+ %03d" % number
-            channels[target] = channel
-        for source, tv in guides.items():
-            if source != "epg6":
-                continue
-            source_ids = set()
-            if source == "epg6":
-                source_ids.add(item["source_channel_id"])
-            else:
-                for ch in tv.findall("channel"):
-                    labels = [ch.get("id", "")] + display_names(ch)
-                    if any((m and int(m.group(1)) == number)
-                           for label in labels for m in [number_pattern.search(label)]):
-                        source_ids.add(ch.get("id"))
-            for programme in tv.findall("programme"):
-                if programme.get("channel") not in source_ids:
-                    continue
-                duplicate = ET.fromstring(ET.tostring(programme, encoding="utf-8"))
-                duplicate.set("channel", target)
-                sig = (target, duplicate.get("start"), duplicate.get("stop"),
-                       duplicate.findtext("title", default=""))
-                if sig in signatures:
-                    continue
-                signatures.add(sig)
-                merged.append(duplicate)
-                added += 1
-    print("ESPN+: 600 channels; %d EPG6-only programmes" % added, flush=True)
+        event = label[:match.start()].strip(" -–—")
+        try:
+            month = next(v for k,v in months.items() if match["month"].upper().startswith(k))
+            hour = int(match["hour"]) % 12 + (12 if match["ampm"].upper()=="PM" else 0)
+            year = int(match["year"]) if match["year"] else now.astimezone(eastern).year
+            local = datetime(year,month,int(match["day"]),hour,int(match["minute"]),tzinfo=eastern)
+            if not match["year"]:
+                if local.astimezone(timezone.utc) < now-timedelta(days=180):
+                    local=local.replace(year=year+1)
+                elif local.astimezone(timezone.utc) > now+timedelta(days=180):
+                    local=local.replace(year=year-1)
+            start=local.astimezone(timezone.utc)
+            end=start+timedelta(hours=4)
+            # ET is interpreted in America/New_York; explicit EST/EDT must agree.
+            if match["zone"].upper() in ("EST","EDT"):
+                expected = -5 if match["zone"].upper()=="EST" else -4
+                if local.utcoffset().total_seconds()!=expected*3600:
+                    raise ValueError("Timezone label disagrees with event date")
+        except (ValueError, StopIteration):
+            added += programme(cid, now, horizon, "No Scheduled Event")
+            continue
+        label_date=local.strftime("%b %d, %Y")
+        label_time=local.strftime("%I:%M %p").lstrip("0")+" ET"
+        if start > now:
+            added += programme(cid, now, min(start,horizon), "Upcoming Event: "+event)
+        if end > now and start < horizon:
+            added += programme(cid, max(start,now), min(end,horizon),
+                               f"Event (ESPN+ {n}: {event} - {label_date} {label_time})")
+        if end < horizon:
+            added += programme(cid, max(now,end), horizon, "Event Concluded")
+    print(f"ESPN+ live snapshot: {len(rows)} numbered channels; {added} programmes",flush=True)
     return added
 
 def add_college_programmes(merged, channels, signatures, guides):
@@ -292,7 +323,7 @@ def shift_written_sports_times(merged, channels):
                     node.text = new_text
                     updated += 1
     for programme in merged.findall("programme"):
-        if programme.get("channel") not in eligible:
+        if programme.get("channel") not in eligible or re.fullmatch(r"ESPN\\.PLUS\\.\\d+", programme.get("channel", ""), re.I):
             continue
         for tag in ("title", "desc", "sub-title"):
             for node in programme.findall(tag):
