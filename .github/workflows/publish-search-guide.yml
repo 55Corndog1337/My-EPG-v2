@@ -9,6 +9,9 @@ on:
       - 'guide/build-search-index.py'
       - '.github/workflows/publish-search-guide.yml'
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Combined EPG 2 UK6 Sports37 AHL']
+    types: [completed]
 permissions:
   contents: read
   pages: write
@@ -18,15 +21,20 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/configure-pages@v5
       - name: Generate mobile programme index
-        run: python3 guide/build-search-index.py
+        run: |
+          python3 guide/build-search-index.py
+          test -s guide/programmes.json
       - name: Stage small public website
         run: |
           mkdir -p public/guide public/v4-output
