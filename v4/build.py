@@ -181,7 +181,7 @@ def add_espn_programmes(merged, channels, signatures, guides):
         label = name.split(":",1)[1].strip() if ":" in name else ""
         match = event_re.search(label)
         if not match:
-            added += programme(cid, now, horizon, "No Scheduled Event")
+            added += programme(cid, now, horizon, f"{n} - No Scheduled Event")
             continue
         event = label[:match.start()].strip(" -–—")
         try:
@@ -207,12 +207,12 @@ def add_espn_programmes(merged, channels, signatures, guides):
         label_date=local.strftime("%b %d, %Y")
         label_time=local.strftime("%I:%M %p").lstrip("0")+" ET"
         if start > now:
-            added += programme(cid, now, min(start,horizon), "Upcoming Event: "+event)
+            added += programme(cid, now, min(start,horizon), f"{n} - Upcoming Event: {event}")
         if end > now and start < horizon:
             added += programme(cid, max(start,now), min(end,horizon),
-                               f"Event (ESPN+ {n}: {event} - {label_date} {label_time})")
+                               f"{n} - {event}")
         if end < horizon:
-            added += programme(cid, max(now,end), horizon, "Event Concluded")
+            added += programme(cid, max(now,end), horizon, f"{n} - Event Concluded")
     print(f"ESPN+ live snapshot: {len(rows)} numbered channels; {added} programmes",flush=True)
     return added
 
