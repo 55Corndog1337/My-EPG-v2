@@ -1,0 +1,100 @@
+name: Pull Live Xtream FloSports Inventory
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pull-flosports-xtream.yml'
+  schedule:
+    - cron: '0 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: flosports-inventory
+  cancel-in-progress: false
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      XTREAM_URL: ${{ secrets.XTREAM_URL || secrets.XTREAM_HOST || secrets.XTREAM_SERVER }}
+      XTREAM_USERNAME: ${{ secrets.XTREAM_USERNAME || secrets.XTREAM_USER }}
+      XTREAM_PASSWORD: ${{ secrets.XTREAM_PASSWORD || secrets.XTREAM_PASS }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Eastern schedule
+        id: clock
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          hour=datetime.now(ZoneInfo("America/New_York")).hour
+          print("run="+str(os.environ["EVENT_NAME"]!="schedule" or hour in (6,12,15,18)).lower())
+          PY
+      - name: Fetch original FloSports names from Xtream
+        if: steps.clock.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv,json,os,re,urllib.parse,urllib.request
+          from pathlib import Path
+          host=os.environ.get("XTREAM_URL","").rstrip("/")
+          user=os.environ.get("XTREAM_USERNAME","")
+          password=os.environ.get("XTREAM_PASSWORD","")
+          if not all((host,user,password)):raise SystemExit("Missing Xtream secrets")
+          if not host.startswith(("http://","https://")):host="http://"+host
+          params=urllib.parse.urlencode({"username":user,"password":password,"action":"get_live_streams"})
+          req=urllib.request.Request(host+"/player_api.php?"+params,headers={"User-Agent":"My-EPG-FloSports/1.0"})
+          with urllib.request.urlopen(req,timeout=100) as resp:streams=json.load(resp)
+          if not isinstance(streams,list):raise SystemExit("Invalid Xtream response")
+          patterns=[
+              re.compile(r"(?<![A-Za-z0-9])(?:FLO[\s._-]*SPORTS?|FL[\s._-]*SPORTS?)[\s._#:-]*0*(\d{1,3})(?!\d)",re.I),
+              re.compile(r"(?<![A-Za-z0-9])FLO[\s._-]*(?:HOOPS|RACING|WRESTLING|FOOTBALL|HOCKEY|BASEBALL|SOFTBALL|TRACK|VOLLEYBALL|GYMNASTICS|CHEER|MARCHING|BOWLING|BIKES|GRAPPLING|COMBAT|LIVE)[\s._#:-]*0*(\d{1,3})(?!\d)",re.I)]
+          found={}
+          for item in streams:
+              name=str(item.get("name") or "")
+              for pat in patterns:
+                  m=pat.search(name)
+                  if m and 1<=int(m.group(1))<=800:
+                      n=int(m.group(1))
+                      if n not in found:
+                          found[n]={"FloSports":n,"StreamID":str(item.get("stream_id","")),"OriginalName":name,"EPGID":str(item.get("epg_channel_id") or "")}
+                      break
+          if not found:raise SystemExit("No numbered FloSports channels found; preserving existing snapshot")
+          Path("inventory-output").mkdir(exist_ok=True)
+          with open("inventory-output/flosports-1-800.csv","w",newline="",encoding="utf-8") as f:
+              writer=csv.DictWriter(f,fieldnames=["FloSports","StreamID","OriginalName","EPGID"])
+              writer.writeheader();writer.writerows(found[n] for n in sorted(found))
+          print("FloSports numbered channels:",len(found))
+          PY
+      - name: Upload FloSports snapshot
+        if: steps.clock.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-xtream-flosports
+          path: inventory-output/flosports-1-800.csv
+          retention-days: 7
+      - name: Commit live FloSports snapshot
+        if: steps.clock.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp inventory-output/flosports-1-800.csv /tmp/flosports-live.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p v4
+            cp /tmp/flosports-live.csv v4/flosports-live.csv
+            git add v4/flosports-live.csv
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Refresh live FloSports 001-800 inventory"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1
