@@ -31,6 +31,18 @@ def excluded_dummy_id(cid):
     match = re.fullmatch(r"dummy-(\d+)", cid or "", re.I)
     return bool(match and 3345444 <= int(match.group(1)) <= 3345943)
 
+# ESPN+ 1-600 is generated exclusively from the live Xtream inventory.
+# Exclude source copies from EPG 2, 6 and 37, including their programme rows.
+ESPN_PLUS_NUMBER = re.compile(
+    r"(?<![A-Za-z0-9])ESPN[\s._-]*(?:\+|PLUS)[\s._#-]*0*(\d{1,3})(?!\d)", re.I)
+
+def source_espn_plus_number(channel):
+    for label in [channel.get("id", ""), *display_names(channel)]:
+        match = ESPN_PLUS_NUMBER.search(label)
+        if match and 1 <= int(match.group(1)) <= 600:
+            return int(match.group(1))
+    return None
+
 def select_channel(source, channel):
     # Preserve all EPG 2 and EPG 37 channels, including regular television.
     # EPG 6 contributes UK channels only.
@@ -374,7 +386,7 @@ def main():
         selected = {}
         for channel in tv.findall("channel"):
             cid = channel.get("id")
-            if not cid or excluded_dummy_id(cid) or not select_channel(source, channel):
+            if not cid or excluded_dummy_id(cid) or source_espn_plus_number(channel) is not None or not select_channel(source, channel):
                 continue
             if source == "epg2" and any(FLOSPORTS.search(label) for label in [cid, *display_names(channel)]):
                 excluded_epg2_ids.add(cid)
