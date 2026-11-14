@@ -316,6 +316,8 @@ def shift_written_sports_times(merged, channels):
         return WRITTEN_TIME.sub(replace, value)
 
     for cid in eligible:
+        if re.fullmatch(r"ESPN\.PLUS\.\d+", cid, re.I):
+            continue
         for node in channels[cid].findall("display-name"):
             if node.text:
                 new_text = shift_text(node.text)
@@ -323,7 +325,7 @@ def shift_written_sports_times(merged, channels):
                     node.text = new_text
                     updated += 1
     for programme in merged.findall("programme"):
-        if programme.get("channel") not in eligible or re.fullmatch(r"ESPN\\.PLUS\\.\\d+", programme.get("channel", ""), re.I):
+        if programme.get("channel") not in eligible or re.fullmatch(r"ESPN\.PLUS\.\d+", programme.get("channel", ""), re.I):
             continue
         for tag in ("title", "desc", "sub-title"):
             for node in programme.findall(tag):
