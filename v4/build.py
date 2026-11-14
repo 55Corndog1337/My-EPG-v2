@@ -152,7 +152,7 @@ def add_inventory_channels(merged, all_channels, excluded_epg2_ids):
             epgid = (row.get("EPGID") or "").strip()
             streamid = (row.get("StreamID") or "").strip()
             cid = epgid or ("xtream-stream-" + streamid if streamid else "")
-            if not cid or cid in all_channels or cid in excluded_epg2_ids or excluded_dummy_id(cid):
+            if not cid or cid in all_channels or cid in excluded_epg2_ids or excluded_dummy_id(cid) or (re.fullmatch(r"\d+\.1ONEAED",cid,re.I) and 6517 <= int(cid.split(".")[0]) <= 7321):
                 continue
             channel = ET.SubElement(merged, "channel", id=cid)
             ET.SubElement(channel, "display-name").text = name
@@ -409,7 +409,7 @@ def main():
         selected = {}
         for channel in tv.findall("channel"):
             cid = channel.get("id")
-            if not cid or excluded_dummy_id(cid) or source_espn_plus_number(channel) is not None or not select_channel(source, channel):
+            if not cid or (re.fullmatch(r"\d+\.1ONEAED",cid,re.I) and 6517 <= int(cid.split(".")[0]) <= 7321) or excluded_dummy_id(cid) or source_espn_plus_number(channel) is not None or not select_channel(source, channel):
                 continue
             if any(FLOSPORTS.search(label) for label in [cid, *display_names(channel)]):
                 excluded_epg2_ids.add(cid)
