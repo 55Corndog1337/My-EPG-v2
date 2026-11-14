@@ -24,6 +24,19 @@ def title_case(value):
         return w[:1].upper()+w[1:].lower()
     return re.sub(r"[A-Za-zÀ-ÿ0-9&.']+",word,value)
 
+
+# Source names can have a clock time without a date; do not invent dates.
+TIME_ONLY = re.compile(r"\s*[-–—]\s*\d{1,2}:\d{2}\s*(?:AM|PM)\s*(?:ET|EST|EDT)(?:\s*/\s*\d{1,2}:\d{2}\s*(?:AM|PM)\s*UK)?\s*$", re.I)
+INTERNAL_ID = re.compile(r"\s*\[\d{3,}\]\s*")
+LEADING_STATUS = re.compile(r"^(?:LIVE|REPLAY|UPCOMING)\s*[-–—:]\s*",re.I)
+
+def clean_event(label):
+    label = INTERNAL_ID.sub(" ",label)
+    label = TIME_ONLY.sub("",label)
+    label = LEADING_STATUS.sub("",label.strip())
+    label = re.sub(r"\s+", " ", label).strip(" -–—:/")
+    return title_case(label)
+
 def add_flosports_programmes(merged, channels, signatures):
     if not LIVE.exists():
         print("FloSports: awaiting first Xtream snapshot; no invented listings",flush=True)
@@ -54,9 +67,11 @@ def add_flosports_programmes(merged, channels, signatures):
         label=raw.split(":",1)[1].strip() if ":" in raw else ""
         match=DATE_TIME.search(label)
         if not match:
-            emit(cid,now,horizon,f"{n:03d} - No Scheduled Event")
+            event=clean_event(label)
+            title=f"{n:03d} - Upcoming Event: {event}" if event else f"{n:03d} - No Scheduled Event"
+            emit(cid,now,horizon,title)
             continue
-        event=title_case(label[:match.start()].strip(" -–—:"))
+        event=clean_event(label[:match.start()])
         try:
             month=next(v for k,v in MONTHS.items() if match["month"].upper().startswith(k))
             hour=int(match["hour"])%12+(12 if match["ampm"].upper()=="PM" else 0)
