@@ -48,6 +48,8 @@ jobs:
           import gzip,xml.etree.ElementTree as ET
           with gzip.open('v4-output/epg.xml.gz','rb') as f:
               root=ET.parse(f).getroot()
+          with open('v4-output/epg.xml','wb') as readable:
+              readable.write(ET.tostring(root, encoding='utf-8', xml_declaration=True))
           assert root.tag=='tv'
           assert len(root.findall('channel'))>0
           assert len(root.findall('programme'))>0
@@ -60,11 +62,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cp v4-output/epg.xml.gz /tmp/combined-epg.xml.gz
+          cp v4-output/epg.xml /tmp/combined-epg.xml
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/combined-epg.xml.gz v4-output/epg.xml.gz
-            git add v4-output/epg.xml.gz
+            cp /tmp/combined-epg.xml v4-output/epg.xml
+            git add v4-output/epg.xml.gz v4-output/epg.xml
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Refresh combined EPG 2 6 37"
             if git push origin HEAD:main; then exit 0; fi
