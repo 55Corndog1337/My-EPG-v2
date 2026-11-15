@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'v4/build.py'
+      - 'v4/split_xmltv.py'
       - 'v4/espn-plus-live.csv'
       - 'v4/flosports.py'
       - 'v4/flosports-live.csv'
@@ -111,6 +112,41 @@ jobs:
           ET.ElementTree(diagnostic).write('v4-output/espn-plus.xml',encoding='utf-8',xml_declaration=True)
           assert os.path.getsize('v4-output/espn-plus.xml') < 95_000_000
           assert root.tag=='tv'
+          assert len(root.findall('channel'))>0
+          assert len(root.findall('programme'))>0
+          print('XMLTV valid')
+          PY
+      - name: Generate readable XMLTV parts and size report
+        if: steps.clock.outputs.run == 'true'
+        run: python3 v4/split_xmltv.py
+      - name: Publish combined guide
+        if: steps.clock.outputs.run == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp v4-output/epg.xml.gz /tmp/combined-epg.xml.gz
+          mkdir -p /tmp/epg-publication
+          cp v4-output/espn-plus.xml v4-output/epg-report.json /tmp/epg-publication/
+          cp -r v4-output/readable /tmp/epg-publication/
+          rm -rf /tmp/epg-xml-parts
+          cp -a v4-output/xml-parts /tmp/epg-xml-parts
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/combined-epg.xml.gz v4-output/epg.xml.gz
+            cp /tmp/espn-plus.xml v4-output/espn-plus.xml
+            rm -rf v4-output/xml-parts
+            cp -a /tmp/epg-xml-parts v4-output/xml-parts
+            rm -f v4-output/epg.xml
+            git add -A v4-output/epg.xml.gz v4-output/espn-plus.xml v4-output/xml-parts
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Refresh combined EPG 2 6 37"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1
+# Trigger combined NCAAB and NCAAF EPG refresh after college source update.          assert root.tag=='tv'
           assert len(root.findall('channel'))>0
           assert len(root.findall('programme'))>0
           print('XMLTV valid')
