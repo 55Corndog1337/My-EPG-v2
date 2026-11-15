@@ -1,0 +1,72 @@
+{
+  "total_channels": 19724,
+  "total_programmes": 892223,
+  "parts": [
+    {
+      "file": "part-001.xml",
+      "channels": 2558,
+      "programmes": 127337,
+      "bytes": 35000054
+    },
+    {
+      "file": "part-002.xml",
+      "channels": 3405,
+      "programmes": 108808,
+      "bytes": 35000022
+    },
+    {
+      "file": "part-003.xml",
+      "channels": 453,
+      "programmes": 81017,
+      "bytes": 35000183
+    },
+    {
+      "file": "part-004.xml",
+      "channels": 389,
+      "programmes": 82846,
+      "bytes": 35000080
+    },
+    {
+      "file": "part-005.xml",
+      "channels": 364,
+      "programmes": 80004,
+      "bytes": 35000317
+    },
+    {
+      "file": "part-006.xml",
+      "channels": 385,
+      "programmes": 71768,
+      "bytes": 35000260
+    },
+    {
+      "file": "part-007.xml",
+      "channels": 323,
+      "programmes": 67110,
+      "bytes": 35000163
+    },
+    {
+      "file": "part-008.xml",
+      "channels": 304,
+      "programmes": 62474,
+      "bytes": 35000083
+    },
+    {
+      "file": "part-009.xml",
+      "channels": 490,
+      "programmes": 78055,
+      "bytes": 35000319
+    },
+    {
+      "file": "part-010.xml",
+      "channels": 1926,
+      "programmes": 101946,
+      "bytes": 35000297
+    },
+    {
+      "file": "part-011.xml",
+      "channels": 2537,
+      "programmes": 30858,
+      "bytes": 6548290
+    }
+  ]
+}
