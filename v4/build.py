@@ -93,10 +93,19 @@ def add_ahl(merged, all_channels, signatures):
             if end <= start:
                 continue
             by_team.setdefault((cid, team), []).append((start, end, row))
+    ahl_ids = {cid for cid, team in by_team}
+    for programme in list(merged.findall('programme')):
+        if programme.get('channel') in ahl_ids:
+            merged.remove(programme)
+    signatures.difference_update({sig for sig in signatures if sig[0] in ahl_ids})
+    from zoneinfo import ZoneInfo
+    eastern = ZoneInfo('America/New_York')
     now = datetime.now(timezone.utc)
     horizon = now + timedelta(days=7)
     fmt = lambda dt: dt.strftime("%Y%m%d%H%M%S +0000")
     added = 0
+    if len(ahl_ids) < 30:
+        raise RuntimeError(f'AHL schedule incomplete: {len(ahl_ids)} team IDs')
     for (cid, team), events in by_team.items():
         events.sort(key=lambda e: e[0])
         if cid not in all_channels:
@@ -110,7 +119,7 @@ def add_ahl(merged, all_channels, signatures):
             if start > current:
                 pre_end = min(start, horizon)
                 upcoming = row.get("Event") or f'{row.get("Away")} @ {row.get("Home")}'
-                title = "Next Game: " + upcoming + " " + start.strftime("%B %d %I:%M %p UTC")
+                title = "Next Game: " + upcoming + " " + start.astimezone(eastern).strftime("%B %d %I:%M %p EST")
                 p = ET.SubElement(merged, "programme", channel=cid, start=fmt(current), stop=fmt(pre_end))
                 ET.SubElement(p, "title").text = title
                 added += 1
