@@ -81,9 +81,13 @@ def add_ahl(merged, all_channels, signatures):
     by_team = {}
     with path.open(newline="", encoding="utf-8-sig") as f:
         for row in csv.DictReader(f):
-            cid = row.get("XMLTV_ID", "").strip()
+            original_cid = row.get("XMLTV_ID", "").strip()
             team = row.get("Team", "").strip()
-            if not cid or not team or team.casefold() == "hamilton":
+            if not original_cid or not team or team.casefold() == "hamilton":
+                continue
+            # Match Xtream team EPG IDs, e.g. CoachellaValleyFirebirds.ahl1.
+            cid = re.sub(r"[^A-Za-z0-9]", "", team) + ".ahl1"
+            if not cid:
                 continue
             try:
                 start = datetime.fromisoformat(row["StartUTC"]).astimezone(timezone.utc)
@@ -94,10 +98,15 @@ def add_ahl(merged, all_channels, signatures):
                 continue
             by_team.setdefault((cid, team), []).append((start, end, row))
     ahl_ids = {cid for cid, team in by_team}
+    old_ahl_ids = {f"xtream.{row['StreamID']}" for events in by_team.values() for _, _, row in events if row.get("StreamID")}
+    for old_id in old_ahl_ids - ahl_ids:
+        old_channel = all_channels.pop(old_id, None)
+        if old_channel is not None:
+            merged.remove(old_channel)
     for programme in list(merged.findall('programme')):
-        if programme.get('channel') in ahl_ids:
+        if programme.get('channel') in ahl_ids or programme.get('channel') in old_ahl_ids:
             merged.remove(programme)
-    signatures.difference_update({sig for sig in signatures if sig[0] in ahl_ids})
+    signatures.difference_update({sig for sig in signatures if sig[0] in ahl_ids or sig[0] in old_ahl_ids})
     from zoneinfo import ZoneInfo
     eastern = ZoneInfo('America/New_York')
     now = datetime.now(timezone.utc)
@@ -112,6 +121,9 @@ def add_ahl(merged, all_channels, signatures):
             channel = ET.SubElement(merged, "channel", id=cid)
             ET.SubElement(channel, "display-name").text = team
             all_channels[cid] = channel
+        for label in all_channels[cid].findall("display-name"):
+            all_channels[cid].remove(label)
+        ET.SubElement(all_channels[cid], "display-name").text = team
         current = now
         for start, end, row in events:
             if end <= now or start >= horizon:
