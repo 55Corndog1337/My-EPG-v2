@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - 'v4/build.py'
-      - 'v4/split_xmltv.py'
       - 'v4/espn-plus-live.csv'
       - 'v4/flosports.py'
       - 'v4/flosports-live.csv'
@@ -49,76 +48,11 @@ jobs:
           import gzip,xml.etree.ElementTree as ET
           with gzip.open('v4-output/epg.xml.gz','rb') as f:
               root=ET.parse(f).getroot()
-          # Split the complete readable XMLTV into independently valid files.
-          # Each programme appears exactly once, and each part includes its channel definitions.
-          import json, os
-          from collections import defaultdict
-          from pathlib import Path
-          out = Path('v4-output/xml-parts')
-          out.mkdir(parents=True, exist_ok=True)
-          for old in out.glob('part-*.xml'):
-              old.unlink()
-          channel_by_id = {ch.get('id'): ch for ch in root.findall('channel')}
-          programmes = root.findall('programme')
-          max_bytes = 35_000_000
-          parts = []
-          part_no = 0
-          batch = []
-          batch_ids = set()
-          estimated = 0
-          def flush():
-              global part_no, batch, batch_ids, estimated
-              if not batch:
-                  return
-              part_no += 1
-              tv = ET.Element('tv', {'generator-info-name':'Combined EPG readable part'})
-              for cid in sorted(batch_ids):
-                  if cid in channel_by_id:
-                      tv.append(channel_by_id[cid])
-                  else:
-                      ET.SubElement(tv, 'channel', id=cid)
-              tv.extend(batch)
-              filename = f'part-{part_no:03d}.xml'
-              target = out / filename
-              ET.ElementTree(tv).write(target, encoding='utf-8', xml_declaration=True)
-              assert target.stat().st_size < 95_000_000, f'{filename} exceeds GitHub file limit'
-              parts.append({'file':filename,'channels':len(batch_ids),'programmes':len(batch),'bytes':target.stat().st_size})
-              batch, batch_ids, estimated = [], set(), 0
-          for p in programmes:
-              cid = p.get('channel','')
-              size = len(ET.tostring(p,encoding='utf-8'))
-              if cid not in batch_ids and cid in channel_by_id:
-                  size += len(ET.tostring(channel_by_id[cid],encoding='utf-8'))
-              if batch and estimated + size > max_bytes:
-                  flush()
-              batch.append(p)
-              batch_ids.add(cid)
-              estimated += size
-          flush()
-          assert sum(p['programmes'] for p in parts) == len(programmes)
-          (out / 'index.json').write_text(json.dumps({'total_channels':len(channel_by_id),'total_programmes':len(programmes),'parts':parts},indent=2))
-          print(f"Split {len(programmes)} programmes into {len(parts)} readable XML parts",flush=True)
-          # Keep a focused ESPN+ file for quick event checks.
-          espn_ids = {f"{1705+n}.ESPN" for n in range(1,601)}
-          diagnostic = ET.Element('tv', {'generator-info-name':'ESPN+ diagnostics'})
-          for ch in root.findall('channel'):
-              if ch.get('id') in espn_ids:
-                  diagnostic.append(ch)
-          for programme in programmes:
-              if programme.get('channel') in espn_ids:
-                  diagnostic.append(programme)
-          assert len(diagnostic.findall('channel')) == 600
-          assert len(diagnostic.findall('programme')) >= 600
-          ET.ElementTree(diagnostic).write('v4-output/espn-plus.xml',encoding='utf-8',xml_declaration=True)
-          assert os.path.getsize('v4-output/espn-plus.xml') < 95_000_000
           assert root.tag=='tv'
           assert len(root.findall('channel'))>0
           assert len(root.findall('programme'))>0
           print('XMLTV valid')
           PY
-      - name: Generate readable XMLTV parts and size report
-        if: steps.clock.outputs.run == 'true'
-        run: python3 v4/split_xmltv.py
       - name: Publish combined guide
         if: steps.clock.outputs.run == 'true'
         run: |
@@ -126,50 +60,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cp v4-output/epg.xml.gz /tmp/combined-epg.xml.gz
-          mkdir -p /tmp/epg-publication
-          cp v4-output/espn-plus.xml v4-output/epg-report.json /tmp/epg-publication/
-          cp -r v4-output/readable /tmp/epg-publication/
-          rm -rf /tmp/epg-xml-parts
-          cp -a v4-output/xml-parts /tmp/epg-xml-parts
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/combined-epg.xml.gz v4-output/epg.xml.gz
-            cp /tmp/espn-plus.xml v4-output/espn-plus.xml
-            rm -rf v4-output/xml-parts
-            cp -a /tmp/epg-xml-parts v4-output/xml-parts
-            rm -f v4-output/epg.xml
-            git add -A v4-output/epg.xml.gz v4-output/espn-plus.xml v4-output/xml-parts
-            if git diff --cached --quiet; then exit 0; fi
-            git commit -m "Refresh combined EPG 2 6 37"
-            if git push origin HEAD:main; then exit 0; fi
-            sleep 5
-          done
-          exit 1
-# Trigger combined NCAAB and NCAAF EPG refresh after college source update.          assert root.tag=='tv'
-          assert len(root.findall('channel'))>0
-          assert len(root.findall('programme'))>0
-          print('XMLTV valid')
-          PY
-      - name: Publish combined guide
-        if: steps.clock.outputs.run == 'true'
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          cp v4-output/epg.xml.gz /tmp/combined-epg.xml.gz
-          cp v4-output/espn-plus.xml /tmp/espn-plus.xml
-          rm -rf /tmp/epg-xml-parts
-          cp -a v4-output/xml-parts /tmp/epg-xml-parts
-          for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/combined-epg.xml.gz v4-output/epg.xml.gz
-            cp /tmp/espn-plus.xml v4-output/espn-plus.xml
-            rm -rf v4-output/xml-parts
-            cp -a /tmp/epg-xml-parts v4-output/xml-parts
-            rm -f v4-output/epg.xml
-            git add -A v4-output/epg.xml.gz v4-output/espn-plus.xml v4-output/xml-parts
+            git add v4-output/epg.xml.gz
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Refresh combined EPG 2 6 37"
             if git push origin HEAD:main; then exit 0; fi
