@@ -498,6 +498,86 @@ def add_nba_games(merged, all_channels, signatures, guides):
     print(f"NBA games: 15 canonical IDs, {added} rolling EPG2 programme blocks", flush=True)
     return added
 
+def add_nhl_games(merged, all_channels, signatures, guides):
+    """Build rolling upcoming/live/concluded blocks for 15 EPG2 NHL game feeds."""
+    mapping_path = ROOT / "v4-mappings" / "nhl-games.json"
+    mappings = json.loads(mapping_path.read_text(encoding="utf-8"))["mappings"]
+    epg2 = guides["epg2"]
+    by_source = defaultdict(list)
+    for p in epg2.findall("programme"):
+        by_source[p.get("channel")].append(p)
+    eastern = ZoneInfo("America/New_York")
+    now = datetime.now(timezone.utc)
+    horizon = now + timedelta(days=2)
+    stamp = lambda dt: dt.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000")
+    def parse_stamp(value):
+        match = re.match(r"^(\\d{12}|\\d{14})(?:\\s*([+-]\\d{4}))?", (value or "").strip())
+        if not match:
+            return None
+        digits, offset = match.groups()
+        fmt = "%Y%m%d%H%M%S" if len(digits) == 14 else "%Y%m%d%H%M"
+        if offset:
+            return datetime.strptime(digits + " " + offset, fmt + " %z").astimezone(timezone.utc)
+        return datetime.strptime(digits, fmt).replace(tzinfo=timezone.utc)
+    def add_block(cid, start, end, title, desc):
+        if end <= start:
+            return 0
+        p = ET.SubElement(merged, "programme", channel=cid, start=stamp(start), stop=stamp(end))
+        ET.SubElement(p, "title", lang="en").text = title
+        ET.SubElement(p, "desc", lang="en").text = desc
+        signatures.add((cid, p.get("start"), p.get("stop"), title))
+        return 1
+    added = 0
+    if len(mappings) != 16:
+        raise RuntimeError(f"Expected 16 NHL game mappings; found {len(mappings)}")
+    for index, mapping in enumerate(mappings, 1):
+        if mapping["source"] != "epg2":
+            raise RuntimeError(f"NHL Game {index:02d} must use EPG2")
+        cid = f"NHL.GAME.{index:02d}"
+        source_id = mapping["source_channel_id"]
+        if cid not in all_channels:
+            channel = ET.SubElement(merged, "channel", id=cid)
+            all_channels[cid] = channel
+        channel = all_channels[cid]
+        for node in channel.findall("display-name"):
+            channel.remove(node)
+        ET.SubElement(channel, "display-name").text = f"Game {index:02d}"
+        # The canonical NHL IDs are generated here, not imported from another source.
+        for p in list(merged.findall("programme")):
+            if p.get("channel") == cid:
+                merged.remove(p)
+        events = []
+        for original in by_source[source_id]:
+            start = parse_stamp(original.get("start"))
+            stop = parse_stamp(original.get("stop"))
+            if start is None:
+                continue
+            # NHL game channels use a four-hour event window.
+            end = start + timedelta(hours=4)
+            if stop is not None and stop > start and stop - start <= timedelta(hours=4):
+                end = stop
+            name = (original.findtext("title") or "").strip()
+            if not name or name.lower() in ("no information", "no programme", "no scheduled event"):
+                continue
+            events.append((start, end, name))
+        events.sort(key=lambda x: x[0])
+        cursor = now
+        for start, end, name in events:
+            if end <= now or start >= horizon:
+                continue
+            local = start.astimezone(eastern)
+            event_time = local.strftime("%B %d, %Y %I:%M %p") + " " + local.tzname()
+            description = f"{name} | Event Date and Time EST: {event_time}"
+            if cursor < start:
+                added += add_block(cid, cursor, min(start, horizon), f"Next Game: {name} {event_time}", description)
+            added += add_block(cid, max(start, now), min(end, horizon), name, description)
+            cursor = max(cursor, end)
+        if cursor < horizon:
+            title = "Event concluded" if events and any(end <= cursor for _, end, _ in events) and cursor > now else "No Scheduled Event"
+            added += add_block(cid, cursor, horizon, title, f"NHL Game {index:02d} | Eastern Time")
+    print(f"NHL games: 16 canonical IDs, {added} rolling EPG2 programme blocks", flush=True)
+    return added
+
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
     all_channels = {}
@@ -539,12 +619,13 @@ def main():
         total += count
     print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2, 6 and 37", flush=True)
     total += add_nba_games(merged, all_channels, signatures, guides)
+    total += add_nhl_games(merged, all_channels, signatures, guides)
     total += add_espn_programmes(merged, all_channels, signatures, guides)
     total += add_flosports_programmes(merged, all_channels, signatures)
     total += add_college_programmes(merged, all_channels, signatures, guides)
     add_inventory_channels(merged, all_channels, excluded_epg2_ids)
     total += add_ahl(merged, all_channels, signatures)
-    shift_written_sports_times(merged, {cid: ch for cid, ch in all_channels.items() if not cid.startswith('NBA.GAME.')})
+    shift_written_sports_times(merged, {cid: ch for cid, ch in all_channels.items() if not cid.startswith(('NBA.GAME.', 'NHL.GAME.'))})
     if not all_channels or not total:
         raise RuntimeError("No matching channels/programmes; existing guide preserved")
     OUT.parent.mkdir(parents=True, exist_ok=True)
