@@ -3,6 +3,9 @@
 # Manual refresh requested; this commit triggers the V4 push workflow.
 import gzip
 import csv
+import json
+import copy
+from zoneinfo import ZoneInfo
 from datetime import datetime, timedelta, timezone
 import io
 import os
@@ -415,6 +418,50 @@ def shift_written_sports_times(merged, channels):
                     updated += 1
     print(f"Sports written-time fields adjusted (channel names and programme text): {updated}; XMLTV start/stop unchanged", flush=True)
 
+def add_nba_games(merged, all_channels, signatures, guides):
+    """Daily EPG2 NBA Game 01-15 aliases, preserving XMLTV instants."""
+    mapping_path = ROOT / "v4-mappings" / "nba-games.json"
+    mappings = json.loads(mapping_path.read_text(encoding="utf-8"))["mappings"]
+    epg2 = guides["epg2"]
+    source_programmes = defaultdict(list)
+    for programme in epg2.findall("programme"):
+        source_programmes[programme.get("channel")].append(programme)
+    eastern = ZoneInfo("America/New_York")
+    added = 0
+    for index, mapping in enumerate(mappings, 1):
+        assert mapping["source"] == "epg2"
+        cid = f"NBA.GAME.{index:02d}"
+        source_id = mapping["source_channel_id"]
+        if cid not in all_channels:
+            channel = ET.SubElement(merged, "channel", id=cid)
+            ET.SubElement(channel, "display-name").text = f"Game {index:02d}"
+            all_channels[cid] = channel
+        for original in source_programmes[source_id]:
+            p = copy.deepcopy(original)
+            p.set("channel", cid)
+            start = original.get("start", "")
+            # XMLTV start/stop contain absolute instants with UTC offsets.
+            # Keep them unchanged: changing offsets without converting the
+            # instant would shift playback times.
+            try:
+                parsed = datetime.strptime(start.strip(), "%Y%m%d%H%M%S %z")
+                local = parsed.astimezone(eastern)
+                label = local.strftime("%B %d, %Y %I:%M %p") + " " + local.tzname()
+                desc = p.find("desc")
+                if desc is None:
+                    desc = ET.SubElement(p, "desc")
+                desc.text = ((desc.text or "").strip() + " | " if (desc.text or "").strip() else "") + "Event Date and Time EST: " + label
+            except ValueError:
+                pass
+            sig = (cid, p.get("start"), p.get("stop"), p.findtext("title", default=""))
+            if sig in signatures:
+                continue
+            signatures.add(sig)
+            merged.append(p)
+            added += 1
+    print(f"NBA games: 15 canonical IDs, {added} EPG2 programmes", flush=True)
+    return added
+
 def main():
     merged = ET.Element("tv", {"generator-info-name": "Combined EPG 2+6+37"})
     all_channels = {}
@@ -455,12 +502,13 @@ def main():
         print(f"{source}: {len(selected)} channels, {count} programmes", flush=True)
         total += count
     print(f"Excluded {len(excluded_epg2_ids)} FloSports channel IDs from EPG 2, 6 and 37", flush=True)
+    total += add_nba_games(merged, all_channels, signatures, guides)
     total += add_espn_programmes(merged, all_channels, signatures, guides)
     total += add_flosports_programmes(merged, all_channels, signatures)
     total += add_college_programmes(merged, all_channels, signatures, guides)
     add_inventory_channels(merged, all_channels, excluded_epg2_ids)
     total += add_ahl(merged, all_channels, signatures)
-    shift_written_sports_times(merged, all_channels)
+    shift_written_sports_times(merged, {cid: ch for cid, ch in all_channels.items() if not cid.startswith('NBA.GAME.')})
     if not all_channels or not total:
         raise RuntimeError("No matching channels/programmes; existing guide preserved")
     OUT.parent.mkdir(parents=True, exist_ok=True)
