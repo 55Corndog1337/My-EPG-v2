@@ -7,7 +7,7 @@ on:
       - '.github/workflows/roku-index.yml'
   workflow_dispatch:
   schedule:
-    - cron: '45 */4 * * *'
+    - cron: '45 */6 * * *'
 permissions:
   contents: write
 concurrency:
@@ -34,6 +34,7 @@ jobs:
           base=Path('v5-output/roku-index')
           m=json.loads((base/'manifest.json').read_text())
           assert m['buckets']==128
+          assert m['window_hours']==24
           assert len(m['files'])==128
           for filename in m['files']:
               obj=json.loads((base/filename).read_text())
