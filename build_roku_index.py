@@ -115,6 +115,70 @@ def recover_mapped_listings(shows, now):
                 added += 1
     return {"source_matched": len(recovered), "aliases_added": added}
 
+
+def recover_local_stations(shows, now):
+    """Optional exact call-sign rescue from regional XMLTV guides (no fuzzy network matching)."""
+    import csv
+    import urllib.request
+    from collections import defaultdict
+    mapping = Path("matches.csv")
+    if not mapping.exists():
+        return 0
+    wanted = defaultdict(set)
+    with mapping.open(encoding="utf-8-sig", newline="") as fh:
+        for row in csv.DictReader(fh):
+            label = (row.get("playlist_channel") or "").strip()
+            match = re.search(r"\\(([WK][A-Z]{2,5})(?:-DT1?)?\\)\\s*$", label, re.I)
+            if not match:
+                continue
+            code = match.group(1).upper()
+            key = "name:" + re.sub(r"[^a-z0-9]", "", label.lower())
+            original = (row.get("original_tvg_id") or "").strip().lower()
+            wanted[code].add(key)
+            if original and all(ord(c) < 128 for c in original):
+                wanted[code].add(original)
+    recovered = defaultdict(list)
+    for region in ("us-tn", "us-va"):
+        url = "https://iptv-org.github.io/epg/guides/" + region + "/tvtv.us.epg.xml"
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent":"My-EPG-Roku-Index/1.0"})
+            with urllib.request.urlopen(request, timeout=100) as response:
+                events = ET.iterparse(response, events=("start", "end"))
+                _, root = next(events)
+                for event, elem in events:
+                    if event != "end":
+                        continue
+                    if elem.tag.rsplit("}", 1)[-1] == "programme":
+                        source_id = (elem.get("channel") or "").upper()
+                        match = re.match(r"^([WK][A-Z]{2,5})(?:-(?:DT1?|TV))?(?:\\.|$)", source_id)
+                        if match:
+                            code = match.group(1)
+                            if code in wanted:
+                                start = epg_time(elem.get("start"))
+                                stop = epg_time(elem.get("stop"))
+                                if start is not None and start < now+7*86400 and (stop is None or stop>now):
+                                    title = next(((x.text or "").strip() for x in elem
+                                                  if x.tag.rsplit("}",1)[-1] == "title"), "")
+                                    if title:
+                                        recovered[code].append({"start":start,"stop":stop or start+3600,"title":title[:160]})
+                        elem.clear()
+                        root.clear()
+            print(f"Roku local recovery: {region} read successfully")
+        except Exception as exc:
+            print(f"WARNING: Roku local guide {region} unavailable: {type(exc).__name__}")
+    count = 0
+    for code, aliases in wanted.items():
+        items = recovered.get(code, [])
+        if not items:
+            continue
+        items.sort(key=lambda x:x["start"])
+        for alias in aliases:
+            if not shows.get(alias):
+                shows[alias] = items[:8]
+                count += 1
+    print(f"Roku local station aliases restored: {count}")
+    return count
+
 def build(source, destination):
     now = int(datetime.now(timezone.utc).timestamp())
     shows = defaultdict(list)
@@ -143,6 +207,7 @@ def build(source, destination):
                 elem.clear()
                 root.clear()
     recovery = recover_mapped_listings(shows, now)
+    local_recovered = recover_local_stations(shows, now)
     groups=[{} for _ in range(128)]
     for cid,items in shows.items():
         if any(ord(c)>127 for c in cid):
@@ -159,7 +224,7 @@ def build(source, destination):
             raise ValueError(f"Shard {i} is {size} bytes; not safe for the Roku loader")
         (destination/f"{i:03d}.json").write_text(encoded,encoding="utf-8")
         sizes.append(size)
-    manifest={"schema":1,"generated_at":now,"buckets":128,"channel_ids":sum(map(len,groups)),"recovered_source_ids":recovery["source_matched"],"recovered_aliases":recovery["aliases_added"],"source_channel_ids":len(source_ids),"source_programmes":total_programmes,"programmes_in_seven_day_window":in_window_programmes,"window_days":7,"max_bytes":max(sizes),"files":[f"{i:03d}.json" for i in range(128)]}
+    manifest={"schema":1,"generated_at":now,"buckets":128,"channel_ids":sum(map(len,groups)),"recovered_source_ids":recovery["source_matched"],"recovered_aliases":recovery["aliases_added"],"local_station_aliases":local_recovered,"source_channel_ids":len(source_ids),"source_programmes":total_programmes,"programmes_in_seven_day_window":in_window_programmes,"window_days":7,"max_bytes":max(sizes),"files":[f"{i:03d}.json" for i in range(128)]}
     (destination/"manifest.json").write_text(json.dumps(manifest,indent=2),encoding="utf-8")
     if manifest["channel_ids"] < 500:
         print("WARNING: fewer than 500 IDs have current or upcoming listings; check source XMLTV and channel mappings.")
