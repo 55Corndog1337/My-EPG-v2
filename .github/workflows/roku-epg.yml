@@ -1,5 +1,10 @@
 name: Publish Roku guide JSON
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'build_roku_guide.py'
+      - '.github/workflows/roku-epg.yml'
   workflow_dispatch:
   schedule:
     - cron: '20 */4 * * *'
