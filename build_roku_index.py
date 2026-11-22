@@ -72,7 +72,7 @@ def recover_mapped_listings(shows, now):
     for src, source_id in targets:
         by_source[src].add(source_id)
     recovered = {}
-    end = now + 7 * 86400
+    end = now + 24 * 3600
     for src, wanted in by_source.items():
         if not wanted:
             continue
@@ -111,7 +111,7 @@ def recover_mapped_listings(shows, now):
         items.sort(key=lambda item: item["start"])
         for alias in options:
             if not shows.get(alias):
-                shows[alias] = items[:8]
+                shows[alias] = items[:12]
                 added += 1
     return {"source_matched": len(recovered), "aliases_added": added}
 
@@ -156,7 +156,7 @@ def recover_local_stations(shows, now):
                             if code in wanted:
                                 start = epg_time(elem.get("start"))
                                 stop = epg_time(elem.get("stop"))
-                                if start is not None and start < now+7*86400 and (stop is None or stop>now):
+                                if start is not None and start < now+24*3600 and (stop is None or stop>now):
                                     title = next(((x.text or "").strip() for x in elem
                                                   if x.tag.rsplit("}",1)[-1] == "title"), "")
                                     if title:
@@ -174,7 +174,7 @@ def recover_local_stations(shows, now):
         items.sort(key=lambda x:x["start"])
         for alias in aliases:
             if not shows.get(alias):
-                shows[alias] = items[:8]
+                shows[alias] = items[:12]
                 count += 1
     print(f"Roku local station aliases restored: {count}")
     return count
@@ -199,7 +199,7 @@ def build(source, destination):
                     total_programmes += 1
                 start=epg_time(elem.get("start"))
                 stop=epg_time(elem.get("stop"))
-                if cid and start is not None and start<now+7*24*3600 and (stop is None or stop>now):
+                if cid and start is not None and start<now+24*3600 and (stop is None or stop>now):
                     title=next(((c.text or "").strip() for c in elem if c.tag.rsplit("}",1)[-1]=="title"),"")
                     if title:
                         in_window_programmes += 1
@@ -213,7 +213,21 @@ def build(source, destination):
         if any(ord(c)>127 for c in cid):
             continue  # Roku's byte-based ID hash is guaranteed for ASCII IDs.
         items.sort(key=lambda x:x["start"])
-        groups[bucket(cid)][cid]=items[:6]
+        groups[bucket(cid)][cid]=items[:12]
+    # Preserve existing lookup keys / 128-shard format. Choose the largest
+    # per-channel programme cap that fits every shard under Roku's 160KB limit.
+    # The 24-hour filter is strict; channels with short shows may have more
+    # programmes than one shard can safely hold.
+    programme_cap = 12
+    while True:
+        max_shard_bytes = max(len(json.dumps({"channels":{key:items[:programme_cap]
+            for key,items in shard.items()}}, ensure_ascii=False,
+            separators=(",",":")).encode("utf-8")) for shard in groups)
+        if max_shard_bytes < 160000 or programme_cap <= 1:
+            break
+        programme_cap -= 1
+    groups = [{key:items[:programme_cap] for key,items in shard.items()}
+              for shard in groups]
     destination=Path(destination)
     destination.mkdir(parents=True,exist_ok=True)
     sizes=[]
@@ -224,7 +238,7 @@ def build(source, destination):
             raise ValueError(f"Shard {i} is {size} bytes; not safe for the Roku loader")
         (destination/f"{i:03d}.json").write_text(encoded,encoding="utf-8")
         sizes.append(size)
-    manifest={"schema":1,"generated_at":now,"buckets":128,"channel_ids":sum(map(len,groups)),"recovered_source_ids":recovery["source_matched"],"recovered_aliases":recovery["aliases_added"],"local_station_aliases":local_recovered,"source_channel_ids":len(source_ids),"source_programmes":total_programmes,"programmes_in_seven_day_window":in_window_programmes,"window_days":7,"max_bytes":max(sizes),"files":[f"{i:03d}.json" for i in range(128)]}
+    manifest={"schema":1,"generated_at":now,"buckets":128,"channel_ids":sum(map(len,groups)),"recovered_source_ids":recovery["source_matched"],"recovered_aliases":recovery["aliases_added"],"local_station_aliases":local_recovered,"source_channel_ids":len(source_ids),"source_programmes":total_programmes,"programmes_in_seven_day_window":in_window_programmes,"window_hours":24,"programmes_per_channel_cap":programme_cap,"max_bytes":max(sizes),"files":[f"{i:03d}.json" for i in range(128)]}
     (destination/"manifest.json").write_text(json.dumps(manifest,indent=2),encoding="utf-8")
     if manifest["channel_ids"] < 500:
         print("WARNING: fewer than 500 IDs have current or upcoming listings; check source XMLTV and channel mappings.")
