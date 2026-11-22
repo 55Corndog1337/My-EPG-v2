@@ -1,0 +1,52 @@
+name: Refresh Roku category guide
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '35 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'build_roku_category_guide.py'
+      - '.github/workflows/roku-category-guide.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: roku-category-guide
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify private playlist source configured
+        env:
+          ROKU_M3U_URL: ${{ secrets.ROKU_M3U_URL }}
+        run: |
+          if [ -z "$ROKU_M3U_URL" ]; then
+            echo "::error::Set the ROKU_M3U_URL repository secret to your refreshable M3U URL. No credentials should go in repository files."
+            exit 1
+          fi
+      - name: Build category guide from fresh playlist and current EPG
+        env:
+          ROKU_M3U_URL: ${{ secrets.ROKU_M3U_URL }}
+        run: |
+          python build_roku_category_guide.py --epg v5-output/epg.xml.gz --out v5-output/roku-categories
+      - name: Commit category JSON only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A v5-output/roku-categories
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh Roku category JSON from current playlist"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
