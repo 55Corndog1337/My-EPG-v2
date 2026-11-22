@@ -1,0 +1,35 @@
+name: Publish Roku guide JSON
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 */4 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: roku-epg-json
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert combined EPG to Roku guide
+        run: python build_roku_guide.py --output v5-output/roku-guide.json
+      - name: Publish only Roku JSON on gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages
+          git worktree add --detach /tmp/roku-pages origin/gh-pages
+          mkdir -p /tmp/roku-pages/v5-output
+          cp v5-output/roku-guide.json /tmp/roku-pages/v5-output/roku-guide.json
+          cd /tmp/roku-pages
+          git add v5-output/roku-guide.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh Roku guide JSON"
+            git push origin HEAD:gh-pages
+          fi
