@@ -1,0 +1,48 @@
+name: Publish compact Roku indexed guide
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '45 */4 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: indexed-roku-guide
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert existing combined XMLTV into indexed guide
+        run: python build_roku_index.py --input v5-output/epg.xml.gz --out v5-output/roku-index
+      - name: Check JSON index
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('v5-output/roku-index')
+          m=json.loads((base/'manifest.json').read_text())
+          assert m['buckets']==128
+          assert len(m['files'])==128
+          for filename in m['files']:
+              obj=json.loads((base/filename).read_text())
+              assert isinstance(obj['channels'],dict)
+              assert (base/filename).stat().st_size < 160000
+          print('PASS: 128 shards, schema, and bounded sizes')
+          PY
+      - name: Publish only indexed Roku guide files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A v5-output/roku-index
+          if ! git diff --cached --quiet; then
+            git commit -m "Update indexed Roku programme guide"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
