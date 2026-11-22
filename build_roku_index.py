@@ -128,7 +128,7 @@ def recover_local_stations(shows, now):
     with mapping.open(encoding="utf-8-sig", newline="") as fh:
         for row in csv.DictReader(fh):
             label = (row.get("playlist_channel") or "").strip()
-            match = re.search(r"\\(([WK][A-Z]{2,5})(?:-DT1?)?\\)\\s*$", label, re.I)
+            match = re.search(r"\(([WK][A-Z]{2,5})(?:-DT1?)?\)\s*$", label, re.I)
             if not match:
                 continue
             code = match.group(1).upper()
@@ -150,7 +150,7 @@ def recover_local_stations(shows, now):
                         continue
                     if elem.tag.rsplit("}", 1)[-1] == "programme":
                         source_id = (elem.get("channel") or "").upper()
-                        match = re.match(r"^([WK][A-Z]{2,5})(?:-(?:DT1?|TV))?(?:\\.|$)", source_id)
+                        match = re.match(r"^([WK][A-Z]{2,5})(?:-(?:DT1?|TV))?(?:\.|$)", source_id)
                         if match:
                             code = match.group(1)
                             if code in wanted:
