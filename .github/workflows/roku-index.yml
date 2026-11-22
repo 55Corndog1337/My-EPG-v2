@@ -1,5 +1,10 @@
 name: Publish compact Roku indexed guide
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'build_roku_index.py'
+      - '.github/workflows/roku-index.yml'
   workflow_dispatch:
   schedule:
     - cron: '45 */4 * * *'
