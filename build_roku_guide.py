@@ -21,7 +21,11 @@ def build(source, output, hours=24, cap=4):
     req = urllib.request.Request(source, headers={"User-Agent":"StreamDeckTV-Guide/4.3"})
     with urllib.request.urlopen(req, timeout=180) as raw:
         stream = gzip.GzipFile(fileobj=raw)
-        for _, elem in ET.iterparse(stream, events=("end",)):
+        events = ET.iterparse(stream, events=("start", "end"))
+        _, root = next(events)
+        for event, elem in events:
+            if event != "end":
+                continue
             tag = elem.tag.rsplit("}", 1)[-1]
             if tag == "channel":
                 cid = (elem.get("id") or "").strip().lower()
@@ -39,7 +43,9 @@ def build(source, output, hours=24, cap=4):
                         shows[cid].append({"title":title,"start":int(a.timestamp()),"stop":int(b.timestamp())})
                 except (ValueError, TypeError, IndexError):
                     pass
-            elem.clear()
+            if tag in ("channel", "programme"):
+                elem.clear()
+                root.clear()
     by_channel = {k:sorted(v,key=lambda x:x["start"])[:cap] for k,v in shows.items()}
     data = {"generated_at":int(now.timestamp()),"channels":by_channel,"aliases":{n:c for n,c in names.items() if c in by_channel}}
     path = Path(output)
