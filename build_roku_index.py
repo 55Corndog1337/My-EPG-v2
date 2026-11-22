@@ -32,6 +32,9 @@ def epg_time(value):
 def build(source, destination):
     now = int(datetime.now(timezone.utc).timestamp())
     shows = defaultdict(list)
+    source_ids = set()
+    total_programmes = 0
+    in_window_programmes = 0
     source = Path(source)
     with (gzip.open(source,"rb") if source.suffix==".gz" else source.open("rb")) as fh:
         events=ET.iterparse(fh,events=("start","end"))
@@ -41,11 +44,15 @@ def build(source, destination):
                 continue
             if elem.tag.rsplit("}",1)[-1]=="programme":
                 cid=normalize(elem.get("channel"))
+                if cid:
+                    source_ids.add(cid)
+                    total_programmes += 1
                 start=epg_time(elem.get("start"))
                 stop=epg_time(elem.get("stop"))
-                if cid and start is not None and start<now+36*3600 and (stop is None or stop>now):
+                if cid and start is not None and start<now+7*24*3600 and (stop is None or stop>now):
                     title=next(((c.text or "").strip() for c in elem if c.tag.rsplit("}",1)[-1]=="title"),"")
                     if title:
+                        in_window_programmes += 1
                         shows[cid].append({"start":start,"stop":stop or start+3600,"title":title[:160]})
                 elem.clear()
                 root.clear()
@@ -65,8 +72,10 @@ def build(source, destination):
             raise ValueError(f"Shard {i} is {size} bytes; not safe for the Roku loader")
         (destination/f"{i:03d}.json").write_text(encoded,encoding="utf-8")
         sizes.append(size)
-    manifest={"schema":1,"generated_at":now,"buckets":128,"channel_ids":sum(map(len,groups)),"max_bytes":max(sizes),"files":[f"{i:03d}.json" for i in range(128)]}
+    manifest={"schema":1,"generated_at":now,"buckets":128,"channel_ids":sum(map(len,groups)),"source_channel_ids":len(source_ids),"source_programmes":total_programmes,"programmes_in_seven_day_window":in_window_programmes,"window_days":7,"max_bytes":max(sizes),"files":[f"{i:03d}.json" for i in range(128)]}
     (destination/"manifest.json").write_text(json.dumps(manifest,indent=2),encoding="utf-8")
+    if manifest["channel_ids"] < 500:
+        print("WARNING: fewer than 500 IDs have current or upcoming listings; check source XMLTV and channel mappings.")
     print(json.dumps(manifest))
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
