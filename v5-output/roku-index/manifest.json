@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": 1795549546,
+  "generated_at": 1795572239,
   "buckets": 128,
   "channel_ids": 5583,
   "recovered_source_ids": 1839,
@@ -8,10 +8,10 @@
   "local_station_aliases": 0,
   "source_channel_ids": 1048,
   "source_programmes": 19706,
-  "programmes_in_seven_day_window": 288,
+  "programmes_in_seven_day_window": 220,
   "window_hours": 24,
   "programmes_per_channel_cap": 12,
-  "max_bytes": 130702,
+  "max_bytes": 118046,
   "files": [
     "000.json",
     "001.json",
