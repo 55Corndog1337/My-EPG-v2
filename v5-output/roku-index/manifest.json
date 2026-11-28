@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": 1795831206,
+  "generated_at": 1795852620,
   "buckets": 128,
   "channel_ids": 5461,
   "recovered_source_ids": 1817,
@@ -11,7 +11,7 @@
   "programmes_in_seven_day_window": 0,
   "window_hours": 24,
   "programmes_per_channel_cap": 12,
-  "max_bytes": 120958,
+  "max_bytes": 125915,
   "files": [
     "000.json",
     "001.json",
